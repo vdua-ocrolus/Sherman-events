@@ -285,16 +285,33 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
     <h2>Submit an event or feedback</h2>
     <p>Know about a local event we missed? Have a note for us? We read every submission.</p>
     <form id="feedbackForm" onsubmit="handleFeedback(event)">
-      <select name="type" id="feedbackType">
+      <select name="type" id="feedbackType" onchange="onFeedbackTypeChange()">
         <option value="event">Submit an Event</option>
         <option value="feedback">General Feedback</option>
         <option value="correction">Report a Correction</option>
       </select>
+
+      <div id="eventFields">
+        <input type="text" placeholder="Event name" id="evName" style="margin-bottom:8px">
+        <div class="form-row" style="margin-bottom:8px">
+          <input type="text" placeholder="Date (e.g. Sat, Aug 3)" id="evDate">
+          <input type="text" placeholder="Time (e.g. 6:00 PM)" id="evTime">
+        </div>
+        <div class="form-row" style="margin-bottom:8px">
+          <input type="text" placeholder="Venue" id="evVenue">
+          <input type="text" placeholder="Town" id="evTown">
+        </div>
+        <div class="form-row" style="margin-bottom:8px">
+          <input type="text" placeholder="Cost (e.g. Free, $20)" id="evCost">
+          <input type="url" placeholder="Link / more info (URL)" id="evUrl">
+        </div>
+      </div>
+
       <div class="form-row" style="margin-bottom:8px">
         <input type="text" name="name" placeholder="Your name (optional)" id="feedbackName">
         <input type="email" name="email" placeholder="Your email (optional)" id="feedbackEmail">
       </div>
-      <textarea name="message" required placeholder="Describe the event (name, date, time, location, cost) or your feedback…" id="feedbackMessage"></textarea>
+      <textarea name="message" placeholder="Anything else we should know? (optional)" id="feedbackMessage"></textarea>
       <button type="submit" class="btn-primary" id="feedbackBtn" style="margin-top:10px">Send</button>
     </form>
     <div class="form-success" id="feedbackSuccess">✓ Received! We review all submissions.</div>
@@ -720,6 +737,19 @@ async function handleEmailSignup(e) {
 // =============================================
 // FEEDBACK FORM
 // =============================================
+function onFeedbackTypeChange() {
+  const type = document.getElementById('feedbackType').value;
+  const isEvent = type === 'event';
+  document.getElementById('eventFields').style.display = isEvent ? 'block' : 'none';
+  document.getElementById('evName').required = isEvent;
+  document.getElementById('evDate').required = isEvent;
+  const msg = document.getElementById('feedbackMessage');
+  msg.required = !isEvent;
+  msg.placeholder = isEvent
+    ? 'Anything else we should know? (optional)'
+    : (type === 'correction' ? 'What needs correcting?' : 'Your feedback…');
+}
+
 async function handleFeedback(e) {
   e.preventDefault();
   const btn = document.getElementById('feedbackBtn');
@@ -735,13 +765,34 @@ async function handleFeedback(e) {
   btn.disabled = true;
   btn.textContent = 'Sending…';
 
+  const type = document.getElementById('feedbackType').value;
+  const v = id => document.getElementById(id).value.trim();
+
+  // For events, compose the structured fields into the message so the stored
+  // entry shape stays {ts,date,type,name,email,message} (admin table columns).
+  let message;
+  if (type === 'event') {
+    message = [
+      v('evName')  && `Event: ${v('evName')}`,
+      v('evDate')  && `Date: ${v('evDate')}`,
+      v('evTime')  && `Time: ${v('evTime')}`,
+      v('evVenue') && `Venue: ${v('evVenue')}`,
+      v('evTown')  && `Town: ${v('evTown')}`,
+      v('evCost')  && `Cost: ${v('evCost')}`,
+      v('evUrl')   && `URL: ${v('evUrl')}`,
+      v('feedbackMessage') && `Notes: ${v('feedbackMessage')}`
+    ].filter(Boolean).join(' · ');
+  } else {
+    message = v('feedbackMessage');
+  }
+
   const entry = {
     ts: new Date().toISOString(),
     date: new Date().toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}),
-    type: document.getElementById('feedbackType').value,
+    type: type,
     name: document.getElementById('feedbackName').value.trim() || '(anonymous)',
     email: document.getElementById('feedbackEmail').value.trim() || '',
-    message: document.getElementById('feedbackMessage').value.trim()
+    message: message
   };
 
   const local = JSON.parse(localStorage.getItem('se_feedback') || '[]');
@@ -755,6 +806,7 @@ async function handleFeedback(e) {
   if (ok) {
     document.getElementById('feedbackSuccess').style.display = 'block';
     document.getElementById('feedbackForm').reset();
+    onFeedbackTypeChange();
   } else {
     document.getElementById('feedbackError').textContent = 'Could not save. Please try again.';
     document.getElementById('feedbackError').style.display = 'block';
@@ -866,6 +918,7 @@ document.getElementById('adminOverlay').addEventListener('click', function(e) {
 document.addEventListener('DOMContentLoaded', () => {
   renderEvents();
   trackVisit();
+  onFeedbackTypeChange();
 });
 </script>
 </body>
