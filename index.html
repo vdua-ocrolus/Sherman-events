@@ -342,11 +342,15 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px
 // CONFIGURATION — update these values
 // =============================================
 const CONFIG = {
-  // Get a fine-grained PAT at github.com/settings/personal-access-tokens
-  // Permissions needed: Contents: Read and write on YOUR_REPO only
-  GITHUB_TOKEN: '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',
+  // Secrets are NO LONGER stored in this file. This is a public repo.
+  // Data writes/reads go through a serverless function that holds the
+  // GitHub token server-side (see /netlify function or /api). Until that
+  // endpoint is live, GITHUB_CONFIGURED is false and the site uses
+  // localStorage only. Set API_BASE to the deployed function origin.
+  API_BASE: '',                      // e.g. 'https://candlewood-events.netlify.app/.netlify/functions'
+  GITHUB_TOKEN: 'YOUR_GITHUB_TOKEN', // placeholder — never put a real token here
   GITHUB_REPO: 'vdua-ocrolus/Sherman-events',
-  ADMIN_PASSWORD: 'sherman2026',     // Change this
+  ADMIN_PASSWORD: 'CHANGE_ME',       // admin auth moves server-side with the function
 };
 
 const GITHUB_CONFIGURED = CONFIG.GITHUB_TOKEN !== 'YOUR_GITHUB_TOKEN' && CONFIG.GITHUB_REPO !== 'YOUR_GITHUB_REPO';
