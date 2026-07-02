@@ -231,7 +231,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px
     <div class="form-success" id="signupSuccess">✓ You're on the list! We'll send a weekly digest.</div>
     <div class="form-error" id="signupError">Something went wrong. Please try again.</div>
     <div class="setup-note" id="signupSetupNote" style="display:none">
-      <strong>Setup needed:</strong> Add your GitHub token and repo to the CONFIG block in this page's source to enable email capture.
+      <strong>Setup needed:</strong> Set CONFIG.API_BASE to the deployed data-proxy URL to enable email capture.
     </div>
   </div>
 
@@ -255,7 +255,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px
     <div class="form-success" id="feedbackSuccess">✓ Received! We review all submissions.</div>
     <div class="form-error" id="feedbackError">Something went wrong. Please try again.</div>
     <div class="setup-note" id="feedbackSetupNote" style="display:none">
-      <strong>Setup needed:</strong> Add your GitHub token and repo to the CONFIG block.
+      <strong>Setup needed:</strong> Set CONFIG.API_BASE to the deployed data-proxy URL.
     </div>
   </div>
 
@@ -310,7 +310,7 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px
       <!-- Dashboard (hidden until login) -->
       <div id="adminDashboard" style="display:none">
         <div class="admin-setup-note" id="adminSetupNote" style="display:none">
-          <strong>⚠ GitHub not configured.</strong> Set GITHUB_TOKEN and GITHUB_REPO in the CONFIG block to enable data tracking. Data below is from this browser only (localStorage).
+          <strong>⚠ Data proxy not configured.</strong> Set CONFIG.API_BASE to the deployed data-proxy URL to enable shared data tracking. Data below is from this browser only (localStorage).
         </div>
         <div class="admin-stats">
           <div class="admin-stat"><div class="stat-number" id="statVisits">—</div><div class="stat-label">Total Visits</div></div>
@@ -342,18 +342,19 @@ footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px
 // CONFIGURATION — update these values
 // =============================================
 const CONFIG = {
-  // Secrets are NO LONGER stored in this file. This is a public repo.
-  // Data writes/reads go through a serverless function that holds the
-  // GitHub token server-side (see /netlify function or /api). Until that
-  // endpoint is live, GITHUB_CONFIGURED is false and the site uses
-  // localStorage only. Set API_BASE to the deployed function origin.
-  API_BASE: '',                      // e.g. 'https://candlewood-events.netlify.app/.netlify/functions'
-  GITHUB_TOKEN: 'YOUR_GITHUB_TOKEN', // placeholder — never put a real token here
-  GITHUB_REPO: 'vdua-ocrolus/Sherman-events',
-  ADMIN_PASSWORD: 'CHANGE_ME',       // admin auth moves server-side with the function
+  // No secrets in this file (public repo). Data reads/writes go through a
+  // serverless proxy that holds the GitHub token server-side (see /data-proxy).
+  // Set API_BASE to the deployed proxy origin, e.g.
+  //   'https://candlewood-data-proxy.vercel.app/api'
+  // Until then, API_CONFIGURED is false and the site uses localStorage only.
+  API_BASE: '',
+  // Interim local-only admin gate, used ONLY when API_BASE is empty.
+  // Real admin auth is server-side (ADMIN_PASSWORD env on the proxy).
+  ADMIN_PASSWORD: 'CHANGE_ME',
 };
 
-const GITHUB_CONFIGURED = CONFIG.GITHUB_TOKEN !== 'YOUR_GITHUB_TOKEN' && CONFIG.GITHUB_REPO !== 'YOUR_GITHUB_REPO';
+const API_CONFIGURED = CONFIG.API_BASE !== '';
+const GITHUB_CONFIGURED = API_CONFIGURED; // legacy alias: existing gates now check for the proxy
 
 // =============================================
 // EVENTS DATA — updated daily by scheduled task
@@ -563,42 +564,36 @@ function toggleWeek(id) { document.getElementById(id).classList.toggle('open'); 
 function toggleDaryls() { document.getElementById('daryls').classList.toggle('open'); }
 
 // =============================================
-// GITHUB API HELPERS
+// DATA PROXY HELPERS — token stays server-side (see /data-proxy)
 // =============================================
-async function ghRead(path) {
-  if (!GITHUB_CONFIGURED) return null;
+async function apiAppend(collection, entry) {
+  if (!API_CONFIGURED) return false;
   try {
-    const r = await fetch(`https://api.github.com/repos/${CONFIG.GITHUB_REPO}/contents/${path}`, {
-      headers: { 'Authorization': `token ${CONFIG.GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
-    });
-    if (r.status === 404) return { data: [], sha: null };
-    if (!r.ok) return null;
-    const j = await r.json();
-    const decoded = decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))));
-    return { data: JSON.parse(decoded), sha: j.sha };
-  } catch(e) { return null; }
-}
-
-async function ghWrite(path, data, sha) {
-  if (!GITHUB_CONFIGURED) return false;
-  try {
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-    const body = { message: `Update ${path} via sherman-events`, content };
-    if (sha) body.sha = sha;
-    const r = await fetch(`https://api.github.com/repos/${CONFIG.GITHUB_REPO}/contents/${path}`, {
-      method: 'PUT',
-      headers: { 'Authorization': `token ${CONFIG.GITHUB_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
-      body: JSON.stringify(body)
+    const r = await fetch(`${CONFIG.API_BASE}/append`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ collection, entry })
     });
     return r.ok;
   } catch(e) { return false; }
 }
 
+// Back-compat wrapper: existing callers pass 'visits.json' etc.
 async function ghAppend(path, entry) {
-  const result = await ghRead(path);
-  if (!result) return false;
-  const newData = [...result.data, entry];
-  return await ghWrite(path, newData, result.sha);
+  return apiAppend(path.replace(/\.json$/, ''), entry);
+}
+
+async function apiAdminRead(password) {
+  if (!API_CONFIGURED) return null;
+  try {
+    const r = await fetch(`${CONFIG.API_BASE}/admin`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    });
+    if (!r.ok) return null;
+    return await r.json(); // { visits, subscribers, feedback }
+  } catch(e) { return null; }
 }
 
 // =============================================
@@ -733,14 +728,33 @@ function closeAdmin() {
   document.getElementById('adminOverlay').classList.remove('open');
 }
 
-function checkAdmin() {
+async function checkAdmin() {
   const pass = document.getElementById('adminPass').value;
-  if (pass === CONFIG.ADMIN_PASSWORD) {
+  const errEl = document.getElementById('adminLoginError');
+  errEl.style.display = 'none';
+
+  if (!API_CONFIGURED) {
+    // Interim (no proxy yet): local-only view of this browser's data.
+    if (pass === CONFIG.ADMIN_PASSWORD) {
+      document.getElementById('adminLogin').style.display = 'none';
+      document.getElementById('adminDashboard').style.display = 'block';
+      loadAdminData();
+    } else {
+      errEl.style.display = 'block';
+    }
+    return;
+  }
+
+  // Proxy configured: password is validated server-side.
+  const data = await apiAdminRead(pass);
+  if (data) {
+    document.getElementById('adminSetupNote').style.display = 'none';
     document.getElementById('adminLogin').style.display = 'none';
     document.getElementById('adminDashboard').style.display = 'block';
-    loadAdminData();
+    renderAdminData(data.visits || [], data.subscribers || [], data.feedback || [],
+      `proxy (${CONFIG.API_BASE})`);
   } else {
-    document.getElementById('adminLoginError').style.display = 'block';
+    errEl.style.display = 'block';
   }
 }
 
@@ -767,41 +781,29 @@ function renderTable(tbodyId, rows, emptyMsg) {
   }).join('');
 }
 
-async function loadAdminData() {
-  // Show setup note if not configured
-  document.getElementById('adminSetupNote').style.display = GITHUB_CONFIGURED ? 'none' : 'block';
+// Interim local-only loader (used when the proxy isn't configured).
+// When the proxy IS configured, checkAdmin() fetches server data and calls
+// renderAdminData() directly.
+function loadAdminData() {
+  document.getElementById('adminSetupNote').style.display = API_CONFIGURED ? 'none' : 'block';
+  const visits = JSON.parse(localStorage.getItem('se_visits') || '[]');
+  const subscribers = JSON.parse(localStorage.getItem('se_subscribers') || '[]');
+  const feedback = JSON.parse(localStorage.getItem('se_feedback') || '[]');
+  renderAdminData(visits, subscribers, feedback, 'localStorage (this browser only)');
+}
 
-  // Read data — from GitHub if configured, otherwise localStorage
-  let visits, subscribers, feedback;
-
-  if (GITHUB_CONFIGURED) {
-    [visits, subscribers, feedback] = await Promise.all([
-      ghRead('visits.json'),
-      ghRead('subscribers.json'),
-      ghRead('feedback.json')
-    ]);
-    visits = visits?.data || [];
-    subscribers = subscribers?.data || [];
-    feedback = feedback?.data || [];
-  } else {
-    visits = JSON.parse(localStorage.getItem('se_visits') || '[]');
-    subscribers = JSON.parse(localStorage.getItem('se_subscribers') || '[]');
-    feedback = JSON.parse(localStorage.getItem('se_feedback') || '[]');
-  }
-
-  // Stats
+function renderAdminData(visits, subscribers, feedback, sourceLabel) {
   document.getElementById('statVisits').textContent = visits.length;
   document.getElementById('statSubscribers').textContent = subscribers.length;
   document.getElementById('statFeedback').textContent = feedback.length;
 
-  // Tables (most recent first)
   const rev = arr => [...arr].reverse();
   renderTable('visitsBody', rev(visits).slice(0,100), 'No visits recorded yet');
   renderTable('subscribersBody', rev(subscribers), 'No subscribers yet');
   renderTable('feedbackBody', rev(feedback), 'No submissions yet');
 
   document.getElementById('adminLastUpdated').textContent =
-    `Data source: ${GITHUB_CONFIGURED ? 'GitHub ('+CONFIG.GITHUB_REPO+')' : 'localStorage (this browser only)'} · Loaded ${new Date().toLocaleTimeString()}`;
+    `Data source: ${sourceLabel} · Loaded ${new Date().toLocaleTimeString()}`;
 }
 
 // Close overlay on background click
