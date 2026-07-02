@@ -250,7 +250,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-kicker">Sherman · New Fairfield · Litchfield County</p>
+    <p class="hero-kicker">Fairfield &amp; Litchfield Counties · Connecticut</p>
     <h1 class="hero-title">The best of the season, around the lake.</h1>
     <p class="hero-sub" id="headerMeta">Updated daily</p>
     <div class="hero-rule"></div>
@@ -552,7 +552,7 @@ function renderEvents() {
   const d = EVENTS_DATA;
 
   // Header meta
-  document.getElementById('headerMeta').textContent = `Updated ${d.lastUpdated} · Candlewood Lake & Litchfield County, CT`;
+  document.getElementById('headerMeta').textContent = `Updated ${d.lastUpdated} · Fairfield & Litchfield Counties, CT`;
   document.getElementById('headerBadge').textContent = `${d.weeks.reduce((a,w)=>a+w.events.length,0)} events`;
   document.getElementById('footer').textContent = `Candlewood Lake Events · A curated local guide · Updated ${d.lastUpdated}`;
 
