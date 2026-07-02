@@ -413,10 +413,49 @@ const CONFIG = {
   // Interim local-only admin gate, used ONLY when API_BASE is empty.
   // Real admin auth is server-side (ADMIN_PASSWORD env on the proxy).
   ADMIN_PASSWORD: 'CHANGE_ME',
+  // Google Analytics 4. A measurement ID (e.g. 'G-XXXXXXXXXX') is public and
+  // safe in client source. Leave empty to disable; set it to turn on analytics.
+  GA_MEASUREMENT_ID: '',
 };
 
 const API_CONFIGURED = CONFIG.API_BASE !== '';
 const GITHUB_CONFIGURED = API_CONFIGURED; // legacy alias: existing gates now check for the proxy
+
+// =============================================
+// ANALYTICS (Google Analytics 4)
+// =============================================
+function initAnalytics() {
+  const id = CONFIG.GA_MEASUREMENT_ID;
+  if (!id) return; // no-op until a measurement ID is configured
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', id);
+}
+
+// Fire a GA4 custom event; safely no-ops if analytics isn't configured.
+function track(name, params) {
+  if (window.gtag) window.gtag('event', name, params || {});
+}
+
+// Delegated click tracking for the interactions that show traction.
+function initClickTracking() {
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    if (a.closest('.event-card')) {
+      track('event_click', { link_url: a.href, link_text: a.textContent.trim().slice(0, 80) });
+    } else if (a.closest('.quicklinks')) {
+      track('source_click', { link_url: a.href });
+    } else if (a.closest('.daryls-body')) {
+      track('daryls_click', { link_url: a.href });
+    }
+  });
+}
 
 // =============================================
 // EVENTS DATA — updated daily by scheduled task
@@ -726,6 +765,7 @@ async function handleEmailSignup(e) {
   btn.textContent = 'Subscribe';
 
   if (ok) {
+    track('subscribe');
     document.getElementById('signupSuccess').style.display = 'block';
     document.getElementById('emailForm').reset();
   } else {
@@ -804,6 +844,7 @@ async function handleFeedback(e) {
   btn.textContent = 'Send';
 
   if (ok) {
+    track('submit_form', { submission_type: type });
     document.getElementById('feedbackSuccess').style.display = 'block';
     document.getElementById('feedbackForm').reset();
     onFeedbackTypeChange();
@@ -916,6 +957,8 @@ document.getElementById('adminOverlay').addEventListener('click', function(e) {
 // INIT
 // =============================================
 document.addEventListener('DOMContentLoaded', () => {
+  initAnalytics();
+  initClickTracking();
   renderEvents();
   trackVisit();
   onFeedbackTypeChange();
