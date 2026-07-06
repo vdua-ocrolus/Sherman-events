@@ -224,15 +224,18 @@ select { margin-bottom: 8px; }
 footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 40px 0 90px; border-top: 1px solid var(--border); margin-top: 28px; }
 
 /* ---- ALERT BANNER ---- */
-.alert-bar { background: #fbf1df; border-bottom: 1px solid #ecd9b0; }
+.alert-bar { background: #8a1c1c; border-bottom: 3px solid #b8862f; }
 .alert-inner { max-width: 1040px; margin: 0 auto; padding: 16px 24px; display: flex; gap: 18px; align-items: flex-start; }
-.alert-label { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: #9a6b1f; font-weight: 700; flex-shrink: 0; margin-top: 3px; }
-.alert-msg { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
-.alert-msg strong { color: var(--navy); }
+.alert-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #f2c675; font-weight: 700; flex-shrink: 0; margin-top: 3px; }
+.alert-msg { font-size: 13.5px; color: #fbeee4; line-height: 1.55; }
+.alert-msg strong { color: #ffffff; }
 .alert-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 11px; }
-.alert-links a { font-size: 11px; letter-spacing: .5px; text-transform: uppercase; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
-.alert-links a:hover { color: var(--gold); }
-.alert-updated { font-size: 11px; color: var(--muted); margin-top: 9px; }
+.alert-links a { font-size: 11px; letter-spacing: .5px; text-transform: uppercase; font-weight: 600; color: #ffffff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 1px; }
+.alert-links a:hover { color: #f2c675; border-bottom-color: #f2c675; }
+.alert-news { font-size: 12px; color: rgba(251,238,228,.85); margin-top: 10px; }
+.alert-news a { color: #ffffff; text-decoration: underline; text-underline-offset: 2px; }
+.alert-news a:hover { color: #f2c675; }
+.alert-updated { font-size: 11px; color: rgba(251,238,228,.7); margin-top: 9px; }
 
 /* ---- ACCOUNTS / AUTH ---- */
 .header-right { display: flex; align-items: center; gap: 14px; }
@@ -488,8 +491,13 @@ const CONFIG = {
   ALERT: {
     active: true,
     title: 'Major storm, widespread power outages',
-    message: 'A strong storm has knocked out power across the Candlewood Lake area. Report your outage and track restoration directly with Eversource below. Treat any downed line as live, and call 911 for emergencies.',
+    message: "Saturday's storms (July 4) knocked out power across the Candlewood Lake area. As of July 5, tens of thousands of Eversource customers remained without power statewide, with New Fairfield among the hardest hit, and Squantz Pond State Park is closed until further notice. Report your outage and track restoration below. Treat any downed line as live, and call 911 for emergencies.",
     updated: 'Jul 6, 2026',
+    news: [
+      { title: 'WFSB: ~40,000 without power across CT', url: 'https://www.wfsb.com/2026/07/05/severe-thunderstorms-sweep-through-connecticut-with-massive-hail-downed-trees-outages/' },
+      { title: 'NBC CT: Thousands still out after July 4 storms', url: 'https://www.nbcconnecticut.com/news/local/storm-damages/3751769/' },
+      { title: 'Live CT outage tracker', url: 'https://poweroutage.us/area/state/connecticut' },
+    ],
   },
 };
 
@@ -791,8 +799,9 @@ function renderAlert() {
   const bar = document.getElementById('alertBar');
   if (!bar) return;
   if (!a || !a.active) { bar.innerHTML = ''; return; }
+  const news = (a.news || []).map(n => `<a href="${n.url}" target="_blank" rel="noopener">${esc(n.title)}</a>`).join(' · ');
   bar.innerHTML = `<div class="alert-bar"><div class="alert-inner">
-    <div class="alert-label">Storm Update</div>
+    <div class="alert-label">⚠ Storm Alert</div>
     <div class="alert-body">
       <div class="alert-msg"><strong>${esc(a.title)}.</strong> ${esc(a.message)}</div>
       <div class="alert-links">
@@ -801,6 +810,7 @@ function renderAlert() {
         <a href="tel:18002862000">Call 800-286-2000</a>
         <a href="sms:23129?&body=OUT">Text OUT to 23129</a>
       </div>
+      ${news ? `<div class="alert-news">In the news: ${news}</div>` : ''}
       ${a.updated ? `<div class="alert-updated">Updated ${esc(a.updated)}</div>` : ''}
     </div>
   </div></div>`;
