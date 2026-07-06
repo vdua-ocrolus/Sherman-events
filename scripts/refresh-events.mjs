@@ -106,7 +106,7 @@ ${fetched.join('\n\n')}
 
 TASK:
 - Produce the updated EVENTS_DATA as a single PURE JSON object (double-quoted keys, no JS, no comments) with the same keys/shape as the current block.
-- Cover today through ~6 weeks out. Recompute isTonight/isPast and rebuild the tonight[] and past[] arrays relative to today. Set "lastUpdated" to "${todayLabel}".
+- Cover today through ~6 weeks out. Do NOT include events that have already ended: every event must be today or later, set isPast to false, and leave the past[] array empty ([]). Recompute isTonight and rebuild tonight[] relative to today. Set "lastUpdated" to "${todayLabel}".
 - Score each event: score = Proximity*0.4 + FunQuality*0.6, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9, Brookfield/Danbury=8.5, Ridgefield=8, Caramoor/Kent=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
 - Keep the daryls[] quick-reference list current from the Daryl's House content.
 - Output ONLY the JSON object. No commentary, no code fences.`;

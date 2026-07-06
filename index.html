@@ -1544,22 +1544,15 @@ function renderEvents() {
     html += `<div class="fav-filter"><button class="chip${showFavoritesOnly?' on':''}" onclick="toggleFavoritesFilter()">${showFavoritesOnly ? '★ Showing your favorites' : '☆ Show my favorites'} (${favorites.size})</button></div>`;
   }
 
-  // Past
-  const past = favFilter(d.past || []);
-  if (past.length) {
-    html += `<div class="section-label">Recently</div>
-    <div class="past-section"><div class="past-header"><span>Recent Events</span></div>
-    <div class="past-body">${past.map(eventCard).join('')}</div></div>`;
-  }
-
-  // Weeks
+  // Weeks — upcoming only; already-passed events are dropped, empty weeks hidden
+  const notPast = e => !e.isPast;
   html += `<div class="section-label">Upcoming · Sorted by score</div>`;
   let shownWeeks = 0;
   for (const week of d.weeks) {
-    const evs = favFilter(week.events);
-    if (showFavoritesOnly && !evs.length) continue;
+    const evs = favFilter(week.events.filter(notPast));
+    if (!evs.length) continue;
     shownWeeks++;
-    const topScore = evs.length ? Math.max(...evs.map(e=>e.score)) : 0;
+    const topScore = Math.max(...evs.map(e=>e.score));
     html += `<div class="week-accordion${(week.open||showFavoritesOnly)?' open':''}" id="${week.id}">
       <div class="week-header" onclick="toggleWeek('${week.id}')">
         <div class="week-header-left">
@@ -1572,8 +1565,11 @@ function renderEvents() {
       <div class="week-body">${evs.map(eventCard).join('')}</div>
     </div>`;
   }
-  if (showFavoritesOnly && shownWeeks === 0 && !past.length) {
-    html += `<div class="past-body"><div class="card-desc" style="padding:8px 2px">No saved favorites yet. Tap the ☆ on any event to save it.</div></div>`;
+  if (shownWeeks === 0) {
+    const msg = showFavoritesOnly
+      ? 'No saved favorites yet. Tap the ☆ on any event to save it.'
+      : 'No upcoming events right now. Check back soon.';
+    html += `<div class="past-body"><div class="card-desc" style="padding:8px 2px">${msg}</div></div>`;
   }
 
   // Daryl's
