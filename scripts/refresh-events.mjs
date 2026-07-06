@@ -118,7 +118,7 @@ TASK:
       'anthropic-version': '2023-06-01',
       'content-type': 'application/json',
     },
-    body: JSON.stringify({ model: MODEL, max_tokens: 8000, messages: [{ role: 'user', content: prompt }] }),
+    body: JSON.stringify({ model: MODEL, max_tokens: 16000, messages: [{ role: 'user', content: prompt }] }),
   });
   if (!resp.ok) return fail(`Anthropic API error ${resp.status}: ${(await resp.text()).slice(0, 300)}`);
 
@@ -130,7 +130,8 @@ TASK:
   try {
     obj = JSON.parse(text);
   } catch (e) {
-    return fail(`model did not return valid JSON: ${e.message}`);
+    console.error('parse failure — stop_reason:', data.stop_reason, '| len:', text.length, '| head:', text.slice(0, 200), '| tail:', text.slice(-200));
+    return fail(`model did not return valid JSON (stop_reason=${data.stop_reason}, len=${text.length}): ${e.message}`);
   }
   if (!obj || !Array.isArray(obj.weeks) || typeof obj.lastUpdated !== 'string') {
     return fail('generated JSON missing required shape (weeks[], lastUpdated)');
