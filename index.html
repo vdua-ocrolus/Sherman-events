@@ -223,6 +223,17 @@ select { margin-bottom: 8px; }
 /* ---- FOOTER ---- */
 footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 40px 0 90px; border-top: 1px solid var(--border); margin-top: 28px; }
 
+/* ---- ALERT BANNER ---- */
+.alert-bar { background: #fbf1df; border-bottom: 1px solid #ecd9b0; }
+.alert-inner { max-width: 1040px; margin: 0 auto; padding: 16px 24px; display: flex; gap: 18px; align-items: flex-start; }
+.alert-label { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: #9a6b1f; font-weight: 700; flex-shrink: 0; margin-top: 3px; }
+.alert-msg { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+.alert-msg strong { color: var(--navy); }
+.alert-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 11px; }
+.alert-links a { font-size: 11px; letter-spacing: .5px; text-transform: uppercase; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+.alert-links a:hover { color: var(--gold); }
+.alert-updated { font-size: 11px; color: var(--muted); margin-top: 9px; }
+
 /* ---- ACCOUNTS / AUTH ---- */
 .header-right { display: flex; align-items: center; gap: 14px; }
 .auth-controls { display: flex; align-items: center; gap: 10px; }
@@ -266,6 +277,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 </style>
 </head>
 <body>
+
+<div id="alertBar"></div>
 
 <header class="site-header">
   <div class="site-header-inner">
@@ -470,6 +483,14 @@ const CONFIG = {
   // Paste your Firebase web config object here to enable sign-in + saved favorites.
   // The web config is PUBLIC and safe in client source. Leave null to disable.
   FIREBASE: null,
+  // Top-of-page alert banner (storm / outage / closure). Set active:false to hide.
+  // Update message + updated as the situation changes (or ask Claude Code to).
+  ALERT: {
+    active: true,
+    title: 'Major storm, widespread power outages',
+    message: 'A strong storm has knocked out power across the Candlewood Lake area. Report your outage and track restoration directly with Eversource below. Treat any downed line as live, and call 911 for emergencies.',
+    updated: 'Jul 6, 2026',
+  },
 };
 
 const API_CONFIGURED = CONFIG.API_BASE !== '';
@@ -763,6 +784,26 @@ function eventCard(e) {
     </div>
     ${favBtn}
   </div>`;
+}
+
+function renderAlert() {
+  const a = CONFIG.ALERT;
+  const bar = document.getElementById('alertBar');
+  if (!bar) return;
+  if (!a || !a.active) { bar.innerHTML = ''; return; }
+  bar.innerHTML = `<div class="alert-bar"><div class="alert-inner">
+    <div class="alert-label">Storm Update</div>
+    <div class="alert-body">
+      <div class="alert-msg"><strong>${esc(a.title)}.</strong> ${esc(a.message)}</div>
+      <div class="alert-links">
+        <a href="https://outagemap.eversource.com/external/default.html" target="_blank" rel="noopener">Eversource outage map</a>
+        <a href="https://www.eversource.com/customercare/ReportOutage" target="_blank" rel="noopener">Report an outage</a>
+        <a href="tel:18002862000">Call 800-286-2000</a>
+        <a href="sms:23129?&body=OUT">Text OUT to 23129</a>
+      </div>
+      ${a.updated ? `<div class="alert-updated">Updated ${esc(a.updated)}</div>` : ''}
+    </div>
+  </div></div>`;
 }
 
 function renderEvents() {
@@ -1134,6 +1175,7 @@ document.getElementById('adminOverlay').addEventListener('click', function(e) {
 // INIT
 // =============================================
 document.addEventListener('DOMContentLoaded', () => {
+  renderAlert();
   initAnalytics();
   initClickTracking();
   initAuth();
