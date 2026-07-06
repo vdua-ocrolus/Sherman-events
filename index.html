@@ -276,6 +276,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
   .dh-date { width: auto; }
   .dh-price { margin-left: 0; }
   .admin-stats { grid-template-columns: 1fr; }
+  /* Stack the storm alert so the label doesn't squeeze the message into a thin column */
+  .alert-inner { flex-direction: column; gap: 8px; padding: 14px 20px; }
 }
 </style>
 </head>
