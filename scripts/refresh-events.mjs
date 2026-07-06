@@ -118,7 +118,10 @@ TASK:
       'anthropic-version': '2023-06-01',
       'content-type': 'application/json',
     },
-    body: JSON.stringify({ model: MODEL, max_tokens: 16000, messages: [{ role: 'user', content: prompt }] }),
+    // thinking disabled: this is grounded JSON extraction, no reasoning needed.
+    // On claude-sonnet-5 adaptive thinking is ON by default when omitted, which
+    // consumes the whole token budget and emits no text (stop_reason=max_tokens).
+    body: JSON.stringify({ model: MODEL, max_tokens: 16000, thinking: { type: 'disabled' }, messages: [{ role: 'user', content: prompt }] }),
   });
   if (!resp.ok) return fail(`Anthropic API error ${resp.status}: ${(await resp.text()).slice(0, 300)}`);
 
