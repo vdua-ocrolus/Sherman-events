@@ -8,23 +8,24 @@ A curated local events guide for the Candlewood Lake area in Connecticut.
 
 ## Repos
 - Site: vdua-ocrolus/Sherman-events (public) — this repo
-- Data: vdua-ocrolus/sherman-events-data (private) — intended to store visits.json, subscribers.json, feedback.json
-  - NOTE: currently CONFIG.GITHUB_REPO points at the SITE repo, not this data repo. Data separation is not yet wired up.
+- Data: vdua-ocrolus/sherman-events-data (private) — stores visits.json, subscribers.json, feedback.json (written server-side by the proxy).
 
 ## Key File
 - index.html — the entire site. Single-file HTML/CSS/JS. No build step.
-  - CONFIG block: line ~344
-  - EVENTS_DATA object: line ~357
+  - CONFIG block near the top of the <script> (API_BASE, ADMIN_PASSWORD, GA_MEASUREMENT_ID).
+  - EVENTS_DATA object lives between the `/* EVENTS_DATA:START */` and `/* EVENTS_DATA:END */` markers (regenerated daily — see below).
 
 ## Architecture
 - No build step. Pure static HTML — edit index.html and push; GitHub Pages serves it.
-- Client-side JS uses the GitHub API (fetch) to write visitor data, signups, feedback.
-- Events are hardcoded in the EVENTS_DATA object. To update events: edit that block and push.
+- Client-side JS sends visitor/subscriber/feedback data to a serverless proxy (see /data-proxy) via CONFIG.API_BASE; the proxy holds the GitHub token server-side. No token in the page.
+- Analytics: Google Analytics 4, gated on CONFIG.GA_MEASUREMENT_ID (a public ID; safe in client source).
+- Events live in the EVENTS_DATA object, regenerated daily by a GitHub Action (see "Daily events refresh"). Anything between the EVENTS_DATA markers is overwritten by that job — hand-edit with care.
 
-## Secrets — read before editing CONFIG
-- This is a PUBLIC repo. Anything in index.html (including CONFIG) is world-readable in page source.
-- The GitHub token and admin password currently live in the CONFIG block in plaintext. This is an exposure (see CONTEXT.md). Do not add new secrets to index.html.
-- A static Pages site cannot read shell environment variables. Any token used by client-side JS is necessarily visible to visitors. The only clean fix is moving writes server-side (e.g. a GitHub Action via repository_dispatch with the token in GitHub Secrets).
+## Secrets
+- This is a PUBLIC repo. Anything in index.html (including CONFIG) is world-readable. Do NOT put private tokens or passwords here.
+- The old hardcoded GitHub token and admin password have been removed. Data writes/reads go through the serverless proxy (/data-proxy), which holds the token as a server-side env var.
+- CONFIG.GA_MEASUREMENT_ID is a Google Analytics ID and is meant to be public — fine to commit.
+- CI secrets live in GitHub → Settings → Secrets and variables → Actions (see "Daily events refresh"), never in the repo.
 
 ## Scoring Formula
 Combined = (Proximity x 0.4) + (Fun/Quality x 0.6)
@@ -43,7 +44,13 @@ Proximity: Sherman=10, New Fairfield=9.5, New Milford=9, Brookfield/DH=8.5, Ridg
 
 ## Admin
 - Admin panel: gear icon, bottom right of the live site.
-- Password is set in CONFIG.ADMIN_PASSWORD in index.html (needs rotating — see CONTEXT.md).
+- Admin auth is server-side (ADMIN_PASSWORD env on the proxy) once the proxy is live. Interim CONFIG.ADMIN_PASSWORD is a placeholder used only when API_BASE is empty.
+
+## Daily events refresh (CI)
+- .github/workflows/daily-events.yml runs daily (~10:00 UTC / ~6am ET) and on manual "Run workflow".
+- It runs scripts/refresh-events.mjs: fetches the source calendars, asks Claude (Anthropic API) to extract/score/format events grounded ONLY on fetched content, validates the JSON, and rewrites the EVENTS_DATA block between the markers. Commits + pushes only if changed. Aborts without writing on any failure, so a bad run never publishes.
+- Required repo secret: ANTHROPIC_API_KEY. Optional: SLACK_WEBHOOK_URL (posts a run summary). Model via EVENTS_MODEL (default claude-sonnet-5).
+- To change sources or scoring, edit scripts/refresh-events.mjs.
 
 ## Deploy Workflow
 1. Edit index.html

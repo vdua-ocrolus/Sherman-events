@@ -458,8 +458,9 @@ function initClickTracking() {
 }
 
 // =============================================
-// EVENTS DATA — updated daily by scheduled task
+// EVENTS DATA — regenerated daily by .github/workflows/daily-events.yml
 // =============================================
+/* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
   lastUpdated: "July 2, 2026",
   tonight: [
@@ -549,6 +550,7 @@ const EVENTS_DATA = {
     { date:"Sun Jul 12 · 7PM", name:"Canyon Lights / Handsome Jack", price:"Ticketed" }
   ]
 };
+/* EVENTS_DATA:END */
 
 // =============================================
 // RENDERING
