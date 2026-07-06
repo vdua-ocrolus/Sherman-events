@@ -144,7 +144,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); font
 .connect-section p, .feedback-section p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
 .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .form-row input, .form-row button { flex: 1; min-width: 150px; }
-input[type="text"], input[type="email"], textarea, select {
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
   width: 100%; padding: 11px 14px; border: 1px solid var(--line-strong); border-radius: 2px;
   font-size: 14px; background: var(--surface); color: var(--text); outline: none; font-family: inherit;
   transition: border-color .15s, box-shadow .15s;
@@ -223,6 +223,35 @@ select { margin-bottom: 8px; }
 /* ---- FOOTER ---- */
 footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 40px 0 90px; border-top: 1px solid var(--border); margin-top: 28px; }
 
+/* ---- ACCOUNTS / AUTH ---- */
+.header-right { display: flex; align-items: center; gap: 14px; }
+.auth-controls { display: flex; align-items: center; gap: 10px; }
+.auth-user { font-size: 12px; color: var(--muted); }
+.auth-btn { background: transparent; border: 1px solid var(--border); border-radius: 2px; padding: 7px 13px; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; color: var(--navy); cursor: pointer; font-family: var(--sans); transition: border-color .15s, color .15s; }
+.auth-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.fav-btn { background: none; border: none; cursor: pointer; font-size: 22px; line-height: 1; color: var(--line-strong); margin: 2px 0 0 6px; padding: 0; transition: color .15s; }
+.fav-btn:hover { color: var(--gold); }
+.fav-btn.on { color: var(--gold); }
+.fav-filter { margin: 0 0 4px; }
+.fav-filter .chip { background: transparent; border: 1px solid var(--border); border-radius: 2px; padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); cursor: pointer; font-family: var(--sans); font-weight: 600; }
+.fav-filter .chip.on { border-color: var(--gold); color: var(--gold); }
+
+.auth-overlay { position: fixed; inset: 0; background: rgba(23,19,15,.55); z-index: 250; display: none; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
+.auth-overlay.open { display: flex; }
+.auth-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; max-width: 400px; width: 100%; margin: 8vh auto auto; padding: 36px; position: relative; box-shadow: 0 30px 80px rgba(23,19,15,.25); }
+.auth-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 20px; color: var(--muted); cursor: pointer; line-height: 1; }
+.auth-close:hover { color: var(--navy); }
+.auth-title { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 6px; }
+.auth-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.55; }
+.auth-google { width: 100%; padding: 12px; background: var(--navy); color: var(--cream); border: none; border-radius: 2px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; font-family: var(--sans); }
+.auth-google:hover { background: #14294b; }
+.auth-divider { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin: 16px 0; }
+.auth-modal input { margin-bottom: 10px; }
+.auth-row { display: flex; gap: 10px; align-items: center; margin-top: 4px; }
+.auth-row .btn-primary { flex: 1; }
+.auth-error { color: #9b3d3d; font-size: 12.5px; margin-top: 12px; display: none; line-height: 1.5; }
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 640px) {
   .site-header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -244,7 +273,10 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
       <div class="brand-mark">Candlewood Lake</div>
       <div class="brand-sub">Events &amp; Live Music</div>
     </div>
-    <span class="header-badge" id="headerBadge">Loading…</span>
+    <div class="header-right">
+      <span class="header-badge" id="headerBadge">Loading…</span>
+      <div class="auth-controls" id="authControls" style="display:none"></div>
+    </div>
   </div>
 </header>
 
@@ -353,6 +385,24 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 <button class="admin-fab" onclick="openAdmin()" title="Admin">⚙</button>
 
 <!-- Admin Overlay -->
+<!-- Sign-in modal (only used when CONFIG.FIREBASE is set) -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" onclick="closeAuth()" aria-label="Close">✕</button>
+    <h2 class="auth-title">Sign in</h2>
+    <p class="auth-sub">Save your favorite events across devices. Optional, the guide is free to browse without an account.</p>
+    <button class="auth-google" onclick="signInGoogle()">Continue with Google</button>
+    <div class="auth-divider">or</div>
+    <input type="email" id="authEmail" placeholder="Email" autocomplete="email">
+    <input type="password" id="authPass" placeholder="Password" autocomplete="current-password">
+    <div class="auth-row">
+      <button class="btn-primary" onclick="submitAuthEmail('signin')">Sign in</button>
+      <button class="auth-btn" onclick="submitAuthEmail('signup')">Create account</button>
+    </div>
+    <div class="auth-error" id="authError"></div>
+  </div>
+</div>
+
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-panel">
     <div class="admin-panel-header">
@@ -416,10 +466,113 @@ const CONFIG = {
   // Google Analytics 4. A measurement ID (e.g. 'G-XXXXXXXXXX') is public and
   // safe in client source. Leave empty to disable; set it to turn on analytics.
   GA_MEASUREMENT_ID: 'G-S1MBZX85Q9',
+  // Optional visitor accounts (Google + email/password) via Firebase.
+  // Paste your Firebase web config object here to enable sign-in + saved favorites.
+  // The web config is PUBLIC and safe in client source. Leave null to disable.
+  FIREBASE: null,
 };
 
 const API_CONFIGURED = CONFIG.API_BASE !== '';
 const GITHUB_CONFIGURED = API_CONFIGURED; // legacy alias: existing gates now check for the proxy
+
+// =============================================
+// OPTIONAL ACCOUNTS (Firebase Auth + saved favorites)
+// Entirely inert until CONFIG.FIREBASE is set — no SDK is loaded, no UI shows.
+// =============================================
+const AUTH_ENABLED = !!(CONFIG.FIREBASE && CONFIG.FIREBASE.apiKey);
+let currentUser = null;        // Firebase user, or null
+let favorites = new Set();     // favorite keys for the signed-in user
+let showFavoritesOnly = false;
+let _eventIndex = {};          // favKey -> { title, dateLabel } for the current render
+let _fb = null;                // { auth, db, authMod, fsMod } once initialized
+
+function esc(s) { return (s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function favKey(e) { return (e.title + '|' + (e.dateLabel || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+
+async function initAuth() {
+  if (!AUTH_ENABLED) return;
+  try {
+    const V = 'https://www.gstatic.com/firebasejs/10.12.0'; // adjust version if needed
+    const [appMod, authMod, fsMod] = await Promise.all([
+      import(`${V}/firebase-app.js`),
+      import(`${V}/firebase-auth.js`),
+      import(`${V}/firebase-firestore.js`),
+    ]);
+    const app = appMod.initializeApp(CONFIG.FIREBASE);
+    _fb = { auth: authMod.getAuth(app), db: fsMod.getFirestore(app), authMod, fsMod };
+    const controls = document.getElementById('authControls');
+    if (controls) controls.style.display = 'flex';
+    authMod.onAuthStateChanged(_fb.auth, async (user) => {
+      currentUser = user;
+      if (user) await loadFavorites();
+      else { favorites = new Set(); showFavoritesOnly = false; }
+      renderAuthState();
+      renderEvents();
+    });
+  } catch (e) {
+    console.error('Auth init failed:', e);
+  }
+}
+
+function renderAuthState() {
+  const el = document.getElementById('authControls');
+  if (!el) return;
+  if (currentUser) {
+    const name = esc(currentUser.displayName || currentUser.email || 'Account');
+    el.innerHTML = `<span class="auth-user">${name}</span><button class="auth-btn" onclick="signOutUser()">Sign out</button>`;
+  } else {
+    el.innerHTML = `<button class="auth-btn" onclick="openAuth()">Sign in</button>`;
+  }
+}
+
+function openAuth() { document.getElementById('authError').style.display = 'none'; document.getElementById('authOverlay').classList.add('open'); }
+function closeAuth() { document.getElementById('authOverlay').classList.remove('open'); }
+function authErr(msg) { const e = document.getElementById('authError'); e.textContent = msg; e.style.display = 'block'; }
+
+async function signInGoogle() {
+  if (!_fb) return;
+  try { await _fb.authMod.signInWithPopup(_fb.auth, new _fb.authMod.GoogleAuthProvider()); closeAuth(); track('login', { method: 'google' }); }
+  catch (e) { authErr(e.message); }
+}
+async function submitAuthEmail(mode) {
+  if (!_fb) return;
+  const email = document.getElementById('authEmail').value.trim();
+  const pass = document.getElementById('authPass').value;
+  try {
+    if (mode === 'signup') await _fb.authMod.createUserWithEmailAndPassword(_fb.auth, email, pass);
+    else await _fb.authMod.signInWithEmailAndPassword(_fb.auth, email, pass);
+    closeAuth(); track('login', { method: 'email' });
+  } catch (e) { authErr(e.message); }
+}
+async function signOutUser() { if (_fb) await _fb.authMod.signOut(_fb.auth); }
+
+async function loadFavorites() {
+  try {
+    const snap = await _fb.fsMod.getDoc(_fb.fsMod.doc(_fb.db, 'favorites', currentUser.uid));
+    const items = snap.exists() ? (snap.data().items || {}) : {};
+    favorites = new Set(Object.keys(items));
+  } catch (e) { console.error('loadFavorites:', e); favorites = new Set(); }
+}
+
+async function toggleFavorite(key) {
+  if (!AUTH_ENABLED) return;
+  if (!currentUser) { openAuth(); return; }
+  const meta = _eventIndex[key] || {};
+  const willSave = !favorites.has(key);
+  if (willSave) favorites.add(key); else favorites.delete(key);
+  renderEvents();
+  try {
+    const ref = _fb.fsMod.doc(_fb.db, 'favorites', currentUser.uid);
+    if (willSave) {
+      await _fb.fsMod.setDoc(ref, { items: { [key]: { title: meta.title || '', dateLabel: meta.dateLabel || '', ts: Date.now() } } }, { merge: true });
+      track('save_favorite', { event_key: key });
+    } else {
+      await _fb.fsMod.setDoc(ref, { items: { [key]: _fb.fsMod.deleteField() } }, { merge: true });
+    }
+  } catch (e) { console.error('toggleFavorite:', e); }
+}
+
+function toggleFavoritesFilter() { showFavoritesOnly = !showFavoritesOnly; renderEvents(); }
 
 // =============================================
 // ANALYTICS (Google Analytics 4)
@@ -593,6 +746,11 @@ function eventCard(e) {
     ? `<a href="${e.url}" target="_blank">${t}</a>`
     : t;
   const date = e.time ? `${e.dateLabel} · ${e.time}` : e.dateLabel;
+  const key = favKey(e);
+  if (AUTH_ENABLED) _eventIndex[key] = { title: t, dateLabel: e.dateLabel || '' };
+  const favBtn = AUTH_ENABLED
+    ? `<button class="fav-btn${favorites.has(key) ? ' on' : ''}" title="Save event" aria-label="Save event" onclick="toggleFavorite('${key}')">${favorites.has(key) ? '★' : '☆'}</button>`
+    : '';
   return `<div class="event-card${e.isTonight?' tonight':''}${e.isPast?' past':''}">
     <div class="score-circle ${scoreClass(e.score)}">${e.score.toFixed(1)}</div>
     <div class="card-content">
@@ -603,6 +761,7 @@ function eventCard(e) {
       <div class="card-desc">${e.desc}</div>
       ${e.sourceUrl ? `<div class="card-source"><a href="${e.sourceUrl}" target="_blank">${e.source}</a></div>` : ''}
     </div>
+    ${favBtn}
   </div>`;
 }
 
@@ -621,30 +780,46 @@ function renderEvents() {
       `<div class="tonight-banner"><div class="fire">Tonight</div><div><strong>Worth going to</strong><div class="tonight-shows">${shows}</div></div></div>`;
   }
 
+  _eventIndex = {};
+  const favFilter = arr => showFavoritesOnly ? arr.filter(e => favorites.has(favKey(e))) : arr;
+
   let html = '';
 
+  // Favorites filter (signed-in only)
+  if (currentUser) {
+    html += `<div class="fav-filter"><button class="chip${showFavoritesOnly?' on':''}" onclick="toggleFavoritesFilter()">${showFavoritesOnly ? '★ Showing your favorites' : '☆ Show my favorites'} (${favorites.size})</button></div>`;
+  }
+
   // Past
-  if (d.past && d.past.length) {
+  const past = favFilter(d.past || []);
+  if (past.length) {
     html += `<div class="section-label">Recently</div>
     <div class="past-section"><div class="past-header"><span>Recent Events</span></div>
-    <div class="past-body">${d.past.map(eventCard).join('')}</div></div>`;
+    <div class="past-body">${past.map(eventCard).join('')}</div></div>`;
   }
 
   // Weeks
   html += `<div class="section-label">Upcoming · Sorted by score</div>`;
+  let shownWeeks = 0;
   for (const week of d.weeks) {
-    const topScore = Math.max(...week.events.map(e=>e.score));
-    html += `<div class="week-accordion${week.open?' open':''}" id="${week.id}">
+    const evs = favFilter(week.events);
+    if (showFavoritesOnly && !evs.length) continue;
+    shownWeeks++;
+    const topScore = evs.length ? Math.max(...evs.map(e=>e.score)) : 0;
+    html += `<div class="week-accordion${(week.open||showFavoritesOnly)?' open':''}" id="${week.id}">
       <div class="week-header" onclick="toggleWeek('${week.id}')">
         <div class="week-header-left">
           <span class="week-title">${week.title}</span>
-          <span class="week-count">${week.events.length} events</span>
+          <span class="week-count">${evs.length} events</span>
           <span class="week-top">Top ${topScore.toFixed(1)}</span>
         </div>
         <span class="week-chevron">▼</span>
       </div>
-      <div class="week-body">${week.events.map(eventCard).join('')}</div>
+      <div class="week-body">${evs.map(eventCard).join('')}</div>
     </div>`;
+  }
+  if (showFavoritesOnly && shownWeeks === 0 && !past.length) {
+    html += `<div class="past-body"><div class="card-desc" style="padding:8px 2px">No saved favorites yet. Tap the ☆ on any event to save it.</div></div>`;
   }
 
   // Daryl's
@@ -961,6 +1136,7 @@ document.getElementById('adminOverlay').addEventListener('click', function(e) {
 document.addEventListener('DOMContentLoaded', () => {
   initAnalytics();
   initClickTracking();
+  initAuth();
   renderEvents();
   trackVisit();
   onFeedbackTypeChange();
