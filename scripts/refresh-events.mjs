@@ -25,6 +25,18 @@ const SOURCES = [
   ['Sherman CT', 'https://www.shermanct.gov/municipal-calendar-list---community-events'],
   ['New Milford', 'https://www.newmilfordnow.org/events'],
   ['Litchfield', 'https://visitlitchfieldct.com/events/'],
+  ['A.C.T. of Connecticut', 'https://www.actofct.org/season'],
+  ['Palace Danbury', 'https://thepalacedanbury.com/'],
+  ['Infinity Music Hall', 'https://www.infinityhall.com/Events/'],
+  ['Warner Theatre', 'https://www.warnertheatre.org/events/'],
+  ['Danbury (town)', 'https://www.danbury-ct.gov/calendar.aspx'],
+  ['Brookfield (town)', 'https://brookfieldct.gov/calendar'],
+  ['New Milford Chamber', 'https://newmilford-chamber.com/events/'],
+  ['Ridgefield Chamber', 'https://chamber.inridgefield.com/events/'],
+  ['The Aldrich Museum', 'https://thealdrich.org/events'],
+  ['Ridgefield Library', 'https://ridgefieldlibrary.librarymarket.com/events/upcoming'],
+  ['New Milford Library', 'https://newmilford.libcal.com/'],
+  ['Sherman Library', 'https://www.shermanlibrary.org/monthly-calendar'],
 ];
 
 const todayLabel = new Date().toLocaleDateString('en-US', {
