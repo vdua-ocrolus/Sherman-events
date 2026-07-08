@@ -400,7 +400,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
   <!-- Scoring key -->
   <div class="scoring-note view-events">
     <h3>How Events Are Scored</h3>
-    <p>Combined = (Proximity × 0.4) + (Fun/Quality × 0.6). New Fairfield = 9.5, Sherman = 10, Ridgefield = 8, Caramoor/Danbury = 7.5–8.</p>
+    <p>Combined = (Proximity × 0.4) + (Fun/Quality × 0.6). Proximity by town: Sherman 10, New Fairfield 9.5, New Milford 9.5, Brookfield 8.5, Danbury 8, Ridgefield 8, Kent 7.5, New Preston 7.5, Caramoor (Katonah) 7.5, Levitt/Westport 6.5.</p>
     <div class="scoring-grid">
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-must)"></div><span>9.0+ Must Go</span></div>
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-great)"></div><span>7.0–8.9 Great</span></div>
@@ -1576,6 +1576,176 @@ const RESTAURANTS_DATA = [
     "note": "The dining room of the Forbes-rated Auberge inn, serving seasonal countryside cuisine under executive chef Luke Dowdy across its Garden Room and Tap Room.",
     "website": "https://auberge.com/mayflower/dine/",
     "sourceUrl": "https://auberge.com/mayflower/dine/",
+    "lakeside": false
+  },
+  {
+    "name": "Portofino Restaurant & Pizza",
+    "town": "New Fairfield",
+    "cuisine": "Italian / Pizza",
+    "price": "$$",
+    "note": "Family-owned Italian restaurant on Route 37 serving New York-style brick-oven pizza, pasta, and classic entrees for more than thirty years.",
+    "website": "https://portofinoct.com/",
+    "sourceUrl": "https://orderportofinosrestaurant.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Olde 37 Patio & Grill",
+    "town": "New Fairfield",
+    "cuisine": "American / Burgers",
+    "price": "$$",
+    "note": "Casual grill on Route 37 known for grass-fed Angus burgers, jumbo hot dogs, oven fries, and hand-spun shakes, with a shaded outdoor patio near Candlewood Lake.",
+    "website": "https://www.facebook.com/olde37pandg/",
+    "sourceUrl": "https://www.yelp.com/biz/olde-37-patio-and-grill-new-fairfield",
+    "lakeside": false
+  },
+  {
+    "name": "The Iron Rail",
+    "town": "New Milford",
+    "cuisine": "Steakhouse / New American",
+    "price": "$$$",
+    "note": "Casual steakhouse set in an 1889 downtown hotel with a hand-carved mahogany bar at 10 Railroad Street.",
+    "website": "https://theironrailct.com/",
+    "sourceUrl": "https://www.yelp.com/biz/the-iron-rail-new-milford",
+    "lakeside": false
+  },
+  {
+    "name": "Housatonic River Brewing",
+    "town": "New Milford",
+    "cuisine": "Brewery / American pub",
+    "price": "$$",
+    "note": "Craft brewery, tavern, and live-music venue with a large beer garden on the Housatonic River at 30 Kent Road.",
+    "website": "https://www.housatonicriverbrewing.com/",
+    "sourceUrl": "https://ctvisit.com/listings/housatonic-river-brewing",
+    "lakeside": false
+  },
+  {
+    "name": "Yoko Kitchen",
+    "town": "New Milford",
+    "cuisine": "Chinese",
+    "price": "$$",
+    "note": "Chinese restaurant on Danbury Road named Connecticut Magazine's best Chinese for Litchfield County and statewide.",
+    "website": "https://www.yokokitchen.com/",
+    "sourceUrl": "https://www.yelp.com/biz/yoko-kitchen-new-milford-2",
+    "lakeside": false
+  },
+  {
+    "name": "Zaza's on Main",
+    "town": "New Milford",
+    "cuisine": "Global small plates / tapas",
+    "price": "$$",
+    "note": "Main Street spot serving global small plates, pizzettas, steaks, and seafood with crafted cocktails and live music.",
+    "website": "https://www.instagram.com/zazasonmain/",
+    "sourceUrl": "https://www.opentable.com/r/zazas-on-main-new-milford",
+    "lakeside": false
+  },
+  {
+    "name": "Filos Latin Fusion",
+    "town": "New Milford",
+    "cuisine": "Latin fusion / Dominican",
+    "price": "$$",
+    "note": "Family-owned bar and restaurant on Danbury Road serving Dominican-inspired Latin fusion drawn from family recipes, with brunch and happy hour.",
+    "website": "https://www.filoslatinfusion.com/",
+    "sourceUrl": "https://www.filoslatinfusion.com/location/filos-latin-fusion/",
+    "lakeside": false
+  },
+  {
+    "name": "Kingsley Tavern",
+    "town": "Kent",
+    "cuisine": "New American",
+    "price": "$$",
+    "note": "Casual farm-to-table tavern on North Main Street serving New American plates sourced from local farms, with craft beer, wine, and cocktails.",
+    "website": "http://www.kingsleytavern.com/",
+    "sourceUrl": "http://www.kingsleytavern.com/hours",
+    "lakeside": false
+  },
+  {
+    "name": "Bull's Bridge Inn",
+    "town": "Kent",
+    "cuisine": "American steakhouse & seafood",
+    "price": "$$$",
+    "note": "Historic Route 7 inn of more than two centuries with four dining rooms and a full bar, known for aged steaks and fresh seafood.",
+    "website": "https://www.bullsbridge.com/",
+    "sourceUrl": "https://www.bullsbridge.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Wilson's by High Watch",
+    "town": "Kent",
+    "cuisine": "Cafe & bakery",
+    "price": "$$",
+    "note": "Breakfast-and-lunch bakery cafe on North Main Street with house-made breads, pastries, sandwiches, and espresso drinks.",
+    "website": "https://wilsonsbyhighwatch.com/",
+    "sourceUrl": "https://mainstreetmag.com/wilsons-by-high-watch/",
+    "lakeside": false
+  },
+  {
+    "name": "KPG Kitchen & Bar",
+    "town": "Kent",
+    "cuisine": "Italian / Pizza",
+    "price": "$$",
+    "note": "Longtime downtown spot, formerly Kent Pizza Garden, serving thin-crust pizza, homemade pasta, burgers, and seafood at 17 Railroad Street.",
+    "website": "https://kentpizzagarden.com/",
+    "sourceUrl": "https://www.yelp.com/biz/kpg-kitchen-and-bar-kent",
+    "lakeside": false
+  },
+  {
+    "name": "Luc's Cafe",
+    "town": "Ridgefield",
+    "cuisine": "French bistro",
+    "price": "$$",
+    "note": "Traditional French bistro set in a 200-year-old former blacksmith's shop on Big Shop Lane, known for steak frites, coq au vin, and mussels.",
+    "website": "http://www.lucscafe.com/",
+    "sourceUrl": "https://www.yelp.com/biz/lucs-cafe-and-restaurant-ridgefield",
+    "lakeside": false
+  },
+  {
+    "name": "TerraSole Ristorante",
+    "town": "Ridgefield",
+    "cuisine": "Italian / Steakhouse",
+    "price": "$$$",
+    "note": "Italian trattoria on Big Shop Lane serving wood-fired steaks, house-made pasta, artisanal pizza, and a list of more than 200 wines.",
+    "website": "https://terrasoleridgefield.com/",
+    "sourceUrl": "https://terrasoleridgefield.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Barn Door Restaurant",
+    "town": "Ridgefield",
+    "cuisine": "Italian / Mediterranean",
+    "price": "$$$",
+    "note": "Organic, locally sourced kitchen on Ethan Allen Highway with an extensive raw bar and Italian-Mediterranean plates such as paella and hanger steak.",
+    "website": "https://barndoorridgefield.com/",
+    "sourceUrl": "https://www.tripadvisor.com/Restaurant_Review-g33900-d12513437-Reviews-Barn_Door_Restaurant-Ridgefield_Connecticut.html",
+    "lakeside": false
+  },
+  {
+    "name": "Mannen Japanese Restaurant",
+    "town": "Ridgefield",
+    "cuisine": "Japanese / Sushi",
+    "price": "$$$",
+    "note": "Ridgefield's original sushi restaurant, open since 2002 on Route 35, also serving hibachi and Chinese dishes.",
+    "website": "https://www.mannenrestaurant.com/",
+    "sourceUrl": "https://www.mannenrestaurant.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Gallo Ristorante",
+    "town": "Ridgefield",
+    "cuisine": "Italian",
+    "price": "$$$",
+    "note": "Family-run Italian restaurant on Grove Street serving wood-fired pizzas, homemade pastas, and Italian specialties.",
+    "website": "https://galloridgefield.com/",
+    "sourceUrl": "https://www.yelp.com/biz/gallo-ristorante-ridgefield",
+    "lakeside": false
+  },
+  {
+    "name": "The Lantern",
+    "town": "Ridgefield",
+    "cuisine": "American gastropub",
+    "price": "$$",
+    "note": "Main Street gastropub where Italian-born chef Giuseppe Castellano serves elevated comfort classics and small plates.",
+    "website": "https://lanternridgefield.com/",
+    "sourceUrl": "https://www.yelp.com/biz/the-lantern-ridgefield",
     "lakeside": false
   }
 ];

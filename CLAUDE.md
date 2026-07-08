@@ -29,7 +29,7 @@ A curated local events guide for the Candlewood Lake area in Connecticut.
 
 ## Scoring Formula
 Combined = (Proximity x 0.4) + (Fun/Quality x 0.6)
-Proximity: Sherman=10, New Fairfield=9.5, New Milford=9, Brookfield/DH=8.5, Ridgefield/Danbury=8, Caramoor/Kent=7.5, Westport/Levitt=6.5
+Proximity: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Caramoor=7.5, Westport/Levitt=6.5
 
 ## Score Classes
 - score-must: >= 9.0 (gold gradient)
