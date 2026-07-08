@@ -1,11 +1,12 @@
-// Daily events refresh for candlewoodlakeevents.com.
-// Run by .github/workflows/daily-events.yml. Fetches the source event calendars,
-// asks Claude to extract/score/format them, and rewrites the EVENTS_DATA block in
-// index.html (between the EVENTS_DATA:START / EVENTS_DATA:END markers).
+// Daily events refresh for candlewoodlakeevents.com  (v2 — web-tool research).
+// Run by .github/workflows/daily-events.yml. Claude researches CURRENT events with
+// the web_search + web_fetch server tools (so it can reach JS-rendered town/library/
+// venue calendars that a plain fetch can't), then rewrites the EVENTS_DATA block in
+// index.html between the EVENTS_DATA:START / EVENTS_DATA:END markers.
 //
-// Grounded on fetched content to avoid fabrication: Claude is told to only include
-// events that appear in the fetched text. If all sources fail or the model returns
-// invalid JSON, it aborts WITHOUT writing, so a bad run never publishes.
+// Guardrails: Claude is told to ground every event in a real source and never invent.
+// If the API errors or the model returns invalid JSON, it aborts WITHOUT writing, so
+// a bad run never publishes.
 //
 // Env: ANTHROPIC_API_KEY (required), SLACK_WEBHOOK_URL (optional), EVENTS_MODEL (optional).
 
@@ -16,6 +17,8 @@ const START = '/* EVENTS_DATA:START';
 const END = '/* EVENTS_DATA:END */';
 const MODEL = process.env.EVENTS_MODEL || 'claude-sonnet-5';
 
+// Priority calendars to fetch/search. (web_fetch can only fetch URLs present in the
+// conversation, so listing them here lets the model pull them directly.)
 const SOURCES = [
   ['New Fairfield', 'https://www.newfairfield.org/community/community-event-calendar'],
   ["Daryl's House", 'https://darylshouseclub.com/shows/'],
@@ -43,16 +46,6 @@ const todayLabel = new Date().toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York',
 });
 
-function stripHtml(html) {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 async function notifySlack(text) {
   const url = process.env.SLACK_WEBHOOK_URL;
   if (!url) return;
@@ -71,18 +64,27 @@ async function fail(msg) {
   process.exit(1);
 }
 
-async function fetchText(url) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 20000);
-  try {
-    const r = await fetch(url, { signal: ctrl.signal, headers: { 'User-Agent': 'candlewood-events-refresh' } });
-    if (!r.ok) return null;
-    return stripHtml(await r.text()).slice(0, 8000);
-  } catch {
-    return null;
-  } finally {
-    clearTimeout(timer);
-  }
+async function callClaude(messages) {
+  return fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    // thinking disabled keeps output deterministic (on sonnet-5 adaptive thinking is
+    // on by default and can consume the whole budget). Tool use works without it.
+    body: JSON.stringify({
+      model: MODEL,
+      max_tokens: 20000,
+      thinking: { type: 'disabled' },
+      tools: [
+        { type: 'web_search_20260209', name: 'web_search', max_uses: 24 },
+        { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 24 },
+      ],
+      messages,
+    }),
+  });
 }
 
 async function main() {
@@ -95,51 +97,53 @@ async function main() {
   const blockStart = file.indexOf('\n', startIdx) + 1; // content begins after the START comment line
   const existingBlock = file.slice(blockStart, endIdx).trim();
 
-  const fetched = [];
-  const failedSources = [];
-  for (const [name, url] of SOURCES) {
-    const text = await fetchText(url);
-    if (text) fetched.push(`### ${name} (${url})\n${text}`);
-    else failedSources.push(name);
-  }
-  if (fetched.length === 0) return fail('all source calendars failed to load');
+  const sourceList = SOURCES.map(([name, url]) => `- ${name}: ${url}`).join('\n');
 
   const prompt = `You maintain a curated local events guide for the Candlewood Lake area (Fairfield & Litchfield Counties, Connecticut). Today is ${todayLabel} (America/New_York).
 
-Below is the CURRENT EVENTS_DATA JavaScript block from the site. Reproduce its EXACT schema and field names.
+Use the web_search and web_fetch tools to research CURRENT upcoming events (today through about 6 weeks out) around Candlewood Lake. First fetch and check these priority source calendars, then web_search each town and venue for current concerts, festivals, markets, and family events:
+${sourceList}
+
+Also search the towns directly: Sherman, New Fairfield, New Milford, Danbury, Brookfield, Ridgefield, Kent.
+
+RULES:
+- Ground every event in a real source and set a real sourceUrl. Do NOT invent events, dates, times, or prices. Accuracy over volume — omit anything you cannot confirm.
+- Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
+- Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
+- Set "lastUpdated" to "${todayLabel}".
+- Score each event: score = Proximity*0.4 + FunQuality*0.6, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
+- Keep the daryls[] quick-reference list current from the Daryl's House content.
+
+Reproduce the EXACT schema and field names of the CURRENT block below.
 
 CURRENT BLOCK:
 ${existingBlock}
 
-Below is freshly fetched text from the source event calendars. Use ONLY this content as your source of truth. Do NOT invent events, dates, times, or prices. Only include an event if it clearly appears in the fetched content and you can set a real sourceUrl. Accuracy over volume — omit anything uncertain.
+When you have finished researching, your FINAL message must be ONLY the updated EVENTS_DATA as a single pure JSON object (double-quoted keys, no JS, no comments, no code fences, no commentary).`;
 
-SOURCE CONTENT:
-${fetched.join('\n\n')}
+  // Server-tool loop: web_search / web_fetch run server-side; a pause_turn means the
+  // server-side loop hit its iteration cap — re-send to resume.
+  let messages = [{ role: 'user', content: prompt }];
+  let data;
+  for (let i = 0; i < 8; i++) {
+    const resp = await callClaude(messages);
+    if (!resp.ok) return fail(`Anthropic API error ${resp.status}: ${(await resp.text()).slice(0, 400)}`);
+    data = await resp.json();
+    if (data.stop_reason === 'pause_turn') {
+      messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: data.content }];
+      continue;
+    }
+    break;
+  }
 
-TASK:
-- Produce the updated EVENTS_DATA as a single PURE JSON object (double-quoted keys, no JS, no comments) with the same keys/shape as the current block.
-- Cover today through ~6 weeks out. Do NOT include events that have already ended: every event must be today or later, set isPast to false, and leave the past[] array empty ([]). Recompute isTonight and rebuild tonight[] relative to today; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely). Set "lastUpdated" to "${todayLabel}".
-- Score each event: score = Proximity*0.4 + FunQuality*0.6, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
-- Keep the daryls[] quick-reference list current from the Daryl's House content.
-- Output ONLY the JSON object. No commentary, no code fences.`;
+  if (data.stop_reason === 'refusal') return fail('model refused the request');
 
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json',
-    },
-    // thinking disabled: this is grounded JSON extraction, no reasoning needed.
-    // On claude-sonnet-5 adaptive thinking is ON by default when omitted, which
-    // consumes the whole token budget and emits no text (stop_reason=max_tokens).
-    body: JSON.stringify({ model: MODEL, max_tokens: 16000, thinking: { type: 'disabled' }, messages: [{ role: 'user', content: prompt }] }),
-  });
-  if (!resp.ok) return fail(`Anthropic API error ${resp.status}: ${(await resp.text()).slice(0, 300)}`);
-
-  const data = await resp.json();
-  let text = (data.content || []).map((c) => c.text || '').join('').trim();
+  let text = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
   text = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+  if (!text.startsWith('{')) {
+    const a = text.indexOf('{'), b = text.lastIndexOf('}');
+    if (a >= 0 && b > a) text = text.slice(a, b + 1);
+  }
 
   let obj;
   try {
@@ -152,20 +156,21 @@ TASK:
     return fail('generated JSON missing required shape (weeks[], lastUpdated)');
   }
   for (const k of ['tonight', 'past', 'daryls']) if (!Array.isArray(obj[k])) obj[k] = [];
+  const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
+  if (count === 0) return fail('generated JSON has zero events — refusing to publish an empty guide');
 
   const newBlock = `const EVENTS_DATA = ${JSON.stringify(obj, null, 2)};`;
   if (newBlock.trim() === existingBlock) {
     console.log('No changes.');
-    await notifySlack(`Daily events refresh (${todayLabel}): no changes.` + (failedSources.length ? ` Sources failed: ${failedSources.join(', ')}.` : ''));
+    await notifySlack(`Daily events refresh (${todayLabel}): no changes.`);
     return;
   }
 
   const updated = file.slice(0, blockStart) + newBlock + '\n' + file.slice(endIdx);
   await writeFile(INDEX, updated);
 
-  const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
   console.log(`Updated: ${count} events across ${obj.weeks.length} weeks.`);
-  await notifySlack(`Daily events refresh (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published.` + (failedSources.length ? ` Sources failed: ${failedSources.join(', ')}.` : ''));
+  await notifySlack(`Daily events refresh (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published.`);
 }
 
 main().catch((e) => fail(e.message));
