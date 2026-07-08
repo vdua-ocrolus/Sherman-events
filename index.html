@@ -139,9 +139,9 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); font
 .dh-price { font-size: 12px; color: var(--muted); margin-left: auto; }
 
 /* ---- CONNECT / FORMS ---- */
-.connect-section, .feedback-section { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 34px; margin-top: 16px; }
-.connect-section h2, .feedback-section h2 { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-.connect-section p, .feedback-section p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+.connect-section, .feedback-section { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 22px 24px; margin-top: 14px; }
+.connect-section h2, .feedback-section h2 { font-family: var(--serif); font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.connect-section p, .feedback-section p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
 .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .form-row input, .form-row button { flex: 1; min-width: 150px; }
 input[type="text"], input[type="email"], input[type="password"], textarea, select {
@@ -155,6 +155,10 @@ select { margin-bottom: 8px; }
 .btn-primary { padding: 12px 28px; background: var(--navy); color: var(--cream); border: none; border-radius: 2px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background .15s; white-space: nowrap; font-family: var(--sans); }
 .btn-primary:hover { background: #14294b; }
 .btn-primary:disabled { background: #9aa4b5; cursor: not-allowed; }
+/* compact the signup + submit sections (scoped; placed after base rules to win on source order) */
+.connect-section input, .connect-section select, .connect-section textarea, .feedback-section input, .feedback-section select, .feedback-section textarea { padding: 8px 12px; font-size: 13.5px; }
+.feedback-section textarea { min-height: 70px; margin-top: 6px; }
+.connect-section .btn-primary, .feedback-section .btn-primary { padding: 10px 22px; }
 .form-success { font-size: 13px; color: var(--score-good); font-weight: 600; margin-top: 12px; display: none; }
 .form-error { font-size: 13px; color: #9b3d3d; margin-top: 12px; display: none; }
 .setup-note { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 12px 14px; font-size: 13px; color: var(--ink-soft); margin-top: 12px; }
@@ -284,7 +288,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 @media (max-width: 640px) {
   .site-header-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
   .hero-inner { padding: 40px 20px 34px; }
-  .connect-section, .feedback-section { padding: 24px; }
+  .connect-section, .feedback-section { padding: 18px; }
   .event-card { gap: 14px; }
   .dh-show { flex-wrap: wrap; gap: 4px 12px; }
   .dh-date { width: auto; }
@@ -1483,16 +1487,6 @@ const RESTAURANTS_DATA = [
     "website": "https://portobelloct.com/",
     "sourceUrl": "https://www.yelp.com/biz/portobello-brookfield-4",
     "lakeside": false
-  },
-  {
-    "name": "Down the Hatch",
-    "town": "Brookfield",
-    "cuisine": "American / Seafood",
-    "price": "$$",
-    "note": "Candlewood Lake's only waterfront restaurant, an open-air seasonal spot with boat docks reachable by water or land, typically open May through September; closed Mondays.",
-    "website": "https://downthehatchrestaurant.com/",
-    "sourceUrl": "https://www.yelp.com/biz/down-the-hatch-brookfield-2",
-    "lakeside": true
   },
   {
     "name": "Bailey's Backyard",
