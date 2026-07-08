@@ -243,6 +243,16 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 .alert-news a:hover { color: #f2c675; }
 .alert-updated { font-size: 11px; color: rgba(251,238,228,.7); margin-top: 9px; }
 
+/* ---- COLLAPSIBLE FOOTER SECTIONS ---- */
+details.fold { padding: 0 !important; overflow: hidden; }
+details.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; user-select: none; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary:hover { background: var(--surface2); }
+.fold-title { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--navy); }
+.fold-chevron { color: var(--muted); font-size: 11px; transition: transform .2s; flex-shrink: 0; }
+details.fold[open] .fold-chevron { transform: rotate(180deg); }
+.fold-body { padding: 4px 16px 16px; }
+
 /* ---- SECTION TABS ---- */
 .tabs { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); }
 .tabs-inner { max-width: 1040px; margin: 0 auto; display: flex; justify-content: center; gap: 6px; padding: 10px 24px; }
@@ -359,8 +369,9 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
   </div>
 
   <!-- Feedback / Submit Event -->
-  <div class="feedback-section">
-    <h2>Submit an event or feedback</h2>
+  <details class="feedback-section fold">
+    <summary><span class="fold-title">Submit an event or feedback</span><span class="fold-chevron">▼</span></summary>
+    <div class="fold-body">
     <p>Know about a local event we missed? Have a note for us? We read every submission.</p>
     <form id="feedbackForm" onsubmit="handleFeedback(event)">
       <select name="type" id="feedbackType" onchange="onFeedbackTypeChange()">
@@ -397,11 +408,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
     <div class="setup-note" id="feedbackSetupNote" style="display:none">
       <strong>Setup needed:</strong> Set CONFIG.API_BASE to the deployed data-proxy URL.
     </div>
-  </div>
+    </div>
+  </details>
 
   <!-- Scoring key -->
-  <div class="scoring-note view-events">
-    <h3>How Events Are Scored</h3>
+  <details class="scoring-note view-events fold">
+    <summary><span class="fold-title">How Events Are Scored</span><span class="fold-chevron">▼</span></summary>
+    <div class="fold-body">
     <p>Combined = (Proximity × 0.4) + (Fun/Quality × 0.6). Proximity by town: Sherman 10, New Fairfield 9.5, New Milford 9.5, Brookfield 8.5, Danbury 8, Ridgefield 8, Kent 7.5, New Preston 7.5, Caramoor (Katonah) 7.5, Levitt/Westport 6.5.</p>
     <div class="scoring-grid">
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-must)"></div><span>9.0+ Must Go</span></div>
@@ -409,11 +422,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-good)"></div><span>5.0–6.9 Good</span></div>
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-ok)"></div><span>&lt;5.0 OK</span></div>
     </div>
-  </div>
+    </div>
+  </details>
 
   <!-- Quick Links -->
-  <div class="quicklinks view-events">
-    <h3>Source Calendars</h3>
+  <details class="quicklinks view-events fold">
+    <summary><span class="fold-title">Source Calendars</span><span class="fold-chevron">▼</span></summary>
+    <div class="fold-body">
     <a href="https://www.newfairfield.org/community/community-event-calendar" target="_blank">New Fairfield</a>
     <a href="https://darylshouseclub.com/shows/" target="_blank">Daryl's House</a>
     <a href="https://caramoor.org/events/concerts" target="_blank">Caramoor</a>
@@ -434,7 +449,8 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
     <a href="https://ridgefieldlibrary.librarymarket.com/events/upcoming" target="_blank" rel="noopener">Ridgefield Library</a>
     <a href="https://newmilford.libcal.com/" target="_blank" rel="noopener">New Milford Library</a>
     <a href="https://www.shermanlibrary.org/monthly-calendar" target="_blank" rel="noopener">Sherman Library</a>
-  </div>
+    </div>
+  </details>
 
   <footer id="footer">Auto-updated daily · Sherman CT Events Digest</footer>
 </div>
