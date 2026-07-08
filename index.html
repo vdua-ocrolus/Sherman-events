@@ -237,6 +237,12 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 .alert-news a:hover { color: #f2c675; }
 .alert-updated { font-size: 11px; color: rgba(251,238,228,.7); margin-top: 9px; }
 
+/* ---- RESTAURANTS ---- */
+.rest-intro { font-size: 14px; color: var(--muted); line-height: 1.6; margin: -6px 0 16px; max-width: 70ch; }
+.rest-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 8px; }
+.rest-cuisine { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.rest-price { font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
+
 /* ---- ACCOUNTS / AUTH ---- */
 .header-right { display: flex; align-items: center; gap: 14px; }
 .auth-controls { display: flex; align-items: center; gap: 10px; }
@@ -311,6 +317,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 
 <div class="container">
   <div id="eventsContent"></div>
+  <div id="restaurantsContent"></div>
 
   <!-- Email Signup -->
   <div class="connect-section">
@@ -1339,6 +1346,232 @@ const EVENTS_DATA = {
 /* EVENTS_DATA:END */
 
 // =============================================
+// RESTAURANTS — curated dining guide (hand-maintained; NOT touched by the daily events refresh)
+// =============================================
+const RESTAURANTS_DATA = [
+  {
+    "name": "American Pie Company",
+    "town": "Sherman",
+    "cuisine": "American / Bakery",
+    "price": "$$",
+    "note": "A Sherman fixture since 1993, serving scratch-made comfort food anchored by its chicken pot pie, plus house-baked pies from breakfast through dinner.",
+    "website": "http://americanpiecompany.com/home.html",
+    "sourceUrl": "https://www.yelp.com/biz/the-american-pie-company-sherman-2",
+    "lakeside": false
+  },
+  {
+    "name": "Limoncello Trattoria Napoletana",
+    "town": "Sherman",
+    "cuisine": "Italian (Neapolitan)",
+    "price": "$$",
+    "note": "A Neapolitan trattoria led by Naples-born chef Giovanni, pairing traditional Southern Italian cooking with live music on Wednesday and Saturday evenings.",
+    "website": "https://limoncelloct.com/",
+    "sourceUrl": "https://www.yelp.com/biz/limoncello-trattoria-napoletana-sherman",
+    "lakeside": false
+  },
+  {
+    "name": "Omakase",
+    "town": "New Fairfield",
+    "cuisine": "Japanese / Sushi",
+    "price": "$$$",
+    "note": "An intimate sushi bar working with fish flown in from Japan, open Tuesday through Sunday.",
+    "website": "https://omakasenewfairfield.com/",
+    "sourceUrl": "https://omakasenewfairfield.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Biscotti's Ristorante",
+    "town": "New Fairfield",
+    "cuisine": "Italian / Seafood",
+    "price": "$$$",
+    "note": "A chef-driven Italian and seafood room from Johnson & Wales graduate Scott Haines, with a bar, outdoor seating, and locally sourced seafood.",
+    "website": "https://www.biscottisristorante.net/",
+    "sourceUrl": "https://www.opentable.com/r/biscotti-ristorante-new-fairfield",
+    "lakeside": false
+  },
+  {
+    "name": "Greca Mediterranean Kitchen + Bar",
+    "town": "New Milford",
+    "cuisine": "Greek / Mediterranean",
+    "price": "$$$",
+    "note": "Chef-owner Dino Kolitsas reworks Greek and Mediterranean cooking here, drawing recognition from Connecticut Magazine; open Tuesday through Saturday.",
+    "website": "https://www.grecamed.com/",
+    "sourceUrl": "https://www.grecamed.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Sparrow Bar + Restaurant",
+    "town": "New Milford",
+    "cuisine": "Global / New American",
+    "price": "$$",
+    "note": "A downtown Bank Street destination from John Bourdeau, with a globe-spanning small-plates menu and a serious bar program.",
+    "website": "https://www.sparrowbyjb.com/",
+    "sourceUrl": "https://www.yelp.com/biz/sparrow-bar-and-restaurant-new-milford",
+    "lakeside": false
+  },
+  {
+    "name": "Cowboy Butter",
+    "town": "New Milford",
+    "cuisine": "Barbecue / Steakhouse",
+    "price": "$$",
+    "note": "Wood-smoked barbecue and steaks on Bank Street from the team behind Waterbury's Hindsight BBQ, open since July 2025.",
+    "website": "https://www.cowboybutterbbq.com/",
+    "sourceUrl": "https://www.ctbites.com/blog/2026/1/12/cowboy-butter",
+    "lakeside": false
+  },
+  {
+    "name": "Barbarie's Black Angus Grill",
+    "town": "Danbury",
+    "cuisine": "Steakhouse / Seafood",
+    "price": "$$$",
+    "note": "A family-owned steak and seafood house specializing in dry-aged Black Angus beef, open since 2012.",
+    "website": "https://www.blackangusdanbury.com/",
+    "sourceUrl": "https://www.blackangusdanbury.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Market Place Kitchen & Bar",
+    "town": "Danbury",
+    "cuisine": "New American / farm-to-table",
+    "price": "$$$",
+    "note": "A farm-to-table kitchen sourcing from Connecticut growers, serving lunch and dinner on Mill Plain Road.",
+    "website": "https://marketplacekitchenbar.com/locations/danbury",
+    "sourceUrl": "https://www.opentable.com/r/market-place-kitchen-and-bar-danbury-danbury",
+    "lakeside": false
+  },
+  {
+    "name": "Xay's Kitchen Laos & Thai Cuisine",
+    "town": "Danbury",
+    "cuisine": "Laotian / Thai",
+    "price": "$$",
+    "note": "A family-run White Street spot for Lao and Thai cooking, known for its papaya salad, Lao sausage, and generous portions; closed Mondays.",
+    "website": "https://www.xayskitchen.com/",
+    "sourceUrl": "https://www.yelp.com/biz/xays-kitchen-danbury",
+    "lakeside": false
+  },
+  {
+    "name": "Amai Sushi",
+    "town": "Brookfield",
+    "cuisine": "Japanese / Sushi",
+    "price": "$$",
+    "note": "A low-key sushi counter sourcing much of its fish from Japan through the Fulton Fish Market, noted by CTbites for its sashimi.",
+    "website": "https://www.amaisushict.com/",
+    "sourceUrl": "https://www.yelp.com/biz/amai-sushi-brookfield",
+    "lakeside": false
+  },
+  {
+    "name": "Portobello Italian Restaurant",
+    "town": "Brookfield",
+    "cuisine": "Italian",
+    "price": "$$",
+    "note": "A family-run Italian kitchen serving pizza, grinders, and classic mains since 1997, with a full bar and a climate-controlled patio; closed Mondays.",
+    "website": "https://portobelloct.com/",
+    "sourceUrl": "https://www.yelp.com/biz/portobello-brookfield-4",
+    "lakeside": false
+  },
+  {
+    "name": "Down the Hatch",
+    "town": "Brookfield",
+    "cuisine": "American / Seafood",
+    "price": "$$",
+    "note": "Candlewood Lake's only waterfront restaurant, an open-air seasonal spot with boat docks reachable by water or land, typically open May through September; closed Mondays.",
+    "website": "https://downthehatchrestaurant.com/",
+    "sourceUrl": "https://www.yelp.com/biz/down-the-hatch-brookfield-2",
+    "lakeside": true
+  },
+  {
+    "name": "Bailey's Backyard",
+    "town": "Ridgefield",
+    "cuisine": "New American / farm-to-table",
+    "price": "$$$",
+    "note": "A 50-seat downtown farm-to-table room established in 1999, with a seasonal menu and weekend brunch.",
+    "website": "https://baileysbackyard.com/",
+    "sourceUrl": "https://www.yelp.com/biz/baileys-backyard-ridgefield",
+    "lakeside": false
+  },
+  {
+    "name": "Brasserie Saint Germain",
+    "town": "Ridgefield",
+    "cuisine": "French",
+    "price": "$$$",
+    "note": "An upscale Main Street French brasserie from the former Sucre Sale owners, serving classics like steak tartare and lobster alongside a raw bar.",
+    "website": "https://www.brasseriesaintgermain.com/",
+    "sourceUrl": "https://www.yelp.com/biz/brasserie-saint-germain-ridgefield",
+    "lakeside": false
+  },
+  {
+    "name": "Tablao Wine Bar & Restaurant",
+    "town": "Ridgefield",
+    "cuisine": "Spanish / tapas",
+    "price": "$$",
+    "note": "A Main Street Spanish spot with more than thirty tapas, paella, and a broad wine list, offering indoor and outdoor seating.",
+    "website": "https://tablaowinebar.com/ridgefield/",
+    "sourceUrl": "https://www.yelp.com/biz/tablao-wine-bar-ridgefield-ridgefield",
+    "lakeside": false
+  },
+  {
+    "name": "Ore Hill",
+    "town": "Kent",
+    "cuisine": "New American tasting menu",
+    "price": "$$$$",
+    "note": "A farm-to-table tasting-menu restaurant sourcing from its own Rock Cobble Farm, named to the New York Times' 2023 Restaurant List and serving Friday and Saturday evenings.",
+    "website": "https://orehillandswyft.com/",
+    "sourceUrl": "https://www.ctbites.com/blog/2026/4/10/ore-hill",
+    "lakeside": false
+  },
+  {
+    "name": "Swyft",
+    "town": "Kent",
+    "cuisine": "Wood-fired pizza / Italian",
+    "price": "$$",
+    "note": "The casual wood-fired sibling to Ore Hill in the same historic building, serving Neapolitan sourdough pizzas and seasonal plates Thursday through Sunday.",
+    "website": "https://orehillandswyft.com/home/swyft/",
+    "sourceUrl": "https://orehillandswyft.com/home/swyft/",
+    "lakeside": false
+  },
+  {
+    "name": "Fife 'n Drum Restaurant & Inn",
+    "town": "Kent",
+    "cuisine": "Continental American",
+    "price": "$$$",
+    "note": "A family-run Kent institution since 1973, known for tableside flambes and a deep wine cellar.",
+    "website": "http://fifendrum.com/",
+    "sourceUrl": "https://www.yelp.com/biz/fife-n-drum-restaurant-and-inn-kent-3",
+    "lakeside": false
+  },
+  {
+    "name": "Community Table",
+    "town": "New Preston",
+    "cuisine": "Contemporary American / farm-to-table",
+    "price": "$$$$",
+    "note": "Named the Connecticut Restaurant Association's 2025 Restaurant of the Year, serving a seasonal, locally sourced menu on Route 202, Thursday through Monday.",
+    "website": "https://www.communitytablect.com/",
+    "sourceUrl": "https://www.communitytablect.com/",
+    "lakeside": false
+  },
+  {
+    "name": "Hopkins Inn Restaurant",
+    "town": "New Preston",
+    "cuisine": "Austrian / European",
+    "price": "$$$",
+    "note": "A country inn above Lake Waramaug serving contemporary Austrian cuisine, open seasonally from late March through the New Year; closed Mondays.",
+    "website": "https://www.thehopkinsinn.com/",
+    "sourceUrl": "https://www.thehopkinsinn.com/",
+    "lakeside": false
+  },
+  {
+    "name": "The Mayflower Inn & Spa",
+    "town": "Washington",
+    "cuisine": "New American",
+    "price": "$$$$",
+    "note": "The dining room of the Forbes-rated Auberge inn, serving seasonal countryside cuisine under executive chef Luke Dowdy across its Garden Room and Tap Room.",
+    "website": "https://auberge.com/mayflower/dine/",
+    "sourceUrl": "https://auberge.com/mayflower/dine/",
+    "lakeside": false
+  }
+];
+
+// =============================================
 // RENDERING
 // =============================================
 function scoreClass(s) {
@@ -1418,6 +1651,47 @@ function renderAlert() {
       ${a.updated ? `<div class="alert-updated">Updated ${esc(a.updated)}</div>` : ''}
     </div>
   </div></div>`;
+}
+
+function restCard(r) {
+  const name = r.website ? `<a href="${r.website}" target="_blank" rel="noopener">${cleanText(r.name)}</a>` : cleanText(r.name);
+  const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
+  return `<div class="event-card">
+    <div class="card-content">
+      <div class="card-title">${name}${lake}</div>
+      <div class="rest-meta"><span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}</div>
+      <div class="card-desc">${r.note}</div>
+    </div>
+  </div>`;
+}
+
+function renderRestaurants() {
+  const el = document.getElementById('restaurantsContent');
+  if (!el || typeof RESTAURANTS_DATA === 'undefined' || !RESTAURANTS_DATA.length) return;
+  const order = ['Sherman', 'New Fairfield', 'New Milford', 'Danbury', 'Brookfield', 'Ridgefield', 'Kent', 'New Preston', 'Washington'];
+  const byTown = {};
+  for (const r of RESTAURANTS_DATA) (byTown[r.town] = byTown[r.town] || []).push(r);
+  const towns = Object.keys(byTown).sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+  let html = `<div class="section-label">Where to Eat · Around the Lake</div>
+    <p class="rest-intro">A curated guide to standout tables around Candlewood Lake and the neighboring towns, from the lake's one waterfront deck to Litchfield County institutions. Hours shift seasonally, so call ahead.</p>`;
+  towns.forEach((town, i) => {
+    const list = byTown[town];
+    const id = 'rest-' + town.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    html += `<div class="week-accordion${i === 0 ? ' open' : ''}" id="${id}">
+      <div class="week-header" onclick="toggleWeek('${id}')">
+        <div class="week-header-left">
+          <span class="week-title">${town}</span>
+          <span class="week-count">${list.length} ${list.length === 1 ? 'spot' : 'spots'}</span>
+        </div>
+        <span class="week-chevron">▼</span>
+      </div>
+      <div class="week-body">${list.map(restCard).join('')}</div>
+    </div>`;
+  });
+  el.innerHTML = html;
 }
 
 function renderEvents() {
@@ -1790,6 +2064,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initClickTracking();
   initAuth();
   renderEvents();
+  renderRestaurants();
   trackVisit();
   onFeedbackTypeChange();
 });
