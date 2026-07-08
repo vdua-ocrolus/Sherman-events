@@ -646,34 +646,35 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Jul 7, 2026",
-  "tonight": [],
+  "lastUpdated": "Jul 8, 2026",
+  "tonight": [
+    {
+      "score": 8,
+      "title": "Dancing at Dusk: WindSync plays Peter and the Wolf",
+      "url": "https://caramoor.org/events/concerts",
+      "dateLabel": "Wed Jul 8",
+      "time": "5:30PM",
+      "venue": "Caramoor",
+      "venueType": "caramoor",
+      "town": "Katonah, NY",
+      "dist": "~25 mi",
+      "type": "Family / Outdoor Classical",
+      "priceType": "paid",
+      "priceLabel": null,
+      "desc": "Wind quintet performs Prokofiev outdoors at Caramoor. Excellent for kids.",
+      "source": "caramoor.org",
+      "sourceUrl": "https://caramoor.org/events/concerts",
+      "isTonight": true,
+      "isPast": false,
+      "isNF": false
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · July 7–12 (This Week)",
+      "title": "Week 1 · July 8–12 (This Week)",
       "open": true,
       "events": [
-        {
-          "score": 8.9,
-          "title": "Great American SoulBook: From The Temptations to the Tops",
-          "url": "https://ridgefieldplayhouse.org/event/great-american-soulbook-ridgefield-ct-2026/",
-          "dateLabel": "Tue Jul 7",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Motown / Soul",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Celebratory Motown revue — Temptations, Four Tops, golden age of soul.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
         {
           "score": 8,
           "title": "Dancing at Dusk: WindSync plays Peter and the Wolf",
@@ -690,7 +691,7 @@ const EVENTS_DATA = {
           "desc": "Wind quintet performs Prokofiev outdoors at Caramoor. Excellent for kids.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
