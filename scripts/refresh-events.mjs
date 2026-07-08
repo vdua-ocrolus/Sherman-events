@@ -11,6 +11,7 @@
 // Env: ANTHROPIC_API_KEY (required), SLACK_WEBHOOK_URL (optional), EVENTS_MODEL (optional).
 
 import { readFile, writeFile } from 'node:fs/promises';
+import Anthropic from '@anthropic-ai/sdk';
 
 const INDEX = 'index.html';
 const START = '/* EVENTS_DATA:START';
@@ -64,27 +65,32 @@ async function fail(msg) {
   process.exit(1);
 }
 
-async function callClaude(messages) {
-  return fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json',
-    },
-    // thinking disabled keeps output deterministic (on sonnet-5 adaptive thinking is
-    // on by default and can consume the whole budget). Tool use works without it.
-    body: JSON.stringify({
+const client = new Anthropic(); // reads ANTHROPIC_API_KEY; retries transient errors
+
+// Stream (avoids connection timeouts on long web-tool research) and resume on
+// pause_turn (server-tool loop hit its iteration cap). Returns the final message.
+async function research(prompt) {
+  let messages = [{ role: 'user', content: prompt }];
+  let msg;
+  for (let i = 0; i < 8; i++) {
+    const stream = client.messages.stream({
       model: MODEL,
       max_tokens: 20000,
-      thinking: { type: 'disabled' },
+      thinking: { type: 'disabled' }, // deterministic output; tool use still works
       tools: [
         { type: 'web_search_20260209', name: 'web_search', max_uses: 24 },
         { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 24 },
       ],
       messages,
-    }),
-  });
+    });
+    msg = await stream.finalMessage();
+    if (msg.stop_reason === 'pause_turn') {
+      messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
+      continue;
+    }
+    break;
+  }
+  return msg;
 }
 
 async function main() {
@@ -121,21 +127,12 @@ ${existingBlock}
 
 When you have finished researching, your FINAL message must be ONLY the updated EVENTS_DATA as a single pure JSON object (double-quoted keys, no JS, no comments, no code fences, no commentary).`;
 
-  // Server-tool loop: web_search / web_fetch run server-side; a pause_turn means the
-  // server-side loop hit its iteration cap — re-send to resume.
-  let messages = [{ role: 'user', content: prompt }];
   let data;
-  for (let i = 0; i < 8; i++) {
-    const resp = await callClaude(messages);
-    if (!resp.ok) return fail(`Anthropic API error ${resp.status}: ${(await resp.text()).slice(0, 400)}`);
-    data = await resp.json();
-    if (data.stop_reason === 'pause_turn') {
-      messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: data.content }];
-      continue;
-    }
-    break;
+  try {
+    data = await research(prompt);
+  } catch (e) {
+    return fail(`Anthropic request failed: ${e.message}`);
   }
-
   if (data.stop_reason === 'refusal') return fail('model refused the request');
 
   let text = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
