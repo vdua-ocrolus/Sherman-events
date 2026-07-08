@@ -237,6 +237,14 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 .alert-news a:hover { color: #f2c675; }
 .alert-updated { font-size: 11px; color: rgba(251,238,228,.7); margin-top: 9px; }
 
+/* ---- SECTION TABS ---- */
+.tabs { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); }
+.tabs-inner { max-width: 1040px; margin: 0 auto; display: flex; justify-content: center; gap: 6px; padding: 10px 24px; }
+.tab { background: none; border: none; font-family: var(--sans); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--muted); padding: 10px 20px; cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+.tab:hover { color: var(--navy); }
+.tab.active { color: var(--navy); border-bottom-color: var(--gold); }
+.view-dining { display: none; }
+
 /* ---- RESTAURANTS ---- */
 .rest-intro { font-size: 14px; color: var(--muted); line-height: 1.6; margin: -6px 0 16px; max-width: 70ch; }
 .rest-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 8px; }
@@ -313,11 +321,18 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
   </div>
 </section>
 
-<div id="tonightBanner"></div>
+<nav class="tabs">
+  <div class="tabs-inner">
+    <button class="tab active" id="tabEvents" onclick="showView('events')">Events</button>
+    <button class="tab" id="tabDining" onclick="showView('dining')">Where to Eat</button>
+  </div>
+</nav>
+
+<div id="tonightBanner" class="view-events"></div>
 
 <div class="container">
-  <div id="eventsContent"></div>
-  <div id="restaurantsContent"></div>
+  <div id="eventsContent" class="view-events"></div>
+  <div id="restaurantsContent" class="view-dining"></div>
 
   <!-- Email Signup -->
   <div class="connect-section">
@@ -379,7 +394,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
   </div>
 
   <!-- Scoring key -->
-  <div class="scoring-note">
+  <div class="scoring-note view-events">
     <h3>How Events Are Scored</h3>
     <p>Combined = (Proximity × 0.4) + (Fun/Quality × 0.6). New Fairfield = 9.5, Sherman = 10, Ridgefield = 8, Caramoor/Danbury = 7.5–8.</p>
     <div class="scoring-grid">
@@ -391,7 +406,7 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
   </div>
 
   <!-- Quick Links -->
-  <div class="quicklinks">
+  <div class="quicklinks view-events">
     <h3>Source Calendars</h3>
     <a href="https://www.newfairfield.org/community/community-event-calendar" target="_blank">New Fairfield</a>
     <a href="https://darylshouseclub.com/shows/" target="_blank">Daryl's House</a>
@@ -498,7 +513,7 @@ const CONFIG = {
   // Top-of-page alert banner (storm / outage / closure). Set active:false to hide.
   // Update message + updated as the situation changes (or ask Claude Code to).
   ALERT: {
-    active: true,
+    active: false,
     title: 'Major storm, widespread power outages',
     message: "Saturday's storms (July 4) knocked out power across the Candlewood Lake area. As of July 5, tens of thousands of Eversource customers remained without power statewide, with New Fairfield among the hardest hit, and Squantz Pond State Park is closed until further notice. Report your outage and track restoration below. Treat any downed line as live, and call 911 for emergencies.",
     updated: 'Jul 6, 2026',
@@ -1703,10 +1718,13 @@ function renderEvents() {
   document.getElementById('footer').textContent = `Candlewood Lake Events · A curated local guide · Updated ${d.lastUpdated}`;
 
   // Tonight banner
-  if (d.tonight && d.tonight.length) {
-    const shows = d.tonight.map(s => `· <strong>${s.name}</strong> @ ${s.venue} ${s.time}${s.price?' · '+s.price:''}`).join('&nbsp;&nbsp;');
+  const tonight = (d.tonight || []).filter(s => s && s.name);
+  if (tonight.length) {
+    const shows = tonight.map(s => `· <strong>${s.name}</strong>${s.venue?' @ '+s.venue:''}${s.time?' '+s.time:''}${s.price?' · '+s.price:''}`).join('&nbsp;&nbsp;');
     document.getElementById('tonightBanner').innerHTML =
       `<div class="tonight-banner"><div class="fire">Tonight</div><div><strong>Worth going to</strong><div class="tonight-shows">${shows}</div></div></div>`;
+  } else {
+    document.getElementById('tonightBanner').innerHTML = '';
   }
 
   _eventIndex = {};
@@ -1768,6 +1786,17 @@ function renderEvents() {
 // ACCORDION TOGGLES
 // =============================================
 function toggleWeek(id) { document.getElementById(id).classList.toggle('open'); }
+
+function showView(view) {
+  const events = view === 'events';
+  document.querySelectorAll('.view-events').forEach(el => { el.style.display = events ? 'block' : 'none'; });
+  document.querySelectorAll('.view-dining').forEach(el => { el.style.display = events ? 'none' : 'block'; });
+  const te = document.getElementById('tabEvents'), td = document.getElementById('tabDining');
+  if (te) te.classList.toggle('active', events);
+  if (td) td.classList.toggle('active', !events);
+  track('view_tab', { view });
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
 function toggleDaryls() { document.getElementById('daryls').classList.toggle('open'); }
 
 // =============================================
