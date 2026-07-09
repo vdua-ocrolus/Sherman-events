@@ -71,24 +71,22 @@ const client = new Anthropic({ maxRetries: 5 }); // reads ANTHROPIC_API_KEY; ret
 // pause_turn (server-tool loop hit its iteration cap). Returns the final message.
 async function research(prompt) {
   let messages = [{ role: 'user', content: prompt }];
-  let container; // web_search/web_fetch dynamic filtering runs code execution; the
-                 // container must be reused when resuming a paused turn.
   let msg;
   for (let i = 0; i < 8; i++) {
     const stream = client.messages.stream({
       model: MODEL,
       max_tokens: 20000,
       thinking: { type: 'disabled' }, // deterministic output; tool use still works
+      // Basic tool variants (no code-execution dynamic filtering) so paused turns
+      // resume with a plain resend — no container_id juggling.
       tools: [
-        { type: 'web_search_20260209', name: 'web_search', max_uses: 24 },
-        { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 24 },
+        { type: 'web_search_20250305', name: 'web_search', max_uses: 20 },
+        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: 20 },
       ],
       messages,
-      ...(container ? { container } : {}),
     });
     msg = await stream.finalMessage();
     if (msg.stop_reason === 'pause_turn') {
-      container = msg.container?.id ?? container; // keep the execution container across resumes
       messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
       continue;
     }
