@@ -29,6 +29,7 @@ const SOURCES = [
   ['Sherman CT', 'https://www.shermanct.gov/municipal-calendar-list---community-events'],
   ['New Milford', 'https://www.newmilfordnow.org/events'],
   ['Litchfield', 'https://visitlitchfieldct.com/events/'],
+  ['Litchfield Magazine', 'https://litchfieldmagazine.com/things-to-do/'],
   ['A.C.T. of Connecticut', 'https://www.actofct.org/season'],
   ['Palace Danbury', 'https://thepalacedanbury.com/'],
   ['Infinity Music Hall', 'https://www.infinityhall.com/Events/'],
