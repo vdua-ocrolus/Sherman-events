@@ -76,7 +76,7 @@ async function research(prompt) {
   for (let i = 0; i < 8; i++) {
     const stream = client.messages.stream({
       model: MODEL,
-      max_tokens: 20000,
+      max_tokens: 48000, // headroom for the full events JSON (more sources = more events)
       thinking: { type: 'disabled' }, // deterministic output; tool use still works
       // Basic tool variants (no code-execution dynamic filtering) so paused turns
       // resume with a plain resend — no container_id juggling.
