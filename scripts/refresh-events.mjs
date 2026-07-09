@@ -65,7 +65,7 @@ async function fail(msg) {
   process.exit(1);
 }
 
-const client = new Anthropic(); // reads ANTHROPIC_API_KEY; retries transient errors
+const client = new Anthropic({ maxRetries: 5 }); // reads ANTHROPIC_API_KEY; retry 429/5xx/overloaded
 
 // Stream (avoids connection timeouts on long web-tool research) and resume on
 // pause_turn (server-tool loop hit its iteration cap). Returns the final message.
