@@ -71,6 +71,8 @@ const client = new Anthropic(); // reads ANTHROPIC_API_KEY; retries transient er
 // pause_turn (server-tool loop hit its iteration cap). Returns the final message.
 async function research(prompt) {
   let messages = [{ role: 'user', content: prompt }];
+  let container; // web_search/web_fetch dynamic filtering runs code execution; the
+                 // container must be reused when resuming a paused turn.
   let msg;
   for (let i = 0; i < 8; i++) {
     const stream = client.messages.stream({
@@ -82,9 +84,11 @@ async function research(prompt) {
         { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 24 },
       ],
       messages,
+      ...(container ? { container } : {}),
     });
     msg = await stream.finalMessage();
     if (msg.stop_reason === 'pause_turn') {
+      container = msg.container?.id ?? container; // keep the execution container across resumes
       messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
       continue;
     }
