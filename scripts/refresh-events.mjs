@@ -82,7 +82,7 @@ async function research(prompt) {
       // Basic tool variants (no code-execution dynamic filtering) so paused turns
       // resume with a plain resend — no container_id juggling.
       tools: [
-        { type: 'web_search_20250305', name: 'web_search', max_uses: 20 },
+        { type: 'web_search_20250305', name: 'web_search', max_uses: 40 },
         { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: 20 },
       ],
       messages,
@@ -124,7 +124,11 @@ RULES:
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
 - Score each event: score = Proximity*0.4 + FunQuality*0.6, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
-- Live music is the heart of this guide. For genuine live-music events (concerts, bands, DJs, singer-songwriters, live performances at venues like Housatonic River Brewing), rate FunQuality high — typically 8-10 for solid acts — so live music surfaces near the top.
+- Live music is the heart of this guide. When you find a live-music act, web_search the artist/band BEFORE scoring to gauge who they are and their draw, then set FunQuality by tier based on what the research actually shows:
+    - National touring headliner, GRAMMY/charting/critically acclaimed artist: 9-10
+    - Established regional act, well-known tribute band, or a genuine local favorite with a real following: 7.5-8.5
+    - Local bar/cover/pickup band or open mic with little public profile: 6-7.5
+  Do NOT inflate unknown local bands, and do NOT underrate a nationally known act just because it is playing a small room. Ground the number in the research; if you cannot find anything on an act, treat it as a local unknown (6-7.5). Live music is a priority, so a well-regarded act should surface near the top.
 - Keep the daryls[] quick-reference list current from the Daryl's House content.
 
 Reproduce the EXACT schema and field names of the CURRENT block below.
