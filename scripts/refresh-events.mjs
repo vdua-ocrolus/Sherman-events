@@ -66,6 +66,42 @@ function applyBandFloors(events) {
   }
 }
 
+// Proximity by town (0-10). Single source of truth for the score formula:
+// score = proximity*0.4 + funQuality*0.6.
+const PROX = {
+  'sherman': 10, 'new fairfield': 9.5, 'new milford': 9.5, 'brookfield': 8.5,
+  'danbury': 8, 'ridgefield': 8, 'kent': 7.5, 'new preston': 7.5, 'washington': 7.5,
+  'woodbury': 7.5, 'roxbury': 7.5, 'katonah': 7.5, 'pawling': 7.5, 'litchfield': 7,
+  'norfolk': 6.5, 'torrington': 6.5, 'westport': 6.5, 'hartford': 5.5,
+};
+function norm(s) {
+  return (s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+function proxOf(town) {
+  const t = norm(town);
+  for (const k of Object.keys(PROX)) if (t.includes(k)) return PROX[k];
+  return 6.5; // default for out-of-area towns
+}
+const round1 = (x) => Math.round(x * 10) / 10;
+
+// Deterministic researched-score override: for any event whose title contains a
+// researched act (band-ratings.json, keyed by normalized act name), recompute the
+// score from proximity + the researched funQuality. This makes live-music scoring
+// grounded in real research instead of the model's per-run genre guess. Longest key
+// wins so specific names beat generic ones. Unmatched acts keep the model's score.
+function applyResearchedScores(events, ratings) {
+  const keys = Object.keys(ratings).filter((k) => k.length >= 4).sort((a, b) => b.length - a.length);
+  for (const e of events || []) {
+    if (typeof e.score !== 'number') continue;
+    const nt = norm(e.title);
+    const hit = keys.find((k) => nt.includes(k));
+    if (hit) {
+      const fq = ratings[hit].funQuality;
+      if (typeof fq === 'number') e.score = round1(proxOf(e.town) * 0.4 + fq * 0.6);
+    }
+  }
+}
+
 const todayLabel = new Date().toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York',
 });
@@ -185,6 +221,12 @@ When you have finished researching, your FINAL message must be ONLY the updated 
     return fail('generated JSON missing required shape (weeks[], lastUpdated)');
   }
   for (const k of ['tonight', 'past', 'daryls']) if (!Array.isArray(obj[k])) obj[k] = [];
+
+  // Researched-score override (band-ratings.json) applied first, then Vik's hard floors.
+  let ratings = {};
+  try { ratings = JSON.parse(await readFile('scripts/band-ratings.json', 'utf8')); } catch { /* no cache yet */ }
+  for (const w of obj.weeks) applyResearchedScores(w.events, ratings);
+  applyResearchedScores(obj.tonight, ratings);
   for (const w of obj.weeks) applyBandFloors(w.events);
   applyBandFloors(obj.tonight);
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
