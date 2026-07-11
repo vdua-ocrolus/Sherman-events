@@ -28,6 +28,7 @@ const SOURCES = [
   ['Levitt Pavilion', 'https://levittpavilion.com/calendar/'],
   ['Sherman CT', 'https://www.shermanct.gov/municipal-calendar-list---community-events'],
   ['New Milford', 'https://www.newmilfordnow.org/events'],
+  ['Housatonic River Brewing', 'https://www.housatonicriverbrewing.com/livemusic-events'],
   ['Litchfield', 'https://visitlitchfieldct.com/events/'],
   ['Litchfield Magazine', 'https://litchfieldmagazine.com/things-to-do/'],
   ['A.C.T. of Connecticut', 'https://www.actofct.org/season'],
@@ -123,6 +124,7 @@ RULES:
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
 - Score each event: score = Proximity*0.4 + FunQuality*0.6, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
+- Live music is the heart of this guide. For genuine live-music events (concerts, bands, DJs, singer-songwriters, live performances at venues like Housatonic River Brewing), rate FunQuality high — typically 8-10 for solid acts — so live music surfaces near the top.
 - Keep the daryls[] quick-reference list current from the Daryl's House content.
 
 Reproduce the EXACT schema and field names of the CURRENT block below.
