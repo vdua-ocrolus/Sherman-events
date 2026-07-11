@@ -45,6 +45,27 @@ const SOURCES = [
   ['Sherman Library', 'https://www.shermanlibrary.org/monthly-calendar'],
 ];
 
+// Curation overrides: deterministic score floors for known-strong local acts the
+// model tends to under-research (it defaults cover/tribute bands low regardless of
+// their real draw). The daily model pass can't be trusted for specific bands, so we
+// floor them here. Match = case-insensitive substring of the event title. Add names
+// as Vik flags them.
+const BAND_FLOORS = [
+  ['the pop rocks', 8.7],   // packs Mohegan Sun Wolf Den; one of CT's most popular party bands
+  ['nashville drive', 8.7], // CT's premier top-40 country band; iTunes-charting, opened for nationals
+];
+
+function applyBandFloors(events) {
+  for (const e of events || []) {
+    const title = (e.title || '').toLowerCase();
+    for (const [name, floor] of BAND_FLOORS) {
+      if (title.includes(name) && typeof e.score === 'number' && e.score < floor) {
+        e.score = floor;
+      }
+    }
+  }
+}
+
 const todayLabel = new Date().toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York',
 });
@@ -164,6 +185,8 @@ When you have finished researching, your FINAL message must be ONLY the updated 
     return fail('generated JSON missing required shape (weeks[], lastUpdated)');
   }
   for (const k of ['tonight', 'past', 'daryls']) if (!Array.isArray(obj[k])) obj[k] = [];
+  for (const w of obj.weeks) applyBandFloors(w.events);
+  applyBandFloors(obj.tonight);
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
   if (count === 0) return fail('generated JSON has zero events — refusing to publish an empty guide');
 
