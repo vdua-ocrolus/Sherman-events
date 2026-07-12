@@ -288,6 +288,16 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .fav-filter .chip { background: transparent; border: 1px solid var(--border); border-radius: 2px; padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); cursor: pointer; font-family: var(--sans); font-weight: 600; }
 .fav-filter .chip.on { border-color: var(--gold); color: var(--gold); }
 
+/* ---- TYPE FILTER BAR ---- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 4px; }
+.filter-chip { background: transparent; border: 1px solid var(--border); border-radius: 20px; padding: 7px 15px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; color: var(--muted); cursor: pointer; font-family: var(--sans); transition: border-color .15s, color .15s, background .15s; }
+.filter-chip:hover { color: var(--text); border-color: var(--line-strong); }
+.filter-chip.active { border-color: transparent; color: var(--ink-dark); background: linear-gradient(180deg,#e7c988,var(--gold)); }
+.filter-chip .fc-count { opacity: .65; font-weight: 700; margin-left: 4px; }
+.filter-chip.active .fc-count { opacity: .8; }
+.week-showall { display: block; width: 100%; margin: 10px 0 2px; padding: 9px; background: transparent; border: 1px dashed var(--border); border-radius: 4px; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; font-family: var(--sans); transition: border-color .15s, background .15s; }
+.week-showall:hover { border-color: var(--gold); background: rgba(212,162,74,.06); }
+
 .auth-overlay { position: fixed; inset: 0; background: rgba(23,19,15,.55); z-index: 250; display: none; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
 .auth-overlay.open { display: flex; }
 .auth-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; max-width: 400px; width: 100%; margin: 8vh auto auto; padding: 36px; position: relative; box-shadow: 0 30px 80px rgba(23,19,15,.25); }
@@ -435,7 +445,7 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
   <details class="scoring-note view-events fold">
     <summary><span class="fold-title">How Events Are Scored</span><span class="fold-chevron">▼</span></summary>
     <div class="fold-body">
-    <p>Combined = (Proximity × 0.4) + (Fun/Quality × 0.6). Proximity by town: Sherman 10, New Fairfield 9.5, New Milford 9.5, Brookfield 8.5, Danbury 8, Ridgefield 8, Kent 7.5, New Preston 7.5, Woodbury 7.5, Roxbury 7.5, Caramoor (Katonah) 7.5, Levitt/Westport 6.5.</p>
+    <p>Combined = (Proximity × 0.3) + (Fun/Quality × 0.7). Proximity by town: Sherman 10, New Fairfield 9.5, New Milford 9.5, Brookfield 8.5, Danbury 8, Ridgefield 8, Kent 7.5, New Preston 7.5, Woodbury 7.5, Roxbury 7.5, Caramoor (Katonah) 7.5, Levitt/Westport 6.5.</p>
     <div class="scoring-grid">
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-must)"></div><span>9.0+ Must Go</span></div>
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-great)"></div><span>7.0–8.9 Great</span></div>
@@ -592,6 +602,7 @@ const AUTH_ENABLED = !!(CONFIG.FIREBASE && CONFIG.FIREBASE.apiKey);
 let currentUser = null;        // Firebase user, or null
 let favorites = new Set();     // favorite keys for the signed-in user
 let showFavoritesOnly = false;
+let currentTypeFilter = 'all';   // event-type filter (all | music | family | free | comedy | arts)
 let _eventIndex = {};          // favKey -> { title, dateLabel } for the current render
 let _fb = null;                // { auth, db, authMod, fsMod } once initialized
 
@@ -2904,29 +2915,61 @@ function renderEvents() {
 
   // Weeks — upcoming only; already-passed events are dropped, empty weeks hidden
   const notPast = e => !e.isPast;
-  html += `<div class="section-label">Upcoming · Sorted by score</div>`;
+
+  // Type filter bar (built from the upcoming set)
+  const upcoming = d.weeks.flatMap(w => favFilter(w.events.filter(notPast)));
+  const FILTERS = [
+    { key: 'all', label: 'All', test: () => true },
+    { key: 'music', label: 'Live Music', test: e => eventCategory(e) === 'music' },
+    { key: 'family', label: 'Family', test: e => eventCategory(e) === 'family' },
+    { key: 'free', label: 'Free', test: e => e.priceType === 'free' || /free/i.test(e.priceLabel || '') },
+    { key: 'comedy', label: 'Comedy', test: e => eventCategory(e) === 'comedy' },
+    { key: 'arts', label: 'Theater & Arts', test: e => eventCategory(e) === 'arts' },
+  ];
+  const counts = {};
+  for (const f of FILTERS) counts[f.key] = upcoming.filter(f.test).length;
+  if (!FILTERS.find(f => f.key === currentTypeFilter)) currentTypeFilter = 'all';
+  const activeFilter = FILTERS.find(f => f.key === currentTypeFilter);
+  html += `<div class="filter-bar">` + FILTERS
+    .filter(f => f.key === 'all' || counts[f.key] > 0)
+    .map(f => `<button class="filter-chip${f.key === currentTypeFilter ? ' active' : ''}" onclick="setTypeFilter('${f.key}')">${f.label}<span class="fc-count">${counts[f.key]}</span></button>`)
+    .join('') + `</div>`;
+
+  const filtering = currentTypeFilter !== 'all';
+  const CAP = 8; // collapsed weeks show the top CAP by score; "show all" reveals the rest
+  html += `<div class="section-label">${filtering ? activeFilter.label + ' · ' + counts[currentTypeFilter] + ' event' + (counts[currentTypeFilter] === 1 ? '' : 's') : 'Upcoming · sorted by score'}</div>`;
   let shownWeeks = 0;
   for (const week of d.weeks) {
-    const evs = favFilter(week.events.filter(notPast));
+    let evs = favFilter(week.events.filter(notPast)).filter(activeFilter.test);
     if (!evs.length) continue;
     shownWeeks++;
-    const topScore = Math.max(...evs.map(e=>e.score));
-    html += `<div class="week-accordion${(week.open||showFavoritesOnly)?' open':''}" id="${week.id}">
+    evs = [...evs].sort((a, b) => b.score - a.score);
+    const topScore = evs[0].score;
+    const capped = !filtering && evs.length > CAP;
+    const shown = capped ? evs.slice(0, CAP) : evs;
+    const hidden = capped ? evs.slice(CAP) : [];
+    const open = week.open || showFavoritesOnly || filtering;
+    html += `<div class="week-accordion${open ? ' open' : ''}" id="${week.id}">
       <div class="week-header" onclick="toggleWeek('${week.id}')">
         <div class="week-header-left">
           <span class="week-title">${week.title}</span>
-          <span class="week-count">${evs.length} events</span>
+          <span class="week-count">${evs.length} event${evs.length === 1 ? '' : 's'}</span>
           <span class="week-top">Top ${topScore.toFixed(1)}</span>
         </div>
         <span class="week-chevron">▼</span>
       </div>
-      <div class="week-body">${evs.map(eventCard).join('')}</div>
+      <div class="week-body">${shown.map(eventCard).join('')}${hidden.length
+        ? `<div class="week-extra" id="extra-${week.id}" style="display:none">${hidden.map(eventCard).join('')}</div>` +
+          `<button class="week-showall" data-all="Show all ${evs.length} events" onclick="toggleWeekAll('${week.id}', this)">Show all ${evs.length} events</button>`
+        : ''}</div>
     </div>`;
   }
   if (shownWeeks === 0) {
     const msg = showFavoritesOnly
       ? 'No saved favorites yet. Tap the ☆ on any event to save it.'
-      : 'No upcoming events right now. Check back soon.';
+      : filtering
+        ? `No ${activeFilter.label.toLowerCase()} events in the next few weeks.`
+        : 'No upcoming events right now. Check back soon.';
     html += `<div class="past-body"><div class="card-desc" style="padding:8px 2px">${msg}</div></div>`;
   }
 
@@ -2951,6 +2994,24 @@ function renderEvents() {
 // ACCORDION TOGGLES
 // =============================================
 function toggleWeek(id) { document.getElementById(id).classList.toggle('open'); }
+
+// Coarse event category for the type filter, derived from the freeform `type` string.
+function eventCategory(e) {
+  const t = (e.type || '').toLowerCase();
+  if (/comedy|stand.?up/.test(t)) return 'comedy';
+  if (/family|kids|children/.test(t)) return 'family';
+  if (/music|concert|band|jazz|rock|singer|songwriter|acoustic|orchestra|symphon|quartet|\bdj\b|blues|folk|tribute|pops|chamber|choir|cappella|hip.?hop|funk|soul|country|opera|classical|piano|americana|r&b|reggae|bluegrass|a cappella/.test(t)) return 'music';
+  if (/theat|film|screening|\bart|gallery|dance|broadway|showcase|vocal/.test(t)) return 'arts';
+  return 'other';
+}
+function setTypeFilter(f) { currentTypeFilter = f; renderEvents(); track('filter_type', { type: f }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function toggleWeekAll(id, btn) {
+  const x = document.getElementById('extra-' + id);
+  if (!x) return;
+  const show = x.style.display === 'none';
+  x.style.display = show ? 'block' : 'none';
+  btn.textContent = show ? 'Show fewer' : btn.getAttribute('data-all');
+}
 
 function showView(view) {
   const events = view === 'events';

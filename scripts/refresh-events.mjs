@@ -97,7 +97,7 @@ function applyResearchedScores(events, ratings) {
     const hit = keys.find((k) => nt.includes(k));
     if (hit) {
       const fq = ratings[hit].funQuality;
-      if (typeof fq === 'number') e.score = round1(proxOf(e.town) * 0.4 + fq * 0.6);
+      if (typeof fq === 'number') e.score = round1(proxOf(e.town) * 0.3 + fq * 0.7);
     }
   }
 }
@@ -180,7 +180,7 @@ RULES:
 - Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
-- Score each event: score = Proximity*0.4 + FunQuality*0.6, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
+- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
 - Live music is the heart of this guide. When you find a live-music act, web_search the artist/band BEFORE scoring and look hard for concrete signals of their DRAW: social following (Facebook/Instagram likes), notable venues played (Mohegan Sun / Foxwoods, casino showrooms, theaters, major festivals), national acts they have opened for, chart or press mentions, and review sentiment. Then set FunQuality by tier based on what the research shows:
     - National touring headliner, GRAMMY/charting/critically acclaimed artist: 9-10
     - Established regional act OR a popular tribute/cover band with a real following — e.g. thousands of fans, plays casinos/theaters/large festivals, has opened for or charted alongside national acts, or is a recognized local favorite: 7.5-8.5
