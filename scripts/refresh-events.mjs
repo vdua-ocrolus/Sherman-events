@@ -102,6 +102,22 @@ function applyResearchedScores(events, ratings) {
   }
 }
 
+// Quality curve: the model (and cache) cluster most FunQuality in 7-9, which flattens
+// scores. This deterministically stretches the quality dimension toward the full range
+// (gamma>1 pulls the middle down, keeps the top) so standouts separate from filler.
+// Applied to every event after research overrides, before Vik's floors.
+const GAMMA = 1.7;
+function applyQualityCurve(events) {
+  for (const e of events || []) {
+    if (typeof e.score !== 'number') continue;
+    const p = proxOf(e.town);
+    let fq = (e.score - p * 0.3) / 0.7;          // back out the implied FunQuality
+    fq = Math.max(0, Math.min(10, fq));
+    const curved = 10 * Math.pow(fq / 10, GAMMA); // stretch toward the full 0-10 range
+    e.score = round1(p * 0.3 + curved * 0.7);
+  }
+}
+
 const todayLabel = new Date().toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York',
 });
@@ -177,10 +193,11 @@ From Litchfield Magazine (litchfieldmagazine.com/things-to-do), include the BEST
 
 RULES:
 - Ground every event in a real source and set a real sourceUrl. Do NOT invent events, dates, times, or prices. Accuracy over volume — omit anything you cannot confirm.
+- Quality over quantity — this is a curated guide, not a full calendar. SKIP routine no-draw filler: open-mic nights, generic recurring bar/restaurant background music with no following, tiny library storytimes, and similar. Include an event only if a discerning local would actually consider going.
 - Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
-- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment.
+- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment of how good/worth-it the event is on its own merits — USE THE FULL RANGE and be discerning: most ordinary events are 4-6, reserve 7-8 for genuinely good, 8.5-10 for standout/marquee. A typical week has only a few events at 8+. Do NOT default everything to 7+.
 - Live music is the heart of this guide. When you find a live-music act, web_search the artist/band BEFORE scoring and look hard for concrete signals of their DRAW: social following (Facebook/Instagram likes), notable venues played (Mohegan Sun / Foxwoods, casino showrooms, theaters, major festivals), national acts they have opened for, chart or press mentions, and review sentiment. Then set FunQuality by tier based on what the research shows:
     - National touring headliner, GRAMMY/charting/critically acclaimed artist: 9-10
     - Established regional act OR a popular tribute/cover band with a real following — e.g. thousands of fans, plays casinos/theaters/large festivals, has opened for or charted alongside national acts, or is a recognized local favorite: 7.5-8.5
@@ -227,6 +244,8 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   try { ratings = JSON.parse(await readFile('scripts/band-ratings.json', 'utf8')); } catch { /* no cache yet */ }
   for (const w of obj.weeks) applyResearchedScores(w.events, ratings);
   applyResearchedScores(obj.tonight, ratings);
+  for (const w of obj.weeks) applyQualityCurve(w.events);
+  applyQualityCurve(obj.tonight);
   for (const w of obj.weeks) applyBandFloors(w.events);
   applyBandFloors(obj.tonight);
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
