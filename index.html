@@ -298,6 +298,40 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .week-showall { display: block; width: 100%; margin: 10px 0 2px; padding: 9px; background: transparent; border: 1px dashed var(--border); border-radius: 4px; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; font-family: var(--sans); transition: border-color .15s, background .15s; }
 .week-showall:hover { border-color: var(--gold); background: rgba(212,162,74,.06); }
 
+/* ---- LIST / CALENDAR TOGGLE ---- */
+.view-toggle { display: inline-flex; gap: 2px; background: rgba(10,20,36,.6); border: 1px solid var(--border); border-radius: 20px; padding: 4px; margin: 18px 0 4px; }
+.vt-btn { background: none; border: none; font-family: var(--sans); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; color: var(--muted); padding: 8px 20px; border-radius: 16px; cursor: pointer; transition: color .15s, background .15s; }
+.vt-btn.active { color: var(--ink-dark); background: linear-gradient(180deg,#e7c988,var(--gold)); }
+
+/* ---- CALENDAR ---- */
+.cal-month { margin-bottom: 26px; }
+.cal-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--text); margin: 8px 0 12px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal-dow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; text-align: center; padding: 4px 0; }
+.cal-cell { min-height: 92px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 6px; overflow: hidden; }
+.cal-cell.cal-empty { background: transparent; border: none; min-height: 0; }
+.cal-cell.cal-noev { background: rgba(255,255,255,.015); }
+.cal-cell.cal-today { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.cal-num { font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+.cal-cell.cal-today .cal-num { color: var(--gold-bright); }
+.cal-ev { display: flex; align-items: center; gap: 5px; text-decoration: none; padding: 3px 5px; margin-bottom: 3px; border-radius: 4px; background: rgba(255,255,255,.04); }
+.cal-ev:hover { background: rgba(212,162,74,.12); }
+.cal-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+.cal-dot.score-must { background: var(--gold); }
+.cal-dot.score-great { background: var(--aqua); }
+.cal-dot.score-good { background: var(--score-good); }
+.cal-dot.score-ok { background: var(--score-ok); }
+.cal-ev-t { font-size: 11px; color: var(--ink-soft); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 640px) {
+  .cal-grid { gap: 3px; }
+  .cal-cell { min-height: 56px; padding: 3px; border-radius: 4px; }
+  .cal-num { font-size: 10px; margin-bottom: 2px; }
+  .cal-ev-t { display: none; }
+  .cal-ev { justify-content: flex-start; padding: 2px; gap: 0; background: none; margin-bottom: 2px; }
+  .cal-dot { width: 8px; height: 8px; }
+  .cal-dow { font-size: 8px; letter-spacing: .5px; }
+}
+
 .auth-overlay { position: fixed; inset: 0; background: rgba(23,19,15,.55); z-index: 250; display: none; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
 .auth-overlay.open { display: flex; }
 .auth-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; max-width: 400px; width: 100%; margin: 8vh auto auto; padding: 36px; position: relative; box-shadow: 0 30px 80px rgba(23,19,15,.25); }
@@ -603,6 +637,7 @@ let currentUser = null;        // Firebase user, or null
 let favorites = new Set();     // favorite keys for the signed-in user
 let showFavoritesOnly = false;
 let currentTypeFilter = 'all';   // event-type filter (all | music | family | free | comedy | arts)
+let eventsViewMode = 'list';     // events layout (list | calendar)
 let _eventIndex = {};          // favKey -> { title, dateLabel } for the current render
 let _fb = null;                // { auth, db, authMod, fsMod } once initialized
 
@@ -2935,7 +2970,24 @@ function renderEvents() {
     .map(f => `<button class="filter-chip${f.key === currentTypeFilter ? ' active' : ''}" onclick="setTypeFilter('${f.key}')">${f.label}<span class="fc-count">${counts[f.key]}</span></button>`)
     .join('') + `</div>`;
 
+  // List / Calendar view toggle
+  html += `<div class="view-toggle">
+    <button class="vt-btn${eventsViewMode === 'list' ? ' active' : ''}" onclick="setEventsView('list')">List</button>
+    <button class="vt-btn${eventsViewMode === 'calendar' ? ' active' : ''}" onclick="setEventsView('calendar')">Calendar</button>
+  </div>`;
+
   const filtering = currentTypeFilter !== 'all';
+
+  // Calendar view: month grid of the (filtered) upcoming events
+  if (eventsViewMode === 'calendar') {
+    const calEvents = upcoming.filter(activeFilter.test);
+    const yr = parseInt((d.lastUpdated.match(/\d{4}/) || [])[0], 10) || new Date().getFullYear();
+    html += `<div class="section-label">${filtering ? activeFilter.label : 'Calendar'} · ${calEvents.length} event${calEvents.length === 1 ? '' : 's'}</div>`;
+    html += renderCalendarHTML(calEvents, yr);
+    document.getElementById('eventsContent').innerHTML = html;
+    return;
+  }
+
   const CAP = 8; // collapsed weeks show the top CAP by score; "show all" reveals the rest
   html += `<div class="section-label">${filtering ? activeFilter.label + ' · ' + counts[currentTypeFilter] + ' event' + (counts[currentTypeFilter] === 1 ? '' : 's') : 'Upcoming · sorted by score'}</div>`;
   let shownWeeks = 0;
@@ -3005,6 +3057,62 @@ function eventCategory(e) {
   return 'other';
 }
 function setTypeFilter(f) { currentTypeFilter = f; renderEvents(); track('filter_type', { type: f }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function setEventsView(mode) { eventsViewMode = mode; renderEvents(); track('view_mode', { mode }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+// Parse a "Wed Jul 12" style dateLabel into a Date (year supplied from lastUpdated).
+function parseEventDate(e, year) {
+  const M = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+  const m = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/i.exec(e.dateLabel || '');
+  return m ? new Date(year, M[m[1].toLowerCase()], parseInt(m[2], 10)) : null;
+}
+
+// Month-grid calendar for the given events. Days carry score-colored event chips.
+function renderCalendarHTML(events, year) {
+  const byDay = {};
+  let minD = null, maxD = null;
+  for (const e of events) {
+    const dt = parseEventDate(e, year);
+    if (!dt) continue;
+    const k = dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate();
+    (byDay[k] = byDay[k] || []).push(e);
+    if (!minD || dt < minD) minD = dt;
+    if (!maxD || dt > maxD) maxD = dt;
+  }
+  if (!minD) return `<div class="past-body"><div class="card-desc" style="padding:8px 2px">No dated events to show.</div></div>`;
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const now = new Date();
+  const todayK = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDate();
+  const months = [];
+  let y = minD.getFullYear(), mo = minD.getMonth();
+  while (y < maxD.getFullYear() || (y === maxD.getFullYear() && mo <= maxD.getMonth())) {
+    months.push([y, mo]); mo++; if (mo > 11) { mo = 0; y++; }
+  }
+  let out = '';
+  for (const [yy, mm] of months) {
+    const first = new Date(yy, mm, 1).getDay();
+    const days = new Date(yy, mm + 1, 0).getDate();
+    let cells = '';
+    for (let i = 0; i < first; i++) cells += `<div class="cal-cell cal-empty"></div>`;
+    for (let dnum = 1; dnum <= days; dnum++) {
+      const k = yy + '-' + mm + '-' + dnum;
+      const evs = (byDay[k] || []).slice().sort((a, b) => b.score - a.score);
+      const isToday = k === todayK;
+      const chips = evs.map(e => {
+        const url = e.url || e.sourceUrl || '';
+        const label = cleanText(e.title);
+        const title = `${label} · ${e.score.toFixed(1)}${e.time ? ' · ' + e.time : ''}`;
+        const inner = `<span class="cal-dot ${scoreClass(e.score)}"></span><span class="cal-ev-t">${esc(label)}</span>`;
+        return url
+          ? `<a class="cal-ev" href="${url}" target="_blank" title="${esc(title)}">${inner}</a>`
+          : `<div class="cal-ev" title="${esc(title)}">${inner}</div>`;
+      }).join('');
+      cells += `<div class="cal-cell${isToday ? ' cal-today' : ''}${evs.length ? '' : ' cal-noev'}"><div class="cal-num">${dnum}</div>${chips}</div>`;
+    }
+    out += `<div class="cal-month"><div class="cal-title">${MONTHS[mm]} ${yy}</div><div class="cal-grid">${DOW.map(d => `<div class="cal-dow">${d}</div>`).join('')}${cells}</div></div>`;
+  }
+  return out;
+}
 function toggleWeekAll(id, btn) {
   const x = document.getElementById('extra-' + id);
   if (!x) return;
