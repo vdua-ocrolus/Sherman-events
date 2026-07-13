@@ -106,7 +106,8 @@ function applyResearchedScores(events, ratings) {
 // scores. This deterministically stretches the quality dimension toward the full range
 // (gamma>1 pulls the middle down, keeps the top) so standouts separate from filler.
 // Applied to every event after research overrides, before Vik's floors.
-const GAMMA = 1.5;
+const GAMMA = 1.0; // curve disabled (identity): the full-range prompt now provides the spread;
+                   // stacking the curve on top was double-punishing and cratered good events.
 function applyQualityCurve(events) {
   for (const e of events || []) {
     if (typeof e.score !== 'number') continue;
@@ -273,7 +274,7 @@ RULES:
 - Do NOT carry a recurring series' PRIOR-YEAR date forward (e.g. a summer concert series, "Rock the Block," farmers markets). If only last year's schedule is published and this year's specific date isn't confirmed, OMIT the event. Never reuse a ${CURRENT_YEAR - 1} date and relabel it ${CURRENT_YEAR}.
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
-- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment of how good/worth-it the event is on its own merits — USE THE FULL RANGE and be discerning: most ordinary events are 4-6, reserve 7-8 for genuinely good, 8.5-10 for standout/marquee. A typical week has only a few events at 8+. Do NOT default everything to 7+. But do NOT bury a well-attended FREE community festival or market with real draw (many vendors/artisans, live music, food trucks) — that is a solid family pick, rate it ~6-7, not bottom-tier.
+- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality (0-10) is how good/worth-it the event is on its own merits. Use a sensible spread — do not cluster everything at 7+, but do NOT bury good events either. Guide: 9-10 standout/marquee (major touring act, acclaimed festival); 7.5-8.5 genuinely good; 6-7 solid and worth-it (most established local concerts, town festivals, and markets with real draw — many vendors, live music, food — belong here); 5-6 ordinary; below 5 ONLY for weak or very niche events with little general appeal. A jazz/music festival, a well-attended community festival, or a popular market is NOT a 2-4.
 - Live music is the heart of this guide. When you find a live-music act, web_search the artist/band BEFORE scoring and look hard for concrete signals of their DRAW: social following (Facebook/Instagram likes), notable venues played (Mohegan Sun / Foxwoods, casino showrooms, theaters, major festivals), national acts they have opened for, chart or press mentions, and review sentiment. Then set FunQuality by tier based on what the research shows:
     - National touring headliner, GRAMMY/charting/critically acclaimed artist: 9-10
     - Established regional act OR a popular tribute/cover band with a real following — e.g. thousands of fans, plays casinos/theaters/large festivals, has opened for or charted alongside national acts, or is a recognized local favorite: 7.5-8.5
