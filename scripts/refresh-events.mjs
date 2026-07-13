@@ -258,7 +258,7 @@ async function main() {
 
   const prompt = `You maintain a curated local events guide for the Candlewood Lake area (Fairfield & Litchfield Counties, Connecticut). Today is ${todayLabel} (America/New_York).
 
-Use the web_search and web_fetch tools to research CURRENT upcoming events (today through about 6 weeks out) around Candlewood Lake. First fetch and check these priority source calendars, then web_search each town and venue for current concerts, festivals, markets, and family events:
+Use the web_search and web_fetch tools to research CURRENT upcoming events (today through about 8 weeks out) around Candlewood Lake. First fetch and check these priority source calendars, then web_search each town and venue for current concerts, festivals, markets, and family events:
 ${sourceList}
 
 Also search the towns directly: Sherman, New Fairfield, New Milford, Danbury, Brookfield, Ridgefield, Kent, Washington, Woodbury, Roxbury.
