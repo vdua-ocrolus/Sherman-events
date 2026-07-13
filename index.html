@@ -273,6 +273,9 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .rest-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 5px; }
 .rest-cuisine { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .rest-price { font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
+.tag-new { background: linear-gradient(180deg,#e7c988,var(--gold)); color: var(--ink-dark); border-color: transparent; font-weight: 700; }
+.just-opened { background: rgba(212,162,74,.06); border: 1px solid rgba(212,162,74,.3); border-radius: 8px; padding: 0 16px 8px; margin-bottom: 14px; }
+.jo-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); padding: 13px 0 2px; }
 
 /* ---- ACCOUNTS / AUTH ---- */
 .header-right { display: flex; align-items: center; gap: 14px; }
@@ -2885,13 +2888,15 @@ function renderAlert() {
   </div></div>`;
 }
 
-function restCard(r) {
+function restCard(r, showTown) {
   const name = r.website ? `<a href="${r.website}" target="_blank" rel="noopener">${cleanText(r.name)}</a>` : cleanText(r.name);
   const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
+  const isNew = r.justOpened ? ` <span class="tag tag-new">New</span>` : '';
+  const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}`;
   return `<div class="event-card">
     <div class="card-content">
-      <div class="card-title">${name}${lake}</div>
-      <div class="rest-meta"><span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}</div>
+      <div class="card-title">${name}${isNew}${lake}</div>
+      <div class="rest-meta">${meta}</div>
       <div class="card-desc">${r.note}</div>
     </div>
   </div>`;
@@ -2909,6 +2914,16 @@ function renderRestaurants() {
   });
   let html = `<div class="section-label">Where to Eat · Around the Lake</div>
     <p class="rest-intro">A curated guide to standout tables around Candlewood Lake and the neighboring towns, from the lake's one waterfront deck to Litchfield County institutions. Hours shift seasonally, so call ahead.</p>`;
+
+  // Pin newly-opened spots at the top
+  const newOnes = RESTAURANTS_DATA.filter(r => r.justOpened);
+  if (newOnes.length) {
+    html += `<div class="just-opened">
+      <div class="jo-label">Just Opened</div>
+      ${newOnes.map(r => restCard(r, true)).join('')}
+    </div>`;
+  }
+
   towns.forEach((town, i) => {
     const list = byTown[town];
     const id = 'rest-' + town.toLowerCase().replace(/[^a-z0-9]+/g, '-');
