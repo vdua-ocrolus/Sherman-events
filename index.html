@@ -275,6 +275,8 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .rest-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 5px; }
 .rest-cuisine { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .rest-price { font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
+.rest-stars { font-size: 12px; color: var(--gold-bright); font-weight: 600; letter-spacing: .2px; }
+.score-circle.score-none { color: var(--muted); border-color: var(--border); font-size: 13px; background: transparent; }
 .tag-new { background: linear-gradient(180deg,#e7c988,var(--gold)); color: var(--ink-dark); border-color: transparent; font-weight: 700; }
 .just-opened { background: rgba(212,162,74,.06); border: 1px solid rgba(212,162,74,.3); border-radius: 8px; padding: 0 16px 8px; margin-bottom: 14px; }
 .jo-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); padding: 13px 0 2px; }
@@ -2809,13 +2811,100 @@ const EVENTS_DATA = {
 // RESTAURANTS — curated dining guide (hand-maintained; NOT touched by the daily events refresh)
 // =============================================
 const RESTAURANTS_DATA = [
-  { "name": "Belden House & Mews", "town": "Litchfield", "cuisine": "New American / farm-to-table", "price": "$$$$", "note": "Michelin Key luxury boutique hotel dining room with a seasonal, seafood-forward menu by Chef Tyler Heckman.", "website": "https://beldenhouse.com/", "sourceUrl": "https://www.ctbites.com/blog/2025/11/24/belden-house", "opened": "Mar 2025", "lakeside": false, "justOpened": true },
-  { "name": "The Reserve", "town": "Danbury", "cuisine": "Elevated American", "price": "$$$", "note": "Refined 150-seat room in the former Widow Brown's from the Rein Osteria team, with two bars, a fireplace, and a Wine Spectator 2026 award.", "website": "https://www.dineatthereserve.com/", "sourceUrl": "https://www.ctbites.com/", "opened": "May 2025", "lakeside": false, "justOpened": true },
-  { "name": "tacobarn", "town": "Newtown", "cuisine": "Modern Mexican / Tacos", "price": "$$", "note": "Non-traditional taqueria in a converted Sandy Hook barn from David Boyajian with a menu by four-time Chopped champion Adam Greenberg; duck tacos, crispy mahi, fresh-squeezed tequila cocktails.", "website": "https://eattacobarn.com", "sourceUrl": "https://www.ctbites.com/blog/2025/11/26/tacobarn", "opened": "Nov 2025", "lakeside": false, "justOpened": true },
-  { "name": "The Kent Kitchen", "town": "Kent", "cuisine": "Sushi + American", "price": "$$", "note": "Two kitchens under one roof, a veteran sushi chef (rolls, nigiri, ramen) alongside American plates like the Kent Burger; drawing big early crowds.", "website": "https://www.facebook.com/p/Kent-Kitchen-61577203208918/", "sourceUrl": "https://lakevillejournal.com/sushi-and-sandwiches-draw-large-crowds-to-kent-kitchen", "opened": "Summer 2025", "lakeside": false, "justOpened": true },
-  { "name": "Raven's Bakehouse", "town": "New Milford", "cuisine": "Bakery / European café", "price": "$$", "note": "Gothic, Poe-inspired café on Bank Street with Portuguese and Italian pastries, espresso, and book and tarot nights.", "website": "https://ravensbakehouse.com/", "sourceUrl": "https://westfaironline.com/fairfield/poe-inspired-bakery-cafe-opens-in-new-milford/", "opened": "Oct 2025", "lakeside": false, "justOpened": true },
-  { "name": "Flobee's Roadside Stand", "town": "Ridgefield", "cuisine": "Southern comfort / roadside", "price": "$$", "note": "Southern-style burgers, po'boys, and fried treats in the historic Route 7 ice cream shop building, with shaded outdoor seating.", "website": "https://www.flobees.com/", "sourceUrl": "https://www.ctbites.com/blog/2025/6/13/flobees", "opened": "Jun 2025", "lakeside": false, "justOpened": true },
-  { "name": "Icons Sports Bar & Grill", "town": "New Fairfield", "cuisine": "American / Sports Bar", "price": "$$", "note": "Family-friendly New Fairfield sports bar on Route 39, known for its wings (mango habanero, Thai chili), half-pound burgers, and house-made ranch.", "website": "", "sourceUrl": "https://www.yelp.com/biz/icons-sports-bar-and-grill-new-fairfield", "lakeside": false },
+  {
+    "name": "Belden House & Mews",
+    "town": "Litchfield",
+    "cuisine": "New American / farm-to-table",
+    "price": "$$$$",
+    "note": "Michelin Key luxury boutique hotel dining room with a seasonal, seafood-forward menu by Chef Tyler Heckman.",
+    "website": "https://beldenhouse.com/",
+    "sourceUrl": "https://www.ctbites.com/blog/2025/11/24/belden-house",
+    "opened": "Mar 2025",
+    "lakeside": false,
+    "justOpened": true,
+    "rating": 4.7,
+    "reviews": 80
+  },
+  {
+    "name": "The Reserve",
+    "town": "Danbury",
+    "cuisine": "Elevated American",
+    "price": "$$$",
+    "note": "Refined 150-seat room in the former Widow Brown's from the Rein Osteria team, with two bars, a fireplace, and a Wine Spectator 2026 award.",
+    "website": "https://www.dineatthereserve.com/",
+    "sourceUrl": "https://www.ctbites.com/",
+    "opened": "May 2025",
+    "lakeside": false,
+    "justOpened": true,
+    "rating": 4.3,
+    "reviews": 27
+  },
+  {
+    "name": "tacobarn",
+    "town": "Newtown",
+    "cuisine": "Modern Mexican / Tacos",
+    "price": "$$",
+    "note": "Non-traditional taqueria in a converted Sandy Hook barn from David Boyajian with a menu by four-time Chopped champion Adam Greenberg; duck tacos, crispy mahi, fresh-squeezed tequila cocktails.",
+    "website": "https://eattacobarn.com",
+    "sourceUrl": "https://www.ctbites.com/blog/2025/11/26/tacobarn",
+    "opened": "Nov 2025",
+    "lakeside": false,
+    "justOpened": true
+  },
+  {
+    "name": "The Kent Kitchen",
+    "town": "Kent",
+    "cuisine": "Sushi + American",
+    "price": "$$",
+    "note": "Two kitchens under one roof, a veteran sushi chef (rolls, nigiri, ramen) alongside American plates like the Kent Burger; drawing big early crowds.",
+    "website": "https://www.facebook.com/p/Kent-Kitchen-61577203208918/",
+    "sourceUrl": "https://lakevillejournal.com/sushi-and-sandwiches-draw-large-crowds-to-kent-kitchen",
+    "opened": "Summer 2025",
+    "lakeside": false,
+    "justOpened": true,
+    "rating": 5.0,
+    "reviews": 1
+  },
+  {
+    "name": "Raven's Bakehouse",
+    "town": "New Milford",
+    "cuisine": "Bakery / European café",
+    "price": "$$",
+    "note": "Gothic, Poe-inspired café on Bank Street with Portuguese and Italian pastries, espresso, and book and tarot nights.",
+    "website": "https://ravensbakehouse.com/",
+    "sourceUrl": "https://westfaironline.com/fairfield/poe-inspired-bakery-cafe-opens-in-new-milford/",
+    "opened": "Oct 2025",
+    "lakeside": false,
+    "justOpened": true,
+    "rating": 4.8,
+    "reviews": 25
+  },
+  {
+    "name": "Flobee's Roadside Stand",
+    "town": "Ridgefield",
+    "cuisine": "Southern comfort / roadside",
+    "price": "$$",
+    "note": "Southern-style burgers, po'boys, and fried treats in the historic Route 7 ice cream shop building, with shaded outdoor seating.",
+    "website": "https://www.flobees.com/",
+    "sourceUrl": "https://www.ctbites.com/blog/2025/6/13/flobees",
+    "opened": "Jun 2025",
+    "lakeside": false,
+    "justOpened": true,
+    "rating": 4.0,
+    "reviews": 24
+  },
+  {
+    "name": "Icons Sports Bar & Grill",
+    "town": "New Fairfield",
+    "cuisine": "American / Sports Bar",
+    "price": "$$",
+    "note": "Family-friendly New Fairfield sports bar on Route 39, known for its wings (mango habanero, Thai chili), half-pound burgers, and house-made ranch.",
+    "website": "",
+    "sourceUrl": "https://www.yelp.com/biz/icons-sports-bar-and-grill-new-fairfield",
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 320
+  },
   {
     "name": "American Pie Company",
     "town": "Sherman",
@@ -2824,7 +2913,9 @@ const RESTAURANTS_DATA = [
     "note": "A Sherman fixture since 1993, serving scratch-made comfort food anchored by its chicken pot pie, plus house-baked pies from breakfast through dinner.",
     "website": "http://americanpiecompany.com/home.html",
     "sourceUrl": "https://www.yelp.com/biz/the-american-pie-company-sherman-2",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 920
   },
   {
     "name": "Limoncello Trattoria Napoletana",
@@ -2834,7 +2925,9 @@ const RESTAURANTS_DATA = [
     "note": "A Neapolitan trattoria led by Naples-born chef Giovanni, pairing traditional Southern Italian cooking with live music on Wednesday and Saturday evenings.",
     "website": "https://limoncelloct.com/",
     "sourceUrl": "https://www.yelp.com/biz/limoncello-trattoria-napoletana-sherman",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 65
   },
   {
     "name": "Omakase",
@@ -2844,7 +2937,9 @@ const RESTAURANTS_DATA = [
     "note": "An intimate sushi bar working with fish flown in from Japan, open Tuesday through Sunday.",
     "website": "https://omakasenewfairfield.com/",
     "sourceUrl": "https://omakasenewfairfield.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.8,
+    "reviews": 122
   },
   {
     "name": "Biscotti's Ristorante",
@@ -2854,7 +2949,9 @@ const RESTAURANTS_DATA = [
     "note": "A chef-driven Italian and seafood room from Johnson & Wales graduate Scott Haines, with a bar, outdoor seating, and locally sourced seafood.",
     "website": "https://www.biscottisristorante.net/",
     "sourceUrl": "https://www.opentable.com/r/biscotti-ristorante-new-fairfield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.3,
+    "reviews": 321
   },
   {
     "name": "Greca Mediterranean Kitchen + Bar",
@@ -2864,7 +2961,9 @@ const RESTAURANTS_DATA = [
     "note": "Chef-owner Dino Kolitsas reworks Greek and Mediterranean cooking here, drawing recognition from Connecticut Magazine; open Tuesday through Saturday.",
     "website": "https://www.grecamed.com/",
     "sourceUrl": "https://www.grecamed.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 403
   },
   {
     "name": "Sparrow Bar + Restaurant",
@@ -2874,7 +2973,9 @@ const RESTAURANTS_DATA = [
     "note": "A downtown Bank Street destination from John Bourdeau, with a globe-spanning small-plates menu and a serious bar program.",
     "website": "https://www.sparrowbyjb.com/",
     "sourceUrl": "https://www.yelp.com/biz/sparrow-bar-and-restaurant-new-milford",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 43
   },
   {
     "name": "Cowboy Butter",
@@ -2884,7 +2985,8 @@ const RESTAURANTS_DATA = [
     "note": "Wood-smoked barbecue and steaks on Bank Street from the team behind Waterbury's Hindsight BBQ, open since July 2025.",
     "website": "https://www.cowboybutterbbq.com/",
     "sourceUrl": "https://www.ctbites.com/blog/2026/1/12/cowboy-butter",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5
   },
   {
     "name": "Barbarie's Black Angus Grill",
@@ -2894,7 +2996,9 @@ const RESTAURANTS_DATA = [
     "note": "A family-owned steak and seafood house specializing in dry-aged Black Angus beef, open since 2012.",
     "website": "https://www.blackangusdanbury.com/",
     "sourceUrl": "https://www.blackangusdanbury.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 2127
   },
   {
     "name": "Market Place Kitchen & Bar",
@@ -2904,7 +3008,9 @@ const RESTAURANTS_DATA = [
     "note": "A farm-to-table kitchen sourcing from Connecticut growers, serving lunch and dinner on Mill Plain Road.",
     "website": "https://marketplacekitchenbar.com/locations/danbury",
     "sourceUrl": "https://www.opentable.com/r/market-place-kitchen-and-bar-danbury-danbury",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 899
   },
   {
     "name": "Xay's Kitchen Laos & Thai Cuisine",
@@ -2914,7 +3020,9 @@ const RESTAURANTS_DATA = [
     "note": "A family-run White Street spot for Lao and Thai cooking, known for its papaya salad, Lao sausage, and generous portions; closed Mondays.",
     "website": "https://www.xayskitchen.com/",
     "sourceUrl": "https://www.yelp.com/biz/xays-kitchen-danbury",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 266
   },
   {
     "name": "Amai Sushi",
@@ -2924,7 +3032,9 @@ const RESTAURANTS_DATA = [
     "note": "A low-key sushi counter sourcing much of its fish from Japan through the Fulton Fish Market, noted by CTbites for its sashimi.",
     "website": "https://www.amaisushict.com/",
     "sourceUrl": "https://www.yelp.com/biz/amai-sushi-brookfield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.7,
+    "reviews": 112
   },
   {
     "name": "Portobello Italian Restaurant",
@@ -2934,7 +3044,9 @@ const RESTAURANTS_DATA = [
     "note": "A family-run Italian kitchen serving pizza, grinders, and classic mains since 1997, with a full bar and a climate-controlled patio; closed Mondays.",
     "website": "https://portobelloct.com/",
     "sourceUrl": "https://www.yelp.com/biz/portobello-brookfield-4",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 60
   },
   {
     "name": "Bailey's Backyard",
@@ -2944,7 +3056,9 @@ const RESTAURANTS_DATA = [
     "note": "A 50-seat downtown farm-to-table room established in 1999, with a seasonal menu and weekend brunch.",
     "website": "https://baileysbackyard.com/",
     "sourceUrl": "https://www.yelp.com/biz/baileys-backyard-ridgefield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 374
   },
   {
     "name": "Brasserie Saint Germain",
@@ -2954,7 +3068,8 @@ const RESTAURANTS_DATA = [
     "note": "An upscale Main Street French brasserie from the former Sucre Sale owners, serving classics like steak tartare and lobster alongside a raw bar.",
     "website": "https://www.brasseriesaintgermain.com/",
     "sourceUrl": "https://www.yelp.com/biz/brasserie-saint-germain-ridgefield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.3
   },
   {
     "name": "Tablao Wine Bar & Restaurant",
@@ -2964,7 +3079,9 @@ const RESTAURANTS_DATA = [
     "note": "A Main Street Spanish spot with more than thirty tapas, paella, and a broad wine list, offering indoor and outdoor seating.",
     "website": "https://tablaowinebar.com/ridgefield/",
     "sourceUrl": "https://www.yelp.com/biz/tablao-wine-bar-ridgefield-ridgefield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 152
   },
   {
     "name": "Ore Hill",
@@ -2974,7 +3091,9 @@ const RESTAURANTS_DATA = [
     "note": "A farm-to-table tasting-menu restaurant sourcing from its own Rock Cobble Farm, named to the New York Times' 2023 Restaurant List and serving Friday and Saturday evenings.",
     "website": "https://orehillandswyft.com/",
     "sourceUrl": "https://www.ctbites.com/blog/2026/4/10/ore-hill",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 229
   },
   {
     "name": "Swyft",
@@ -2984,7 +3103,9 @@ const RESTAURANTS_DATA = [
     "note": "The casual wood-fired sibling to Ore Hill in the same historic building, serving Neapolitan sourdough pizzas and seasonal plates Thursday through Sunday.",
     "website": "https://orehillandswyft.com/home/swyft/",
     "sourceUrl": "https://orehillandswyft.com/home/swyft/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 343
   },
   {
     "name": "Fife 'n Drum Restaurant & Inn",
@@ -2994,7 +3115,9 @@ const RESTAURANTS_DATA = [
     "note": "A family-run Kent institution since 1973, known for tableside flambes and a deep wine cellar.",
     "website": "http://fifendrum.com/",
     "sourceUrl": "https://www.yelp.com/biz/fife-n-drum-restaurant-and-inn-kent-3",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.0,
+    "reviews": 287
   },
   {
     "name": "Community Table",
@@ -3004,7 +3127,9 @@ const RESTAURANTS_DATA = [
     "note": "Named the Connecticut Restaurant Association's 2025 Restaurant of the Year, serving a seasonal, locally sourced menu on Route 202, Thursday through Monday.",
     "website": "https://www.communitytablect.com/",
     "sourceUrl": "https://www.communitytablect.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 223
   },
   {
     "name": "Hopkins Inn Restaurant",
@@ -3014,7 +3139,9 @@ const RESTAURANTS_DATA = [
     "note": "A country inn above Lake Waramaug serving contemporary Austrian cuisine, open seasonally from late March through the New Year; closed Mondays.",
     "website": "https://www.thehopkinsinn.com/",
     "sourceUrl": "https://www.thehopkinsinn.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 277
   },
   {
     "name": "The Mayflower Inn & Spa",
@@ -3024,7 +3151,9 @@ const RESTAURANTS_DATA = [
     "note": "The dining room of the Forbes-rated Auberge inn, serving seasonal countryside cuisine under executive chef Luke Dowdy across its Garden Room and Tap Room.",
     "website": "https://auberge.com/mayflower/dine/",
     "sourceUrl": "https://auberge.com/mayflower/dine/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 401
   },
   {
     "name": "Portofino Restaurant & Pizza",
@@ -3034,7 +3163,9 @@ const RESTAURANTS_DATA = [
     "note": "Family-owned Italian restaurant on Route 37 serving New York-style brick-oven pizza, pasta, and classic entrees for more than thirty years.",
     "website": "https://portofinoct.com/",
     "sourceUrl": "https://orderportofinosrestaurant.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.3,
+    "reviews": 224
   },
   {
     "name": "Olde 37 Patio & Grill",
@@ -3044,7 +3175,9 @@ const RESTAURANTS_DATA = [
     "note": "Casual grill on Route 37 known for grass-fed Angus burgers, jumbo hot dogs, oven fries, and hand-spun shakes, with a shaded outdoor patio near Candlewood Lake.",
     "website": "https://www.facebook.com/olde37pandg/",
     "sourceUrl": "https://www.yelp.com/biz/olde-37-patio-and-grill-new-fairfield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 249
   },
   {
     "name": "The Iron Rail",
@@ -3054,7 +3187,8 @@ const RESTAURANTS_DATA = [
     "note": "Casual steakhouse set in an 1889 downtown hotel with a hand-carved mahogany bar at 10 Railroad Street.",
     "website": "https://theironrailct.com/",
     "sourceUrl": "https://www.yelp.com/biz/the-iron-rail-new-milford",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4
   },
   {
     "name": "Housatonic River Brewing",
@@ -3064,7 +3198,9 @@ const RESTAURANTS_DATA = [
     "note": "Craft brewery, tavern, and live-music venue with a large beer garden on the Housatonic River at 30 Kent Road.",
     "website": "https://www.housatonicriverbrewing.com/",
     "sourceUrl": "https://ctvisit.com/listings/housatonic-river-brewing",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 64
   },
   {
     "name": "Yoko Kitchen",
@@ -3074,7 +3210,9 @@ const RESTAURANTS_DATA = [
     "note": "Chinese restaurant on Danbury Road named Connecticut Magazine's best Chinese for Litchfield County and statewide.",
     "website": "https://www.yokokitchen.com/",
     "sourceUrl": "https://www.yelp.com/biz/yoko-kitchen-new-milford-2",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.7,
+    "reviews": 255
   },
   {
     "name": "Zaza's on Main",
@@ -3084,7 +3222,9 @@ const RESTAURANTS_DATA = [
     "note": "Main Street spot serving global small plates, pizzettas, steaks, and seafood with crafted cocktails and live music.",
     "website": "https://www.instagram.com/zazasonmain/",
     "sourceUrl": "https://www.opentable.com/r/zazas-on-main-new-milford",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.8,
+    "reviews": 83
   },
   {
     "name": "Filos Latin Fusion",
@@ -3104,7 +3244,9 @@ const RESTAURANTS_DATA = [
     "note": "Casual farm-to-table tavern on North Main Street serving New American plates sourced from local farms, with craft beer, wine, and cocktails.",
     "website": "http://www.kingsleytavern.com/",
     "sourceUrl": "http://www.kingsleytavern.com/hours",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 179
   },
   {
     "name": "Bull's Bridge Inn",
@@ -3114,7 +3256,9 @@ const RESTAURANTS_DATA = [
     "note": "Historic Route 7 inn of more than two centuries with four dining rooms and a full bar, known for aged steaks and fresh seafood.",
     "website": "https://www.bullsbridge.com/",
     "sourceUrl": "https://www.bullsbridge.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.4,
+    "reviews": 189
   },
   {
     "name": "Wilson's by High Watch",
@@ -3124,7 +3268,9 @@ const RESTAURANTS_DATA = [
     "note": "Breakfast-and-lunch bakery cafe on North Main Street with house-made breads, pastries, sandwiches, and espresso drinks.",
     "website": "https://wilsonsbyhighwatch.com/",
     "sourceUrl": "https://mainstreetmag.com/wilsons-by-high-watch/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 222
   },
   {
     "name": "KPG Kitchen & Bar",
@@ -3134,7 +3280,9 @@ const RESTAURANTS_DATA = [
     "note": "Longtime downtown spot, formerly Kent Pizza Garden, serving thin-crust pizza, homemade pasta, burgers, and seafood at 17 Railroad Street.",
     "website": "https://kentpizzagarden.com/",
     "sourceUrl": "https://www.yelp.com/biz/kpg-kitchen-and-bar-kent",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 3.3,
+    "reviews": 86
   },
   {
     "name": "Luc's Cafe",
@@ -3144,7 +3292,9 @@ const RESTAURANTS_DATA = [
     "note": "Traditional French bistro set in a 200-year-old former blacksmith's shop on Big Shop Lane, known for steak frites, coq au vin, and mussels.",
     "website": "http://www.lucscafe.com/",
     "sourceUrl": "https://www.yelp.com/biz/lucs-cafe-and-restaurant-ridgefield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 305
   },
   {
     "name": "TerraSole Ristorante",
@@ -3154,7 +3304,9 @@ const RESTAURANTS_DATA = [
     "note": "Italian trattoria on Big Shop Lane serving wood-fired steaks, house-made pasta, artisanal pizza, and a list of more than 200 wines.",
     "website": "https://terrasoleridgefield.com/",
     "sourceUrl": "https://terrasoleridgefield.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.6,
+    "reviews": 393
   },
   {
     "name": "Barn Door Restaurant",
@@ -3164,7 +3316,9 @@ const RESTAURANTS_DATA = [
     "note": "Organic, locally sourced kitchen on Ethan Allen Highway with an extensive raw bar and Italian-Mediterranean plates such as paella and hanger steak.",
     "website": "https://barndoorridgefield.com/",
     "sourceUrl": "https://www.tripadvisor.com/Restaurant_Review-g33900-d12513437-Reviews-Barn_Door_Restaurant-Ridgefield_Connecticut.html",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.5,
+    "reviews": 448
   },
   {
     "name": "Mannen Japanese Restaurant",
@@ -3174,7 +3328,9 @@ const RESTAURANTS_DATA = [
     "note": "Ridgefield's original sushi restaurant, open since 2002 on Route 35, also serving hibachi and Chinese dishes.",
     "website": "https://www.mannenrestaurant.com/",
     "sourceUrl": "https://www.mannenrestaurant.com/",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.2,
+    "reviews": 278
   },
   {
     "name": "Gallo Ristorante",
@@ -3184,7 +3340,9 @@ const RESTAURANTS_DATA = [
     "note": "Family-run Italian restaurant on Grove Street serving wood-fired pizzas, homemade pastas, and Italian specialties.",
     "website": "https://galloridgefield.com/",
     "sourceUrl": "https://www.yelp.com/biz/gallo-ristorante-ridgefield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.1,
+    "reviews": 117
   },
   {
     "name": "The Lantern",
@@ -3194,7 +3352,9 @@ const RESTAURANTS_DATA = [
     "note": "Main Street gastropub where Italian-born chef Giuseppe Castellano serves elevated comfort classics and small plates.",
     "website": "https://lanternridgefield.com/",
     "sourceUrl": "https://www.yelp.com/biz/the-lantern-ridgefield",
-    "lakeside": false
+    "lakeside": false,
+    "rating": 4.2,
+    "reviews": 147
   }
 ];
 
@@ -3281,13 +3441,34 @@ function renderAlert() {
   </div></div>`;
 }
 
+// Composite 0-10 score from a review rating, credibility-weighted by review count so a
+// 4.9 with 12 reviews can't outrank a 4.5 with 800 (Bayesian shrink toward the area mean),
+// plus an optional editorial adjustment r.adj. Returns null if no rating data yet.
+function restScore(r) {
+  const R = r.rating;
+  if (typeof R !== 'number') return null;      // no rating -> no score
+  const v = (typeof r.reviews === 'number' && r.reviews > 0) ? r.reviews : 12; // assume low volume if count unknown
+  const m = 50, C = 4.2;                        // prior weight, area-average rating
+  const cred = (v / (v + m)) * R + (m / (v + m)) * C;
+  const s = cred / 5 * 10 + (r.adj || 0);
+  return Math.max(0, Math.min(10, Math.round(s * 10) / 10));
+}
+
 function restCard(r, showTown) {
   const name = r.website ? `<a href="${r.website}" target="_blank" rel="noopener">${cleanText(r.name)}</a>` : cleanText(r.name);
   const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
   const isNew = r.justOpened ? ` <span class="tag tag-new">${r.opened ? 'New · ' + esc(r.opened) : 'New'}</span>` : '';
-  const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}`;
+  const sc = restScore(r);
+  const circle = sc != null
+    ? `<div class="score-circle ${scoreClass(sc)}">${sc.toFixed(1)}</div>`
+    : `<div class="score-circle score-none" title="Not yet rated">–</div>`;
+  const stars = (typeof r.rating === 'number')
+    ? `<span class="rest-stars">★ ${r.rating.toFixed(1)}${typeof r.reviews === 'number' ? ' · ' + r.reviews.toLocaleString() + ' reviews' : ''}</span>`
+    : '';
+  const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}${stars}`;
   const search = esc((r.name + ' ' + r.town + ' ' + r.cuisine + ' ' + (r.note || '')).toLowerCase());
   return `<div class="event-card" data-rsearch="${search}">
+    ${circle}
     <div class="card-content">
       <div class="card-title">${name}${isNew}${lake}</div>
       <div class="rest-meta">${meta}</div>
