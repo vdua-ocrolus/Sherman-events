@@ -141,6 +141,15 @@ function badWeekday(e) {
   return _WD.indexOf(m[1].slice(0, 3).toLowerCase()) !== actual;
 }
 
+// Recurring community series whose current-year dates aren't reliably published online,
+// so the model tends to reuse a prior-year date. Omit until a real date is confirmed
+// (a weekday-consistent stale date can't be caught automatically). Remove a pattern here
+// once the town posts the confirmed current-year schedule.
+const SUPPRESS_TITLES = [
+  /rock the block/i,
+];
+function suppressed(e) { return SUPPRESS_TITLES.some(re => re.test(e.title || '')); }
+
 async function notifySlack(text) {
   const url = process.env.SLACK_WEBHOOK_URL;
   if (!url) return;
@@ -263,9 +272,10 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   // Date sanity: drop events whose stated weekday doesn't match the real weekday of
   // that date this year (guards against guessed or stale prior-year dates).
   let droppedDates = 0;
-  for (const w of obj.weeks) { const n = w.events.length; w.events = w.events.filter(e => !badWeekday(e)); droppedDates += n - w.events.length; }
-  obj.tonight = obj.tonight.filter(e => !badWeekday(e));
-  if (droppedDates) console.log(`Dropped ${droppedDates} event(s) with a mismatched weekday/date.`);
+  const drop = e => badWeekday(e) || suppressed(e);
+  for (const w of obj.weeks) { const n = w.events.length; w.events = w.events.filter(e => !drop(e)); droppedDates += n - w.events.length; }
+  obj.tonight = obj.tonight.filter(e => !drop(e));
+  if (droppedDates) console.log(`Dropped ${droppedDates} event(s) with a mismatched/unconfirmed date.`);
 
   // Researched-score override (band-ratings.json) applied first, then Vik's hard floors.
   let ratings = {};
