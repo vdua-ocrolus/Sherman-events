@@ -167,20 +167,24 @@ const PINNED_EVENTS = [
 ];
 
 function injectPinned(obj) {
+  const ranges = obj.weeks.map(w => {
+    const ds = w.events.map(e => parseMD(e.dateLabel)).filter(Boolean).map(d => d.getTime());
+    return ds.length ? { w, min: Math.min(...ds), max: Math.max(...ds) } : null;
+  }).filter(Boolean);
+  if (!ranges.length) return;
+  const gMin = Math.min(...ranges.map(r => r.min)), gMax = Math.max(...ranges.map(r => r.max));
   for (const p of PINNED_EVENTS) {
     const pd = parseMD(p.dateLabel);
     if (!pd) continue;
-    if (obj.weeks.some(w => w.events.some(e => e.title === p.title))) continue; // already present
+    const t = pd.getTime();
+    if (t < gMin || t > gMax) continue;                                   // outside current window — appears as it advances
+    if (obj.weeks.some(w => w.events.some(e => e.title === p.title))) continue;
     let target = null, bestStart = -Infinity;
-    for (const w of obj.weeks) {
-      const ds = w.events.map(e => parseMD(e.dateLabel)).filter(Boolean).map(d => d.getTime());
-      if (!ds.length) continue;
-      const min = Math.min(...ds), max = Math.max(...ds);
-      if (pd.getTime() >= min && pd.getTime() <= max) { target = w; break; }
-      if (min <= pd.getTime() && min > bestStart) { bestStart = min; target = w; } // latest week starting on/before
+    for (const r of ranges) {
+      if (t >= r.min && t <= r.max) { target = r.w; break; }
+      if (r.min <= t && r.min > bestStart) { bestStart = r.min; target = r.w; }
     }
-    if (!target) target = obj.weeks[0];
-    target.events.push(p);
+    if (target) target.events.push(p);
   }
 }
 
