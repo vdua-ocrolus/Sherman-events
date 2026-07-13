@@ -270,6 +270,8 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 
 /* ---- RESTAURANTS ---- */
 .rest-intro { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -6px 0 14px; max-width: 70ch; }
+.rest-search { width: 100%; margin: 2px 0 14px; }
+.rest-noresults { font-size: 13px; color: var(--muted); padding: 6px 2px 14px; }
 .rest-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 5px; }
 .rest-cuisine { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .rest-price { font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
@@ -2964,6 +2966,7 @@ function venueBadge(e) {
   if (!e.venueType) return '';
   const badges = { caramoor:'badge-caramoor', playhouse:'badge-playhouse', levitt:'badge-levitt', nf:'badge-nf' };
   const labels = { caramoor:'Caramoor', playhouse:'Ridgefield Playhouse', levitt:'Levitt Pavilion', nf:'New Fairfield' };
+  if (!labels[e.venueType]) return ''; // unknown venueType -> no badge (was rendering "undefined")
   return `<div class="venue-badge ${badges[e.venueType]}">${labels[e.venueType]}</div>`;
 }
 
@@ -3037,7 +3040,8 @@ function restCard(r, showTown) {
   const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
   const isNew = r.justOpened ? ` <span class="tag tag-new">${r.opened ? 'New · ' + esc(r.opened) : 'New'}</span>` : '';
   const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}`;
-  return `<div class="event-card">
+  const search = esc((r.name + ' ' + r.town + ' ' + r.cuisine + ' ' + (r.note || '')).toLowerCase());
+  return `<div class="event-card" data-rsearch="${search}">
     <div class="card-content">
       <div class="card-title">${name}${isNew}${lake}</div>
       <div class="rest-meta">${meta}</div>
@@ -3057,14 +3061,22 @@ function renderRestaurants() {
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
   });
   let html = `<div class="section-label">Where to Eat · Around the Lake</div>
-    <p class="rest-intro">A curated guide to standout tables around Candlewood Lake and the neighboring towns, from the lake's one waterfront deck to Litchfield County institutions. Hours shift seasonally, so call ahead.</p>`;
+    <p class="rest-intro">A curated guide to standout tables around Candlewood Lake and the neighboring towns, from the lake's one waterfront deck to Litchfield County institutions. Hours shift seasonally, so call ahead.</p>
+    <input type="text" class="rest-search" id="restSearch" placeholder="Search by name, town, or cuisine (e.g. Kent, sushi)…" oninput="filterRestaurants()" aria-label="Search restaurants">
+    <div class="rest-noresults" id="restNoResults" style="display:none">No matches — try a town (e.g. Kent) or a cuisine (e.g. sushi).</div>`;
 
-  // Pin newly-opened spots at the top
+  // Pin newly-opened spots at the top (collapsible, like the town sections)
   const newOnes = RESTAURANTS_DATA.filter(r => r.justOpened);
   if (newOnes.length) {
-    html += `<div class="just-opened">
-      <div class="jo-label">Just Opened</div>
-      ${newOnes.map(r => restCard(r, true)).join('')}
+    html += `<div class="week-accordion open" id="rest-just-opened">
+      <div class="week-header" onclick="toggleWeek('rest-just-opened')">
+        <div class="week-header-left">
+          <span class="week-title">Just Opened</span>
+          <span class="week-count">${newOnes.length} new</span>
+        </div>
+        <span class="week-chevron">▼</span>
+      </div>
+      <div class="week-body">${newOnes.map(r => restCard(r, true)).join('')}</div>
     </div>`;
   }
 
@@ -3083,6 +3095,37 @@ function renderRestaurants() {
     </div>`;
   });
   el.innerHTML = html;
+}
+
+// Live filter of the restaurant list by name/town/cuisine (no re-render, keeps focus).
+function filterRestaurants() {
+  const q = (document.getElementById('restSearch').value || '').trim().toLowerCase();
+  const jo = document.getElementById('rest-just-opened');
+  const towns = [...document.querySelectorAll('#restaurantsContent .week-accordion')].filter(a => a.id !== 'rest-just-opened');
+  if (!q) {
+    if (jo) { jo.style.display = ''; jo.classList.add('open'); }
+    towns.forEach((a, i) => {
+      a.style.display = '';
+      a.querySelectorAll('.event-card').forEach(c => c.style.display = '');
+      a.classList.toggle('open', i === 0);
+    });
+    document.getElementById('restNoResults').style.display = 'none';
+    return;
+  }
+  if (jo) jo.style.display = 'none'; // its cards duplicate the town cards; hide while searching
+  let total = 0;
+  towns.forEach(a => {
+    let shown = 0;
+    a.querySelectorAll('.event-card').forEach(c => {
+      const match = (c.getAttribute('data-rsearch') || '').includes(q);
+      c.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    a.style.display = shown ? '' : 'none';
+    a.classList.toggle('open', shown > 0);
+    total += shown;
+  });
+  document.getElementById('restNoResults').style.display = total ? 'none' : 'block';
 }
 
 function renderEvents() {
@@ -3215,7 +3258,7 @@ function renderEvents() {
       <div style="font-size:12px;color:var(--muted);margin-bottom:14px">
         <a href="https://darylshouseclub.com/shows/" target="_blank" style="color:var(--gold)">darylshouseclub.com/shows</a> · 845-289-0185
       </div>
-      ${d.daryls.map(s=>`<div class="dh-show"><span class="dh-date">${s.date}</span><span class="dh-name">${s.name}</span><span class="dh-price">${s.price}</span></div>`).join('')}
+      ${(d.daryls||[]).filter(s=>s&&(s.name||s.title)).map(s=>`<div class="dh-show"><span class="dh-date">${s.date||''}</span><span class="dh-name">${esc(s.name||s.title)}</span><span class="dh-price">${esc(s.price||'')}</span></div>`).join('')}
     </div>
   </div>`;
 
