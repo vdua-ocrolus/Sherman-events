@@ -150,6 +150,40 @@ const SUPPRESS_TITLES = [
 ];
 function suppressed(e) { return SUPPRESS_TITLES.some(re => re.test(e.title || '')); }
 
+function parseMD(label) {
+  const m = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/i.exec(label || '');
+  if (!m) return null;
+  const mo = _MO[m[1].slice(0, 3).toLowerCase()];
+  const yr = mo < CURRENT_MONTH ? CURRENT_YEAR + 1 : CURRENT_YEAR;
+  return new Date(yr, mo, parseInt(m[2], 10));
+}
+
+// Hand-confirmed events the model gets wrong (e.g. recurring series it dates from a prior
+// year). Injected into the correct week by date after scoring. SUPPRESS_TITLES catches the
+// model's own wrong copy so these are the only version shown. Dates verified against sources.
+const PINNED_EVENTS = [
+  { score: 8.7, title: "New Milford Rock the Block — Nashville Drive", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Jul 16", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with country cover band Nashville Drive, street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
+  { score: 8.7, title: "New Milford Rock the Block — The Pop Rocks", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Aug 13", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
+];
+
+function injectPinned(obj) {
+  for (const p of PINNED_EVENTS) {
+    const pd = parseMD(p.dateLabel);
+    if (!pd) continue;
+    if (obj.weeks.some(w => w.events.some(e => e.title === p.title))) continue; // already present
+    let target = null, bestStart = -Infinity;
+    for (const w of obj.weeks) {
+      const ds = w.events.map(e => parseMD(e.dateLabel)).filter(Boolean).map(d => d.getTime());
+      if (!ds.length) continue;
+      const min = Math.min(...ds), max = Math.max(...ds);
+      if (pd.getTime() >= min && pd.getTime() <= max) { target = w; break; }
+      if (min <= pd.getTime() && min > bestStart) { bestStart = min; target = w; } // latest week starting on/before
+    }
+    if (!target) target = obj.weeks[0];
+    target.events.push(p);
+  }
+}
+
 async function notifySlack(text) {
   const url = process.env.SLACK_WEBHOOK_URL;
   if (!url) return;
@@ -286,6 +320,8 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   applyQualityCurve(obj.tonight);
   for (const w of obj.weeks) applyBandFloors(w.events);
   applyBandFloors(obj.tonight);
+
+  injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
   if (count === 0) return fail('generated JSON has zero events — refusing to publish an empty guide');
 
