@@ -182,6 +182,16 @@ function weekRange(w) {
   return ds.length ? { min: Math.min(...ds), max: Math.max(...ds) } : null;
 }
 
+// Deterministic sanity floor. The model's per-event scores are volatile (it has cratered a
+// jazz festival to 2.3 while scoring the same festival's other night 8.6). If an event made
+// the curated guide it is at least decent, and a real live-music/festival event is at least
+// good — this bounds the model's worst misses without flattening the top.
+function scoreFloor(e) {
+  const t = (e.type || '').toLowerCase();
+  const music = /music|concert|band|jazz|festival|live|singer|songwriter|orchestra|symphon|quartet|tribute|\bdj\b|blues|folk|funk|soul|country|reggae|rock|pops|cappella|choir/.test(t);
+  return music ? 6 : 5;
+}
+
 function injectPinned(obj) {
   const ranges = obj.weeks.map(w => { const r = weekRange(w); return r ? { w, ...r } : null; }).filter(Boolean);
   if (!ranges.length) return;
@@ -334,6 +344,10 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   applyQualityCurve(obj.tonight);
   for (const w of obj.weeks) applyBandFloors(w.events);
   applyBandFloors(obj.tonight);
+
+  // Deterministic sanity floor against the model's volatile lows
+  for (const w of obj.weeks) for (const e of w.events) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
+  for (const e of obj.tonight) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
 
   injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
