@@ -2561,12 +2561,12 @@ const EVENTS_DATA = {
 // RESTAURANTS — curated dining guide (hand-maintained; NOT touched by the daily events refresh)
 // =============================================
 const RESTAURANTS_DATA = [
-  { "name": "Belden House & Mews", "town": "Litchfield", "cuisine": "New American / farm-to-table", "price": "$$$$", "note": "Michelin Key luxury boutique hotel dining room with a seasonal, seafood-forward menu by Chef Tyler Heckman.", "website": "https://beldenhouse.com/", "sourceUrl": "https://www.ctbites.com/blog/2025/11/24/belden-house", "lakeside": false, "justOpened": true },
-  { "name": "The Reserve", "town": "Danbury", "cuisine": "Elevated American", "price": "$$$", "note": "Refined 150-seat room in the former Widow Brown's from the Rein Osteria team, with two bars, a fireplace, and a Wine Spectator 2026 award.", "website": "https://www.dineatthereserve.com/", "sourceUrl": "https://www.ctbites.com/", "lakeside": false, "justOpened": true },
-  { "name": "tacobarn", "town": "Newtown", "cuisine": "Modern Mexican / Tacos", "price": "$$", "note": "Non-traditional taqueria in a converted Sandy Hook barn from David Boyajian with a menu by four-time Chopped champion Adam Greenberg; duck tacos, crispy mahi, fresh-squeezed tequila cocktails.", "website": "https://eattacobarn.com", "sourceUrl": "https://www.ctbites.com/blog/2025/11/26/tacobarn", "lakeside": false, "justOpened": true },
-  { "name": "The Kent Kitchen", "town": "Kent", "cuisine": "Sushi + American", "price": "$$", "note": "Two kitchens under one roof, a veteran sushi chef (rolls, nigiri, ramen) alongside American plates like the Kent Burger; drawing big early crowds.", "website": "https://www.facebook.com/p/Kent-Kitchen-61577203208918/", "sourceUrl": "https://lakevillejournal.com/sushi-and-sandwiches-draw-large-crowds-to-kent-kitchen", "lakeside": false, "justOpened": true },
-  { "name": "Raven's Bakehouse", "town": "New Milford", "cuisine": "Bakery / European café", "price": "$$", "note": "Gothic, Poe-inspired café on Bank Street with Portuguese and Italian pastries, espresso, and book and tarot nights.", "website": "https://ravensbakehouse.com/", "sourceUrl": "https://westfaironline.com/fairfield/poe-inspired-bakery-cafe-opens-in-new-milford/", "lakeside": false, "justOpened": true },
-  { "name": "Flobee's Roadside Stand", "town": "Ridgefield", "cuisine": "Southern comfort / roadside", "price": "$$", "note": "Southern-style burgers, po'boys, and fried treats in the historic Route 7 ice cream shop building, with shaded outdoor seating.", "website": "https://www.flobees.com/", "sourceUrl": "https://www.ctbites.com/blog/2025/6/13/flobees", "lakeside": false, "justOpened": true },
+  { "name": "Belden House & Mews", "town": "Litchfield", "cuisine": "New American / farm-to-table", "price": "$$$$", "note": "Michelin Key luxury boutique hotel dining room with a seasonal, seafood-forward menu by Chef Tyler Heckman.", "website": "https://beldenhouse.com/", "sourceUrl": "https://www.ctbites.com/blog/2025/11/24/belden-house", "opened": "Mar 2025", "lakeside": false, "justOpened": true },
+  { "name": "The Reserve", "town": "Danbury", "cuisine": "Elevated American", "price": "$$$", "note": "Refined 150-seat room in the former Widow Brown's from the Rein Osteria team, with two bars, a fireplace, and a Wine Spectator 2026 award.", "website": "https://www.dineatthereserve.com/", "sourceUrl": "https://www.ctbites.com/", "opened": "May 2025", "lakeside": false, "justOpened": true },
+  { "name": "tacobarn", "town": "Newtown", "cuisine": "Modern Mexican / Tacos", "price": "$$", "note": "Non-traditional taqueria in a converted Sandy Hook barn from David Boyajian with a menu by four-time Chopped champion Adam Greenberg; duck tacos, crispy mahi, fresh-squeezed tequila cocktails.", "website": "https://eattacobarn.com", "sourceUrl": "https://www.ctbites.com/blog/2025/11/26/tacobarn", "opened": "Nov 2025", "lakeside": false, "justOpened": true },
+  { "name": "The Kent Kitchen", "town": "Kent", "cuisine": "Sushi + American", "price": "$$", "note": "Two kitchens under one roof, a veteran sushi chef (rolls, nigiri, ramen) alongside American plates like the Kent Burger; drawing big early crowds.", "website": "https://www.facebook.com/p/Kent-Kitchen-61577203208918/", "sourceUrl": "https://lakevillejournal.com/sushi-and-sandwiches-draw-large-crowds-to-kent-kitchen", "opened": "Summer 2025", "lakeside": false, "justOpened": true },
+  { "name": "Raven's Bakehouse", "town": "New Milford", "cuisine": "Bakery / European café", "price": "$$", "note": "Gothic, Poe-inspired café on Bank Street with Portuguese and Italian pastries, espresso, and book and tarot nights.", "website": "https://ravensbakehouse.com/", "sourceUrl": "https://westfaironline.com/fairfield/poe-inspired-bakery-cafe-opens-in-new-milford/", "opened": "Oct 2025", "lakeside": false, "justOpened": true },
+  { "name": "Flobee's Roadside Stand", "town": "Ridgefield", "cuisine": "Southern comfort / roadside", "price": "$$", "note": "Southern-style burgers, po'boys, and fried treats in the historic Route 7 ice cream shop building, with shaded outdoor seating.", "website": "https://www.flobees.com/", "sourceUrl": "https://www.ctbites.com/blog/2025/6/13/flobees", "opened": "Jun 2025", "lakeside": false, "justOpened": true },
   { "name": "Icons Sports Bar & Grill", "town": "New Fairfield", "cuisine": "American / Sports Bar", "price": "$$", "note": "Family-friendly New Fairfield sports bar on Route 39, known for its wings (mango habanero, Thai chili), half-pound burgers, and house-made ranch.", "website": "", "sourceUrl": "https://www.yelp.com/biz/icons-sports-bar-and-grill-new-fairfield", "lakeside": false },
   {
     "name": "American Pie Company",
@@ -3035,7 +3035,7 @@ function renderAlert() {
 function restCard(r, showTown) {
   const name = r.website ? `<a href="${r.website}" target="_blank" rel="noopener">${cleanText(r.name)}</a>` : cleanText(r.name);
   const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
-  const isNew = r.justOpened ? ` <span class="tag tag-new">New</span>` : '';
+  const isNew = r.justOpened ? ` <span class="tag tag-new">${r.opened ? 'New · ' + esc(r.opened) : 'New'}</span>` : '';
   const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}`;
   return `<div class="event-card">
     <div class="card-content">
@@ -3605,13 +3605,21 @@ document.getElementById('adminOverlay').addEventListener('click', function(e) {
 // INIT
 // =============================================
 document.addEventListener('DOMContentLoaded', () => {
+  // Self-exclude toggle: open the site with ?me=1 once on a device to stop counting your
+  // own visits (analytics + visit log); ?me=0 re-enables. Stored per-device in localStorage.
+  const meParam = new URLSearchParams(location.search).get('me');
+  if (meParam === '1') localStorage.setItem('cle_exclude', '1');
+  if (meParam === '0') localStorage.removeItem('cle_exclude');
+  const excluded = localStorage.getItem('cle_exclude') === '1';
+  if (excluded) console.log('Candlewood Lake Events: analytics disabled for this device (self-exclude).');
+
   renderAlert();
-  initAnalytics();
+  if (!excluded) initAnalytics();
   initClickTracking();
   initAuth();
   renderEvents();
   renderRestaurants();
-  trackVisit();
+  if (!excluded) trackVisit();
   onFeedbackTypeChange();
 });
 </script>
