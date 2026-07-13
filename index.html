@@ -295,6 +295,10 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .filter-chip.active { border-color: transparent; color: var(--ink-dark); background: linear-gradient(180deg,#e7c988,var(--gold)); }
 .filter-chip .fc-count { opacity: .65; font-weight: 700; margin-left: 4px; }
 .filter-chip.active .fc-count { opacity: .8; }
+.town-select { appearance: none; -webkit-appearance: none; background: transparent; border: 1px solid var(--border); border-radius: 20px; padding: 7px 30px 7px 15px; font-family: var(--sans); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; color: var(--muted); cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: right 14px center, right 9px center; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.town-select:hover { border-color: var(--line-strong); color: var(--text); }
+.town-select:focus { outline: none; border-color: var(--gold); }
+.town-select option { background: var(--surface); color: var(--text); text-transform: none; letter-spacing: 0; }
 .week-showall { display: block; width: 100%; margin: 10px 0 2px; padding: 9px; background: transparent; border: 1px dashed var(--border); border-radius: 4px; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; font-family: var(--sans); transition: border-color .15s, background .15s; }
 .week-showall:hover { border-color: var(--gold); background: rgba(212,162,74,.06); }
 
@@ -638,6 +642,7 @@ let favorites = new Set();     // favorite keys for the signed-in user
 let showFavoritesOnly = false;
 let currentTypeFilter = 'all';   // event-type filter (all | music | family | free | comedy | arts)
 let eventsViewMode = 'list';     // events layout (list | calendar)
+let currentTown = 'all';         // town/location filter
 let _eventIndex = {};          // favKey -> { title, dateLabel } for the current render
 let _fb = null;                // { auth, db, authMod, fsMod } once initialized
 
@@ -2961,14 +2966,26 @@ function renderEvents() {
     { key: 'comedy', label: 'Comedy', test: e => eventCategory(e) === 'comedy' },
     { key: 'arts', label: 'Theater & Arts', test: e => eventCategory(e) === 'arts' },
   ];
-  const counts = {};
-  for (const f of FILTERS) counts[f.key] = upcoming.filter(f.test).length;
   if (!FILTERS.find(f => f.key === currentTypeFilter)) currentTypeFilter = 'all';
   const activeFilter = FILTERS.find(f => f.key === currentTypeFilter);
+
+  // Town options reflect the active type filter; type counts reflect the active town.
+  const townCounts = {};
+  for (const e of upcoming.filter(activeFilter.test)) { const k = townKey(e.town); if (k) townCounts[k] = (townCounts[k] || 0) + 1; }
+  if (currentTown !== 'all' && !townCounts[currentTown]) currentTown = 'all';
+  const townMatch = e => currentTown === 'all' || townKey(e.town) === currentTown;
+  const townFiltered = upcoming.filter(townMatch);
+  const counts = {};
+  for (const f of FILTERS) counts[f.key] = townFiltered.filter(f.test).length;
+  const towns = Object.keys(townCounts).sort((a, b) => townCounts[b] - townCounts[a] || a.localeCompare(b));
+
   html += `<div class="filter-bar">` + FILTERS
     .filter(f => f.key === 'all' || counts[f.key] > 0)
     .map(f => `<button class="filter-chip${f.key === currentTypeFilter ? ' active' : ''}" onclick="setTypeFilter('${f.key}')">${f.label}<span class="fc-count">${counts[f.key]}</span></button>`)
-    .join('') + `</div>`;
+    .join('') +
+    `<select class="town-select" onchange="setTown(this.value)" aria-label="Filter by town"><option value="all"${currentTown === 'all' ? ' selected' : ''}>All towns</option>` +
+    towns.map(t => `<option value="${esc(t)}"${t === currentTown ? ' selected' : ''}>${esc(t)} (${townCounts[t]})</option>`).join('') +
+    `</select></div>`;
 
   // List / Calendar view toggle
   html += `<div class="view-toggle">
@@ -2977,30 +2994,34 @@ function renderEvents() {
   </div>`;
 
   const filtering = currentTypeFilter !== 'all';
+  const narrowing = filtering || currentTown !== 'all';
+  const passes = e => activeFilter.test(e) && townMatch(e);
+  const scopeLabel = [filtering ? activeFilter.label : null, currentTown !== 'all' ? 'in ' + currentTown : null].filter(Boolean).join(' ');
 
   // Calendar view: month grid of the (filtered) upcoming events
   if (eventsViewMode === 'calendar') {
-    const calEvents = upcoming.filter(activeFilter.test);
+    const calEvents = upcoming.filter(passes);
     const yr = parseInt((d.lastUpdated.match(/\d{4}/) || [])[0], 10) || new Date().getFullYear();
-    html += `<div class="section-label">${filtering ? activeFilter.label : 'Calendar'} · ${calEvents.length} event${calEvents.length === 1 ? '' : 's'}</div>`;
+    html += `<div class="section-label">${scopeLabel || 'Calendar'} · ${calEvents.length} event${calEvents.length === 1 ? '' : 's'}</div>`;
     html += renderCalendarHTML(calEvents, yr);
     document.getElementById('eventsContent').innerHTML = html;
     return;
   }
 
   const CAP = 8; // collapsed weeks show the top CAP by score; "show all" reveals the rest
-  html += `<div class="section-label">${filtering ? activeFilter.label + ' · ' + counts[currentTypeFilter] + ' event' + (counts[currentTypeFilter] === 1 ? '' : 's') : 'Upcoming · sorted by score'}</div>`;
+  const totalMatch = upcoming.filter(passes).length;
+  html += `<div class="section-label">${narrowing ? scopeLabel + ' · ' + totalMatch + ' event' + (totalMatch === 1 ? '' : 's') : 'Upcoming · sorted by score'}</div>`;
   let shownWeeks = 0;
   for (const week of d.weeks) {
-    let evs = favFilter(week.events.filter(notPast)).filter(activeFilter.test);
+    let evs = favFilter(week.events.filter(notPast)).filter(passes);
     if (!evs.length) continue;
     shownWeeks++;
     evs = [...evs].sort((a, b) => b.score - a.score);
     const topScore = evs[0].score;
-    const capped = !filtering && evs.length > CAP;
+    const capped = !narrowing && evs.length > CAP;
     const shown = capped ? evs.slice(0, CAP) : evs;
     const hidden = capped ? evs.slice(CAP) : [];
-    const open = week.open || showFavoritesOnly || filtering;
+    const open = week.open || showFavoritesOnly || narrowing;
     html += `<div class="week-accordion${open ? ' open' : ''}" id="${week.id}">
       <div class="week-header" onclick="toggleWeek('${week.id}')">
         <div class="week-header-left">
@@ -3019,8 +3040,8 @@ function renderEvents() {
   if (shownWeeks === 0) {
     const msg = showFavoritesOnly
       ? 'No saved favorites yet. Tap the ☆ on any event to save it.'
-      : filtering
-        ? `No ${activeFilter.label.toLowerCase()} events in the next few weeks.`
+      : narrowing
+        ? `No ${scopeLabel.toLowerCase()} events in the next few weeks.`
         : 'No upcoming events right now. Check back soon.';
     html += `<div class="past-body"><div class="card-desc" style="padding:8px 2px">${msg}</div></div>`;
   }
@@ -3058,6 +3079,9 @@ function eventCategory(e) {
 }
 function setTypeFilter(f) { currentTypeFilter = f; renderEvents(); track('filter_type', { type: f }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function setEventsView(mode) { eventsViewMode = mode; renderEvents(); track('view_mode', { mode }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function setTown(t) { currentTown = t; renderEvents(); track('filter_town', { town: t }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+// Normalize a town string to a clean display key (strip state suffix).
+function townKey(t) { return (t || '').replace(/,\s*(ct|ny|ma|connecticut|new york)\s*$/i, '').replace(/\s+/g, ' ').trim(); }
 
 // Parse a "Wed Jul 12" style dateLabel into a Date (year supplied from lastUpdated).
 function parseEventDate(e, year) {
