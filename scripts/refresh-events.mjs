@@ -166,11 +166,23 @@ const PINNED_EVENTS = [
   { score: 8.7, title: "New Milford Rock the Block — The Pop Rocks", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Aug 13", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
 ];
 
+// A week's declared date span, parsed from its title (e.g. "July 27 – August 2",
+// "August 10–16"); falls back to its events' date range.
+function weekRange(w) {
+  const m = /([a-z]+)\s+(\d{1,2})\s*[–-]\s*(?:([a-z]+)\s+)?(\d{1,2})/i.exec(w.title || '');
+  const mo1 = m && _MO[m[1].slice(0, 3).toLowerCase()];
+  if (m && mo1 != null) {
+    const mo2 = m[3] ? _MO[m[3].slice(0, 3).toLowerCase()] : mo1;
+    const y1 = mo1 < CURRENT_MONTH ? CURRENT_YEAR + 1 : CURRENT_YEAR;
+    const y2 = mo2 < CURRENT_MONTH ? CURRENT_YEAR + 1 : CURRENT_YEAR;
+    return { min: new Date(y1, mo1, +m[2]).getTime(), max: new Date(y2, mo2, +m[4]).getTime() };
+  }
+  const ds = w.events.map(e => parseMD(e.dateLabel)).filter(Boolean).map(d => d.getTime());
+  return ds.length ? { min: Math.min(...ds), max: Math.max(...ds) } : null;
+}
+
 function injectPinned(obj) {
-  const ranges = obj.weeks.map(w => {
-    const ds = w.events.map(e => parseMD(e.dateLabel)).filter(Boolean).map(d => d.getTime());
-    return ds.length ? { w, min: Math.min(...ds), max: Math.max(...ds) } : null;
-  }).filter(Boolean);
+  const ranges = obj.weeks.map(w => { const r = weekRange(w); return r ? { w, ...r } : null; }).filter(Boolean);
   if (!ranges.length) return;
   const gMin = Math.min(...ranges.map(r => r.min)), gMax = Math.max(...ranges.map(r => r.max));
   for (const p of PINNED_EVENTS) {
@@ -179,12 +191,8 @@ function injectPinned(obj) {
     const t = pd.getTime();
     if (t < gMin || t > gMax) continue;                                   // outside current window — appears as it advances
     if (obj.weeks.some(w => w.events.some(e => e.title === p.title))) continue;
-    let target = null, bestStart = -Infinity;
-    for (const r of ranges) {
-      if (t >= r.min && t <= r.max) { target = r.w; break; }
-      if (r.min <= t && r.min > bestStart) { bestStart = r.min; target = r.w; }
-    }
-    if (target) target.events.push(p);
+    const hit = ranges.find(r => t >= r.min && t <= r.max);
+    if (hit) hit.w.events.push(p);
   }
 }
 
