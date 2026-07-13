@@ -280,8 +280,9 @@ RULES:
     - Genuine local bar/pickup band, open mic, or an act with little or no public profile: 6-7.5
   IMPORTANT: a band being a "cover" or "tribute" act does NOT by itself put it in the bottom tier — judge it by its draw. Many Connecticut tribute/cover bands pack casino venues or headline town concerts and belong at 7.5-8.5. Do NOT underrate a popular regional band, and do NOT underrate a nationally known act just because the room is small. Only drop an act to 6-7.5 if the research genuinely turns up little following. Live music is a priority, so a well-regarded act should surface near the top.
 - Keep the daryls[] quick-reference list current from the Daryl's House content.
+- COVER A FULL 8 WEEKS: build about 8 consecutive weekly buckets in weeks[] (Week 1 = this week, through ~8 weeks out). Do NOT stop at 5 weeks just because the current block below has fewer. The later weeks (6-8) will be sparser and that is fine, but create them and include every confirmed event you find that far out; an under-populated late week is OK, a missing one is not.
 
-Reproduce the EXACT schema and field names of the CURRENT block below.
+Reproduce the EXACT schema and field names of the CURRENT block below (but extend weeks[] to ~8 weeks as above).
 
 CURRENT BLOCK:
 ${existingBlock}
