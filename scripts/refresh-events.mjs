@@ -121,6 +121,25 @@ function applyQualityCurve(events) {
 const todayLabel = new Date().toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York',
 });
+// Current year/month in ET, for the date-sanity guard.
+const _nowET = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+const CURRENT_YEAR = _nowET.getFullYear();
+const CURRENT_MONTH = _nowET.getMonth();
+
+// Drop events whose stated weekday doesn't match the real weekday of that calendar
+// date this year (catches wrong/guessed/stale dates). Only checks entries that carry
+// a "Weekday Mon DD" dateLabel; leaves ambiguous ones alone.
+const _WD = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const _MO = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+function badWeekday(e) {
+  const m = /\b(sun|mon|tue|wed|thu|fri|sat)\w*[\s,]+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/i.exec(e.dateLabel || '');
+  if (!m) return false;
+  const mo = _MO[m[2].slice(0, 3).toLowerCase()];
+  const day = parseInt(m[3], 10);
+  const yr = mo < CURRENT_MONTH ? CURRENT_YEAR + 1 : CURRENT_YEAR; // handle year rollover
+  const actual = new Date(yr, mo, day).getDay();
+  return _WD.indexOf(m[1].slice(0, 3).toLowerCase()) !== actual;
+}
 
 async function notifySlack(text) {
   const url = process.env.SLACK_WEBHOOK_URL;
@@ -195,6 +214,8 @@ RULES:
 - Ground every event in a real source and set a real sourceUrl. Do NOT invent events, dates, times, or prices. Accuracy over volume — omit anything you cannot confirm.
 - Quality over quantity — this is a curated guide, not a full calendar. SKIP routine no-draw filler: open-mic nights, generic recurring bar/restaurant background music with no following, tiny library storytimes, and similar. Include an event only if a discerning local would actually consider going.
 - Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
+- DATES ARE CRITICAL — do not guess. Only include an event on a date you can confirm from a source for THIS year (${CURRENT_YEAR}). Its dateLabel weekday MUST match the real weekday of that calendar date in ${CURRENT_YEAR} (e.g., if unsure, omit rather than guess).
+- Do NOT carry a recurring series' PRIOR-YEAR date forward (e.g. a summer concert series, "Rock the Block," farmers markets). If only last year's schedule is published and this year's specific date isn't confirmed, OMIT the event. Never reuse a ${CURRENT_YEAR - 1} date and relabel it ${CURRENT_YEAR}.
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
 - Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality is your 0-10 judgment of how good/worth-it the event is on its own merits — USE THE FULL RANGE and be discerning: most ordinary events are 4-6, reserve 7-8 for genuinely good, 8.5-10 for standout/marquee. A typical week has only a few events at 8+. Do NOT default everything to 7+.
@@ -238,6 +259,13 @@ When you have finished researching, your FINAL message must be ONLY the updated 
     return fail('generated JSON missing required shape (weeks[], lastUpdated)');
   }
   for (const k of ['tonight', 'past', 'daryls']) if (!Array.isArray(obj[k])) obj[k] = [];
+
+  // Date sanity: drop events whose stated weekday doesn't match the real weekday of
+  // that date this year (guards against guessed or stale prior-year dates).
+  let droppedDates = 0;
+  for (const w of obj.weeks) { const n = w.events.length; w.events = w.events.filter(e => !badWeekday(e)); droppedDates += n - w.events.length; }
+  obj.tonight = obj.tonight.filter(e => !badWeekday(e));
+  if (droppedDates) console.log(`Dropped ${droppedDates} event(s) with a mismatched weekday/date.`);
 
   // Researched-score override (band-ratings.json) applied first, then Vik's hard floors.
   let ratings = {};
