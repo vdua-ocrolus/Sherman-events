@@ -186,10 +186,37 @@ function weekRange(w) {
 // jazz festival to 2.3 while scoring the same festival's other night 8.6). If an event made
 // the curated guide it is at least decent, and a real live-music/festival event is at least
 // good — this bounds the model's worst misses without flattening the top.
+// Proximity-aware minimum score so genuine categories aren't buried by a stingy model
+// score. Real local community events (carnivals, fairs, fireworks, parades) get a higher
+// quality floor so a hometown happening surfaces instead of sitting at the bottom.
 function scoreFloor(e) {
   const t = (e.type || '').toLowerCase();
-  const music = /music|concert|band|jazz|festival|live|singer|songwriter|orchestra|symphon|quartet|tribute|\bdj\b|blues|folk|funk|soul|country|reggae|rock|pops|cappella|choir/.test(t);
-  return music ? 6 : 5;
+  let minFq;
+  if (/carnival|fair|fireworks|parade|festival|block party|street fair/.test(t)) minFq = 7.0;   // marquee local community event
+  else if (/market|craft|community/.test(t)) minFq = 6.0;                                        // routine community event
+  else if (/music|concert|band|jazz|live|singer|songwriter|orchestra|symphon|quartet|tribute|\bdj\b|blues|folk|funk|soul|country|reggae|rock|pops|cappella|choir/.test(t)) minFq = 5.5;
+  else minFq = 4.5;
+  return round1(proxOf(e.town) * 0.3 + minFq * 0.7);
+}
+
+// Value/cost adjustment: for the same quality, a free or lower-cost event is a better pick
+// than a pricey one. Free gets a boost; cheap a small bump; expensive (e.g. $100+ tickets) a
+// trim. Parses priceType/priceLabel.
+function valueAdj(e) {
+  const label = e.priceLabel || '';
+  if ((e.priceType || '').toLowerCase() === 'free' || /free/i.test(label + ' ' + (e.type || ''))) return 0.6;
+  const m = /\$(\d+)/.exec(label);
+  if (!m) return 0;                 // unknown price -> neutral
+  const d = parseInt(m[1], 10);
+  if (d <= 20) return 0.2;          // e.g. $15 brewery show
+  if (d <= 50) return 0;
+  if (d <= 90) return -0.4;
+  return -0.8;                      // e.g. $106 Daryl's ticket
+}
+function applyValueAdj(events) {
+  for (const e of events || []) {
+    if (typeof e.score === 'number') e.score = round1(Math.max(0, Math.min(10, e.score + valueAdj(e))));
+  }
 }
 
 function injectPinned(obj) {
@@ -348,6 +375,10 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   // Deterministic sanity floor against the model's volatile lows
   for (const w of obj.weeks) for (const e of w.events) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
   for (const e of obj.tonight) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
+  // Value/cost as the final tweak so free/affordable gets a real lift above the floor and
+  // pricey tickets get trimmed (applied before pinned events, which keep their hand-set scores).
+  for (const w of obj.weeks) applyValueAdj(w.events);
+  applyValueAdj(obj.tonight);
 
   injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
