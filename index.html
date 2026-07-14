@@ -3741,23 +3741,39 @@ function setTown(t) { currentTown = t; renderEvents(); track('filter_town', { to
 function townKey(t) { return (t || '').replace(/,\s*(ct|ny|ma|connecticut|new york)\s*$/i, '').replace(/\s+/g, ' ').trim(); }
 
 // Parse a "Wed Jul 12" style dateLabel into a Date (year supplied from lastUpdated).
-function parseEventDate(e, year) {
+// Parse start/end dates from a dateLabel like "Tue Jul 14 – Sat Jul 18" (single day -> start == end).
+function parseEventRange(e, year) {
   const M = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
-  const m = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/i.exec(e.dateLabel || '');
-  return m ? new Date(year, M[m[1].toLowerCase()], parseInt(m[2], 10)) : null;
+  const label = e.dateLabel || '';
+  const re = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/gi;
+  const found = []; let m;
+  while ((m = re.exec(label))) found.push([M[m[1].toLowerCase()], parseInt(m[2], 10)]);
+  if (!found.length) return null;
+  const start = new Date(year, found[0][0], found[0][1]);
+  let end = start;
+  if (found.length > 1 && /[–—-]/.test(label)) {                       // a dash + a second date = a range
+    end = new Date(year, found[1][0], found[1][1]);
+    if (end < start) end = new Date(year + 1, found[1][0], found[1][1]); // year wrap (Dec – Jan)
+  }
+  return { start, end };
 }
 
 // Month-grid calendar for the given events. Days carry score-colored event chips.
+// Multi-day events (carnivals, festival runs) fill every day they run.
 function renderCalendarHTML(events, year) {
   const byDay = {};
   let minD = null, maxD = null;
   for (const e of events) {
-    const dt = parseEventDate(e, year);
-    if (!dt) continue;
-    const k = dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate();
-    (byDay[k] = byDay[k] || []).push(e);
-    if (!minD || dt < minD) minD = dt;
-    if (!maxD || dt > maxD) maxD = dt;
+    const r = parseEventRange(e, year);
+    if (!r) continue;
+    const spanDays = Math.round((r.end - r.start) / 86400000);
+    const last = spanDays > 21 ? new Date(r.start) : r.end;            // very long series: mark the start day only
+    for (let d = new Date(r.start); d <= last; d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1)) {
+      const k = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+      (byDay[k] = byDay[k] || []).push(e);
+    }
+    if (!minD || r.start < minD) minD = r.start;
+    if (!maxD || last > maxD) maxD = last;
   }
   if (!minD) return `<div class="past-body"><div class="card-desc" style="padding:8px 2px">No dated events to show.</div></div>`;
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
