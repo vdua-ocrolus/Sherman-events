@@ -275,7 +275,8 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .rest-meta { display: flex; flex-wrap: wrap; gap: 5px 12px; align-items: baseline; margin-bottom: 5px; }
 .rest-cuisine { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .rest-price { font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
-.rest-stars { font-size: 12px; color: var(--gold-bright); font-weight: 600; letter-spacing: .2px; white-space: nowrap; }
+.rest-stars { font-size: 12px; color: var(--gold-bright); font-weight: 600; letter-spacing: .2px; white-space: nowrap; text-decoration: none; }
+.rest-stars:hover { text-decoration: underline; }
 .score-circle.score-none { color: var(--muted); border-color: var(--border); font-size: 13px; background: transparent; }
 .tag-new { background: linear-gradient(180deg,#e7c988,var(--gold)); color: var(--ink-dark); border-color: transparent; font-weight: 700; white-space: nowrap; }
 .just-opened { background: rgba(212,162,74,.06); border: 1px solid rgba(212,162,74,.3); border-radius: 8px; padding: 0 16px 8px; margin-bottom: 14px; }
@@ -3460,16 +3461,37 @@ function restScore(r) {
   return Math.max(0, Math.min(10, Math.round(s * 10) / 10));
 }
 
+// Approximate months since a restaurant opened, from r.opened ("Oct 2025", "Summer 2025",
+// "2026"). Returns null if unparseable.
+function openedMonthsAgo(opened) {
+  if (!opened) return null;
+  const M = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11, spring:3,summer:6,fall:9,autumn:9,winter:0 };
+  const s = opened.toLowerCase();
+  const m = /([a-z]+)\s+(\d{4})/.exec(s);
+  let mo, yr;
+  if (m && M[m[1]] != null) { mo = M[m[1]]; yr = +m[2]; }
+  else { const y = /(\d{4})/.exec(s); if (!y) return null; yr = +y[1]; mo = 5; }
+  const now = new Date();
+  return (now.getFullYear() - yr) * 12 + (now.getMonth() - mo);
+}
+// "New" expires ~a year after opening (auto — no manual un-flagging needed).
+function restIsNew(r) {
+  if (!r.justOpened) return false;
+  const months = openedMonthsAgo(r.opened);
+  return months == null || months <= 12;
+}
+
 function restCard(r, showTown) {
   const name = r.website ? `<a href="${r.website}" target="_blank" rel="noopener">${cleanText(r.name)}</a>` : cleanText(r.name);
   const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
-  const isNew = r.justOpened ? ` <span class="tag tag-new">${r.opened ? 'New · ' + esc(r.opened) : 'New'}</span>` : '';
+  const isNew = restIsNew(r) ? ` <span class="tag tag-new">${r.opened ? 'New · ' + esc(r.opened) : 'New'}</span>` : '';
   const sc = restScore(r);
   const circle = sc != null
     ? `<div class="score-circle ${scoreClass(sc)}">${sc.toFixed(1)}</div>`
     : `<div class="score-circle score-none" title="Not yet rated">–</div>`;
+  const gUrl = r.googleUrl || `https://www.google.com/search?q=${encodeURIComponent(r.name + ' ' + r.town + ' CT')}`;
   const stars = (typeof r.rating === 'number')
-    ? `<span class="rest-stars">★ ${r.rating.toFixed(1)}${typeof r.reviews === 'number' ? ' · ' + r.reviews.toLocaleString() + ' review' + (r.reviews === 1 ? '' : 's') : ''}</span>`
+    ? `<a class="rest-stars" href="${gUrl}" target="_blank" rel="noopener" title="See Google reviews">★ ${r.rating.toFixed(1)}${typeof r.reviews === 'number' ? ' · ' + r.reviews.toLocaleString() + ' review' + (r.reviews === 1 ? '' : 's') : ''}</a>`
     : '';
   const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}${stars}`;
   const search = esc((r.name + ' ' + r.town + ' ' + r.cuisine + ' ' + (r.note || '')).toLowerCase());
@@ -3499,7 +3521,7 @@ function renderRestaurants() {
     <div class="rest-noresults" id="restNoResults" style="display:none">No matches — try a town (e.g. Kent) or a cuisine (e.g. sushi).</div>`;
 
   // Pin newly-opened spots at the top (collapsible, like the town sections)
-  const newOnes = RESTAURANTS_DATA.filter(r => r.justOpened);
+  const newOnes = RESTAURANTS_DATA.filter(restIsNew);
   if (newOnes.length) {
     html += `<div class="week-accordion open" id="rest-just-opened">
       <div class="week-header" onclick="toggleWeek('rest-just-opened')">
