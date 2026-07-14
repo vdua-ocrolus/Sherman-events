@@ -272,12 +272,12 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .rest-intro { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -6px 0 14px; max-width: 70ch; }
 .rest-search { width: 100%; margin: 2px 0 14px; }
 .rest-noresults { font-size: 13px; color: var(--muted); padding: 6px 2px 14px; }
-.rest-meta { display: flex; gap: 12px; align-items: baseline; margin-bottom: 5px; }
+.rest-meta { display: flex; flex-wrap: wrap; gap: 5px 12px; align-items: baseline; margin-bottom: 5px; }
 .rest-cuisine { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .rest-price { font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 700; }
-.rest-stars { font-size: 12px; color: var(--gold-bright); font-weight: 600; letter-spacing: .2px; }
+.rest-stars { font-size: 12px; color: var(--gold-bright); font-weight: 600; letter-spacing: .2px; white-space: nowrap; }
 .score-circle.score-none { color: var(--muted); border-color: var(--border); font-size: 13px; background: transparent; }
-.tag-new { background: linear-gradient(180deg,#e7c988,var(--gold)); color: var(--ink-dark); border-color: transparent; font-weight: 700; }
+.tag-new { background: linear-gradient(180deg,#e7c988,var(--gold)); color: var(--ink-dark); border-color: transparent; font-weight: 700; white-space: nowrap; }
 .just-opened { background: rgba(212,162,74,.06); border: 1px solid rgba(212,162,74,.3); border-radius: 8px; padding: 0 16px 8px; margin-bottom: 14px; }
 .jo-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); padding: 13px 0 2px; }
 
@@ -3469,7 +3469,7 @@ function restCard(r, showTown) {
     ? `<div class="score-circle ${scoreClass(sc)}">${sc.toFixed(1)}</div>`
     : `<div class="score-circle score-none" title="Not yet rated">–</div>`;
   const stars = (typeof r.rating === 'number')
-    ? `<span class="rest-stars">★ ${r.rating.toFixed(1)}${typeof r.reviews === 'number' ? ' · ' + r.reviews.toLocaleString() + ' reviews' : ''}</span>`
+    ? `<span class="rest-stars">★ ${r.rating.toFixed(1)}${typeof r.reviews === 'number' ? ' · ' + r.reviews.toLocaleString() + ' review' + (r.reviews === 1 ? '' : 's') : ''}</span>`
     : '';
   const meta = `${showTown ? `<span class="rest-cuisine">${esc(r.town)}</span>` : ''}<span class="rest-cuisine">${r.cuisine}</span>${r.price ? `<span class="rest-price">${r.price}</span>` : ''}${stars}`;
   const search = esc((r.name + ' ' + r.town + ' ' + r.cuisine + ' ' + (r.note || '')).toLowerCase());
