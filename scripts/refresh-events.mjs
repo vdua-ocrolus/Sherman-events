@@ -219,6 +219,22 @@ function applyValueAdj(events) {
   }
 }
 
+// Inherently free-admission community events (town carnivals, fireworks, parades, block
+// parties, street fairs) have no gate fee unless a ticket price is listed. Normalize so they
+// read "Free" and get the free-value boost, instead of a stray "paid" tag from the source.
+// Match on event TYPE/title keywords only, not org names (Lions/fire-dept also run ticketed
+// galas and balls, which must stay paid).
+function normalizeCommunityFree(events) {
+  const freeType = /carnival|fireworks|parade|block party|street fair/i;
+  for (const e of events || []) {
+    const hasPrice = /\$\d/.test(e.priceLabel || '');
+    if (!hasPrice && (e.priceType || '') !== 'free' && freeType.test((e.type || '') + ' ' + (e.title || ''))) {
+      e.priceType = 'free';
+      e.priceLabel = 'Free';
+    }
+  }
+}
+
 function injectPinned(obj) {
   const ranges = obj.weeks.map(w => { const r = weekRange(w); return r ? { w, ...r } : null; }).filter(Boolean);
   if (!ranges.length) return;
@@ -377,6 +393,8 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   for (const e of obj.tonight) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
   // Value/cost as the final tweak so free/affordable gets a real lift above the floor and
   // pricey tickets get trimmed (applied before pinned events, which keep their hand-set scores).
+  for (const w of obj.weeks) normalizeCommunityFree(w.events);
+  normalizeCommunityFree(obj.tonight);
   for (const w of obj.weeks) applyValueAdj(w.events);
   applyValueAdj(obj.tonight);
 
