@@ -502,7 +502,7 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
   <details class="scoring-note view-events fold">
     <summary><span class="fold-title">How Events Are Scored</span><span class="fold-chevron">▼</span></summary>
     <div class="fold-body">
-    <p>Combined = (Proximity × 0.3) + (Fun/Quality × 0.7). Proximity by town: Sherman 10, New Fairfield 9.5, New Milford 9.5, Brookfield 8.5, Danbury 8, Ridgefield 8, Kent 7.5, New Preston 7.5, Woodbury 7.5, Roxbury 7.5, Caramoor (Katonah) 7.5, Pawling 7.5, Litchfield 7, Torrington 6.5. Lake-local only — towns beyond ~25 mi (Norfolk, Hartford, Westport) are excluded.</p>
+    <p>Combined = (Proximity × 0.3) + (Fun/Quality × 0.7). Proximity by town: Sherman 10, New Fairfield 9.5, New Milford 9.5, Brookfield 8.5, Danbury 8, Ridgefield 8, Kent 7.5, New Preston 7.5, Woodbury 7.5, Roxbury 7.5, Caramoor (Katonah) 7.5, Pawling 7.5, Litchfield 7, Torrington 6.5, Levitt/Westport 6.5. Lake-local: towns beyond ~25 mi (Norfolk, Hartford) are excluded; Levitt Pavilion (Westport) is kept for its free concerts.</p>
     <div class="scoring-grid">
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-must)"></div><span>9.0+ Must Go</span></div>
       <div class="score-key"><div class="score-key-dot" style="background:var(--score-great)"></div><span>7.0–8.9 Great</span></div>
@@ -1128,6 +1128,26 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 6,
+          "title": "Dogs In A Pile",
+          "url": "https://levittpavilion.com/2026/02/24/dogs-in-a-pile-2/",
+          "dateLabel": "Fri Jul 17",
+          "time": "6:00PM",
+          "venue": "Levitt Pavilion",
+          "venueType": "levitt",
+          "town": "Westport, CT",
+          "dist": "~35 mi",
+          "type": "Jam Band / Rock",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "One of the busiest touring acts on the jam scene, playing an average of 130 shows a year since 2022, Dogs In A Pile bring their growing catalog of original psychedelic-tinged jazz-funk rock to Levitt's riverside stage.",
+          "source": "levittpavilion.com",
+          "sourceUrl": "https://levittpavilion.com/calendar/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         }
       ]
     },
@@ -1455,6 +1475,26 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 7.9,
+          "title": "Desert Highway — A Tribute to the Eagles",
+          "url": "https://levittpavilion.com/2026/07/02/desert-highway-july25/",
+          "dateLabel": "Sat Jul 25",
+          "time": "7:30PM",
+          "venue": "Levitt Pavilion",
+          "venueType": "levitt",
+          "town": "Westport, CT",
+          "dist": "~35 mi",
+          "type": "Eagles Tribute",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Long Island-based Eagles tribute band of studio and touring veterans delivers rich vocal harmonies and intricate guitar work with no pre-recorded tracks, running through the Eagles' catalog plus Don Henley and Joe Walsh solo hits.",
+          "source": "levittpavilion.com",
+          "sourceUrl": "https://levittpavilion.com/calendar/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         }
       ]
     },
@@ -1759,6 +1799,26 @@ const EVENTS_DATA = {
           "desc": "World-renowned violinist Gil Shaham, a Caramoor favorite since 1994, joins the Orchestra of St. Luke's — a mainstay of New York's classical scene at Carnegie Hall — for Barber's Violin Concerto to close the summer season.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.0,
+          "title": "Danny Lipsitz & The Brass Tacks",
+          "url": "https://levittpavilion.com/2026/07/02/danny-lipsitz/",
+          "dateLabel": "Sun Aug 2",
+          "time": "7:00PM",
+          "venue": "Levitt Pavilion",
+          "venueType": "levitt",
+          "town": "Westport, CT",
+          "dist": "~35 mi",
+          "type": "Swing / Jump Blues / Rock 'n' Roll",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "NYC bandleader Danny Lipsitz leads The Brass Tacks through swing, jump blues, klezmer, and early rock 'n' roll; the group has headlined at Lincoln Center's Summer for the City and played the Levitt Pavilion, Joe's Pub, and Mohonk Mountain House.",
+          "source": "levittpavilion.com",
+          "sourceUrl": "https://levittpavilion.com/calendar/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
