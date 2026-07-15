@@ -27,6 +27,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          EVENTS_MODEL: ${{ vars.EVENTS_MODEL }}   # optional repo variable to override the model; empty = script default
         run: node scripts/refresh-events.mjs
       - name: Commit and push if changed
         run: |

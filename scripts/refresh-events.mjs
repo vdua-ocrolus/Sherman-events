@@ -16,7 +16,7 @@ import Anthropic from '@anthropic-ai/sdk';
 const INDEX = 'index.html';
 const START = '/* EVENTS_DATA:START';
 const END = '/* EVENTS_DATA:END */';
-const MODEL = process.env.EVENTS_MODEL || 'claude-sonnet-5';
+const MODEL = process.env.EVENTS_MODEL || 'claude-haiku-4-5';
 
 // Priority calendars to fetch/search. (web_fetch can only fetch URLs present in the
 // conversation, so listing them here lets the model pull them directly.)
@@ -286,10 +286,9 @@ async function research(prompt) {
   let messages = [{ role: 'user', content: prompt }];
   let msg;
   for (let i = 0; i < 8; i++) {
-    const stream = client.messages.stream({
+    const req = {
       model: MODEL,
       max_tokens: 48000, // headroom for the full events JSON (more sources = more events)
-      thinking: { type: 'disabled' }, // deterministic output; tool use still works
       // Basic tool variants (no code-execution dynamic filtering) so paused turns
       // resume with a plain resend — no container_id juggling.
       tools: [
@@ -297,7 +296,12 @@ async function research(prompt) {
         { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: 20 },
       ],
       messages,
-    });
+    };
+    // Keep thinking OFF for deterministic output. Models 4.6+ (Sonnet 5, Opus) need the
+    // explicit disabled flag — omitting it turns adaptive thinking ON. Haiku 4.5 and older
+    // don't accept the flag; they're thinking-off by default, so we just omit it.
+    if (!/haiku/i.test(MODEL)) req.thinking = { type: 'disabled' };
+    const stream = client.messages.stream(req);
     msg = await stream.finalMessage();
     if (msg.stop_reason === 'pause_turn') {
       messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
