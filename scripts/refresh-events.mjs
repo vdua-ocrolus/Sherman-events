@@ -25,7 +25,6 @@ const SOURCES = [
   ["Daryl's House", 'https://darylshouseclub.com/shows/'],
   ['Caramoor', 'https://caramoor.org/events/concerts'],
   ['Ridgefield Playhouse', 'https://ridgefieldplayhouse.org/events/'],
-  ['Levitt Pavilion', 'https://levittpavilion.com/calendar/'],
   ['Sherman CT', 'https://www.shermanct.gov/municipal-calendar-list---community-events'],
   ['New Milford', 'https://www.newmilfordnow.org/events'],
   ['Housatonic River Brewing', 'https://www.housatonicriverbrewing.com/livemusic-events'],
@@ -33,7 +32,6 @@ const SOURCES = [
   ['Litchfield Magazine', 'https://litchfieldmagazine.com/things-to-do/'],
   ['A.C.T. of Connecticut', 'https://www.actofct.org/season'],
   ['Palace Danbury', 'https://thepalacedanbury.com/'],
-  ['Infinity Music Hall', 'https://www.infinityhall.com/Events/'],
   ['Warner Theatre', 'https://www.warnertheatre.org/events/'],
   ['Danbury (town)', 'https://www.danbury-ct.gov/calendar.aspx'],
   ['Brookfield (town)', 'https://brookfieldct.gov/calendar'],
@@ -72,8 +70,14 @@ const PROX = {
   'sherman': 10, 'new fairfield': 9.5, 'new milford': 9.5, 'brookfield': 8.5,
   'danbury': 8, 'ridgefield': 8, 'kent': 7.5, 'new preston': 7.5, 'washington': 7.5,
   'woodbury': 7.5, 'roxbury': 7.5, 'katonah': 7.5, 'pawling': 7.5, 'litchfield': 7,
-  'norfolk': 6.5, 'torrington': 6.5, 'westport': 6.5, 'hartford': 5.5,
+  'torrington': 6.5,
 };
+
+// Towns beyond the ~25 mi lake radius. Events here are dropped entirely — the guide is
+// lake-local, and a great act 30-50 min away shouldn't crowd out closer options. Matched
+// against the event town (case-insensitive).
+const EXCLUDE_TOWNS = /norfolk|hartford|west\s?port|woodbridge|new haven|waterbury|bridgeport|stamford|norwalk/i;
+function isExcludedTown(e) { return EXCLUDE_TOWNS.test(e && e.town || ''); }
 function norm(s) {
   return (s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
@@ -317,17 +321,18 @@ ${sourceList}
 
 Also search the towns directly: Sherman, New Fairfield, New Milford, Danbury, Brookfield, Ridgefield, Kent, Washington, Woodbury, Roxbury.
 
-From Litchfield Magazine (litchfieldmagazine.com/things-to-do), include the BEST standout weekend picks even when they are a bit farther out in Litchfield County (e.g., Woodbury, Roxbury, Norfolk, Washington, Kent, New Milford). Open the individual event pages as needed to confirm the venue, town, date, and time; omit any you cannot confirm.
+From Litchfield Magazine (litchfieldmagazine.com/things-to-do), include the BEST standout weekend picks even when they are a bit farther out in Litchfield County (e.g., Woodbury, Roxbury, Washington, Kent, New Milford, Litchfield, Torrington). Open the individual event pages as needed to confirm the venue, town, date, and time; omit any you cannot confirm.
 
 RULES:
 - Ground every event in a real source and set a real sourceUrl. Do NOT invent events, dates, times, or prices. Accuracy over volume — omit anything you cannot confirm.
 - Quality over quantity — this is a curated guide, not a full calendar. SKIP routine no-draw filler: open-mic nights, generic recurring bar/restaurant background music with no following, tiny library storytimes, and similar. Include an event only if a discerning local would actually consider going.
 - Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
+- STAY LOCAL — this is a Candlewood Lake guide, roughly a 25-mile radius. Do NOT include events in Norfolk, Hartford, Westport, Woodbridge, New Haven, Waterbury, Bridgeport, Stamford, Norwalk, or anywhere ~30+ minutes away, no matter how good the act. Farthest acceptable towns: Litchfield, Torrington, Woodbury, Kent, Katonah/Caramoor, Pawling.
 - DATES ARE CRITICAL — do not guess. Only include an event on a date you can confirm from a source for THIS year (${CURRENT_YEAR}). Its dateLabel weekday MUST match the real weekday of that calendar date in ${CURRENT_YEAR} (e.g., if unsure, omit rather than guess).
 - Do NOT carry a recurring series' PRIOR-YEAR date forward (e.g. a summer concert series, "Rock the Block," farmers markets). If only last year's schedule is published and this year's specific date isn't confirmed, OMIT the event. Never reuse a ${CURRENT_YEAR - 1} date and relabel it ${CURRENT_YEAR}.
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
-- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5. FunQuality (0-10) is how good/worth-it the event is on its own merits. Use a sensible spread — do not cluster everything at 7+, but do NOT bury good events either. Guide: 9-10 standout/marquee (major touring act, acclaimed festival); 7.5-8.5 genuinely good; 6-7 solid and worth-it (most established local concerts, town festivals, and markets with real draw — many vendors, live music, food — belong here); 5-6 ordinary; below 5 ONLY for weak or very niche events with little general appeal. A jazz/music festival, a well-attended community festival, or a popular market is NOT a 2-4.
+- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Pawling=7.5, Litchfield=7, Torrington=6.5. FunQuality (0-10) is how good/worth-it the event is on its own merits. Use a sensible spread — do not cluster everything at 7+, but do NOT bury good events either. Guide: 9-10 standout/marquee (major touring act, acclaimed festival); 7.5-8.5 genuinely good; 6-7 solid and worth-it (most established local concerts, town festivals, and markets with real draw — many vendors, live music, food — belong here); 5-6 ordinary; below 5 ONLY for weak or very niche events with little general appeal. A jazz/music festival, a well-attended community festival, or a popular market is NOT a 2-4.
 - Live music is the heart of this guide. When you find a live-music act, web_search the artist/band BEFORE scoring and look hard for concrete signals of their DRAW: social following (Facebook/Instagram likes), notable venues played (Mohegan Sun / Foxwoods, casino showrooms, theaters, major festivals), national acts they have opened for, chart or press mentions, and review sentiment. Then set FunQuality by tier based on what the research shows:
     - National touring headliner, GRAMMY/charting/critically acclaimed artist: 9-10
     - Established regional act OR a popular tribute/cover band with a real following — e.g. thousands of fans, plays casinos/theaters/large festivals, has opened for or charted alongside national acts, or is a recognized local favorite: 7.5-8.5
@@ -370,13 +375,17 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   }
   for (const k of ['tonight', 'past', 'daryls']) if (!Array.isArray(obj[k])) obj[k] = [];
 
-  // Date sanity: drop events whose stated weekday doesn't match the real weekday of
-  // that date this year (guards against guessed or stale prior-year dates).
-  let droppedDates = 0;
-  const drop = e => badWeekday(e) || suppressed(e);
+  // Drop events that: (a) have a stated weekday that doesn't match the real weekday of that
+  // date this year (guards guessed/stale prior-year dates), (b) are suppressed titles, or
+  // (c) are outside the ~25 mi lake radius (Norfolk, Hartford, Westport, etc.).
+  let droppedDates = 0, droppedFar = 0;
+  const drop = e => {
+    if (isExcludedTown(e)) { droppedFar++; return true; }
+    return badWeekday(e) || suppressed(e);
+  };
   for (const w of obj.weeks) { const n = w.events.length; w.events = w.events.filter(e => !drop(e)); droppedDates += n - w.events.length; }
   obj.tonight = obj.tonight.filter(e => !drop(e));
-  if (droppedDates) console.log(`Dropped ${droppedDates} event(s) with a mismatched/unconfirmed date.`);
+  if (droppedDates) console.log(`Dropped ${droppedDates} event(s): ${droppedFar} out-of-radius, rest mismatched/unconfirmed dates.`);
 
   // Researched-score override (band-ratings.json) applied first, then Vik's hard floors.
   let ratings = {};
