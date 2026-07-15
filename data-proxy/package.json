@@ -1,0 +1,9 @@
+{
+  "name": "candlewood-data-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless proxy holding the GitHub token server-side for candlewoodlakeevents.com",
+  "engines": {
+    "node": ">=18"
+  }
+}
