@@ -619,14 +619,12 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 const CONFIG = {
   // No secrets in this file (public repo). Data reads/writes go through a
   // serverless proxy that holds the GitHub token server-side (see /data-proxy).
-  // Set API_BASE to the deployed proxy origin, e.g.
-  //   'https://candlewood-data-proxy.vercel.app/api'
-  // Until then, API_CONFIGURED is false and the site uses localStorage only.
-  API_BASE: '',
-  // Interim local-only admin gate, used ONLY when API_BASE is empty.
-  // NOTE: this file is PUBLIC — this value is world-readable in the page source, so it
-  // is not a real secret. Real admin auth is server-side (ADMIN_PASSWORD env on the proxy).
-  ADMIN_PASSWORD: 'f896bm',
+  // Deployed serverless proxy (holds the GitHub token server-side; see /data-proxy).
+  API_BASE: 'https://candlewood-data-proxy.vercel.app/api',
+  // Admin auth is server-side now (ADMIN_PASSWORD env on the proxy). This client value is
+  // only the fallback gate used when API_BASE is empty; kept blank so no password ships in
+  // the public source.
+  ADMIN_PASSWORD: '',
   // Google Analytics 4. A measurement ID (e.g. 'G-XXXXXXXXXX') is public and
   // safe in client source. Leave empty to disable; set it to turn on analytics.
   GA_MEASUREMENT_ID: 'G-S1MBZX85Q9',
