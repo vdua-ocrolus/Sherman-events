@@ -1,0 +1,29 @@
+name: Weekly digest email
+
+on:
+  schedule:
+    # Thursday 13:00 UTC ≈ 9:00 AM ET — lands before the weekend.
+    - cron: '0 13 * * 4'
+  workflow_dispatch:
+    inputs:
+      test_to:
+        description: 'Send only to this email (test). Leave blank to send to all subscribers.'
+        required: false
+        default: ''
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Send weekly digest
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          DIGEST_FROM: ${{ vars.DIGEST_FROM }}         # optional override; script has a default
+          DIGEST_TEST_TO: ${{ github.event.inputs.test_to }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: node scripts/send-digest.mjs
