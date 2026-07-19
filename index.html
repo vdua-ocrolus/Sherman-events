@@ -793,92 +793,38 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Jul 18, 2026",
+  "lastUpdated": "Jul 19, 2026",
   "tonight": [
     {
-      "score": 8.7,
-      "title": "The Pop Rocks (80's Theme Party)",
-      "time": "7:00PM–10:00PM",
+      "score": 7.2,
+      "title": "The Resounders",
+      "time": "4:00PM–7:00PM",
       "venue": "Housatonic River Brewing",
       "town": "New Milford"
-    },
-    {
-      "score": 7.6,
-      "title": "Facelift - The Ultimate Alice In Chains Tribute",
-      "time": "8:00PM",
-      "venue": "Daryl's House",
-      "town": "Pawling, NY"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · July 18–19 (This Week)",
+      "title": "Week 1 · July 19–25 (This Week)",
       "open": true,
       "events": [
         {
-          "score": 7.6,
-          "title": "Facelift - The Ultimate Alice In Chains Tribute",
-          "url": "https://darylshouseclub.com/shows/",
-          "dateLabel": "Sat Jul 18",
-          "time": "8:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Grunge Tribute",
-          "priceType": "paid",
+          "score": 7.1,
+          "title": "Karaoke & Lip Sync Night",
+          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-07-23-19-00",
+          "dateLabel": "Thu Jul 23",
+          "time": "7:00PM–9:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Karaoke / Entertainment",
+          "priceType": "free",
           "priceLabel": null,
-          "desc": "Established in 1994, Facelift is the officially endorsed and longest-running Alice In Chains tribute band in the world.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week2",
-      "title": "Week 2 · July 20–26",
-      "open": true,
-      "events": [
-        {
-          "score": 8.7,
-          "title": "Yächtley Crëw — 'Seas The Night' World Tour",
-          "url": "https://ridgefieldplayhouse.org/event/yachtley-crew-ridgefield-ct-2026/",
-          "dateLabel": "Tue Jul 21",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Yacht Rock Tribute",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "LA's premier yacht rock tribute — 'Sailing,' 'What a Fool Believes,' the whole canon.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.6,
-          "title": "Nektar — King Crimson & Ian McDonald Tribute Tour",
-          "url": "https://darylshouseclub.com/shows/",
-          "dateLabel": "Wed Jul 22",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Progressive Rock",
-          "priceType": "paid",
-          "priceLabel": "$33.84–$55.47",
-          "desc": "For more than 50 years, Nektar has taken fans on audio-visual journeys with their immersive blend of sight and sound; this tour pays tribute to King Crimson and Ian McDonald.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "desc": "Step into the spotlight on the HRB stage in a high energy, extremely welcoming and supportive atmosphere. Hosted by Rich of HRB Trivia Fame!",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -905,10 +851,10 @@ const EVENTS_DATA = {
         },
         {
           "score": 8.1,
-          "title": "Direct From Sweden — The Music of ABBA",
+          "title": "Direct From Sweden – The Music of ABBA",
           "url": "https://ridgefieldplayhouse.org/event/direct-from-sweden-abba-ridgefield-ct-2026/",
           "dateLabel": "Thu Jul 23",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -948,7 +894,7 @@ const EVENTS_DATA = {
           "title": "Zarna Garg — Million Dollar Excuses",
           "url": "https://ridgefieldplayhouse.org/event/zarna-garg-ridgefield-ct-july-2026/",
           "dateLabel": "Fri Jul 24",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -964,7 +910,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.8,
+          "score": 10,
           "title": "Psychedelic Relics — CityCenter Danbury Summer Concert Series",
           "url": "https://citycenterdanbury.com/event/psychedelic-relics/",
           "dateLabel": "Fri Jul 24",
@@ -979,46 +925,6 @@ const EVENTS_DATA = {
           "desc": "The Psychedelic Relics, a female-fronted six-piece tribute to the most iconic music of the 1960s, bring British Invasion, Motown, and psychedelic classics to the free CityCenter Green concert series.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.6,
-          "title": "Caramoor Jazz Festival — Emmet Cohen Trio & all-day lineup",
-          "url": "https://caramoor.org/event/jazz-festival-2026",
-          "dateLabel": "Sat Jul 25",
-          "time": "12:30PM–9:00PM",
-          "venue": "Caramoor Grounds",
-          "venueType": "caramoor",
-          "town": "Katonah, NY",
-          "dist": "~25 mi",
-          "type": "Jazz Festival",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Presented in collaboration with Jazz at Lincoln Center, Caramoor's all-day jazz festival is headlined by the Emmet Cohen Trio, whose leader has performed in over 40 countries at venues including the Village Vanguard, Carnegie Hall, and the Newport Jazz Festival.",
-          "source": "caramoor.org",
-          "sourceUrl": "https://caramoor.org/events/concerts",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.6,
-          "title": "Litchfield Jazz Festival 2026 — Mainstage Saturday (Jimmy Greene, Steve Davis, Paul Bollenback, Curtis Brothers Trio)",
-          "url": "https://litchfieldjazzfest.com/",
-          "dateLabel": "Sat Jul 25",
-          "time": "2:00PM–8:15PM",
-          "venue": "Thomas S. Perakos Arts and Community Center, The Frederick Gunn School",
-          "venueType": "litchfield",
-          "town": "Washington, CT",
-          "dist": "~20 mi",
-          "type": "Jazz Festival",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A full day of mainstage jazz sets opening with Steve Davis and Mike DiRubbo, plus Jimmy Greene — who joined the first Litchfield Jazz Camp faculty in 1997 — Paul Bollenback, and the Curtis Brothers Trio.",
-          "source": "litchfieldjazzfest.com",
-          "sourceUrl": "https://litchfieldjazzfest.com/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1048,7 +954,7 @@ const EVENTS_DATA = {
           "title": "Dokken",
           "url": "https://ridgefieldplayhouse.org/event/dokken-ridgefield-ct-2026/",
           "dateLabel": "Sat Jul 25",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1059,6 +965,26 @@ const EVENTS_DATA = {
           "desc": "80s hard rock legends — 'Breaking the Chains,' 'Dream Warriors.' Classic metal night.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.6,
+          "title": "Litchfield Jazz Festival 2026 — Mainstage Saturday (Jimmy Greene, Steve Davis, Paul Bollenback, Curtis Brothers Trio)",
+          "url": "https://litchfieldjazzfest.com/",
+          "dateLabel": "Sat Jul 25",
+          "time": "2:00PM–8:15PM",
+          "venue": "Thomas S. Perakos Arts and Community Center, The Frederick Gunn School",
+          "venueType": "litchfield",
+          "town": "Washington, CT",
+          "dist": "~20 mi",
+          "type": "Jazz Festival",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A full day of mainstage jazz sets opening with Steve Davis and Mike DiRubbo, plus Jimmy Greene — who joined the first Litchfield Jazz Camp faculty in 1997 — Paul Bollenback, and the Curtis Brothers Trio.",
+          "source": "litchfieldjazzfest.com",
+          "sourceUrl": "https://litchfieldjazzfest.com/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1079,26 +1005,6 @@ const EVENTS_DATA = {
           "desc": "Ridgefield's biggest community block party, drawing thousands for a day full of fun, discovery and connection, with 100+ vendors on Main Street, the Farmers Market, Touch-A-Truck, live music and entertainment.",
           "source": "chamber.inridgefield.com",
           "sourceUrl": "https://chamber.inridgefield.com/summerfest-2026/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.3,
-          "title": "Art Garfunkel: What a Wonderful World Celebration",
-          "url": "https://ridgefieldplayhouse.org/event/art-garfunkel-ridgefield-ct-2026/",
-          "dateLabel": "Tue Jul 28",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Legend / Folk Pop",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Art Garfunkel in an intimate Ridgefield Playhouse setting. His voice is singular.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1126,16 +1032,16 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week3",
-      "title": "Week 3 · July 27 – August 2",
-      "open": false,
+      "id": "week2",
+      "title": "Week 2 · July 27 – August 2",
+      "open": true,
       "events": [
         {
           "score": 10,
           "title": "Danbury International Festival — \"United Danbury\"",
           "url": "https://citycenterdanbury.com/event/danbury-international-festival/",
           "dateLabel": "Mon Jul 27",
-          "time": "1PM–9PM",
+          "time": "1:00PM–9:00PM",
           "venue": "Danbury CityCenter Green",
           "venueType": "danbury",
           "town": "Danbury, CT",
@@ -1195,7 +1101,7 @@ const EVENTS_DATA = {
           "title": "Atomic Habitz ft. Marcus King, Chris Dave & MonoNeon",
           "url": "https://ridgefieldplayhouse.org/event/live-outside-atomic-habitz-ridgefield-ct-2026/",
           "dateLabel": "Fri Jul 31",
-          "time": "7PM",
+          "time": "7:00PM",
           "venue": "Ridgefield Playhouse (Live Outside)",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1213,7 +1119,7 @@ const EVENTS_DATA = {
         {
           "score": 6.1,
           "title": "Trouble No More (Night One): A Celebration of the Allman Brothers Band",
-          "url": "https://darylshouseclub.com/tm-attraction/comet-and-crown/",
+          "url": "https://darylshouseclub.com/shows/",
           "dateLabel": "Fri Jul 31",
           "time": "8:00PM",
           "venue": "Daryl's House",
@@ -1226,26 +1132,6 @@ const EVENTS_DATA = {
           "desc": "All-star musicians including GRAMMY-nominated vocalist Lamar Williams Jr. and 5x-GRAMMY-nominated keyboardist Peter Levin celebrate the early catalogue of the Allman Brothers Band.",
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.2,
-          "title": "Sherman Volunteer Fire Department 2026 Firemen's Ball",
-          "url": "https://shermanct.com/events/view/26",
-          "dateLabel": "Sat Aug 1",
-          "time": "4:30PM",
-          "venue": "Sherman Fire Emergency Services Facility",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~3 mi",
-          "type": "Community Fundraiser / Party",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "The Sherman Volunteer Fire Department's annual Firemen's Ball returns for a groovy throwback night out supporting the local department.",
-          "source": "shermanct.com",
-          "sourceUrl": "https://shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1275,7 +1161,7 @@ const EVENTS_DATA = {
           "title": "PHANTOGRAM",
           "url": "https://ridgefieldplayhouse.org/event/live-outside-phantogram-ridgefield-ct-2026/",
           "dateLabel": "Sat Aug 1",
-          "time": "7PM",
+          "time": "7:00PM",
           "venue": "Ridgefield Playhouse (Live Outside)",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1293,7 +1179,7 @@ const EVENTS_DATA = {
         {
           "score": 8.4,
           "title": "Caramoor American Roots Music Festival — Southern Avenue (headliner)",
-          "url": "https://caramoor.org/event/american-roots-music-festival-2026",
+          "url": "https://caramoor.org/events/concerts",
           "dateLabel": "Sat Aug 1",
           "time": "12:30PM onwards",
           "venue": "Caramoor Grounds",
@@ -1333,7 +1219,7 @@ const EVENTS_DATA = {
         {
           "score": 7,
           "title": "Mamma Mania — America's Premier ABBA Tribute",
-          "url": "https://thepalacedanbury1.ticketspice.com/mamma-mania-the-american-tribute-to-abba-",
+          "url": "https://thepalacedanbury.com/",
           "dateLabel": "Sat Aug 1",
           "time": "Evening",
           "venue": "The Palace Danbury",
@@ -1351,7 +1237,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.8,
+          "score": 10,
           "title": "Sister Funk — CityCenter Danbury Summer Concert Series",
           "url": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
           "dateLabel": "Sat Aug 1",
@@ -1375,7 +1261,7 @@ const EVENTS_DATA = {
           "title": "Grace Potter",
           "url": "https://ridgefieldplayhouse.org/event/live-outside-grace-potter-ridgefield-ct-2026/",
           "dateLabel": "Sun Aug 2",
-          "time": "7PM",
+          "time": "7:00PM",
           "venue": "Ridgefield Playhouse (Live Outside)",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1393,7 +1279,7 @@ const EVENTS_DATA = {
         {
           "score": 6.7,
           "title": "Caramoor Summer Season Finale — Orchestra of St. Luke's & Gil Shaham",
-          "url": "https://caramoor.org/event/orchestra-of-st-lukes-gil-shaham-2026",
+          "url": "https://caramoor.org/events/concerts",
           "dateLabel": "Sun Aug 2",
           "time": "4:00PM (3PM pre-concert talk)",
           "venue": "Caramoor (Venetian Theater)",
@@ -1413,7 +1299,7 @@ const EVENTS_DATA = {
         {
           "score": 8,
           "title": "Danny Lipsitz & The Brass Tacks",
-          "url": "https://levittpavilion.com/2026/07/02/danny-lipsitz/",
+          "url": "https://levittpavilion.com/calendar/",
           "dateLabel": "Sun Aug 2",
           "time": "7:00PM",
           "venue": "Levitt Pavilion",
@@ -1433,8 +1319,8 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week4",
-      "title": "Week 4 · August 3–9",
+      "id": "week3",
+      "title": "Week 3 · August 3–9",
       "open": false,
       "events": [
         {
@@ -1482,7 +1368,7 @@ const EVENTS_DATA = {
           "title": "Stephen Pearcy: The Voice of RATT",
           "url": "https://ridgefieldplayhouse.org/event/stephen-pearcy-ratt-ridgefield-ct-2026/",
           "dateLabel": "Fri Aug 7",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1542,7 +1428,7 @@ const EVENTS_DATA = {
           "title": "Who Loves You — Featuring the Broadway Cast of Jersey Boys",
           "url": "https://ridgefieldplayhouse.org/event/who-loves-you-jersey-boys-ridgefield-ct-2026/",
           "dateLabel": "Sat Aug 8",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1558,7 +1444,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.7,
+          "score": 9.9,
           "title": "Nightshift — Woodbury Summer Concert Series",
           "url": "https://allevents.in/woodbury-ct/concerts",
           "dateLabel": "Sat Aug 8",
@@ -1578,7 +1464,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.8,
+          "score": 10,
           "title": "Sugar House Band — CityCenter Danbury Summer Concert Series",
           "url": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
           "dateLabel": "Sat Aug 8",
@@ -1620,8 +1506,8 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week5",
-      "title": "Week 5 · August 10–16",
+      "id": "week4",
+      "title": "Week 4 · August 10–16",
       "open": false,
       "events": [
         {
@@ -1629,7 +1515,7 @@ const EVENTS_DATA = {
           "title": "Andrew Dice Clay: Live in Concert",
           "url": "https://ridgefieldplayhouse.org/event/andrew-dice-clay-ridgefield-ct-2026/",
           "dateLabel": "Fri Aug 14",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1669,7 +1555,7 @@ const EVENTS_DATA = {
           "title": "Glenn Miller Orchestra",
           "url": "https://ridgefieldplayhouse.org/event/glenn-miller-orchestra-4/",
           "dateLabel": "Sat Aug 15",
-          "time": "8PM",
+          "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
@@ -1685,7 +1571,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.8,
+          "score": 10,
           "title": "Leds Groove — CityCenter Danbury Summer Concert Series",
           "url": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
           "dateLabel": "Sat Aug 15",
@@ -1747,8 +1633,8 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week6",
-      "title": "Week 6 · August 17–23",
+      "id": "week5",
+      "title": "Week 5 · August 17–23",
       "open": false,
       "events": [
         {
@@ -1832,7 +1718,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.1,
+          "score": 8.3,
           "title": "Struggle Monkey",
           "url": "https://www.housatonicriverbrewing.com/events-1/struggle-monkey-4",
           "dateLabel": "Sat Aug 22",
@@ -1874,14 +1760,14 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week7",
-      "title": "Week 7 · August 24–30",
+      "id": "week6",
+      "title": "Week 6 · August 24–30",
       "open": false,
       "events": [
         {
           "score": 6.3,
           "title": "Blues Brothers Tribute Show: Hats and Shades",
-          "url": "https://thepalacedanbury1.ticketspice.com/hats-shades",
+          "url": "https://thepalacedanbury.com/",
           "dateLabel": "Sat Aug 29",
           "time": "7:30PM",
           "venue": "The Palace Danbury",
@@ -1921,8 +1807,8 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week8",
-      "title": "Week 8 · August 31 – September 6",
+      "id": "week7",
+      "title": "Week 7 · August 31 – September 6",
       "open": false,
       "events": [
         {
@@ -1946,7 +1832,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.9,
+          "score": 8.1,
           "title": "Lost Rebel — 70s Classic Rock Tribute",
           "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
           "dateLabel": "Fri Sep 4",
@@ -2026,26 +1912,16 @@ const EVENTS_DATA = {
           "isNF": false
         }
       ]
+    },
+    {
+      "id": "week8",
+      "title": "Week 8 · September 9–15",
+      "open": false,
+      "events": []
     }
   ],
   "past": [],
   "daryls": [
-    {
-      "date": "Fri Jul 17, 8:00PM",
-      "title": "Stewart Copeland – Have I Said Too Much"
-    },
-    {
-      "date": "Sat Jul 18, 8:00PM",
-      "title": "Facelift - The Ultimate Alice In Chains Tribute"
-    },
-    {
-      "date": "Wed Jul 22, 7:00PM",
-      "title": "Nektar — King Crimson & Ian McDonald Tribute Tour"
-    },
-    {
-      "date": "Thu Jul 23, 8:00PM",
-      "title": "The British Rock Show"
-    },
     {
       "date": "Thu Jul 30, 8:00PM",
       "title": "The Dave Matthews Tribute Band (DMTB)"
