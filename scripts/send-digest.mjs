@@ -32,6 +32,22 @@ const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</
 const emailOk = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e || '');
 const unsubToken = (email) => crypto.createHmac('sha256', ADMIN_PASSWORD).update(String(email).toLowerCase()).digest('hex').slice(0, 20);
 
+// Tag links that point back to our own site with UTM params so Google Analytics attributes
+// the traffic to the email digest. External event links are left untouched — Resend's click
+// tracking covers those (we have no analytics on third-party sites anyway).
+function withUtm(url) {
+  try {
+    const u = new URL(url);
+    if (/(^|\.)candlewoodlakeevents\.com$/i.test(u.hostname)) {
+      u.searchParams.set('utm_source', 'digest');
+      u.searchParams.set('utm_medium', 'email');
+      u.searchParams.set('utm_campaign', 'weekly');
+      return u.toString();
+    }
+  } catch { /* not a valid URL — leave as-is */ }
+  return url;
+}
+
 function loadEvents() {
   return readFile('index.html', 'utf8').then((html) => {
     const s = html.indexOf('EVENTS_DATA:START'), e = html.indexOf('EVENTS_DATA:END');
@@ -69,7 +85,7 @@ async function loadSubscribers() {
 
 function eventRow(ev) {
   const price = ev.priceLabel || (ev.priceType === 'free' ? 'Free' : '');
-  const link = ev.url || ev.sourceUrl || SITE_URL;
+  const link = withUtm(ev.url || ev.sourceUrl || SITE_URL);
   const meta = [ev.dateLabel, ev.town, price].filter(Boolean).map(esc).join(' &nbsp;·&nbsp; ');
   const desc = ev.desc ? `<div style="color:${MUTE};font-size:13px;line-height:1.5;margin-top:4px">${esc(ev.desc).slice(0, 180)}</div>` : '';
   return `
@@ -106,7 +122,7 @@ function buildHtml(events, recipient) {
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-family:Helvetica,Arial,sans-serif">${rows}</table>
       </td></tr>
       <tr><td style="padding:22px 28px">
-        <a href="${esc(SITE_URL)}" style="display:inline-block;background:${GOLD};color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:11px 22px;border-radius:6px;font-family:Helvetica,Arial,sans-serif">See the full guide →</a>
+        <a href="${esc(withUtm(SITE_URL))}" style="display:inline-block;background:${GOLD};color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:11px 22px;border-radius:6px;font-family:Helvetica,Arial,sans-serif">See the full guide →</a>
       </td></tr>
       <tr><td style="background:${CREAM};padding:18px 28px;text-align:center;font-family:Helvetica,Arial,sans-serif">
         <div style="color:${MUTE};font-size:12px;line-height:1.6">You're getting this because you subscribed at candlewoodlakeevents.com.<br>
