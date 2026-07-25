@@ -391,6 +391,11 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .auth-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.55; }
 .auth-google { width: 100%; padding: 12px; background: linear-gradient(180deg,#e7c988,var(--gold)); color: var(--ink-dark); border: none; border-radius: 2px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; cursor: pointer; font-family: var(--sans); }
 .auth-google:hover { filter: brightness(1.07); }
+.auth-providers { display: flex; flex-direction: column; gap: 8px; }
+.auth-facebook { width: 100%; padding: 12px; background: #1877F2; color: #fff; border: none; border-radius: 2px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; cursor: pointer; font-family: var(--sans); }
+.auth-facebook:hover { filter: brightness(1.08); }
+.auth-apple { width: 100%; padding: 12px; background: #000; color: #fff; border: 1px solid #000; border-radius: 2px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; cursor: pointer; font-family: var(--sans); }
+.auth-apple:hover { filter: brightness(1.6); }
 .auth-divider { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin: 16px 0; }
 .auth-modal input { margin-bottom: 10px; }
 .auth-row { display: flex; gap: 10px; align-items: center; margin-top: 4px; }
@@ -629,7 +634,7 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
     <button class="auth-close" onclick="closeAuth()" aria-label="Close">✕</button>
     <h2 class="auth-title">Sign in</h2>
     <p class="auth-sub">Save your favorite events across devices. Optional, the guide is free to browse without an account.</p>
-    <button class="auth-google" onclick="signInGoogle()">Continue with Google</button>
+    <div id="authProviders" class="auth-providers"></div>
     <div class="auth-divider">or</div>
     <input type="email" id="authEmail" placeholder="Email" autocomplete="email">
     <input type="password" id="authPass" placeholder="Password" autocomplete="current-password">
@@ -787,15 +792,45 @@ function renderAuthState() {
   }
 }
 
-function openAuth() { document.getElementById('authError').style.display = 'none'; document.getElementById('authOverlay').classList.add('open'); }
+function openAuth() { document.getElementById('authError').style.display = 'none'; renderAuthProviders(); document.getElementById('authOverlay').classList.add('open'); }
 function closeAuth() { document.getElementById('authOverlay').classList.remove('open'); }
 function authErr(msg) { const e = document.getElementById('authError'); e.textContent = msg; e.style.display = 'block'; }
 
-async function signInGoogle() {
-  if (!_fb) return;
-  try { await _fb.authMod.signInWithPopup(_fb.auth, new _fb.authMod.GoogleAuthProvider()); closeAuth(); track('login', { method: 'google' }); }
-  catch (e) { authErr(e.message); }
+// Sign-in providers. Flip `enabled` to true once the provider is configured in Firebase.
+// Google needs no external app; Facebook needs a Meta app; Apple needs a paid Apple dev account.
+const AUTH_PROVIDERS = [
+  { id: 'google',   label: 'Continue with Google',   cls: 'auth-google',   enabled: true },
+  { id: 'facebook', label: 'Continue with Facebook', cls: 'auth-facebook', enabled: false },
+  { id: 'apple',    label: 'Continue with Apple',    cls: 'auth-apple',    enabled: false },
+];
+function renderAuthProviders() {
+  const el = document.getElementById('authProviders');
+  if (!el) return;
+  el.innerHTML = AUTH_PROVIDERS.filter(p => p.enabled)
+    .map(p => `<button class="${p.cls}" onclick="signInProvider('${p.id}')">${esc(p.label)}</button>`).join('');
 }
+function friendlyAuthError(e) {
+  const c = (e && e.code) || '';
+  if (c.includes('popup-closed') || c.includes('cancelled-popup') || c.includes('popup-blocked')) return 'Sign-in window was closed before finishing.';
+  if (c.includes('account-exists-with-different-credential')) return 'You already have an account with this email using a different sign-in method — try that one.';
+  if (c.includes('operation-not-allowed')) return 'That sign-in method isn\'t enabled yet.';
+  if (c.includes('invalid-email')) return 'That email address looks invalid.';
+  if (c.includes('wrong-password') || c.includes('invalid-credential')) return 'Incorrect email or password.';
+  if (c.includes('email-already-in-use')) return 'That email is already registered — try signing in instead.';
+  if (c.includes('weak-password')) return 'Please choose a password of at least 6 characters.';
+  return (e && e.message) || 'Something went wrong. Please try again.';
+}
+async function signInProvider(id) {
+  if (!_fb) return;
+  let provider;
+  if (id === 'google') provider = new _fb.authMod.GoogleAuthProvider();
+  else if (id === 'facebook') provider = new _fb.authMod.FacebookAuthProvider();
+  else if (id === 'apple') { provider = new _fb.authMod.OAuthProvider('apple.com'); provider.addScope('email'); provider.addScope('name'); }
+  else return;
+  try { await _fb.authMod.signInWithPopup(_fb.auth, provider); closeAuth(); track('login', { method: id }); }
+  catch (e) { authErr(friendlyAuthError(e)); }
+}
+function signInGoogle() { return signInProvider('google'); } // back-compat
 async function submitAuthEmail(mode) {
   if (!_fb) return;
   const email = document.getElementById('authEmail').value.trim();
@@ -804,7 +839,7 @@ async function submitAuthEmail(mode) {
     if (mode === 'signup') await _fb.authMod.createUserWithEmailAndPassword(_fb.auth, email, pass);
     else await _fb.authMod.signInWithEmailAndPassword(_fb.auth, email, pass);
     closeAuth(); track('login', { method: 'email' });
-  } catch (e) { authErr(e.message); }
+  } catch (e) { authErr(friendlyAuthError(e)); }
 }
 async function signOutUser() { if (_fb) await _fb.authMod.signOut(_fb.auth); }
 
