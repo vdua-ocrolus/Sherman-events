@@ -225,6 +225,31 @@ select { margin-bottom: 8px; }
 .admin-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
 .visits-summary { font-size: 13px; color: var(--muted); margin: 0 0 12px; padding: 10px 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(196,151,59,.14); border-radius: 4px; }
 .visits-summary strong { color: var(--gold-bright); font-weight: 700; }
+/* Personalization */
+.personalize-banner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 13px 18px; background: linear-gradient(90deg, rgba(196,151,59,.16), rgba(196,151,59,.04)); border: 1px solid rgba(196,151,59,.34); border-radius: 8px; }
+.personalize-banner .pb-text { flex: 1 1 280px; font-size: 14px; color: var(--text); line-height: 1.5; }
+.personalize-banner .pb-text strong { color: var(--gold-bright); }
+.personalize-banner .pb-sub { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+.personalize-banner .pb-sub a { color: var(--gold-bright); text-decoration: none; }
+.personalize-banner .pb-sub a:hover { text-decoration: underline; }
+.pb-btn { background: var(--gold); color: #1a1206; border: none; border-radius: 6px; padding: 10px 20px; font-weight: 700; font-size: 13px; cursor: pointer; font-family: var(--sans); white-space: nowrap; }
+.pb-btn.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.foryou-toggle { display: inline-flex; gap: 3px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 3px; margin-right: 8px; }
+.foryou-toggle button { background: transparent; border: none; color: var(--muted); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; padding: 6px 13px; border-radius: 16px; cursor: pointer; font-family: var(--sans); }
+.foryou-toggle button.active { background: var(--gold); color: #1a1206; }
+.quiz-overlay { display: none; position: fixed; inset: 0; background: rgba(4,10,20,.74); z-index: 1000; align-items: flex-start; justify-content: center; overflow: auto; padding: 26px 14px; }
+.quiz-overlay.open { display: flex; }
+.quiz-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; max-width: 520px; width: 100%; padding: 26px 26px 20px; }
+.quiz-card h2 { font-family: var(--serif); color: var(--text); font-size: 23px; margin: 0 0 4px; }
+.quiz-card .quiz-sub { color: var(--muted); font-size: 13px; margin: 0 0 18px; line-height: 1.5; }
+.quiz-q { margin-bottom: 16px; }
+.quiz-q .qlabel { display: block; font-size: 12px; font-weight: 700; color: var(--gold-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.quiz-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.quiz-opt { border: 1px solid var(--border); border-radius: 20px; padding: 8px 14px; font-size: 13px; color: var(--text); cursor: pointer; user-select: none; background: var(--surface); }
+.quiz-opt.on { background: var(--gold); color: #1a1206; border-color: var(--gold); font-weight: 600; }
+.quiz-zip { width: 130px; }
+.quiz-actions { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
+.quiz-note { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
 .admin-stat { background: rgba(255,255,255,.04); border: 1px solid rgba(196,151,59,.18); border-radius: 4px; padding: 20px; text-align: center; }
 .admin-stat .stat-number { font-family: var(--serif); font-size: 34px; font-weight: 700; color: var(--gold-bright); line-height: 1; }
 .admin-stat .stat-label { font-size: 10.5px; color: #b7a98a; margin-top: 6px; letter-spacing: 1.5px; text-transform: uppercase; }
@@ -405,6 +430,52 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 
 <div id="alertBar"></div>
 
+<div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-card" id="quizCard">
+    <h2>Make this guide yours</h2>
+    <p class="quiz-sub">Four quick questions and your zip. We'll re-rank every event for your spot on the lake, saved on this device, no account needed.</p>
+    <div class="quiz-q">
+      <span class="qlabel">What do you love?</span>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-cat="music" onclick="this.classList.toggle('on')">Live music</div>
+        <div class="quiz-opt" data-cat="festivals" onclick="this.classList.toggle('on')">Festivals &amp; markets</div>
+        <div class="quiz-opt" data-cat="family" onclick="this.classList.toggle('on')">Family / kids</div>
+        <div class="quiz-opt" data-cat="arts" onclick="this.classList.toggle('on')">Theater &amp; arts</div>
+        <div class="quiz-opt" data-cat="comedy" onclick="this.classList.toggle('on')">Comedy</div>
+        <div class="quiz-opt" data-cat="dining" onclick="this.classList.toggle('on')">Food &amp; new spots</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <span class="qlabel">How far will you travel?</span>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-mi="10" onclick="selectOne(this)">Up to 10 mi</div>
+        <div class="quiz-opt" data-mi="20" onclick="selectOne(this)">Up to 20 mi</div>
+        <div class="quiz-opt" data-mi="30" onclick="selectOne(this)">30+ mi</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <span class="qlabel">Budget</span>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-free="1" onclick="this.classList.toggle('on')">Lean free &amp; low-cost</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <span class="qlabel">Your zip code</span>
+      <input type="text" inputmode="numeric" maxlength="5" class="quiz-zip" id="quizZip" placeholder="06784">
+    </div>
+    <div class="quiz-q">
+      <span class="qlabel">Email (optional) — get a weekly digest</span>
+      <input type="email" id="quizEmail" placeholder="you@email.com" style="width:100%">
+    </div>
+    <div class="form-error" id="quizError" style="display:none"></div>
+    <div class="quiz-actions">
+      <button class="pb-btn" id="quizSubmit" onclick="submitQuiz(event)">See my guide</button>
+      <button class="pb-btn ghost" onclick="closeQuiz()">Cancel</button>
+    </div>
+    <div class="quiz-note">Your answers stay on this device. If you add an email, you'll also get the weekly digest.</div>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="site-header-inner">
     <div class="brand">
@@ -425,6 +496,8 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
     <div class="hero-rule"></div>
   </div>
 </section>
+
+<div id="personalizeBanner" class="container" style="margin-top:14px"></div>
 
 <nav class="tabs">
   <div class="tabs-inner">
@@ -2751,7 +2824,7 @@ function priceTags(e) {
   if (e.isPast) tags += `<span class="tag tag-past">Past</span>`;
   if (e.isNF) tags += `<span class="tag tag-nf">New Fairfield</span>`;
   else tags += `<span class="tag tag-town">${e.town}</span>`;
-  tags += `<span class="tag tag-dist">${e.dist}</span>`;
+  tags += `<span class="tag tag-dist">${e._pdist || e.dist}</span>`;
   tags += `<span class="tag tag-type">${e.type}</span>`;
   if (e.priceType === 'free') tags += `<span class="tag tag-free">Free</span>`;
   if (e.priceType === 'paid' && e.priceLabel) tags += `<span class="tag tag-paid">${e.priceLabel}</span>`;
@@ -2947,6 +3020,15 @@ function filterRestaurants() {
 
 function renderEvents() {
   const d = EVENTS_DATA;
+  // Personalization: when a device has prefs and For-You mode is on, re-rank by the visitor's
+  // own location + tastes and drop anything past their travel limit.
+  const P = (personalMode && PREFS) ? PREFS : null;
+  const evScore = e => P ? personalScore(e, P) : e.score;
+  const withinRange = e => {
+    if (!P || typeof P.lat !== 'number' || !P.maxMiles || P.maxMiles >= 30) return true;
+    const mi = eventMiles(e, P);
+    return mi == null || mi <= P.maxMiles + 3;
+  };
 
   // Header meta
   document.getElementById('headerMeta').textContent = `Updated ${d.lastUpdated} · Fairfield & Litchfield Counties, CT`;
@@ -2977,7 +3059,7 @@ function renderEvents() {
   const notPast = () => true;
 
   // Type filter bar (built from the upcoming set)
-  const upcoming = d.weeks.flatMap(w => favFilter(w.events.filter(notPast)));
+  const upcoming = d.weeks.flatMap(w => favFilter(w.events.filter(notPast))).filter(withinRange);
   const FILTERS = [
     { key: 'all', label: 'All', test: () => true },
     { key: 'music', label: 'Live Music', test: e => eventCategory(e) === 'music' },
@@ -3007,8 +3089,12 @@ function renderEvents() {
     towns.map(t => `<option value="${esc(t)}"${t === currentTown ? ' selected' : ''}>${esc(t)} (${townCounts[t]})</option>`).join('') +
     `</select></div>`;
 
-  // List / Calendar view toggle
-  html += `<div class="view-toggle">
+  // For You / Curated toggle (only once a device has taken the quiz) + List / Calendar toggle
+  const foryou = PREFS ? `<div class="foryou-toggle">
+      <button class="${personalMode ? 'active' : ''}" onclick="setPersonalMode(true)">★ For You</button>
+      <button class="${!personalMode ? 'active' : ''}" onclick="setPersonalMode(false)">Curated</button>
+    </div>` : '';
+  html += `<div class="view-toggle">${foryou}
     <button class="vt-btn${eventsViewMode === 'list' ? ' active' : ''}" onclick="setEventsView('list')">List</button>
     <button class="vt-btn${eventsViewMode === 'calendar' ? ' active' : ''}" onclick="setEventsView('calendar')">Calendar</button>
   </div>`;
@@ -3033,11 +3119,13 @@ function renderEvents() {
   html += `<div class="section-label">${narrowing ? scopeLabel + ' · ' + totalMatch + ' event' + (totalMatch === 1 ? '' : 's') : 'Upcoming · sorted by score'}</div>`;
   let shownWeeks = 0;
   for (const week of d.weeks) {
-    let evs = favFilter(week.events.filter(notPast)).filter(passes);
+    let evs = favFilter(week.events.filter(notPast)).filter(passes).filter(withinRange);
     if (!evs.length) continue;
     shownWeeks++;
-    evs = [...evs].sort((a, b) => (a.isPast ? 1 : 0) - (b.isPast ? 1 : 0) || b.score - a.score);
-    const topScore = evs[0].score;
+    evs = [...evs].sort((a, b) => (a.isPast ? 1 : 0) - (b.isPast ? 1 : 0) || evScore(b) - evScore(a));
+    // In personal mode, relabel each card's distance from the visitor (not from Sherman).
+    evs.forEach(e => { e._pdist = P ? (m => m != null ? '~' + Math.round(m) + ' mi' : e.dist)(eventMiles(e, P)) : null; });
+    const topScore = evScore(evs[0]);
     // Yesterday's (past) events always stay visible — append them after the capped upcoming list.
     const pastEvs = evs.filter(e => e.isPast);
     const futureEvs = evs.filter(e => !e.isPast);
@@ -3105,6 +3193,142 @@ function setEventsView(mode) { eventsViewMode = mode; renderEvents(); track('vie
 function setTown(t) { currentTown = t; renderEvents(); track('filter_town', { town: t }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 // Normalize a town string to a clean display key (strip state suffix).
 function townKey(t) { return (t || '').replace(/,\s*(ct|ny|ma|connecticut|new york)\s*$/i, '').replace(/\s+/g, ' ').trim(); }
+
+// ============================================================
+// PERSONALIZATION (Phase 1 — on-device, no account)
+// Re-ranks the guide for a visitor's own location + preferences. Prefs live in
+// localStorage ('se_prefs'); nothing here changes the daily scoring pipeline.
+// ============================================================
+// Approximate town centroids + base (Sherman-centric) proximity, mirroring the refresh
+// script's PROX table. Coordinates are approximate town centers — fine for distance ranking.
+const TOWN_GEO = {
+  'sherman': { lat: 41.579, lng: -73.496, prox: 10 },
+  'new fairfield': { lat: 41.466, lng: -73.486, prox: 9.5 },
+  'new milford': { lat: 41.577, lng: -73.409, prox: 9.5 },
+  'brookfield': { lat: 41.472, lng: -73.383, prox: 8.5 },
+  'danbury': { lat: 41.394, lng: -73.454, prox: 8 },
+  'ridgefield': { lat: 41.281, lng: -73.498, prox: 8 },
+  'kent': { lat: 41.724, lng: -73.477, prox: 7.5 },
+  'new preston': { lat: 41.674, lng: -73.343, prox: 7.5 },
+  'washington': { lat: 41.633, lng: -73.311, prox: 7.5 },
+  'woodbury': { lat: 41.545, lng: -73.209, prox: 7.5 },
+  'roxbury': { lat: 41.558, lng: -73.302, prox: 7.5 },
+  'katonah': { lat: 41.259, lng: -73.685, prox: 7.5 },
+  'pawling': { lat: 41.563, lng: -73.601, prox: 7.5 },
+  'litchfield': { lat: 41.747, lng: -73.189, prox: 7 },
+  'torrington': { lat: 41.801, lng: -73.121, prox: 6.5 },
+  'westport': { lat: 41.141, lng: -73.358, prox: 6.5 },
+  'goshen': { lat: 41.836, lng: -73.234, prox: 6.5 },
+};
+function townInfo(town) { const t = (town || '').toLowerCase(); for (const k in TOWN_GEO) if (t.includes(k)) return TOWN_GEO[k]; return null; }
+function baseProx(town) { const i = townInfo(town); return i ? i.prox : 6.5; }
+function haversineMi(lat1, lng1, lat2, lng2) {
+  const R = 3958.8, toR = x => x * Math.PI / 180;
+  const dLat = toR(lat2 - lat1), dLng = toR(lng2 - lng1);
+  const s = Math.sin(dLat / 2) ** 2 + Math.cos(toR(lat1)) * Math.cos(toR(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(s)));
+}
+function eventMiles(e, prefs) { const i = townInfo(e.town); if (!i || !prefs || typeof prefs.lat !== 'number') return null; return haversineMi(prefs.lat, prefs.lng, i.lat, i.lng); }
+function milesToProx(mi) { if (mi == null) return 6; if (mi <= 5) return 10; if (mi <= 10) return 9.3; if (mi <= 15) return 8.5; if (mi <= 20) return 7.7; if (mi <= 25) return 7; if (mi <= 30) return 6.3; if (mi <= 40) return 5; return 4; }
+// Recover the event's intrinsic quality from its baked score (score = baseProx*0.3 + funQ*0.7).
+function backFunQ(e) { if (typeof e.funQuality === 'number') return e.funQuality; return Math.max(0, Math.min(10, (e.score - baseProx(e.town) * 0.3) / 0.7)); }
+function matchesPrefs(e, cats) {
+  if (!cats || !cats.length) return false;
+  const cat = eventCategory(e), t = (e.type || '').toLowerCase();
+  const isFest = /festival|fair|market|carnival|fireworks|parade|craft|street fair|block party/.test(t);
+  return cats.some(c => c === cat || (c === 'festivals' && isFest));
+}
+function personalScore(e, prefs) {
+  const prox = milesToProx(eventMiles(e, prefs));
+  let fq = backFunQ(e);
+  if (matchesPrefs(e, prefs.categories)) fq += 1.2;
+  if (prefs.freeOnly && (e.priceType === 'free' || /free/i.test(e.priceLabel || ''))) fq += 0.6;
+  return Math.round((prox * 0.3 + Math.min(10, fq) * 0.7) * 10) / 10;
+}
+
+let PREFS = null;         // loaded from localStorage at init
+let personalMode = false; // whether the "For You" view is active
+function loadPrefs() { try { return JSON.parse(localStorage.getItem('se_prefs') || 'null'); } catch { return null; } }
+
+async function geocodeZip(zip) {
+  try {
+    const r = await fetch('https://api.zippopotam.us/us/' + encodeURIComponent(zip));
+    if (!r.ok) return null;
+    const j = await r.json();
+    const p = j.places && j.places[0];
+    if (!p) return null;
+    return { lat: parseFloat(p.latitude), lng: parseFloat(p.longitude), place: p['place name'] || '' };
+  } catch { return null; }
+}
+
+function renderPersonalizeBanner() {
+  const el = document.getElementById('personalizeBanner');
+  if (!el) return;
+  if (PREFS) {
+    const within = PREFS.maxMiles && PREFS.maxMiles < 30 ? ` · within ${PREFS.maxMiles} mi` : '';
+    const loc = typeof PREFS.lat === 'number' ? `zip ${esc(PREFS.zip)}` : 'your picks';
+    el.innerHTML = `<div class="personalize-banner">
+      <div class="pb-text"><strong>Your guide is personalized.</strong> Ranked for ${loc}${within}.
+        <span class="pb-sub">Saved on this device only · <a href="#" onclick="openQuiz(event)">Edit</a> · <a href="#" onclick="clearPrefs(event)">Reset</a></span></div>
+    </div>`;
+  } else {
+    el.innerHTML = `<div class="personalize-banner">
+      <div class="pb-text"><strong>★ Make this guide yours.</strong> Answer 4 quick questions and add your zip — we'll re-rank every event for your spot on the lake.
+        <span class="pb-sub">Free, no account. Saved on this device.</span></div>
+      <button class="pb-btn" onclick="openQuiz(event)">Personalize my guide</button>
+    </div>`;
+  }
+}
+
+function selectOne(btn) { btn.parentElement.querySelectorAll('.quiz-opt[data-mi]').forEach(x => x.classList.remove('on')); btn.classList.add('on'); }
+
+function openQuiz(ev) {
+  if (ev) ev.preventDefault();
+  const q = document.getElementById('quizCard');
+  q.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('on'));
+  document.getElementById('quizZip').value = '';
+  document.getElementById('quizEmail').value = '';
+  document.getElementById('quizError').style.display = 'none';
+  if (PREFS) {
+    (PREFS.categories || []).forEach(c => { const b = q.querySelector(`.quiz-opt[data-cat="${c}"]`); if (b) b.classList.add('on'); });
+    const mb = q.querySelector(`.quiz-opt[data-mi="${PREFS.maxMiles || 30}"]`); if (mb) mb.classList.add('on');
+    if (PREFS.freeOnly) { const fb = q.querySelector('.quiz-opt[data-free]'); if (fb) fb.classList.add('on'); }
+    if (PREFS.zip) document.getElementById('quizZip').value = PREFS.zip;
+  } else {
+    const mb = q.querySelector('.quiz-opt[data-mi="20"]'); if (mb) mb.classList.add('on');
+  }
+  document.getElementById('quizOverlay').classList.add('open');
+}
+function closeQuiz() { document.getElementById('quizOverlay').classList.remove('open'); }
+function clearPrefs(ev) { if (ev) ev.preventDefault(); localStorage.removeItem('se_prefs'); PREFS = null; personalMode = false; renderPersonalizeBanner(); renderEvents(); }
+
+async function submitQuiz(ev) {
+  if (ev) ev.preventDefault();
+  const q = document.getElementById('quizCard');
+  const cats = [...q.querySelectorAll('.quiz-opt.on[data-cat]')].map(b => b.dataset.cat);
+  const miBtn = q.querySelector('.quiz-opt.on[data-mi]');
+  const maxMiles = miBtn ? parseInt(miBtn.dataset.mi, 10) : 30;
+  const freeOnly = !!q.querySelector('.quiz-opt.on[data-free]');
+  const zip = (document.getElementById('quizZip').value || '').trim();
+  const email = (document.getElementById('quizEmail').value || '').trim();
+  const err = document.getElementById('quizError'); err.style.display = 'none';
+  if (!/^\d{5}$/.test(zip)) { err.textContent = 'Please enter a 5-digit zip code.'; err.style.display = 'block'; return; }
+  const btn = document.getElementById('quizSubmit'); btn.disabled = true; btn.textContent = 'Personalizing…';
+  const geo = await geocodeZip(zip);
+  const prefs = { zip, lat: geo ? geo.lat : null, lng: geo ? geo.lng : null, categories: cats, maxMiles, freeOnly, ts: Date.now() };
+  localStorage.setItem('se_prefs', JSON.stringify(prefs));
+  PREFS = prefs; personalMode = true;
+  if (email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && GITHUB_CONFIGURED) {
+    const entry = { ts: new Date().toISOString(), date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), name: '', email, zip, lat: prefs.lat, lng: prefs.lng, categories: cats, maxMiles, freeOnly };
+    apiAppend('subscribers', entry);
+    try { const local = JSON.parse(localStorage.getItem('se_subscribers') || '[]'); local.push(entry); localStorage.setItem('se_subscribers', JSON.stringify(local)); } catch { /* ignore */ }
+  }
+  track('personalize', { cats: cats.length, maxMiles, geocoded: !!geo, email: !!email });
+  closeQuiz(); renderPersonalizeBanner(); renderEvents();
+  btn.disabled = false; btn.textContent = 'See my guide';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function setPersonalMode(on) { personalMode = on; renderEvents(); track('personal_mode', { on }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 // Parse a "Wed Jul 12" style dateLabel into a Date (year supplied from lastUpdated).
 // Parse start/end dates from a dateLabel like "Tue Jul 14 – Sat Jul 18" (single day -> start == end).
@@ -3537,6 +3761,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (excluded) console.log('Candlewood Lake Events: analytics disabled for this device (self-exclude).');
 
   renderAlert();
+  PREFS = loadPrefs(); personalMode = !!PREFS; renderPersonalizeBanner();
   if (!excluded) initAnalytics();
   initClickTracking();
   initAuth();
