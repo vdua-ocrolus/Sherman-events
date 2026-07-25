@@ -396,6 +396,10 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
 .auth-facebook:hover { filter: brightness(1.08); }
 .auth-apple { width: 100%; padding: 12px; background: #000; color: #fff; border: 1px solid #000; border-radius: 2px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; cursor: pointer; font-family: var(--sans); }
 .auth-apple:hover { filter: brightness(1.6); }
+.auth-alt { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.auth-link { background: none; border: none; color: var(--muted); font-size: 12px; text-decoration: underline; cursor: pointer; padding: 0; font-family: var(--sans); }
+.auth-link:hover { color: var(--gold-bright); }
+.auth-note { margin-top: 10px; font-size: 12.5px; color: #8fd19e; }
 .auth-divider { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin: 16px 0; }
 .auth-modal input { margin-bottom: 10px; }
 .auth-row { display: flex; gap: 10px; align-items: center; margin-top: 4px; }
@@ -621,7 +625,7 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
     </div>
   </details>
 
-  <footer id="footer">Auto-updated daily · Sherman CT Events Digest</footer>
+  <footer id="footer">Auto-updated daily · Sherman CT Events Digest · <a href="privacy.html" style="color:var(--gold-bright)">Privacy</a></footer>
 </div>
 
 <!-- Admin FAB -->
@@ -642,6 +646,11 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
       <button class="btn-primary" onclick="submitAuthEmail('signin')">Sign in</button>
       <button class="auth-btn" onclick="submitAuthEmail('signup')">Create account</button>
     </div>
+    <div class="auth-alt">
+      <button type="button" class="auth-link" onclick="sendEmailLink()">Email me a sign-in link (no password)</button>
+      <button type="button" class="auth-link" onclick="sendReset()">Forgot password?</button>
+    </div>
+    <div class="auth-note" id="authNote" style="display:none"></div>
     <div class="auth-error" id="authError"></div>
   </div>
 </div>
@@ -776,6 +785,7 @@ async function initAuth() {
       renderPersonalizeBanner();
       renderEvents();
     });
+    await completeEmailLinkSignIn();
   } catch (e) {
     console.error('Auth init failed:', e);
   }
@@ -792,7 +802,7 @@ function renderAuthState() {
   }
 }
 
-function openAuth() { document.getElementById('authError').style.display = 'none'; renderAuthProviders(); document.getElementById('authOverlay').classList.add('open'); }
+function openAuth() { document.getElementById('authError').style.display = 'none'; const n = document.getElementById('authNote'); if (n) n.style.display = 'none'; renderAuthProviders(); document.getElementById('authOverlay').classList.add('open'); }
 function closeAuth() { document.getElementById('authOverlay').classList.remove('open'); }
 function authErr(msg) { const e = document.getElementById('authError'); e.textContent = msg; e.style.display = 'block'; }
 
@@ -831,6 +841,43 @@ async function signInProvider(id) {
   catch (e) { authErr(friendlyAuthError(e)); }
 }
 function signInGoogle() { return signInProvider('google'); } // back-compat
+
+function authMsg(msg) {
+  const n = document.getElementById('authNote');
+  if (n) { n.textContent = msg; n.style.display = 'block'; }
+  const e = document.getElementById('authError'); if (e) e.style.display = 'none';
+}
+// Passwordless "email me a sign-in link" (Firebase email-link). Needs the Email/Password
+// provider's "Email link" option enabled in Firebase.
+async function sendEmailLink() {
+  if (!_fb) return;
+  const email = (document.getElementById('authEmail').value || '').trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { authErr('Enter your email in the box above first.'); return; }
+  try {
+    await _fb.authMod.sendSignInLinkToEmail(_fb.auth, email, { url: location.origin + location.pathname, handleCodeInApp: true });
+    localStorage.setItem('se_emailForSignIn', email);
+    authMsg('Check your email — we sent you a one-tap sign-in link.');
+  } catch (e) { authErr(friendlyAuthError(e)); }
+}
+async function sendReset() {
+  if (!_fb) return;
+  const email = (document.getElementById('authEmail').value || '').trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { authErr('Enter your email in the box above first.'); return; }
+  try { await _fb.authMod.sendPasswordResetEmail(_fb.auth, email); authMsg('Password reset email sent — check your inbox.'); }
+  catch (e) { authErr(friendlyAuthError(e)); }
+}
+// If the page was opened from an email sign-in link, finish the sign-in.
+async function completeEmailLinkSignIn() {
+  try {
+    if (!_fb || !_fb.authMod.isSignInWithEmailLink(_fb.auth, location.href)) return;
+    let email = localStorage.getItem('se_emailForSignIn') || window.prompt('Confirm your email to finish signing in:');
+    if (!email) return;
+    await _fb.authMod.signInWithEmailLink(_fb.auth, email, location.href);
+    localStorage.removeItem('se_emailForSignIn');
+    history.replaceState(null, '', location.origin + location.pathname);
+    track('login', { method: 'email_link' });
+  } catch (e) { console.error('email-link signin:', e); }
+}
 async function submitAuthEmail(mode) {
   if (!_fb) return;
   const email = document.getElementById('authEmail').value.trim();
