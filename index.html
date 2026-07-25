@@ -707,7 +707,14 @@ const CONFIG = {
   // Optional visitor accounts (Google + email/password) via Firebase.
   // Paste your Firebase web config object here to enable sign-in + saved favorites.
   // The web config is PUBLIC and safe in client source. Leave null to disable.
-  FIREBASE: null,
+  FIREBASE: {
+    apiKey: "AIzaSyDhFOPyD43m2Y3po50a7tfm6J48J7mvUps",
+    authDomain: "candlewood-lake-events.firebaseapp.com",
+    projectId: "candlewood-lake-events",
+    storageBucket: "candlewood-lake-events.firebasestorage.app",
+    messagingSenderId: "447332319576",
+    appId: "1:447332319576:web:0b6dfd56e84d6d50e8652d"
+  },
   // Top-of-page alert banner (storm / outage / closure). Set active:false to hide.
   // Update message + updated as the situation changes (or ask Claude Code to).
   ALERT: {
@@ -758,9 +765,10 @@ async function initAuth() {
     if (controls) controls.style.display = 'flex';
     authMod.onAuthStateChanged(_fb.auth, async (user) => {
       currentUser = user;
-      if (user) await loadFavorites();
+      if (user) { await loadFavorites(); await syncPrefsOnLogin(); }
       else { favorites = new Set(); showFavoritesOnly = false; }
       renderAuthState();
+      renderPersonalizeBanner();
       renderEvents();
     });
   } catch (e) {
@@ -806,6 +814,28 @@ async function loadFavorites() {
     const items = snap.exists() ? (snap.data().items || {}) : {};
     favorites = new Set(Object.keys(items));
   } catch (e) { console.error('loadFavorites:', e); favorites = new Set(); }
+}
+
+// Personalization prefs sync to the signed-in account (profiles/{uid}) so the "For You"
+// view follows the user across devices, not just the browser it was set up in.
+async function loadCloudPrefs() {
+  try { const snap = await _fb.fsMod.getDoc(_fb.fsMod.doc(_fb.db, 'profiles', currentUser.uid)); return snap.exists() ? (snap.data().prefs || null) : null; }
+  catch (e) { console.error('loadCloudPrefs:', e); return null; }
+}
+async function saveCloudPrefs() {
+  if (!_fb || !currentUser || !PREFS) return;
+  try { await _fb.fsMod.setDoc(_fb.fsMod.doc(_fb.db, 'profiles', currentUser.uid), { prefs: PREFS, ts: Date.now() }, { merge: true }); }
+  catch (e) { console.error('saveCloudPrefs:', e); }
+}
+// On login: cloud prefs win if present (cross-device); otherwise push this device's prefs up.
+async function syncPrefsOnLogin() {
+  const cloud = await loadCloudPrefs();
+  if (cloud) {
+    PREFS = cloud; personalMode = true;
+    try { localStorage.setItem('se_prefs', JSON.stringify(cloud)); } catch { /* ignore */ }
+  } else if (PREFS) {
+    await saveCloudPrefs();
+  }
 }
 
 async function toggleFavorite(key) {
@@ -3300,7 +3330,12 @@ function openQuiz(ev) {
   document.getElementById('quizOverlay').classList.add('open');
 }
 function closeQuiz() { document.getElementById('quizOverlay').classList.remove('open'); }
-function clearPrefs(ev) { if (ev) ev.preventDefault(); localStorage.removeItem('se_prefs'); PREFS = null; personalMode = false; renderPersonalizeBanner(); renderEvents(); }
+function clearPrefs(ev) {
+  if (ev) ev.preventDefault();
+  if (_fb && currentUser) { try { _fb.fsMod.setDoc(_fb.fsMod.doc(_fb.db, 'profiles', currentUser.uid), { prefs: null, ts: Date.now() }, { merge: true }); } catch { /* ignore */ } }
+  localStorage.removeItem('se_prefs'); PREFS = null; personalMode = false;
+  renderPersonalizeBanner(); renderEvents();
+}
 
 async function submitQuiz(ev) {
   if (ev) ev.preventDefault();
@@ -3318,6 +3353,7 @@ async function submitQuiz(ev) {
   const prefs = { zip, lat: geo ? geo.lat : null, lng: geo ? geo.lng : null, categories: cats, maxMiles, freeOnly, ts: Date.now() };
   localStorage.setItem('se_prefs', JSON.stringify(prefs));
   PREFS = prefs; personalMode = true;
+  if (currentUser) saveCloudPrefs(); // sync to account if signed in
   if (email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && GITHUB_CONFIGURED) {
     const entry = { ts: new Date().toISOString(), date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), name: '', email, zip, lat: prefs.lat, lng: prefs.lng, categories: cats, maxMiles, freeOnly };
     apiAppend('subscribers', entry);
