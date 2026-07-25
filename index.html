@@ -2611,8 +2611,9 @@ function renderEvents() {
     html += `<div class="fav-filter"><button class="chip${showFavoritesOnly?' on':''}" onclick="toggleFavoritesFilter()">${showFavoritesOnly ? '★ Showing your favorites' : '☆ Show my favorites'} (${favorites.size})</button></div>`;
   }
 
-  // Weeks — upcoming only; already-passed events are dropped, empty weeks hidden
-  const notPast = e => !e.isPast;
+  // Weeks — the daily refresh keeps events through the day after they end; empty weeks hidden.
+  // isPast entries are yesterday's, kept on purpose and shown last with a "Past" tag.
+  const notPast = () => true;
 
   // Type filter bar (built from the upcoming set)
   const upcoming = d.weeks.flatMap(w => favFilter(w.events.filter(notPast)));
@@ -2674,11 +2675,14 @@ function renderEvents() {
     let evs = favFilter(week.events.filter(notPast)).filter(passes);
     if (!evs.length) continue;
     shownWeeks++;
-    evs = [...evs].sort((a, b) => b.score - a.score);
+    evs = [...evs].sort((a, b) => (a.isPast ? 1 : 0) - (b.isPast ? 1 : 0) || b.score - a.score);
     const topScore = evs[0].score;
-    const capped = !narrowing && evs.length > CAP;
-    const shown = capped ? evs.slice(0, CAP) : evs;
-    const hidden = capped ? evs.slice(CAP) : [];
+    // Yesterday's (past) events always stay visible — append them after the capped upcoming list.
+    const pastEvs = evs.filter(e => e.isPast);
+    const futureEvs = evs.filter(e => !e.isPast);
+    const capped = !narrowing && futureEvs.length > CAP;
+    const shown = (capped ? futureEvs.slice(0, CAP) : futureEvs).concat(pastEvs);
+    const hidden = capped ? futureEvs.slice(CAP) : [];
     const open = week.open || showFavoritesOnly || narrowing;
     html += `<div class="week-accordion${open ? ' open' : ''}" id="${week.id}">
       <div class="week-header" onclick="toggleWeek('${week.id}')">

@@ -16,7 +16,7 @@ import Anthropic from '@anthropic-ai/sdk';
 const INDEX = 'index.html';
 const START = '/* EVENTS_DATA:START';
 const END = '/* EVENTS_DATA:END */';
-const MODEL = process.env.EVENTS_MODEL || 'claude-haiku-4-5';
+const MODEL = process.env.EVENTS_MODEL || 'claude-sonnet-5';
 
 // Priority calendars to fetch/search. (web_fetch can only fetch URLs present in the
 // conversation, so listing them here lets the model pull them directly.)
@@ -282,6 +282,47 @@ const client = new Anthropic({ maxRetries: 5 }); // reads ANTHROPIC_API_KEY; ret
 
 // Stream (avoids connection timeouts on long web-tool research) and resume on
 // pause_turn (server-tool loop hit its iteration cap). Returns the final message.
+// Parse the LAST calendar date in a dateLabel ("Fri Jul 18 – Sun Jul 20" -> Jul 20).
+function parseEndDate(e) {
+  const M = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+  const re = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/gi;
+  const found = []; let m;
+  while ((m = re.exec(e.dateLabel || ''))) found.push([M[m[1].toLowerCase()], parseInt(m[2], 10)]);
+  if (!found.length) return null;
+  const [mo, day] = found[found.length - 1];
+  const yr = mo < CURRENT_MONTH ? CURRENT_YEAR + 1 : CURRENT_YEAR;
+  return new Date(yr, mo, day);
+}
+
+// Keep events one extra day: carry any event from the PREVIOUS data whose end date was
+// yesterday back into this run (flagged isPast) so "yesterday's events" stay visible today.
+// Bounded to a single day, so nothing older accumulates.
+function carryYesterday(obj, existingBlock) {
+  let prior;
+  try { prior = JSON.parse(existingBlock.slice(existingBlock.indexOf('{'), existingBlock.lastIndexOf('}') + 1)); }
+  catch { return 0; }
+  if (!prior || !Array.isArray(prior.weeks)) return 0;
+  const yTs = new Date(_nowET.getFullYear(), _nowET.getMonth(), _nowET.getDate() - 1).getTime();
+  const key = (e) => (e.title || '').toLowerCase().trim();
+  const have = new Set();
+  for (const w of obj.weeks) for (const e of w.events) have.add(key(e));
+  const carried = [];
+  const scan = (arr) => {
+    for (const e of arr || []) {
+      const d = parseEndDate(e);
+      if (!d) continue;
+      if (new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime() === yTs && !have.has(key(e))) {
+        carried.push({ ...e, isPast: true });
+        have.add(key(e));
+      }
+    }
+  };
+  for (const w of prior.weeks) scan(w.events);
+  scan(prior.tonight);
+  if (carried.length && obj.weeks[0]) obj.weeks[0].events.push(...carried);
+  return carried.length;
+}
+
 async function research(prompt) {
   let messages = [{ role: 'user', content: prompt }];
   let msg;
@@ -338,6 +379,7 @@ RULES:
 - Quality over quantity — this is a curated guide, not a full calendar. SKIP routine no-draw filler: open-mic nights, generic recurring bar/restaurant background music with no following, tiny library storytimes, and similar. Include an event only if a discerning local would actually consider going.
 - Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
 - STAY LOCAL: this is a Candlewood Lake guide, roughly a 25-mile radius. Do NOT include events in Norfolk, Hartford, Woodbridge, New Haven, Waterbury, Bridgeport, Stamford, Norwalk, or anywhere ~30+ minutes away, no matter how good the act. Farthest acceptable towns: Litchfield, Torrington, Woodbury, Kent, Katonah/Caramoor, Pawling, plus Levitt Pavilion in Westport (free outdoor concerts) as a deliberate exception.
+- HOMETOWN COVERAGE IS A PRIORITY: Sherman and New Fairfield are the closest towns and matter most. ALWAYS fetch their community calendars (shermanct.gov community-events page, newfairfield.org community calendar) and the Sherman Playhouse / Sherman Players, and include every qualifying event you find there (live music, theater, comedy, festivals, markets, carnivals). Do not skip a town just because it's small. Tag each event with the town it physically takes place in — the Sherman Players / Sherman Playhouse is "Sherman, CT", not the venue's mailing town.
 - DATES ARE CRITICAL — do not guess. Only include an event on a date you can confirm from a source for THIS year (${CURRENT_YEAR}). Its dateLabel weekday MUST match the real weekday of that calendar date in ${CURRENT_YEAR} (e.g., if unsure, omit rather than guess).
 - Do NOT carry a recurring series' PRIOR-YEAR date forward (e.g. a summer concert series, "Rock the Block," farmers markets). If only last year's schedule is published and this year's specific date isn't confirmed, OMIT the event. Never reuse a ${CURRENT_YEAR - 1} date and relabel it ${CURRENT_YEAR}.
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
@@ -418,6 +460,8 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   applyValueAdj(obj.tonight);
 
   injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
+  const carried = carryYesterday(obj, existingBlock); // keep yesterday's events one more day
+  if (carried) console.log(`Carried ${carried} event(s) from yesterday (visible one more day, tagged Past).`);
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
   if (count === 0) return fail('generated JSON has zero events — refusing to publish an empty guide');
 
