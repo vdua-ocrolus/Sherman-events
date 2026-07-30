@@ -981,34 +981,20 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Jul 29, 2026",
-  "tonight": [],
+  "lastUpdated": "Jul 30, 2026",
+  "tonight": [
+    {
+      "name": "The Dave Matthews Tribute Band (DMTB)",
+      "venue": "Daryl's House",
+      "time": "8:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · July 29 – Aug 1 (This Week)",
+      "title": "Week 1 · July 30 – August 1 (This Week)",
       "open": true,
       "events": [
-        {
-          "score": 7.6,
-          "title": "Xtreme Queen",
-          "url": "https://darylshouseclub.com/tm-attraction/xtreme-queen-the-legacy-of-freddie-mercury/",
-          "dateLabel": "Wed Jul 29",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Queen Tribute",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A high-energy Queen cover band based in New York whose seasoned, multi-talented musicians deliver the closest experience to a real Queen show since the passing of Freddie Mercury.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
         {
           "score": 8.1,
           "title": "The Dave Matthews Tribute Band (DMTB)",
@@ -1025,12 +1011,12 @@ const EVENTS_DATA = {
           "desc": "DMTB celebrates the music of the Dave Matthews Band with complex guitar riffs, soaring violin melodies, and explorative-explosive drumming.",
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
         {
-          "score": 7.2,
+          "score": 7.8,
           "title": "Jessie Altman",
           "url": "https://litchfieldmagazine.com/events/jessie-altman-at-levitt-pavilion/",
           "dateLabel": "Thu Jul 30",
@@ -1070,7 +1056,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.8,
+          "score": 9.9,
           "title": "Summer Sidewalk Sale — Washington Depot",
           "url": "https://litchfieldmagazine.com/events/summer-sidewalk-sale/",
           "dateLabel": "Fri Jul 31 – Sun Aug 2",
@@ -1110,7 +1096,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.9,
+          "score": 7.1,
           "title": "DERT",
           "url": "https://www.housatonicriverbrewing.com/events-1/dert-6",
           "dateLabel": "Fri Jul 31",
@@ -1128,14 +1114,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week2",
-      "title": "Week 2 · August 1–7",
-      "open": true,
-      "events": [
+        },
         {
           "score": 7.9,
           "title": "The Rakes",
@@ -1237,7 +1216,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.3,
+          "score": 9.9,
           "title": "Concerts on the Green — Ace & Friends (Opening Night)",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 1",
@@ -1276,6 +1255,53 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false
         },
+        {
+          "score": 7.8,
+          "title": "Genealogy Essentials & Beyond: Tools to Trace Your Family History",
+          "url": "https://www.shermanct.gov/muni-events/genealogy-essentials-beyond-tools-to-trace-your-family-history",
+          "dateLabel": "Sat Aug 1",
+          "time": "11:00AM–12:00PM",
+          "venue": "Sherman community venue",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Talk / Community Event",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A Sherman community program on genealogy research tools and techniques for tracing family history.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.6,
+          "title": "Xtreme Queen",
+          "url": "https://darylshouseclub.com/tm-attraction/xtreme-queen-the-legacy-of-freddie-mercury/",
+          "dateLabel": "Wed Jul 29",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Queen Tribute",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A high-energy Queen cover band based in New York whose seasoned, multi-talented musicians deliver the closest experience to a real Queen show since the passing of Freddie Mercury.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
+        }
+      ]
+    },
+    {
+      "id": "week2",
+      "title": "Week 2 · August 2–8",
+      "open": true,
+      "events": [
         {
           "score": 8.9,
           "title": "Grace Potter",
@@ -1417,7 +1443,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.5,
+          "score": 8.1,
           "title": "NF Parks & Rec Summer Concert — Split Decision",
           "url": "https://www.newfairfield.org/community/community-event-calendar",
           "dateLabel": "Thu Aug 6",
@@ -1457,52 +1483,25 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.7,
-          "title": "Stephen Pearcy: The Voice of RATT",
-          "url": "https://ridgefieldplayhouse.org/event/stephen-pearcy-ratt-ridgefield-ct-2026/",
-          "dateLabel": "Fri Aug 7",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Hard Rock",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "RATT frontman brings 80s hard rock hits to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "score": 10,
+          "title": "Sugar House Band — CityCenter Danbury Summer Concert Series",
+          "url": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
+          "dateLabel": "Sat Aug 8",
+          "time": "7:00PM–9:30PM",
+          "venue": "Danbury CityCenter Green",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Free Outdoor Concert",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Free CityCenter Danbury Summer Concert Series show featuring the Sugar House Band on the Green — bring blankets, chairs, and picnics.",
+          "source": "fairfieldafterdark.com",
+          "sourceUrl": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
           "isTonight": false,
           "isPast": false,
           "isNF": false
         },
-        {
-          "score": 7,
-          "title": "Five to One",
-          "url": "https://www.housatonicriverbrewing.com/events-1/five-to-one-5",
-          "dateLabel": "Fri Aug 7",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Rock Cover Band",
-          "priceType": "paid",
-          "priceLabel": "$10",
-          "desc": "A rock and roll cover band honoring favorite artists like The Police, Fleetwood Mac, Steely Dan, Queen, The Cars, Styx, and The Rolling Stones.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week3",
-      "title": "Week 3 · August 8–14",
-      "open": false,
-      "events": [
         {
           "score": 8.5,
           "title": "Pure Petty - Tribute to Tom Petty",
@@ -1544,6 +1543,33 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 9.9,
+          "title": "Concerts on the Green — Buena Vista Band",
+          "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "dateLabel": "Sat Aug 8",
+          "time": "7:00PM",
+          "venue": "New Milford Town Green (Bandstand)",
+          "venueType": "",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Free Outdoor Concert Series",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "New Milford's free Concerts on the Green series continues around the historic bandstand with the Buena Vista Band.",
+          "source": "artsnewmilfordct.org",
+          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        }
+      ]
+    },
+    {
+      "id": "week3",
+      "title": "Week 3 · August 9–15",
+      "open": false,
+      "events": [
+        {
           "score": 10,
           "title": "Weekend Pop-Up Flea Market",
           "url": "https://www.shermanct.gov/muni-events/weekend-pop-up-flea-market",
@@ -1579,46 +1605,6 @@ const EVENTS_DATA = {
           "desc": "Dean Snellback & Chuck Cundari celebrate the music of Neil Young and Neil Diamond in an intimate Sherman evening show.",
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Sugar House Band — CityCenter Danbury Summer Concert Series",
-          "url": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
-          "dateLabel": "Sat Aug 8",
-          "time": "7:00PM–9:30PM",
-          "venue": "Danbury CityCenter Green",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Free Outdoor Concert",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Free CityCenter Danbury Summer Concert Series show featuring the Sugar House Band on the Green — bring blankets, chairs, and picnics.",
-          "source": "fairfieldafterdark.com",
-          "sourceUrl": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.3,
-          "title": "Concerts on the Green — Buena Vista Band",
-          "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
-          "dateLabel": "Sat Aug 8",
-          "time": "7:00PM",
-          "venue": "New Milford Town Green (Bandstand)",
-          "venueType": "",
-          "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Free Outdoor Concert Series",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "New Milford's free Concerts on the Green series continues around the historic bandstand with the Buena Vista Band.",
-          "source": "artsnewmilfordct.org",
-          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1664,7 +1650,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.6,
+          "score": 7.8,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-8",
           "dateLabel": "Sun Aug 9",
@@ -1684,34 +1670,27 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.7,
-          "title": "New Milford Rock the Block — The Pop Rocks",
-          "url": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
-          "dateLabel": "Thu Aug 13",
-          "time": "6:30PM",
-          "venue": "Bank Street",
-          "venueType": "",
+          "score": 7.2,
+          "title": "GENERAL KNOWLEDGE TRIVIA",
+          "url": "https://www.housatonicriverbrewing.com/events-1/general-knowledge-trivia-21",
+          "dateLabel": "Wed Aug 12",
+          "time": "7:00PM–9:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
           "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Free Block Party / Live Music",
+          "dist": "~7 mi",
+          "type": "Trivia Night",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.",
-          "source": "newmilfordnow.org",
-          "sourceUrl": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
+          "desc": "Free-to-play general knowledge trivia night at HRB with gift card prizes.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week4",
-      "title": "Week 4 · August 15–21",
-      "open": false,
-      "events": [
+        },
         {
-          "score": 9.3,
+          "score": 9.5,
           "title": "Gravity Feed",
           "url": "https://www.housatonicriverbrewing.com/events-1/gravity-feed-5",
           "dateLabel": "Fri Aug 14",
@@ -1831,7 +1810,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.9,
+          "score": 8.5,
           "title": "Concerts on the Green — What It Is",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 15",
@@ -1850,6 +1829,33 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false
         },
+        {
+          "score": 8.7,
+          "title": "New Milford Rock the Block — The Pop Rocks",
+          "url": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
+          "dateLabel": "Thu Aug 13",
+          "time": "6:30PM",
+          "venue": "Bank Street",
+          "venueType": "",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Free Block Party / Live Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.",
+          "source": "newmilfordnow.org",
+          "sourceUrl": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        }
+      ]
+    },
+    {
+      "id": "week4",
+      "title": "Week 4 · August 16–22",
+      "open": false,
+      "events": [
         {
           "score": 8.7,
           "title": "Allen Stone",
@@ -1903,40 +1909,13 @@ const EVENTS_DATA = {
           "type": "Italian Street Festival / Food & Music",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "The 5th Annual Danbury San Gennaro Festival returns bigger than ever — five free days of Italian food, music, games, and entertainment on the CityCenter Green.",
+          "desc": "The 5th Annual Danbury San Gennaro Festival returns bigger than ever — five free days of Italian food, music, games, and entertainment on the CityCenter Green, opening with a Mass and Procession led by Bishop Frank Caggiano and closing with an America 250 Fireworks Spectacular.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
         },
-        {
-          "score": 7.8,
-          "title": "Junk",
-          "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
-          "dateLabel": "Fri Aug 21",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / 90s-2000s Alt Rock",
-          "priceType": "paid",
-          "priceLabel": "$10",
-          "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week5",
-      "title": "Week 5 · August 22–28",
-      "open": false,
-      "events": [
         {
           "score": 7.3,
           "title": "Brian Regan (Thursday)",
@@ -1973,6 +1952,26 @@ const EVENTS_DATA = {
           "desc": "Third and final night of Brian Regan's run — one of stand-up's most reliably packed acts.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8,
+          "title": "Junk",
+          "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
+          "dateLabel": "Fri Aug 21",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / 90s-2000s Alt Rock",
+          "priceType": "paid",
+          "priceLabel": "$10",
+          "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2058,7 +2057,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.3,
+          "score": 8.9,
           "title": "Concerts on the Green — The Afro-Semitic Experience",
           "url": "https://afrosemiticexperience.net/event/6547073/760504350/summer-concert-in-new-milford-with-the-afro-semitic-experience",
           "dateLabel": "Sat Aug 22",
@@ -2096,7 +2095,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week5",
+      "title": "Week 5 · August 23–29",
+      "open": false,
+      "events": [
         {
           "score": 6.3,
           "title": "Top of The World: A Carpenters Tribute",
@@ -2117,33 +2123,6 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false
         },
-        {
-          "score": 6.3,
-          "title": "Blues Brothers Tribute Show: Hats and Shades",
-          "url": "https://thepalacedanbury1.ticketspice.com/hats-shades",
-          "dateLabel": "Sat Aug 29",
-          "time": "7:30PM",
-          "venue": "The Palace Danbury",
-          "venueType": "palace",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Blues Brothers Tribute",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A high-energy tribute to the Blues Brothers, complete with the iconic hats and shades, hits the historic Palace Danbury stage.",
-          "source": "thepalacedanbury.com",
-          "sourceUrl": "https://thepalacedanbury.com/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week6",
-      "title": "Week 6 · August 29 – September 4",
-      "open": false,
-      "events": [
         {
           "score": 10,
           "title": "Learn Italian With Angela Leclerc",
@@ -2205,7 +2184,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.2,
+          "score": 8.8,
           "title": "Concerts on the Green — CJ Live (Season Finale)",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 29",
@@ -2223,7 +2202,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week6",
+      "title": "Week 6 · August 30 – September 5",
+      "open": false,
+      "events": [
         {
           "score": 8,
           "title": "Willie Nile",
@@ -2240,6 +2226,26 @@ const EVENTS_DATA = {
           "desc": "Veteran rock singer-songwriter Willie Nile, a long-celebrated NYC rock 'n' roll fixture praised by Bruce Springsteen and Bob Dylan's circle, plays an intimate Daryl's House show.",
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.5,
+          "title": "Marty Stuart and His Fabulous Superlatives",
+          "url": "https://ridgefieldplayhouse.org/event/marty-stuart-ridgefield-ct-2026/",
+          "dateLabel": "Thu Sep 3",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Country / Americana",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "GRAMMY-winning country legend Marty Stuart and His Fabulous Superlatives bring their acclaimed roots-country sound to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2283,34 +2289,34 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 9.1,
+          "title": "Danbury's Brazilian Festival",
+          "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "dateLabel": "Sat Sep 5 – Sun Sep 6",
+          "time": "10:00AM–9:00PM",
+          "venue": "Danbury CityCenter Green",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Cultural Festival / Food & Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, an alcohol garden for adults, and Brazilian food and global vendors.",
+          "source": "citycenterdanbury.com",
+          "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         }
       ]
     },
     {
       "id": "week7",
-      "title": "Week 7 · September 5–11",
+      "title": "Week 7 · September 6–12",
       "open": false,
       "events": [
-        {
-          "score": 8.5,
-          "title": "Marty Stuart and His Fabulous Superlatives",
-          "url": "https://ridgefieldplayhouse.org/event/marty-stuart-ridgefield-ct-2026/",
-          "dateLabel": "Thu Sep 3",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Country / Americana",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "GRAMMY-winning country legend Marty Stuart and His Fabulous Superlatives bring their acclaimed roots-country sound to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
         {
           "score": 8.2,
           "title": "George Thorogood & The Destroyers – The Baddest Show On Earth",
@@ -2395,7 +2401,7 @@ const EVENTS_DATA = {
     },
     {
       "id": "week8",
-      "title": "Week 8 · September 12–18",
+      "title": "Week 8 · September 13–19",
       "open": false,
       "events": [
         {
@@ -2419,26 +2425,6 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.9,
-          "title": "John Crist Live",
-          "url": "https://www.warnertheatre.org/events/john-crist-live/",
-          "dateLabel": "Thu Sep 24",
-          "time": "7:00PM",
-          "venue": "Warner Theatre (Oneglia Auditorium)",
-          "venueType": "warner",
-          "town": "Torrington, CT",
-          "dist": "~20 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Popular comedian John Crist brings his stand-up show to the historic Warner Theatre.",
-          "source": "warnertheatre.org",
-          "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
           "score": 7.8,
           "title": "Taylor Dayne",
           "url": "https://ridgefieldplayhouse.org/event/taylor-dayne-ridgefield-ct-2026/",
@@ -2457,56 +2443,12 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
-        {
-          "score": 8.4,
-          "title": "Samara Joy and Her Septet",
-          "url": "https://ridgefieldplayhouse.org/event/samara-joy-ridgefield-ct-2026/",
-          "dateLabel": "Sun Sep 20",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Jazz",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "GRAMMY-winning jazz sensation Samara Joy and her septet bring their acclaimed, critically celebrated vocal jazz to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.6,
-          "title": "What It Is",
-          "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-6",
-          "dateLabel": "Sun Sep 20",
-          "time": "4:00PM–7:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Funk / Soul / R&B",
-          "priceType": "paid",
-          "priceLabel": "$7.50",
-          "desc": "It is... What It Is? is a funk, soul, R&B band based in Connecticut that will blow your doors off with horn-driven funky grooves and tight arrangements at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
         }
       ]
     }
   ],
   "past": [],
   "daryls": [
-    {
-      "date": "Wed Jul 29, 7:00PM",
-      "title": "Xtreme Queen"
-    },
     {
       "date": "Thu Jul 30, 8:00PM",
       "title": "The Dave Matthews Tribute Band (DMTB)"
@@ -2530,10 +2472,6 @@ const EVENTS_DATA = {
     {
       "date": "Thu Aug 6, 8:00PM",
       "title": "G. Love & Special Sauce"
-    },
-    {
-      "date": "Fri Aug 7, 8:00PM",
-      "title": "Echoes of the Eagles"
     },
     {
       "date": "Wed Sep 2, 7:00PM",
