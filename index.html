@@ -981,60 +981,35 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Jul 30, 2026",
+  "lastUpdated": "Jul 31, 2026",
   "tonight": [
     {
-      "name": "The Dave Matthews Tribute Band (DMTB)",
+      "name": "Trouble No More: A Celebration of the Allman Brothers Band",
       "venue": "Daryl's House",
       "time": "8:00PM"
+    },
+    {
+      "name": "The Indonesian Table w/ Chef Ian",
+      "venue": "Litchfield area venue",
+      "time": "6:00PM"
+    },
+    {
+      "name": "DERT",
+      "venue": "Housatonic River Brewing",
+      "time": "7:00PM"
+    },
+    {
+      "name": "Atomic Habitz ft. Marcus King, Chris Dave & MonoNeon",
+      "venue": "Ridgefield Playhouse (Live Outside)",
+      "time": "7:00PM"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · July 30 – August 1 (This Week)",
+      "title": "Week 1 · July 31 – August 1 (This Week)",
       "open": true,
       "events": [
-        {
-          "score": 8.1,
-          "title": "The Dave Matthews Tribute Band (DMTB)",
-          "url": "https://darylshouseclub.com/shows/",
-          "dateLabel": "Thu Jul 30",
-          "time": "8:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Jam Band Tribute",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "DMTB celebrates the music of the Dave Matthews Band with complex guitar riffs, soaring violin melodies, and explorative-explosive drumming.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.8,
-          "title": "Jessie Altman",
-          "url": "https://litchfieldmagazine.com/events/jessie-altman-at-levitt-pavilion/",
-          "dateLabel": "Thu Jul 30",
-          "time": "7:30PM",
-          "venue": "Levitt Pavilion",
-          "venueType": "levitt",
-          "town": "Westport, CT",
-          "dist": "~28 mi",
-          "type": "Free Outdoor Concert / Rising Pop",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Rising star Jessie Altman, named one of SPIN's Top Emerging Artists, performs a special free concert at the Levitt Pavilion.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/events/jessie-altman-at-levitt-pavilion/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
         {
           "score": 8.2,
           "title": "Trouble No More: A Celebration of the Allman Brothers Band",
@@ -1051,7 +1026,27 @@ const EVENTS_DATA = {
           "desc": "All-star musicians celebrating the iconic early catalogue of the Allman Brothers Band, aiming to bring energy and vitality back to the legacy of the \"Best Band in the Land.\"",
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.9,
+          "title": "Atomic Habitz ft. Marcus King, Chris Dave & MonoNeon",
+          "url": "https://ridgefieldplayhouse.org/event/live-outside-atomic-habitz-ridgefield-ct-2026/",
+          "dateLabel": "Fri Jul 31",
+          "time": "7:00PM",
+          "venue": "Ridgefield Playhouse (Live Outside)",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Live Outside / Funk-Soul Supergroup",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Marcus King + legendary drummer Chris Dave + MonoNeon (Prince's bassist) — one of the best shows in the calendar.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
@@ -1076,27 +1071,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.9,
-          "title": "Atomic Habitz ft. Marcus King, Chris Dave & MonoNeon",
-          "url": "https://ridgefieldplayhouse.org/event/live-outside-atomic-habitz-ridgefield-ct-2026/",
-          "dateLabel": "Fri Jul 31",
-          "time": "7:00PM",
-          "venue": "Ridgefield Playhouse (Live Outside)",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Live Outside / Funk-Soul Supergroup",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Marcus King + legendary drummer Chris Dave + MonoNeon (Prince's bassist) — one of the best shows in the calendar.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.1,
+          "score": 7.3,
           "title": "DERT",
           "url": "https://www.housatonicriverbrewing.com/events-1/dert-6",
           "dateLabel": "Fri Jul 31",
@@ -1111,7 +1086,7 @@ const EVENTS_DATA = {
           "desc": "DERT rocks out playing favorites from AC/DC, Weezer, Van Halen, The Kinks and more on the HRB stage.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
@@ -1216,7 +1191,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.9,
+          "score": 10,
           "title": "Concerts on the Green — Ace & Friends (Opening Night)",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 1",
@@ -1256,7 +1231,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.8,
+          "score": 8.4,
           "title": "Genealogy Essentials & Beyond: Tools to Trace Your Family History",
           "url": "https://www.shermanct.gov/muni-events/genealogy-essentials-beyond-tools-to-trace-your-family-history",
           "dateLabel": "Sat Aug 1",
@@ -1276,22 +1251,62 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.6,
-          "title": "Xtreme Queen",
-          "url": "https://darylshouseclub.com/tm-attraction/xtreme-queen-the-legacy-of-freddie-mercury/",
-          "dateLabel": "Wed Jul 29",
-          "time": "7:00PM",
+          "score": 7.4,
+          "title": "Sherman Community Players Mainstage Weekend",
+          "url": "https://www.scptheater.org/",
+          "dateLabel": "Sat Aug 1 – Mon Aug 3",
+          "time": "Evenings",
+          "venue": "Sherman Playhouse area venue",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Community Theatre",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A community theatre production weekend celebrating decades of local comedies, dramas, and musicals in the Sherman area.",
+          "source": "scptheater.org",
+          "sourceUrl": "https://www.scptheater.org/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.1,
+          "title": "The Dave Matthews Tribute Band (DMTB)",
+          "url": "https://darylshouseclub.com/shows/",
+          "dateLabel": "Thu Jul 30",
+          "time": "8:00PM",
           "venue": "Daryl's House",
           "venueType": "darylshouse",
           "town": "Pawling, NY",
           "dist": "~20 mi",
-          "type": "Queen Tribute",
+          "type": "Jam Band Tribute",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "A high-energy Queen cover band based in New York whose seasoned, multi-talented musicians deliver the closest experience to a real Queen show since the passing of Freddie Mercury.",
+          "desc": "DMTB celebrates the music of the Dave Matthews Band with complex guitar riffs, soaring violin melodies, and explorative-explosive drumming.",
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": true,
+          "isPast": true,
+          "isNF": false
+        },
+        {
+          "score": 7.8,
+          "title": "Jessie Altman",
+          "url": "https://litchfieldmagazine.com/events/jessie-altman-at-levitt-pavilion/",
+          "dateLabel": "Thu Jul 30",
+          "time": "7:30PM",
+          "venue": "Levitt Pavilion",
+          "venueType": "levitt",
+          "town": "Westport, CT",
+          "dist": "~28 mi",
+          "type": "Free Outdoor Concert / Rising Pop",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Rising star Jessie Altman, named one of SPIN's Top Emerging Artists, performs a special free concert at the Levitt Pavilion.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/events/jessie-altman-at-levitt-pavilion/",
+          "isTonight": false,
           "isPast": true,
           "isNF": false
         }
@@ -1443,7 +1458,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.1,
+          "score": 8.7,
           "title": "NF Parks & Rec Summer Concert — Split Decision",
           "url": "https://www.newfairfield.org/community/community-event-calendar",
           "dateLabel": "Thu Aug 6",
@@ -1463,6 +1478,26 @@ const EVENTS_DATA = {
           "isNF": true
         },
         {
+          "score": 9.1,
+          "title": "The Red Planet",
+          "url": "https://levittpavilion.com/2026/07/26/the-red-planet/",
+          "dateLabel": "Thu Aug 6",
+          "time": "7:30PM",
+          "venue": "Levitt Pavilion",
+          "venueType": "levitt",
+          "town": "Westport, CT",
+          "dist": "~28 mi",
+          "type": "Free Outdoor Concert",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A featured free show on the Levitt Pavilion's summer stage, part of its lineup of touring and regional acts.",
+          "source": "levittpavilion.com",
+          "sourceUrl": "https://levittpavilion.com/calendar/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 9.9,
           "title": "Kent Sidewalk Sale Days — 50th Anniversary",
           "url": "https://www.kentct.com/kent-sidewalk-sale-days",
@@ -1478,6 +1513,46 @@ const EVENTS_DATA = {
           "desc": "For 50 years, Kent's merchants have celebrated summer by bringing the shopping experience outdoors, with sidewalk sales, pop-up shops, food and drinks, live music, demonstrations, and family-friendly activities in this milestone anniversary year.",
           "source": "kentct.com",
           "sourceUrl": "https://www.kentct.com/kent-sidewalk-sale-days",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.1,
+          "title": "Five to One",
+          "url": "https://www.housatonicriverbrewing.com/events-1/five-to-one-5",
+          "dateLabel": "Fri Aug 7",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Rock Covers",
+          "priceType": "paid",
+          "priceLabel": "$10",
+          "desc": "A rock and roll cover band honoring favorite artists like The Police, Fleetwood Mac, Steely Dan, Garbage, Queen, The Cars, Styx, and The Rolling Stones.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.7,
+          "title": "Stephen Pearcy: The Voice of RATT",
+          "url": "https://ridgefieldplayhouse.org/event/stephen-pearcy-ratt-ridgefield-ct-2026/",
+          "dateLabel": "Fri Aug 7",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Rock / 80s Metal Legend",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "RATT frontman Stephen Pearcy, the voice behind \"Round and Round\" and a mainstay of 80s hard rock, brings his solo show to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1543,7 +1618,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.9,
+          "score": 10,
           "title": "Concerts on the Green — Buena Vista Band",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 8",
@@ -1558,6 +1633,26 @@ const EVENTS_DATA = {
           "desc": "New Milford's free Concerts on the Green series continues around the historic bandstand with the Buena Vista Band.",
           "source": "artsnewmilfordct.org",
           "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.9,
+          "title": "Blue Plate Special",
+          "url": "https://www.songkick.com/concerts/43251151-blue-plate-special-at-daryls-house",
+          "dateLabel": "Sat Aug 8",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional favorite act returns to the Daryl's House main stage for an evening of live music.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1650,7 +1745,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.8,
+          "score": 8,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-8",
           "dateLabel": "Sun Aug 9",
@@ -1670,27 +1765,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.2,
-          "title": "GENERAL KNOWLEDGE TRIVIA",
-          "url": "https://www.housatonicriverbrewing.com/events-1/general-knowledge-trivia-21",
-          "dateLabel": "Wed Aug 12",
-          "time": "7:00PM–9:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Trivia Night",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Free-to-play general knowledge trivia night at HRB with gift card prizes.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.5,
+          "score": 9.7,
           "title": "Gravity Feed",
           "url": "https://www.housatonicriverbrewing.com/events-1/gravity-feed-5",
           "dateLabel": "Fri Aug 14",
@@ -1705,6 +1780,26 @@ const EVENTS_DATA = {
           "desc": "Gravity Feed plays modern pop and soul with classic rock ferocity, and classic rock with a 21st century groove, at the HRB stage.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.4,
+          "title": "Larry McCray",
+          "url": "https://www.songkick.com/concerts/43092888-larry-mccray-at-daryls-house",
+          "dateLabel": "Wed Aug 12",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Blues Guitar Legend",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Acclaimed blues guitarist Larry McCray has shared stages with B.B. King, Buddy Guy, and Joe Bonamassa, and was nominated for a Blues Music Award for Best Contemporary Blues Album.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1810,7 +1905,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.5,
+          "score": 9.1,
           "title": "Concerts on the Green — What It Is",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 15",
@@ -1825,6 +1920,26 @@ const EVENTS_DATA = {
           "desc": "New Milford's free Concerts on the Green series continues around the historic bandstand with Connecticut funk/soul/R&B band What It Is.",
           "source": "artsnewmilfordct.org",
           "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.1,
+          "title": "Joyride — 80's Mixtape Live (Ladies of the 80s Night Out)",
+          "url": "https://darylshouseclub.com/tm-attraction/joyride-80s-mixtape-live/",
+          "dateLabel": "Sat Aug 15",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "80s Tribute / Dance Party",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A high-energy concept band celebrating the biggest pop/rock and new wave dance hits of the 1980s, from Madonna and Pat Benatar to Bon Jovi and Journey.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1957,7 +2072,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8,
+          "score": 8.2,
           "title": "Junk",
           "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
           "dateLabel": "Fri Aug 21",
@@ -1972,6 +2087,26 @@ const EVENTS_DATA = {
           "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.2,
+          "title": "Red NOT Chili Peppers",
+          "url": "https://www.songkick.com/concerts/43135678-red-not-chili-peppers-at-daryls-house",
+          "dateLabel": "Fri Aug 21",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Red Hot Chili Peppers Tribute",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "The nation's #1 touring Red Hot Chili Peppers tribute band, with nearly 100 shows a year and one of the largest fan followings among tribute acts nationwide.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2057,7 +2192,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.9,
+          "score": 9.5,
           "title": "Concerts on the Green — The Afro-Semitic Experience",
           "url": "https://afrosemiticexperience.net/event/6547073/760504350/summer-concert-in-new-milford-with-the-afro-semitic-experience",
           "dateLabel": "Sat Aug 22",
@@ -2184,7 +2319,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.8,
+          "score": 9.4,
           "title": "Concerts on the Green — CJ Live (Season Finale)",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 29",
@@ -2199,6 +2334,26 @@ const EVENTS_DATA = {
           "desc": "New Milford's free Concerts on the Green series wraps its 2026 season with CJ Live around the historic bandstand.",
           "source": "artsnewmilfordct.org",
           "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.3,
+          "title": "Lake & Palmer",
+          "url": "https://www.songkick.com/concerts/43169110-lake-and-palmer-at-daryls-house",
+          "dateLabel": "Thu Aug 27",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act plays the Daryl's House main stage for a mid-week evening show.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2291,7 +2446,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.1,
+          "score": 9.7,
           "title": "Danbury's Brazilian Festival",
           "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
           "dateLabel": "Sat Sep 5 – Sun Sep 6",
@@ -2306,6 +2461,26 @@ const EVENTS_DATA = {
           "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, an alcohol garden for adults, and Brazilian food and global vendors.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 6.9,
+          "title": "Midnight Choir",
+          "url": "https://www.songkick.com/concerts/43301271-midnight-choir-at-daryls-house",
+          "dateLabel": "Sat Sep 5",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act performs at Daryl's House on the main stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2396,6 +2571,26 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 6.8,
+          "title": "APB",
+          "url": "https://www.songkick.com/concerts/43106339-apb-at-daryls-house",
+          "dateLabel": "Thu Sep 10",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act performs at Daryl's House on the main stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         }
       ]
     },
@@ -2420,6 +2615,46 @@ const EVENTS_DATA = {
           "desc": "The beloved children's book comes to life in this colorful family musical at Ridgefield Playhouse.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 6.9,
+          "title": "Too Blue",
+          "url": "https://www.songkick.com/concerts/43301677-too-blue-at-daryls-house",
+          "dateLabel": "Sun Sep 13",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act performs at Daryl's House on the main stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.9,
+          "title": "The Sensational Soul Cruisers",
+          "url": "https://www.songkick.com/concerts/43116592-sensational-soul-cruisers-at-daryls-house",
+          "dateLabel": "Fri Sep 18",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Soul / Motown Revue",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A high-energy soul and Motown revue band bringing classic hits from the golden era of R&B to the Daryl's House stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2450,10 +2685,6 @@ const EVENTS_DATA = {
   "past": [],
   "daryls": [
     {
-      "date": "Thu Jul 30, 8:00PM",
-      "title": "The Dave Matthews Tribute Band (DMTB)"
-    },
-    {
       "date": "Fri Jul 31, 8:00PM",
       "title": "Trouble No More: A Celebration of the Allman Brothers Band"
     },
@@ -2474,12 +2705,32 @@ const EVENTS_DATA = {
       "title": "G. Love & Special Sauce"
     },
     {
+      "date": "Sat Aug 8, 8:00PM",
+      "title": "Blue Plate Special"
+    },
+    {
+      "date": "Wed Aug 12, 7:00PM",
+      "title": "Larry McCray"
+    },
+    {
+      "date": "Sat Aug 15, 7:00PM",
+      "title": "Joyride — 80's Mixtape Live (Ladies of the 80s Night Out)"
+    },
+    {
+      "date": "Fri Aug 21, 8:00PM",
+      "title": "Red NOT Chili Peppers"
+    },
+    {
       "date": "Wed Sep 2, 7:00PM",
       "title": "Willie Nile"
     },
     {
       "date": "Sat Sep 5, 8:00PM",
       "title": "Disciple of The Garden – Tribute to Soundgarden, Audioslave, Chris Cornell"
+    },
+    {
+      "date": "Fri Sep 18, 8:00PM",
+      "title": "The Sensational Soul Cruisers"
     }
   ]
 };
