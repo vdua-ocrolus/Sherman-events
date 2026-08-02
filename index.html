@@ -981,65 +981,94 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 1, 2026",
-  "tonight": [
-    {
-      "name": "Trouble No More: A Celebration of the Allman Brothers Band",
-      "venue": "Daryl's House",
-      "time": "8:00PM"
-    },
-    {
-      "name": "The Rakes",
-      "venue": "Housatonic River Brewing",
-      "time": "7:00PM"
-    },
-    {
-      "name": "PHANTOGRAM",
-      "venue": "Ridgefield Playhouse (Live Outside)",
-      "time": "7:00PM"
-    },
-    {
-      "name": "Bruce Hornsby & The Noisemakers",
-      "venue": "Caramoor",
-      "time": "7:30PM"
-    },
-    {
-      "name": "Mamma Mania — America's Premier ABBA Tribute",
-      "venue": "The Palace Danbury",
-      "time": "7:30PM"
-    },
-    {
-      "name": "Sister Funk — CityCenter Danbury Summer Concert Series",
-      "venue": "Danbury CityCenter Green",
-      "time": "7:00PM"
-    },
-    {
-      "name": "Concerts on the Green — Ace & Friends (Opening Night)",
-      "venue": "New Milford Town Green (Bandstand)",
-      "time": "7:00PM"
-    },
-    {
-      "name": "Anthem Reggae Band",
-      "venue": "Levitt Pavilion",
-      "time": "7:30PM"
-    },
-    {
-      "name": "Genealogy Essentials & Beyond: Tools to Trace Your Family History",
-      "venue": "Sherman community venue",
-      "time": "11:00AM"
-    },
-    {
-      "name": "Sherman Community Players Mainstage Weekend",
-      "venue": "Sherman Playhouse area venue",
-      "time": "Evenings"
-    }
-  ],
+  "lastUpdated": "Aug 2, 2026",
+  "tonight": [],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 1–2 (This Week)",
+      "title": "Week 1 · August 2 (This Week)",
       "open": true,
       "events": [
+        {
+          "score": 8.1,
+          "title": "Holy Roller",
+          "url": "https://www.songkick.com/concerts/43119354-holy-roller-at-daryls-house",
+          "dateLabel": "Sun Aug 2",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Southern Rock",
+          "priceType": "paid",
+          "priceLabel": "$22–$34",
+          "desc": "Richmond, VA-based Southern rock band with roots in rock, Americana, soul, and country, known for beautiful harmonies and a compelling live show that's built a growing fanbase across the East Coast club circuit.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.1,
+          "title": "Caramoor Summer Season Finale — Orchestra of St. Luke's & Gil Shaham",
+          "url": "https://caramoor.org/event/orchestra-of-st-lukes-gil-shaham-2026",
+          "dateLabel": "Sun Aug 2",
+          "time": "4:00PM",
+          "venue": "Caramoor (Venetian Theater)",
+          "venueType": "caramoor",
+          "town": "Katonah, NY",
+          "dist": "~25 mi",
+          "type": "Classical / Orchestra",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "World-renowned violinist Gil Shaham joins the Orchestra of St. Luke's for Barber's Violin Concerto to close Caramoor's summer season.",
+          "source": "caramoor.org",
+          "sourceUrl": "https://caramoor.org/events/concerts",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 6.4,
+          "title": "Note To Self",
+          "url": "https://www.housatonicriverbrewing.com/events-1/note-to-self-2",
+          "dateLabel": "Sun Aug 2",
+          "time": "4:00PM–7:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Acoustic Trio",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "An acoustic trio bringing a fresh, harmonically rich take to timeless classics and fan favorites spanning classic rock, folk-rock, soft rock and pop, drawing on Fleetwood Mac, The Beatles, and Tom Petty.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 6.6,
+          "title": "Singing America at 250! — Litchfield County Choral Union",
+          "url": "https://litchfieldmagazine.com/events/singing-america-at-250/",
+          "dateLabel": "Sun Aug 2",
+          "time": "5:00PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield, CT",
+          "dist": "~7 mi",
+          "type": "Choral Concert",
+          "priceType": "paid",
+          "priceLabel": "Tickets at the door",
+          "desc": "From Roots to Promise — the Litchfield County Choral Union embraces America's multi-cultural identity in a concert celebrating the nation's 250th anniversary.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false
+        },
         {
           "score": 8.2,
           "title": "Trouble No More: A Celebration of the Allman Brothers Band",
@@ -1057,7 +1086,7 @@ const EVENTS_DATA = {
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1077,7 +1106,7 @@ const EVENTS_DATA = {
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1097,7 +1126,7 @@ const EVENTS_DATA = {
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1117,7 +1146,7 @@ const EVENTS_DATA = {
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1137,7 +1166,7 @@ const EVENTS_DATA = {
           "source": "fairfieldafterdark.com",
           "sourceUrl": "https://thepalacedanbury.com/",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1157,7 +1186,7 @@ const EVENTS_DATA = {
           "source": "fairfieldafterdark.com",
           "sourceUrl": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1177,7 +1206,7 @@ const EVENTS_DATA = {
           "source": "artsnewmilfordct.org",
           "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1197,7 +1226,7 @@ const EVENTS_DATA = {
           "source": "levittpavilion.com",
           "sourceUrl": "https://levittpavilion.com/calendar/",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1217,107 +1246,7 @@ const EVENTS_DATA = {
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.4,
-          "title": "Sherman Community Players Mainstage Weekend",
-          "url": "https://www.scptheater.org/",
-          "dateLabel": "Sat Aug 1 – Sun Aug 9",
-          "time": "Evenings",
-          "venue": "Sherman Playhouse area venue",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Community Theatre",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A community theatre production running July 31–August 9, celebrating decades of local comedies, dramas, and musicals in the Sherman area.",
-          "source": "scptheater.org",
-          "sourceUrl": "https://www.scptheater.org/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.9,
-          "title": "Grace Potter",
-          "url": "https://ridgefieldplayhouse.org/event/live-outside-grace-potter-ridgefield-ct-2026/",
-          "dateLabel": "Sun Aug 2",
-          "time": "7:00PM",
-          "venue": "Ridgefield Playhouse (Live Outside)",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Live Outside / Rock",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Vermont rock powerhouse — bluesy, soulful, electric. Grace Potter puts on an exceptional live show.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.1,
-          "title": "Caramoor Summer Season Finale — Orchestra of St. Luke's & Gil Shaham",
-          "url": "https://caramoor.org/event/orchestra-of-st-lukes-gil-shaham-2026",
-          "dateLabel": "Sun Aug 2",
-          "time": "4:00PM",
-          "venue": "Caramoor (Venetian Theater)",
-          "venueType": "caramoor",
-          "town": "Katonah, NY",
-          "dist": "~25 mi",
-          "type": "Classical / Orchestra",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "World-renowned violinist Gil Shaham, a Caramoor favorite since 1994, joins the Orchestra of St. Luke's for Barber's Violin Concerto to close the summer season.",
-          "source": "caramoor.org",
-          "sourceUrl": "https://caramoor.org/events/concerts",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.1,
-          "title": "Holy Roller",
-          "url": "https://darylshouseclub.com/shows/",
-          "dateLabel": "Sun Aug 2",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Southern Rock",
-          "priceType": "paid",
-          "priceLabel": "$22–$34",
-          "desc": "The Richmond, VA-based group has been dominating the east coast, selling out nearly every show over the last year, quickly proving they intend to be the new face of southern rock.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 6.4,
-          "title": "Note To Self",
-          "url": "https://www.housatonicriverbrewing.com/events-1/note-to-self-2",
-          "dateLabel": "Sun Aug 2",
-          "time": "4:00PM–7:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Acoustic Trio",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "An acoustic trio bringing a fresh, harmonically rich take to timeless classics and fan favorites spanning classic rock, folk-rock, soft rock and pop.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         }
       ]
@@ -1330,7 +1259,7 @@ const EVENTS_DATA = {
         {
           "score": 8.4,
           "title": "Mike Love & The Full Circle",
-          "url": "https://darylshouseclub.com/shows/",
+          "url": "https://www.songkick.com/concerts/43162018-mike-love-and-the-full-circle-at-daryls-house",
           "dateLabel": "Wed Aug 5",
           "time": "7:00PM",
           "venue": "Daryl's House",
@@ -1350,7 +1279,7 @@ const EVENTS_DATA = {
         {
           "score": 9,
           "title": "G. Love & Special Sauce",
-          "url": "https://www.axs.com/events/1445331",
+          "url": "https://www.songkick.com/concerts/43198825-g-love-and-special-sauce-at-daryls-house",
           "dateLabel": "Thu Aug 6",
           "time": "8:00PM",
           "venue": "Daryl's House",
@@ -1378,8 +1307,8 @@ const EVENTS_DATA = {
           "town": "Ridgefield, CT",
           "dist": "~15 mi",
           "type": "Classic Rock Legends",
-          "priceType": "paid",
-          "priceLabel": null,
+          "priceType": "soldout",
+          "priceLabel": "SOLD OUT",
           "desc": "Iconic American band Three Dog Night, now in its 6th decade, boasts 21 consecutive Billboard Top 40 hits including 3 #1 singles and 12 straight RIAA Certified Gold LPs.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
@@ -1388,7 +1317,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.3,
+          "score": 9.9,
           "title": "NF Parks & Rec Summer Concert — Split Decision",
           "url": "https://www.newfairfield.org/community/community-event-calendar",
           "dateLabel": "Thu Aug 6",
@@ -1412,7 +1341,7 @@ const EVENTS_DATA = {
           "title": "Kent Sidewalk Sale Days — 50th Anniversary",
           "url": "https://www.kentct.com/kent-sidewalk-sale-days",
           "dateLabel": "Thu Aug 6 – Sun Aug 9",
-          "time": "10:00AM–5:00PM (varies)",
+          "time": "9:30AM–6:30PM (varies)",
           "venue": "Main Street, Kent",
           "venueType": "litchfield",
           "town": "Kent, CT",
@@ -1428,7 +1357,27 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.3,
+          "score": 7.1,
+          "title": "St Andrew's Kent Annual Tag Sale",
+          "url": "https://litchfieldmagazine.com/events/st-andrews-kent-annual-tag-sale/",
+          "dateLabel": "Thu Aug 6",
+          "time": "9:30AM",
+          "venue": "St. Andrew's Parish",
+          "venueType": "litchfield",
+          "town": "Kent, CT",
+          "dist": "~15 mi",
+          "type": "Tag Sale / Community Event",
+          "priceType": "free",
+          "priceLabel": "Free admission",
+          "desc": "St. Andrew's Parish Annual Tag Sale, one of Kent's premier events held during the town's Sidewalk Sale Days weekend.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.5,
           "title": "Five to One",
           "url": "https://www.housatonicriverbrewing.com/events-1/five-to-one-5",
           "dateLabel": "Fri Aug 7",
@@ -1463,6 +1412,26 @@ const EVENTS_DATA = {
           "desc": "RATT frontman Stephen Pearcy, the voice behind \"Round and Round\" and a mainstay of 80s hard rock, brings his solo show to Ridgefield.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.4,
+          "title": "Washington Friends of Music Summer Festival",
+          "url": "https://litchfieldmagazine.com/events/washington-friends-of-music-summer-festival/",
+          "dateLabel": "Fri Aug 7",
+          "time": "Evening",
+          "venue": "Washington community venue",
+          "venueType": "litchfield",
+          "town": "Washington, CT",
+          "dist": "~12 mi",
+          "type": "Chamber Music Festival",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Four evenings of exceptional chamber music presented on the first four Fridays of August, a cherished Washington, CT summer tradition.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1548,6 +1517,26 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 7.4,
+          "title": "Wanda Houston Live at the Grotto",
+          "url": "https://litchfieldmagazine.com/events/wanda-houston-live-at-the-grotto/",
+          "dateLabel": "Sat Aug 8",
+          "time": "Evening",
+          "venue": "The Grotto",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~10 mi",
+          "type": "Jazz / R&B",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Acclaimed Berkshire vocalist Wanda Houston & Her Band play a mesmerizing mix of mid-20th century jazz and R&B in an intimate setting.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 7.9,
           "title": "Blue Plate Special",
           "url": "https://www.songkick.com/concerts/43251151-blue-plate-special-at-daryls-house",
@@ -1563,26 +1552,6 @@ const EVENTS_DATA = {
           "desc": "A regional favorite act returns to the Daryl's House main stage for an evening of live music.",
           "source": "songkick.com",
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Weekend Pop-Up Flea Market",
-          "url": "https://www.shermanct.gov/muni-events/weekend-pop-up-flea-market",
-          "dateLabel": "Sat Aug 8 – Sun Aug 9",
-          "time": "12:00PM",
-          "venue": "Sherman town grounds",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Flea Market / Community Event",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A weekend pop-up flea market in Sherman, a fun local shopping event for treasure-hunters and browsers alike.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1609,6 +1578,26 @@ const EVENTS_DATA = {
         },
         {
           "score": 10,
+          "title": "Weekend Pop-Up Flea Market",
+          "url": "https://www.shermanct.gov/muni-events/weekend-pop-up-flea-market",
+          "dateLabel": "Sat Aug 8 – Sun Aug 9",
+          "time": "12:00PM",
+          "venue": "Sherman town grounds",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Flea Market / Community Event",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A weekend pop-up flea market in Sherman, a fun local shopping event for treasure-hunters and browsers alike.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 10,
           "title": "Sunday Speaker Series: Greg Van Antwerp — \"Stories From the Attic\"",
           "url": "https://www.shermanct.gov/muni-events/sunday-speaker-series-greg-van-antwerp-stories-from-the-attic",
           "dateLabel": "Sun Aug 9",
@@ -1620,7 +1609,7 @@ const EVENTS_DATA = {
           "type": "Talk / Community Event",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "A Sherman Sunday Speaker Series talk, \"Stories From the Attic,\" with local historian Greg Van Antwerp.",
+          "desc": "A Sherman community program, \"Stories From the Attic,\" with local historian Greg Van Antwerp.",
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
@@ -1648,7 +1637,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.2,
+          "score": 8.4,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-8",
           "dateLabel": "Sun Aug 9",
@@ -1695,7 +1684,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.9,
+          "score": 10,
           "title": "Gravity Feed",
           "url": "https://www.housatonicriverbrewing.com/events-1/gravity-feed-5",
           "dateLabel": "Fri Aug 14",
@@ -1735,7 +1724,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.5,
+          "score": 8.9,
           "title": "North County Band — CityCenter Danbury Summer Concert Series",
           "url": "https://citycenterdanbury.com/event/north-county-band/",
           "dateLabel": "Fri Aug 14",
@@ -1750,6 +1739,26 @@ const EVENTS_DATA = {
           "desc": "Free CityCenter Danbury Summer Concert Series show featuring the North County Band on the Green — bring blankets, chairs, and picnics.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/north-county-band/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.5,
+          "title": "Washington Friends of Music Summer Festival — Week 2",
+          "url": "https://litchfieldmagazine.com/events/washington-friends-of-music-summer-festival/",
+          "dateLabel": "Fri Aug 14",
+          "time": "Evening",
+          "venue": "Washington community venue",
+          "venueType": "litchfield",
+          "town": "Washington, CT",
+          "dist": "~12 mi",
+          "type": "Chamber Music Festival",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "The Washington Friends of Music Summer Festival continues its four evenings of chamber music this Friday in August.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1827,7 +1836,7 @@ const EVENTS_DATA = {
           "type": "Free Outdoor Concert",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "Free CityCenter Danbury Summer Concert Series closer featuring Leds Groove on the Green — bring blankets, chairs, and picnics.",
+          "desc": "Free CityCenter Danbury Summer Concert Series show featuring Leds Groove on the Green — bring blankets, chairs, and picnics.",
           "source": "fairfieldafterdark.com",
           "sourceUrl": "https://www.fairfieldafterdark.com/summer-concert-series/Danbury-City-Center-Summer-Concerts",
           "isTonight": false,
@@ -1835,7 +1844,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.7,
+          "score": 10,
           "title": "Concerts on the Green — What It Is",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 15",
@@ -1857,7 +1866,7 @@ const EVENTS_DATA = {
         {
           "score": 7.1,
           "title": "Joyride — 80's Mixtape Live (Ladies of the 80s Night Out)",
-          "url": "https://darylshouseclub.com/tm-attraction/joyride-80s-mixtape-live/",
+          "url": "https://www.songkick.com/concerts/43027714-joyride-at-daryls-house",
           "dateLabel": "Sat Aug 15",
           "time": "7:00PM",
           "venue": "Daryl's House",
@@ -1875,7 +1884,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.5,
+          "score": 9.6,
           "title": "Logical Pretzel — The Songs of Steely Dan",
           "url": "https://levittpavilion.com/2026/07/31/logical-pretzel/",
           "dateLabel": "Sat Aug 15",
@@ -1966,15 +1975,15 @@ const EVENTS_DATA = {
           "title": "Danbury San Gennaro Festival",
           "url": "https://citycenterdanbury.com/event/san-gennaro-festival/",
           "dateLabel": "Wed Aug 19 – Sun Aug 23",
-          "time": "5:00PM–11:00PM (Sun 1–10PM)",
-          "venue": "Danbury CityCenter Green",
+          "time": "5:00PM–11:00PM (Sat 1–11PM, Sun 1–10PM)",
+          "venue": "Danbury CityCenter Green / Ives Street",
           "venueType": "danbury",
           "town": "Danbury, CT",
           "dist": "~8 mi",
           "type": "Italian Street Festival / Food & Music",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "The 5th Annual Danbury San Gennaro Festival returns bigger than ever — five free days of Italian food, music, games, and entertainment on the CityCenter Green.",
+          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with five free days of Italian food, music, games, a cannoli eating contest, laser light shows, and an America 250 fireworks spectacular on Saturday.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
           "isTonight": false,
@@ -2022,7 +2031,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.4,
+          "score": 8.6,
           "title": "Junk",
           "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
           "dateLabel": "Fri Aug 21",
@@ -2057,26 +2066,6 @@ const EVENTS_DATA = {
           "desc": "The nation's #1 touring Red Hot Chili Peppers tribute band, with nearly 100 shows a year and one of the largest fan followings among tribute acts nationwide.",
           "source": "songkick.com",
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Learn Italian With Angela Leclerc",
-          "url": "https://www.shermanct.gov/muni-events/learn-italian-with-angela-leclerc-dc5e5",
-          "dateLabel": "Sat Aug 22",
-          "time": "11:00AM–1:00PM",
-          "venue": "Sherman community venue",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Class / Community Event",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A community Italian-language class in Sherman, part of a recurring weekly series with Angela Leclerc.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2209,26 +2198,6 @@ const EVENTS_DATA = {
       "open": false,
       "events": [
         {
-          "score": 10,
-          "title": "Learn Italian With Angela Leclerc",
-          "url": "https://www.shermanct.gov/muni-events/learn-italian-with-angela-leclerc-87899",
-          "dateLabel": "Sat Aug 29",
-          "time": "11:00AM–1:00PM",
-          "venue": "Sherman community venue",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Class / Community Event",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A community Italian-language class in Sherman, part of a recurring weekly series with Angela Leclerc.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
           "score": 7.9,
           "title": "James Taylor & Carole King Musical Tribute with Unbroken Glass & Friends",
           "url": "https://www.shermanct.gov/muni-events/james-taylor-carole-king-musical-tribute-with-unbroken-glass-friends",
@@ -2289,21 +2258,21 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.3,
-          "title": "Lake & Palmer",
-          "url": "https://www.songkick.com/concerts/43169110-lake-and-palmer-at-daryls-house",
-          "dateLabel": "Thu Aug 27",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Live Music",
+          "score": 7,
+          "title": "VinylCut",
+          "url": "https://www.housatonicriverbrewing.com/events-1/vinylcut-12",
+          "dateLabel": "Fri Aug 28",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Classic Rock",
           "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A regional live act plays the Daryl's House main stage for a mid-week evening show.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "priceLabel": "$10",
+          "desc": "A multi-talented band playing favorite 60s–90s rock 'n' roll, keeping it lively with guitars, sax, keys and harmonica at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2316,9 +2285,29 @@ const EVENTS_DATA = {
       "open": false,
       "events": [
         {
+          "score": 7.7,
+          "title": "Lost Rebel",
+          "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
+          "dateLabel": "Fri Sep 4",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / 70s Classic Rock",
+          "priceType": "paid",
+          "priceLabel": "$7.50",
+          "desc": "Lost Rebel plays 70s favorites from Fleetwood Mac, The Eagles, Tom Petty, Creedence Clearwater Revival, Lynyrd Skynyrd, and The Allman Brothers at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 8,
           "title": "Willie Nile",
-          "url": "https://www.bandsintown.com/e/1038976027-willie-nile-at-daryl's-house",
+          "url": "https://www.songkick.com/concerts/43209356-willie-nile-at-daryls-house",
           "dateLabel": "Wed Sep 2",
           "time": "7:00PM",
           "venue": "Daryl's House",
@@ -2356,6 +2345,26 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 10,
+          "title": "Danbury's Brazilian Festival",
+          "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "dateLabel": "Sat Sep 5 – Sun Sep 6",
+          "time": "10:00AM–10:00PM (Sun to 9PM)",
+          "venue": "Danbury CityCenter Green",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Cultural Festival / Food & Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, and Brazilian food and global vendors.",
+          "source": "citycenterdanbury.com",
+          "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 7,
           "title": "Street Survivors - Tribute to Lynyrd Skynyrd",
           "url": "https://www.housatonicriverbrewing.com/events-1/street-survivors-tribute-to-lynyrd-skynyrd-2",
@@ -2371,46 +2380,6 @@ const EVENTS_DATA = {
           "desc": "Billed as New England's premiere Lynyrd Skynyrd tribute band, Street Survivors brings an unforgettable Southern rock experience to the HRB stage.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.5,
-          "title": "Disciple of The Garden — Tribute to Soundgarden, Audioslave, Chris Cornell",
-          "url": "https://darylshouseclub.com/tm-venue/daryls-house/page/5/",
-          "dateLabel": "Sat Sep 5",
-          "time": "8:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Grunge / Soundgarden Tribute",
-          "priceType": "paid",
-          "priceLabel": "$40–$50",
-          "desc": "A heartfelt tribute dedicated to celebrating the legacy of Chris Cornell, channeling the raw power and emotional depth of his iconic music from Soundgarden, Audioslave, and his solo career.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Danbury's Brazilian Festival",
-          "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
-          "dateLabel": "Sat Sep 5 – Sun Sep 6",
-          "time": "11:00AM–10:00PM (Sun to 9PM)",
-          "venue": "Danbury CityCenter Green",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Cultural Festival / Food & Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, an alcohol garden for adults, and Brazilian food and global vendors.",
-          "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2523,7 +2492,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.2,
+          "score": 9.6,
           "title": "The Sweet Remains",
           "url": "https://levittpavilion.com/2026/07/31/the-sweet-remains-4/",
           "dateLabel": "Sat Sep 12",
@@ -2690,19 +2659,39 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8,
+          "score": 7.1,
+          "title": "Samara Joy and Her Septet",
+          "url": "https://ridgefieldplayhouse.org/event/samara-joy-ridgefield-ct-2026/",
+          "dateLabel": "Sun Sep 20",
+          "time": "7:30PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Jazz Vocalist",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "GRAMMY-winning jazz vocalist Samara Joy brings her acclaimed septet to Ridgefield for an evening of soulful, virtuosic jazz standards.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.6,
           "title": "Woodbury Fall Festival",
           "url": "https://ctvegan.org/event/woodbury-fall-festival/",
           "dateLabel": "Sun Sep 20",
           "time": "10:00AM–4:00PM",
-          "venue": "Hollow Park / Main Street",
+          "venue": "Hollow Park",
           "venueType": "litchfield",
           "town": "Woodbury, CT",
           "dist": "~18 mi",
           "type": "Family Festival / Community Fair",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "The Woodbury Chamber of Commerce's Fall Festival brings a Family Fun Day to Hollow Park with live music, food trucks, a kids' area, and a pet costume contest.",
+          "desc": "The Woodbury Chamber of Commerce's Fall Festival brings a Family Fun Day to Hollow Park with live music, food trucks, a kids' area, and community fun.",
           "source": "ctvegan.org",
           "sourceUrl": "https://ctvegan.org/event/woodbury-fall-festival/",
           "isTonight": false,
@@ -2714,10 +2703,6 @@ const EVENTS_DATA = {
   ],
   "past": [],
   "daryls": [
-    {
-      "date": "Sat Aug 1, 8:00PM",
-      "title": "Trouble No More: A Celebration of the Allman Brothers Band"
-    },
     {
       "date": "Sun Aug 2, 7:00PM",
       "title": "Holy Roller"
@@ -2752,7 +2737,7 @@ const EVENTS_DATA = {
     },
     {
       "date": "Sat Sep 5, 8:00PM",
-      "title": "Disciple of The Garden – Tribute to Soundgarden, Audioslave, Chris Cornell"
+      "title": "Midnight Choir"
     },
     {
       "date": "Fri Sep 18, 8:00PM",
