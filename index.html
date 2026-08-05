@@ -981,12 +981,18 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 4, 2026",
-  "tonight": [],
+  "lastUpdated": "Aug 5, 2026",
+  "tonight": [
+    {
+      "title": "Mike Love & The Full Circle",
+      "venue": "Daryl's House",
+      "time": "7:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 4–9",
+      "title": "Week 1 · August 5–9",
       "open": true,
       "events": [
         {
@@ -1002,15 +1008,15 @@ const EVENTS_DATA = {
           "type": "Roots Reggae",
           "priceType": "paid",
           "priceLabel": "$34–$45",
-          "desc": "Hawaii-born Mike Love blends roots reggae's spirituality with progressive and classic rock and soul, using music as a conversation for positive change.",
+          "desc": "GRAMMY-winning, Rock and Roll Hall of Fame member Mike Love (Beach Boys) tours with his Full Circle band blending roots reggae with classic rock and soul.",
           "source": "darylshouseclub.com",
           "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
         {
-          "score": 7.4,
+          "score": 8,
           "title": "Litchfield Green Summer Concert Series",
           "url": "https://visitlitchfieldct.com/12-free-concerts-in-litchfield-this-summer/",
           "dateLabel": "Wed Aug 5",
@@ -1025,7 +1031,7 @@ const EVENTS_DATA = {
           "desc": "Litchfield Park & Recreation's free Wednesday-evening concert series on the historic Green continues, part of a season of nine free shows running through Aug. 19.",
           "source": "visitlitchfieldct.com",
           "sourceUrl": "https://visitlitchfieldct.com/12-free-concerts-in-litchfield-this-summer/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
@@ -1110,7 +1116,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.3,
+          "score": 8.9,
           "title": "St Andrew's Kent Annual Tag Sale",
           "url": "https://litchfieldmagazine.com/events/st-andrews-kent-annual-tag-sale/",
           "dateLabel": "Thu Aug 6",
@@ -1150,7 +1156,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.9,
+          "score": 9.1,
           "title": "Five to One",
           "url": "https://www.housatonicriverbrewing.com/events-1/five-to-one-5",
           "dateLabel": "Fri Aug 7",
@@ -1210,7 +1216,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.5,
+          "score": 9.6,
           "title": "Devon Gilfillian",
           "url": "https://westportjournal.com/organizer/levitt-pavilion-for-the-performing-arts/",
           "dateLabel": "Fri Aug 7",
@@ -1230,7 +1236,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.8,
+          "score": 9.4,
           "title": "RockSteady — CityCenter Danbury Summer Concert Series",
           "url": "https://citycenterdanbury.com/event/rocksteady/",
           "dateLabel": "Fri Aug 7",
@@ -1310,7 +1316,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.8,
+          "score": 9.4,
           "title": "Danbury Ecuadorian Festival 2026",
           "url": "https://citycenterdanbury.com/event/danbury-ecuadorian-festival/",
           "dateLabel": "Sat Aug 8 – Sun Aug 9",
@@ -1450,7 +1456,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.8,
+          "score": 9,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-8",
           "dateLabel": "Sun Aug 9",
@@ -1577,7 +1583,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.8,
+          "score": 7.4,
           "title": "Summer Sunset Concert — Al Fenton Big Band",
           "url": "https://visitlitchfieldct.com/12-free-concerts-in-litchfield-this-summer/",
           "dateLabel": "Fri Aug 14",
@@ -1824,7 +1830,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9,
+          "score": 9.2,
           "title": "Junk",
           "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
           "dateLabel": "Fri Aug 21",
@@ -2071,7 +2077,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.8,
+          "score": 9.4,
           "title": "Lizzy & the Triggermen",
           "url": "https://levittpavilion.com/2026/08/01/lizzy-the-triggermen/",
           "dateLabel": "Fri Aug 28",
@@ -2091,7 +2097,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.4,
+          "score": 7.6,
           "title": "VinylCut",
           "url": "https://www.housatonicriverbrewing.com/events-1/vinylcut-12",
           "dateLabel": "Fri Aug 28",
@@ -2118,7 +2124,7 @@ const EVENTS_DATA = {
       "open": false,
       "events": [
         {
-          "score": 8.1,
+          "score": 8.3,
           "title": "Lost Rebel",
           "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
           "dateLabel": "Fri Sep 4",
@@ -2365,6 +2371,26 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 9.4,
+          "title": "Brian López Electric Trio",
+          "url": "https://levittpavilion.com/2026/08/03/brian-lopez-electric-trio/",
+          "dateLabel": "Sun Sep 13",
+          "time": "7:00PM",
+          "venue": "Levitt Pavilion",
+          "venueType": "levitt",
+          "town": "Westport, CT",
+          "dist": "~28 mi",
+          "type": "Free Outdoor Concert / Latin Rock",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Brian López Electric Trio brings its genre-blending Latin/desert rock sound to the free Levitt Pavilion stage as a featured season show.",
+          "source": "levittpavilion.com",
+          "sourceUrl": "https://levittpavilion.com/calendar/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 7.4,
           "title": "Big Ocean",
           "url": "https://caramoor.org/event/big-ocean-2026",
@@ -2380,6 +2406,26 @@ const EVENTS_DATA = {
           "desc": "Big Ocean brings its distinctive vocal harmonies to the Caramoor stage for an early-fall evening performance.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 6.9,
+          "title": "Too Blue",
+          "url": "https://www.songkick.com/concerts/43301677-too-blue-at-daryls-house",
+          "dateLabel": "Sun Sep 13",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act performs at Daryl's House on the main stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2407,26 +2453,6 @@ const EVENTS_DATA = {
           "desc": "The beloved children's book comes to life in this colorful family musical at Ridgefield Playhouse, with two performances.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 6.9,
-          "title": "Too Blue",
-          "url": "https://www.songkick.com/concerts/43301677-too-blue-at-daryls-house",
-          "dateLabel": "Sun Sep 13",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Live Music",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A regional live act performs at Daryl's House on the main stage.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2487,26 +2513,6 @@ const EVENTS_DATA = {
           "desc": "GRAMMY-winning jazz vocalist Samara Joy brings her acclaimed septet to Ridgefield for an evening of soulful, virtuosic jazz standards.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.8,
-          "title": "Woodbury Fall Festival",
-          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
-          "dateLabel": "Sun Sep 20",
-          "time": "10:00AM–4:00PM",
-          "venue": "Hollow Park",
-          "venueType": "litchfield",
-          "town": "Woodbury, CT",
-          "dist": "~18 mi",
-          "type": "Family Festival / Community Fair",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Woodbury Chamber of Commerce's Fall Festival returns to Hollow Park with live music, food trucks, a kids' area, and community fun.",
-          "source": "woodburyctchamber.com",
-          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2696,12 +2702,12 @@ const EVENTS_DATA = {
       "title": "Midnight Choir"
     },
     {
-      "date": "Fri Sep 18, 8:00PM",
-      "title": "The Sensational Soul Cruisers"
-    },
-    {
       "date": "Sun Sep 13, 7:00PM",
       "title": "Too Blue"
+    },
+    {
+      "date": "Fri Sep 18, 8:00PM",
+      "title": "The Sensational Soul Cruisers"
     }
   ]
 };
