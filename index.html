@@ -981,64 +981,49 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 8, 2026",
+  "lastUpdated": "Aug 9, 2026",
   "tonight": [
     {
-      "title": "Pure Petty - Tribute to Tom Petty",
+      "title": "What It Is",
       "venue": "Housatonic River Brewing",
-      "time": "7:00PM"
+      "time": "4:00PM–7:00PM"
     },
     {
-      "title": "Who Loves You — Featuring the Broadway Cast of Jersey Boys",
+      "title": "Todd Rundgren – DAMNED IF I DO Tour",
       "venue": "Ridgefield Playhouse",
-      "time": "8:00PM"
-    },
-    {
-      "title": "Danbury Ecuadorian Festival 2026",
-      "venue": "Danbury CityCenter Green",
-      "time": "1:00PM–10:00PM"
-    },
-    {
-      "title": "Concerts on the Green — Buena Vista Band",
-      "venue": "New Milford Town Green (Bandstand)",
-      "time": "7:00PM"
-    },
-    {
-      "title": "A Night Of Neil: Celebrating the Music of Neil Young & Neil Diamond",
-      "venue": "Sherman concert venue",
       "time": "7:30PM"
     },
     {
-      "title": "Blue Plate Special",
-      "venue": "Daryl's House",
-      "time": "8:00PM"
+      "title": "Danbury Ecuadorian Festival 2026 (Day 2)",
+      "venue": "Danbury CityCenter Green",
+      "time": "12:00PM–9:00PM"
     },
     {
-      "title": "Wanda Houston Live at the Grotto",
-      "venue": "The Grotto",
-      "time": "Evening"
+      "title": "Harlem Quartet",
+      "venue": "Litchfield County venue",
+      "time": "3:00PM"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 8–9",
+      "title": "Week 1 · August 9–15",
       "open": true,
       "events": [
         {
-          "score": 8.5,
-          "title": "Pure Petty - Tribute to Tom Petty",
-          "url": "https://www.housatonicriverbrewing.com/events-1/pure-petty-tribute-to-tom-petty-3",
-          "dateLabel": "Sat Aug 8",
-          "time": "7:00PM–10:00PM",
+          "score": 9.8,
+          "title": "What It Is",
+          "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-8",
+          "dateLabel": "Sun Aug 9",
+          "time": "4:00PM–7:00PM",
           "venue": "Housatonic River Brewing",
           "venueType": "hrb",
           "town": "New Milford, CT",
           "dist": "~7 mi",
-          "type": "Live Music / Tom Petty Tribute",
+          "type": "Funk / Soul / R&B",
           "priceType": "paid",
-          "priceLabel": "$20",
-          "desc": "Pure Petty delivers a high-energy, second-to-none salute to the musical legacy of Tom Petty, leaving wildly enthusiastic, multi-generational crowds craving more at HRB.",
+          "priceLabel": "$10",
+          "desc": "It is... What It Is? is a funk, soul, R&B band based in Connecticut that will blow your doors off with horn-driven funky grooves and tight arrangements at HRB.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": true,
@@ -1046,19 +1031,19 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.3,
-          "title": "Who Loves You — Featuring the Broadway Cast of Jersey Boys",
-          "url": "https://ridgefieldplayhouse.org/event/who-loves-you-jersey-boys-ridgefield-ct-2026/",
-          "dateLabel": "Sat Aug 8",
-          "time": "8:00PM",
+          "score": 9,
+          "title": "Todd Rundgren – DAMNED IF I DO Tour",
+          "url": "https://ridgefieldplayhouse.org/event/todd-rundgren-ridgefield-ct-2026/",
+          "dateLabel": "Sun Aug 9",
+          "time": "7:30PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
           "dist": "~15 mi",
-          "type": "Broadway / Doo-Wop",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Broadway's Jersey Boys cast members celebrate Frankie Valli & the Four Seasons.",
+          "type": "Rock Legend",
+          "priceType": "soldout",
+          "priceLabel": "SOLD OUT",
+          "desc": "Rock and Roll Hall of Fame inductee Todd Rundgren, the legendary singer-songwriter and producer behind \"Hello It's Me\" and \"Bang the Drum All Day,\" brings his sold-out tour to Ridgefield.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": true,
@@ -1066,11 +1051,31 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 5.9,
+          "title": "Harlem Quartet",
+          "url": "https://litchfieldmagazine.com/events/harlem-quartet/",
+          "dateLabel": "Sun Aug 9",
+          "time": "3:00PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~10 mi",
+          "type": "Chamber Music",
+          "priceType": "paid",
+          "priceLabel": "$65 General Admission",
+          "desc": "The acclaimed Harlem Quartet performs Beethoven's String Quartet in A Major alongside other works in an intimate chamber concert.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 10,
-          "title": "Danbury Ecuadorian Festival 2026",
+          "title": "Danbury Ecuadorian Festival 2026 (Day 2)",
           "url": "https://citycenterdanbury.com/event/danbury-ecuadorian-festival/",
-          "dateLabel": "Sat Aug 8 – Sun Aug 9",
-          "time": "1:00PM–10:00PM (Sat), 12:00PM–9:00PM (Sun)",
+          "dateLabel": "Sun Aug 9",
+          "time": "12:00PM–9:00PM",
           "venue": "Danbury CityCenter Green",
           "venueType": "danbury",
           "town": "Danbury, CT",
@@ -1086,192 +1091,25 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 10,
-          "title": "Concerts on the Green — Buena Vista Band",
-          "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
-          "dateLabel": "Sat Aug 8",
-          "time": "7:00PM",
-          "venue": "New Milford Town Green (Bandstand)",
-          "venueType": "",
-          "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Free Outdoor Concert Series",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "New Milford's free Concerts on the Green 2026 series, five nights of live music at the historic bandstand, continues with the Buena Vista Band.",
-          "source": "artsnewmilfordct.org",
-          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.4,
-          "title": "Wanda Houston Live at the Grotto",
-          "url": "https://litchfieldmagazine.com/events/wanda-houston-live-at-the-grotto/",
-          "dateLabel": "Sat Aug 8",
-          "time": "Evening",
-          "venue": "The Grotto",
+          "score": 8.1,
+          "title": "Sidewalk Sale Days at Fife 'n Drum",
+          "url": "https://litchfieldmagazine.com/events/sidewalk-sale-days-at-fife-drum/",
+          "dateLabel": "Thu Aug 6 – Sun Aug 9",
+          "time": "9:30AM–6:30PM daily",
+          "venue": "Downtown Kent",
           "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~10 mi",
-          "type": "Jazz / R&B",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Acclaimed Berkshire vocalist Wanda Houston & Her Band play a mesmerizing mix of mid-20th century jazz and R&B in an intimate setting.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.9,
-          "title": "Blue Plate Special",
-          "url": "https://www.songkick.com/concerts/43251151-blue-plate-special-at-daryls-house",
-          "dateLabel": "Sat Aug 8",
-          "time": "8:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Live Music",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A regional favorite act returns to the Daryl's House main stage for an evening of live music.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.6,
-          "title": "What It Is",
-          "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-8",
-          "dateLabel": "Sun Aug 9",
-          "time": "4:00PM–7:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Funk / Soul / R&B",
-          "priceType": "paid",
-          "priceLabel": "$7.50",
-          "desc": "It is... What It Is? is a funk, soul, R&B band based in Connecticut that will blow your doors off with horn-driven funky grooves and tight arrangements at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 6.3,
-          "title": "Harlem Quartet",
-          "url": "https://litchfieldmagazine.com/events/harlem-quartet/",
-          "dateLabel": "Sun Aug 9",
-          "time": "3:00PM",
-          "venue": "Litchfield County venue",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~10 mi",
-          "type": "Chamber Music",
-          "priceType": "paid",
-          "priceLabel": "$65 General Admission",
-          "desc": "The acclaimed Harlem Quartet performs Beethoven's String Quartet in A Major alongside other works in an intimate chamber concert.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.5,
-          "title": "Five to One",
-          "url": "https://www.housatonicriverbrewing.com/events-1/five-to-one-5",
-          "dateLabel": "Fri Aug 7",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / Rock Covers",
-          "priceType": "paid",
-          "priceLabel": "$10",
-          "desc": "A rock and roll cover band honoring favorite artists like The Police, Fleetwood Mac, Steely Dan, Garbage, Queen, The Cars, Styx, and The Rolling Stones.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": true,
-          "isPast": true,
-          "isNF": false
-        },
-        {
-          "score": 8.7,
-          "title": "Stephen Pearcy: The Voice of RATT",
-          "url": "https://ridgefieldplayhouse.org/event/stephen-pearcy-ratt-ridgefield-ct-2026/",
-          "dateLabel": "Fri Aug 7",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
+          "town": "Kent, CT",
           "dist": "~15 mi",
-          "type": "Rock / 80s Metal Legend",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "RATT frontman Stephen Pearcy, the voice behind \"Round and Round\" and a mainstay of 80s hard rock, brings his solo show to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": true,
-          "isPast": true,
-          "isNF": false
-        },
-        {
-          "score": 7.4,
-          "title": "Washington Friends of Music Summer Festival",
-          "url": "https://litchfieldmagazine.com/events/washington-friends-of-music-summer-festival/",
-          "dateLabel": "Fri Aug 7",
-          "time": "Evening",
-          "venue": "Washington community venue",
-          "venueType": "litchfield",
-          "town": "Washington, CT",
-          "dist": "~12 mi",
-          "type": "Chamber Music Festival",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Four evenings of exceptional chamber music presented on the first four Fridays of August, a cherished Washington, CT summer tradition.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": true,
-          "isPast": true,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "RockSteady — CityCenter Danbury Summer Concert Series",
-          "url": "https://citycenterdanbury.com/event/rocksteady/",
-          "dateLabel": "Fri Aug 7",
-          "time": "7:00PM–9:00PM",
-          "venue": "Danbury CityCenter Green",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Free Outdoor Concert",
+          "type": "Sidewalk Sale / Shopping Festival",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "Free CityCenter Danbury Summer Concert Series show featuring RockSteady on the Green — bring blankets, chairs, and picnics.",
-          "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/rocksteady/",
-          "isTonight": true,
-          "isPast": true,
+          "desc": "Kent's Annual Sidewalk Sale Days bring shoppers to downtown Kent for four days of storewide sales and a lively small-town summer atmosphere.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week2",
-      "title": "Week 2 · August 10–16",
-      "open": true,
-      "events": [
+        },
         {
           "score": 8.4,
           "title": "Larry McCray",
@@ -1334,10 +1172,10 @@ const EVENTS_DATA = {
         },
         {
           "score": 10,
-          "title": "North County Band — CityCenter Danbury Summer Concert Series",
-          "url": "https://citycenterdanbury.com/event/north-county-band/",
+          "title": "North County Band — CityCenter Danbury Summer Concert Series (Season Finale)",
+          "url": "https://citycenterdanbury.com/event/4820/",
           "dateLabel": "Fri Aug 14",
-          "time": "7:00PM–9:00PM",
+          "time": "7:00PM–9:30PM",
           "venue": "Danbury CityCenter Green",
           "venueType": "danbury",
           "town": "Danbury, CT",
@@ -1345,9 +1183,9 @@ const EVENTS_DATA = {
           "type": "Free Outdoor Concert / Country",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "Free CityCenter Danbury Summer Concert Series show featuring the North County Band on the Green — bring blankets, chairs, and picnics.",
+          "desc": "The final free CityCenter Danbury Summer Concert Series show of the season features the North County Band on the Green — bring blankets, chairs, and picnics.",
           "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/north-county-band/",
+          "sourceUrl": "https://danbury-ct.gov/Calendar.aspx?EID=2332&month=8&year=2026&day=28&calType=0",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1413,26 +1251,6 @@ const EVENTS_DATA = {
           "isNF": true
         },
         {
-          "score": 7.1,
-          "title": "Ladies of the 80s — 80's Mixtape Live",
-          "url": "https://www.songkick.com/concerts/43288162-ladies-of-the-80s-at-daryls-house",
-          "dateLabel": "Sat Aug 15",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "80s Tribute / Dance Party",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A high-energy concept band celebrating the biggest pop/rock and new wave dance hits of the 1980s, from Madonna and Pat Benatar to Bon Jovi and Journey.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
           "score": 6.6,
           "title": "Zaccai Curtis Quartet",
           "url": "https://litchfieldmagazine.com/events/zaccai-curtis-quartet/",
@@ -1453,21 +1271,21 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.7,
-          "title": "Allen Stone",
-          "url": "https://ridgefieldplayhouse.org/event/allen-stone-ridgefield-ct-2026/",
-          "dateLabel": "Sun Aug 16",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Soul / R&B",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Soulful singer-songwriter with a powerhouse voice.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "score": 6.8,
+          "title": "Al Fenton Big Band — Summer Sunset Concert Series",
+          "url": "https://litchfieldmagazine.com/events/al-fenton-big-band-2/",
+          "dateLabel": "Fri Aug 14",
+          "time": "6:00PM–8:00PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~10 mi",
+          "type": "Big Band / Free Concert",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "An 18-member big band performs classic swing favorites as part of the Summer Sunset Concert Series.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1491,14 +1309,154 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 8.5,
+          "title": "Pure Petty - Tribute to Tom Petty",
+          "url": "https://www.housatonicriverbrewing.com/events-1/pure-petty-tribute-to-tom-petty-3",
+          "dateLabel": "Sat Aug 8",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Tom Petty Tribute",
+          "priceType": "paid",
+          "priceLabel": "$20",
+          "desc": "Pure Petty delivers a high-energy, second-to-none salute to the musical legacy of Tom Petty, leaving wildly enthusiastic, multi-generational crowds craving more at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
+        },
+        {
+          "score": 6.3,
+          "title": "Who Loves You — Featuring the Broadway Cast of Jersey Boys",
+          "url": "https://ridgefieldplayhouse.org/event/who-loves-you-jersey-boys-ridgefield-ct-2026/",
+          "dateLabel": "Sat Aug 8",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Broadway / Doo-Wop",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Broadway's Jersey Boys cast members celebrate Frankie Valli & the Four Seasons.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
+        },
+        {
+          "score": 10,
+          "title": "Concerts on the Green — Buena Vista Band",
+          "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "dateLabel": "Sat Aug 8",
+          "time": "7:00PM",
+          "venue": "New Milford Town Green (Bandstand)",
+          "venueType": "",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Free Outdoor Concert Series",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "New Milford's free Concerts on the Green 2026 series, five nights of live music at the historic bandstand, continues with the Buena Vista Band.",
+          "source": "artsnewmilfordct.org",
+          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
+        },
+        {
+          "score": 7.4,
+          "title": "Wanda Houston Live at the Grotto",
+          "url": "https://litchfieldmagazine.com/events/wanda-houston-live-at-the-grotto/",
+          "dateLabel": "Sat Aug 8",
+          "time": "Evening",
+          "venue": "The Grotto",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~10 mi",
+          "type": "Jazz / R&B",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Acclaimed Berkshire vocalist Wanda Houston & Her Band play a mesmerizing mix of mid-20th century jazz and R&B in an intimate setting.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
+        },
+        {
+          "score": 7.9,
+          "title": "Blue Plate Special",
+          "url": "https://www.songkick.com/concerts/43251151-blue-plate-special-at-daryls-house",
+          "dateLabel": "Sat Aug 8",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional favorite act returns to the Daryl's House main stage for an evening of live music.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
         }
       ]
     },
     {
-      "id": "week3",
-      "title": "Week 3 · August 17–23",
-      "open": false,
+      "id": "week2",
+      "title": "Week 2 · August 16–22",
+      "open": true,
       "events": [
+        {
+          "score": 8.7,
+          "title": "Allen Stone",
+          "url": "https://ridgefieldplayhouse.org/event/allen-stone-ridgefield-ct-2026/",
+          "dateLabel": "Sun Aug 16",
+          "time": "7:30PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Soul / R&B",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Soulful singer-songwriter with a powerhouse voice.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 5.7,
+          "title": "Ulysses Quartet & Max Levinson",
+          "url": "https://litchfieldmagazine.com/events/ulysses-quartet-max-levinson/",
+          "dateLabel": "Sun Aug 16",
+          "time": "3:00PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~10 mi",
+          "type": "Chamber Music",
+          "priceType": "paid",
+          "priceLabel": "$65 General Admission",
+          "desc": "The Ulysses Quartet joins pianist Max Levinson for a clarinet quintet program in an elegant chamber concert setting.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
         {
           "score": 7.3,
           "title": "Brian Regan (Wednesday)",
@@ -1524,7 +1482,7 @@ const EVENTS_DATA = {
           "title": "Danbury San Gennaro Festival",
           "url": "https://citycenterdanbury.com/event/san-gennaro-festival/",
           "dateLabel": "Wed Aug 19 – Sun Aug 23",
-          "time": "5:00PM–11:00PM (Sat 1–11PM, Sun 1–10PM)",
+          "time": "5:00PM–11:00PM (Wed–Fri), 1:00PM–11:00PM (Sat), 1:00PM–10:00PM (Sun)",
           "venue": "Danbury CityCenter Green / Ives Street",
           "venueType": "danbury",
           "town": "Danbury, CT",
@@ -1580,7 +1538,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.8,
+          "score": 10,
           "title": "Junk",
           "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
           "dateLabel": "Fri Aug 21",
@@ -1612,7 +1570,7 @@ const EVENTS_DATA = {
           "type": "Musical / Community Theater Fundraiser",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "The Sherman Players stage a three-performance run of \"Save the Palace,\" a musical by Waterbury native Roy O'Neill about saving a majestic historic theater, as a special fundraiser event in the group's centennial season.",
+          "desc": "The Sherman Players stage a three-performance run of \"Save the Palace,\" a musical by Roy O'Neill about saving a majestic historic theater, as a special fundraiser event in the group's centennial season.",
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
@@ -1652,7 +1610,7 @@ const EVENTS_DATA = {
           "type": "Alt-Rock Legends",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Legendary alt-rock band behind \"These Are the Days\" and \"Because the Night,\" 10,000 Maniacs bring their beloved catalog to the Ridgefield Playhouse stage.",
+          "desc": "Celebrating their 45th anniversary, platinum-selling alt-rock pioneers 10,000 Maniacs — famous for \"These Are the Days\" and \"Because the Night\" — bring their beloved catalog to Ridgefield.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
@@ -1672,7 +1630,7 @@ const EVENTS_DATA = {
           "type": "Live Music / Hard Rock Cover Band",
           "priceType": "paid",
           "priceLabel": "$12",
-          "desc": "Struggle Monkey provides a full concert experience complete with smoke, lightshow, and a big sound system, playing hard rock cover songs from Queen, Journey, Def Leppard, and Pink Floyd at HRB.",
+          "desc": "Struggle Monkey is a popular CT show band known for high-energy sets and sold-out shows, delivering a full concert experience with smoke, lightshow, and hard rock covers of Queen, Journey, Def Leppard, and Pink Floyd.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
@@ -1740,7 +1698,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.1,
+          "score": 5.7,
           "title": "Lysander Piano Trio",
           "url": "https://litchfieldmagazine.com/events/lysander-piano-trio/",
           "dateLabel": "Sun Aug 23",
@@ -1762,8 +1720,8 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week4",
-      "title": "Week 4 · August 24–30",
+      "id": "week3",
+      "title": "Week 3 · August 23–29",
       "open": false,
       "events": [
         {
@@ -1787,7 +1745,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.2,
+          "score": 8.4,
           "title": "VinylCut",
           "url": "https://www.housatonicriverbrewing.com/events-1/vinylcut-12",
           "dateLabel": "Fri Aug 28",
@@ -1849,30 +1807,10 @@ const EVENTS_DATA = {
       ]
     },
     {
-      "id": "week5",
-      "title": "Week 5 · August 31 – September 6",
+      "id": "week4",
+      "title": "Week 4 · August 30 – September 5",
       "open": false,
       "events": [
-        {
-          "score": 8.9,
-          "title": "Lost Rebel",
-          "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
-          "dateLabel": "Fri Sep 4",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / 70s Classic Rock",
-          "priceType": "paid",
-          "priceLabel": "$7.50",
-          "desc": "Lost Rebel plays 70s favorites from Fleetwood Mac, The Eagles, Tom Petty, Creedence Clearwater Revival, Lynyrd Skynyrd, and The Allman Brothers at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
         {
           "score": 8,
           "title": "Willie Nile",
@@ -1914,21 +1852,21 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 10,
-          "title": "Danbury's Brazilian Festival",
-          "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
-          "dateLabel": "Sat Sep 5 – Sun Sep 6",
-          "time": "11:00AM–9:00PM",
-          "venue": "Danbury CityCenter Green",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Cultural Festival / Food & Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, and Brazilian food and global vendors.",
-          "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "score": 9.1,
+          "title": "Lost Rebel",
+          "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
+          "dateLabel": "Fri Sep 4",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / 70s Classic Rock",
+          "priceType": "paid",
+          "priceLabel": "$7.50",
+          "desc": "Lost Rebel plays 70s favorites from Fleetwood Mac, The Eagles, Tom Petty, Creedence Clearwater Revival, Lynyrd Skynyrd, and The Allman Brothers at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1974,6 +1912,33 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 10,
+          "title": "Danbury's Brazilian Festival",
+          "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "dateLabel": "Sat Sep 5 – Sun Sep 6",
+          "time": "10:00AM–9:00PM",
+          "venue": "Danbury CityCenter Green",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Cultural Festival / Food & Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, and Brazilian food and global vendors.",
+          "source": "citycenterdanbury.com",
+          "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        }
+      ]
+    },
+    {
+      "id": "week5",
+      "title": "Week 5 · September 6–12",
+      "open": false,
+      "events": [
+        {
           "score": 7.2,
           "title": "Bedford Music Festival — Headlined by The Motet",
           "url": "https://caramoor.org/event/bedford-music-festival-2026",
@@ -1994,7 +1959,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.3,
+          "score": 7.5,
           "title": "Third Annual Parrothead Party (Jimmy Buffett Tribute) — Jamie's Junk Show",
           "url": "https://www.housatonicriverbrewing.com/events-1/third-annual-parrothead-party-celebrating-jimmy-buffett-with-jamies-junk-show",
           "dateLabel": "Sun Sep 6",
@@ -2012,14 +1977,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week6",
-      "title": "Week 6 · September 7–13",
-      "open": false,
-      "events": [
+        },
         {
           "score": 8.2,
           "title": "George Thorogood & The Destroyers – The Baddest Show On Earth",
@@ -2081,7 +2039,27 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8,
+          "score": 6.8,
+          "title": "APB",
+          "url": "https://www.songkick.com/concerts/43106339-apb-at-daryls-house",
+          "dateLabel": "Thu Sep 10",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act performs at Daryl's House on the main stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.2,
           "title": "ShineBox (Formerly The Winnie Shins)",
           "url": "https://www.housatonicriverbrewing.com/events-1/shinebox-formerly-the-winnie-shins-3",
           "dateLabel": "Fri Sep 11",
@@ -2113,33 +2091,20 @@ const EVENTS_DATA = {
           "type": "Country",
           "priceType": "paid",
           "priceLabel": "$15",
-          "desc": "Nashville recording artists Nashville Drive is a modern Country band performing originals and covering today's country favorites at HRB.",
+          "desc": "Nashville recording artists Nashville Drive is a modern Country band that has opened for national acts like Easton Corbin, LANCo, and Molly Hatchet, performing originals and covering today's country favorites at HRB.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
-        {
-          "score": 6.8,
-          "title": "APB",
-          "url": "https://www.songkick.com/concerts/43106339-apb-at-daryls-house",
-          "dateLabel": "Thu Sep 10",
-          "time": "8:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Live Music",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A regional live act performs at Daryl's House on the main stage.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week6",
+      "title": "Week 6 · September 13–19",
+      "open": false,
+      "events": [
         {
           "score": 9.6,
           "title": "Brian López Electric Trio",
@@ -2219,14 +2184,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week7",
-      "title": "Week 7 · September 14–20",
-      "open": false,
-      "events": [
+        },
         {
           "score": 7.2,
           "title": "Inherit the Wind (Sherman Players — Preview Night)",
@@ -2268,7 +2226,27 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.1,
+          "score": 7.1,
+          "title": "Not My Problem",
+          "url": "https://www.housatonicriverbrewing.com/events-1/not-my-problem-4",
+          "dateLabel": "Fri Sep 18",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Rock, Pop, Funk & New Wave Covers",
+          "priceType": "paid",
+          "priceLabel": "$7.50",
+          "desc": "Not My Problem plays a fun mix of rock, pop, dance, disco, funk and new wave covers at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.3,
           "title": "Capricorn - An Allman Brothers Tribute",
           "url": "https://www.housatonicriverbrewing.com/events-1/capricorn-an-allman-brothers-tribute-4",
           "dateLabel": "Sat Sep 19",
@@ -2306,7 +2284,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week7",
+      "title": "Week 7 · September 20–26",
+      "open": false,
+      "events": [
         {
           "score": 7.1,
           "title": "Samara Joy and Her Septet",
@@ -2328,7 +2313,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.5,
+          "score": 7.7,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-6",
           "dateLabel": "Sun Sep 20",
@@ -2346,14 +2331,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week8",
-      "title": "Week 8 · September 21–27",
-      "open": false,
-      "events": [
+        },
         {
           "score": 9.6,
           "title": "King Stingray",
@@ -2455,7 +2433,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.5,
+          "score": 7.7,
           "title": "Strange Souls - A Tribute to The Doors",
           "url": "https://www.housatonicriverbrewing.com/events-1/strange-souls-a-tribute-to-the-doors-5",
           "dateLabel": "Sat Sep 26",
@@ -2533,7 +2511,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week8",
+      "title": "Week 8 · September 27 – October 3",
+      "open": false,
+      "events": [
         {
           "score": 9,
           "title": "Graham Nash",
@@ -2553,6 +2538,46 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 7.9,
+          "title": "TUSK: A Classic Fleetwood Mac Tribute",
+          "url": "https://www.warnertheatre.org/events/tusk-fleetwood-mac/",
+          "dateLabel": "Sat Oct 3",
+          "time": "7:30PM",
+          "venue": "Warner Theatre (Oneglia Auditorium)",
+          "venueType": "warner",
+          "town": "Torrington, CT",
+          "dist": "~20 mi",
+          "type": "Fleetwood Mac Tribute",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "TUSK, one of the country's most celebrated Fleetwood Mac tribute acts, recreates the classic rock band's iconic sound and stage presence at the Warner Theatre.",
+          "source": "warnertheatre.org",
+          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 6.6,
+          "title": "Nobuntu",
+          "url": "https://caramoor.org/event/nobuntu-2026-rhcs",
+          "dateLabel": "Fri Oct 2",
+          "time": "7:30PM",
+          "venue": "Caramoor",
+          "venueType": "caramoor",
+          "town": "Katonah, NY",
+          "dist": "~25 mi",
+          "type": "A Cappella / World Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Nobuntu, an acclaimed all-female a cappella quintet from Zimbabwe, performs at Caramoor's intimate concert stage.",
+          "source": "caramoor.org",
+          "sourceUrl": "https://caramoor.org/events/concerts",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         }
       ]
     }
@@ -2562,10 +2587,6 @@ const EVENTS_DATA = {
     {
       "date": "Wed Aug 12, 7:00PM",
       "title": "Larry McCray"
-    },
-    {
-      "date": "Sat Aug 15, 7:00PM",
-      "title": "Ladies of the 80s"
     },
     {
       "date": "Thu Aug 27, 8:00PM",
