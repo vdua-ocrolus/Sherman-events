@@ -981,30 +981,41 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 12, 2026",
-  "tonight": [],
+  "lastUpdated": "Aug 13, 2026",
+  "tonight": [
+    {
+      "name": "New Milford Rock the Block — The Pop Rocks",
+      "venue": "Bank Street",
+      "time": "6:30PM"
+    },
+    {
+      "name": "Karaoke & Lip Sync Night",
+      "venue": "Housatonic River Brewing",
+      "time": "7:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 12–15",
+      "title": "Week 1 · August 13–15",
       "open": true,
       "events": [
         {
-          "score": 8.4,
-          "title": "Larry McCray",
-          "url": "https://www.songkick.com/concerts/43092888-larry-mccray-at-daryls-house",
-          "dateLabel": "Wed Aug 12",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Blues Guitar Legend",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Acclaimed blues guitarist Larry McCray has shared the stage with B.B. King, Buddy Guy, Albert King, and Joe Bonamassa, and was nominated for a Blues Music Award for Best Contemporary Blues Album.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "score": 6.8,
+          "title": "Karaoke & Lip Sync Night",
+          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-13-19-00",
+          "dateLabel": "Thu Aug 13",
+          "time": "7:00PM–9:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Karaoke Night",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": true,
           "isPast": false,
           "isNF": false
@@ -1052,25 +1063,25 @@ const EVENTS_DATA = {
         {
           "score": 10,
           "title": "North County Band — CityCenter Danbury Summer Concert Series (Season Finale)",
-          "url": "https://citycenterdanbury.com/event/4820/",
+          "url": "https://citycenterdanbury.com/event/north-county-band/",
           "dateLabel": "Fri Aug 14",
           "time": "7:00PM–9:30PM",
           "venue": "Danbury CityCenter Green",
           "venueType": "danbury",
           "town": "Danbury, CT",
           "dist": "~8 mi",
-          "type": "Free Outdoor Concert / Country",
+          "type": "Free Outdoor Concert / Country-Americana",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "The final free CityCenter Danbury Summer Concert Series show of the season features the North County Band on the Green — bring blankets, chairs, and picnics.",
+          "desc": "Led by Chicago-born singer-songwriter Scott Smith and Texas fiddle sensation Cat Lines, North County Band blends country, Americana, roots rock, and heartfelt storytelling, having sold out Daryl's House Club and earned New England Music Award nominations, closing out the summer series on the Green.",
           "source": "citycenterdanbury.com",
-          "sourceUrl": "https://danbury-ct.gov/Calendar.aspx?EID=2332&month=8&year=2026&day=28&calType=0",
+          "sourceUrl": "https://citycenterdanbury.com/event/north-county-band/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
         },
         {
-          "score": 8.6,
+          "score": 9.2,
           "title": "Al Fenton Big Band — Summer Sunset Concert Series",
           "url": "https://litchfieldmagazine.com/events/al-fenton-big-band-2/",
           "dateLabel": "Fri Aug 14",
@@ -1132,7 +1143,7 @@ const EVENTS_DATA = {
         {
           "score": 10,
           "title": "County Fair!",
-          "url": "https://www.newfairfield.org/community/community-event-calendar",
+          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12020/1358",
           "dateLabel": "Sat Aug 15",
           "time": "11:00AM",
           "venue": "New Fairfield community grounds",
@@ -1208,6 +1219,26 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 8.4,
+          "title": "Larry McCray",
+          "url": "https://www.songkick.com/concerts/43092888-larry-mccray-at-daryls-house",
+          "dateLabel": "Wed Aug 12",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Blues Guitar Legend",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Acclaimed blues guitarist Larry McCray has shared the stage with B.B. King, Buddy Guy, Albert King, and Joe Bonamassa, and was nominated for a Blues Music Award for Best Contemporary Blues Album.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false
         }
       ]
     },
@@ -1232,6 +1263,26 @@ const EVENTS_DATA = {
           "desc": "Soulful singer-songwriter with a powerhouse voice.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.4,
+          "title": "Winvian's August Market with Live Jazz",
+          "url": "https://litchfieldmagazine.com/events/live-jazz-at-winvian-farm/",
+          "dateLabel": "Sun Aug 16",
+          "time": "11:00AM–4:00PM",
+          "venue": "Winvian Farm",
+          "venueType": "litchfield",
+          "town": "Morris, CT",
+          "dist": "~15 mi",
+          "type": "Market / Live Jazz",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A craftsmanship-and-summer market at Winvian Farm featuring live solo jazz from conservatory-trained multi-instrumentalist Daniel Lauter.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1289,7 +1340,7 @@ const EVENTS_DATA = {
           "type": "Italian Street Festival / Food & Music",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with five free days of Italian food, music, games, a cannoli eating contest, laser light shows, and an America 250 Fireworks Spectacular on Saturday.",
+          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with five free days of Italian food, live music every night (including Beyond Purple, Mullet, and Shooting Star), games, a cannoli eating contest, laser light shows, and an America 250 Fireworks Spectacular on Saturday.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
           "isTonight": false,
@@ -1369,7 +1420,7 @@ const EVENTS_DATA = {
           "type": "Musical / Community Theater Fundraiser",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "The Sherman Players stage a three-performance run of \"Save the Palace,\" a musical by Roy O'Neill about saving a majestic historic theater, as a special fundraiser event in the group's centennial season.",
+          "desc": "The Sherman Players stage a three-performance fundraiser run of \"Save the Palace,\" an award-winning original musical by Roy O'Neil about an aging rock band that reunites to save their hometown theater, as a special event in the group's centennial season.",
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
@@ -1389,7 +1440,7 @@ const EVENTS_DATA = {
           "type": "Silent Film with Live Score",
           "priceType": "paid",
           "priceLabel": "$35 General Admission",
-          "desc": "Buster Keaton's legendary Civil War comedy THE GENERAL (1926), hailed by Orson Welles as \"one of the great films of all time,\" screens with live music by pianist Donald Sosin and singer/percussionist Joanna Seaton.",
+          "desc": "Buster Keaton's legendary Civil War comedy THE GENERAL (1926) screens with live music by pianist Donald Sosin and singer/percussionist Joanna Seaton.",
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
@@ -1398,8 +1449,8 @@ const EVENTS_DATA = {
         },
         {
           "score": 7.6,
-          "title": "Steve Bennett Memorial Comedy Show",
-          "url": "https://www.shermanct.gov/muni-events/steve-bennett-memorial-comedy-show",
+          "title": "6th Annual Steve Bennett Memorial Comedy Show",
+          "url": "https://www.shermanct.gov/muni-events/6th-annual-steve-bennett-memorial-comedy-show",
           "dateLabel": "Sat Aug 22",
           "time": "7:30PM–8:30PM",
           "venue": "Sherman community venue",
@@ -1409,7 +1460,7 @@ const EVENTS_DATA = {
           "type": "Comedy",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "An evening of stand-up comedy in Sherman honoring the memory of Steve Bennett, drawing local comedy fans.",
+          "desc": "An evening of fresh stand-up voices — Emily Azrael, Dillon Krause, Luz Michelle, Peter Wong, and Tayler Yarish — honoring the memory of longtime Sherman resident and comedian Steve Bennett.",
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
@@ -1427,9 +1478,9 @@ const EVENTS_DATA = {
           "town": "Ridgefield, CT",
           "dist": "~15 mi",
           "type": "Alt-Rock Legends",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Celebrating their 45th anniversary, platinum-selling alt-rock pioneers 10,000 Maniacs — famous for \"These Are the Days\" and \"Because the Night\" — bring their beloved catalog to Ridgefield.",
+          "priceType": "soldout",
+          "priceLabel": "SOLD OUT",
+          "desc": "Celebrating their 45th anniversary, platinum-selling alt-rock pioneers 10,000 Maniacs — famous for \"These Are the Days\" and \"Because the Night\" — bring their beloved catalog to a sold-out Ridgefield.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
@@ -1497,9 +1548,9 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.2,
+          "score": 7.8,
           "title": "Gilbert the Party Pig",
-          "url": "https://www.newfairfield.org/community/community-event-calendar",
+          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12002/1358",
           "dateLabel": "Sat Aug 22",
           "time": "11:00AM",
           "venue": "New Fairfield community venue",
@@ -1515,6 +1566,26 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": true
+        },
+        {
+          "score": 8.1,
+          "title": "Veterans Appreciation Picnic",
+          "url": "https://www.shermanct.gov/muni-events/veterans-appreciation-picnic",
+          "dateLabel": "Sun Aug 23",
+          "time": "12:00PM–6:00PM",
+          "venue": "Sherman community venue",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Community Picnic",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A community picnic honoring local veterans, hosted in Sherman with food and family-friendly activities.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         },
         {
           "score": 6.3,
@@ -1584,7 +1655,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9,
+          "score": 9.2,
           "title": "VinylCut",
           "url": "https://www.housatonicriverbrewing.com/events-1/vinylcut-12",
           "dateLabel": "Fri Aug 28",
@@ -1711,7 +1782,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.7,
+          "score": 9.9,
           "title": "Lost Rebel",
           "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
           "dateLabel": "Fri Sep 4",
@@ -1818,7 +1889,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.1,
+          "score": 8.3,
           "title": "Third Annual Parrothead Party (Jimmy Buffett Tribute) — Jamie's Junk Show",
           "url": "https://www.housatonicriverbrewing.com/events-1/third-annual-parrothead-party-celebrating-jimmy-buffett-with-jamies-junk-show",
           "dateLabel": "Sun Sep 6",
@@ -1840,7 +1911,7 @@ const EVENTS_DATA = {
         {
           "score": 6.9,
           "title": "The Tano Jones Revelry",
-          "url": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "url": "https://www.songkick.com/concerts/43192810-tano-jones-revelry-at-daryls-house",
           "dateLabel": "Sun Sep 6",
           "time": "7:00PM",
           "venue": "Daryl's House",
@@ -1938,7 +2009,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.8,
+          "score": 9,
           "title": "ShineBox (Formerly The Winnie Shins)",
           "url": "https://www.housatonicriverbrewing.com/events-1/shinebox-formerly-the-winnie-shins-3",
           "dateLabel": "Fri Sep 11",
@@ -2065,6 +2136,26 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
+          "score": 9.6,
+          "title": "Woodbury Fall Festival",
+          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
+          "dateLabel": "Sun Sep 20",
+          "time": "11:00AM–4:00PM",
+          "venue": "Hollow Park",
+          "venueType": "litchfield",
+          "town": "Woodbury, CT",
+          "dist": "~18 mi",
+          "type": "Family Festival / Food Trucks & Live Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The Woodbury CT Chamber of Commerce's popular Fall Festival at Hollow Park features over 75 local vendors, live music, a beer garden, a kid zone, a pet costume contest, and food trucks for the whole community.",
+          "source": "woodburyctchamber.com",
+          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
           "score": 7.2,
           "title": "Inherit the Wind (Sherman Players — Preview Night)",
           "url": "https://shermanplayers.org/2026/01/01/season-details/",
@@ -2105,7 +2196,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.7,
+          "score": 7.9,
           "title": "Not My Problem",
           "url": "https://www.housatonicriverbrewing.com/events-1/not-my-problem-4",
           "dateLabel": "Fri Sep 18",
@@ -2125,7 +2216,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.9,
+          "score": 9.1,
           "title": "Capricorn - An Allman Brothers Tribute",
           "url": "https://www.housatonicriverbrewing.com/events-1/capricorn-an-allman-brothers-tribute-4",
           "dateLabel": "Sat Sep 19",
@@ -2192,7 +2283,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.3,
+          "score": 8.5,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-6",
           "dateLabel": "Sun Sep 20",
@@ -2207,26 +2298,6 @@ const EVENTS_DATA = {
           "desc": "It is... What It Is? is a funk, soul, R&B Band based in Connecticut that will blow your doors off with horn-driven funky grooves and tight arrangements at HRB.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9,
-          "title": "Woodbury Fall Festival",
-          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
-          "dateLabel": "Sun Sep 20",
-          "time": "10:00AM–4:00PM",
-          "venue": "Hollow Park",
-          "venueType": "litchfield",
-          "town": "Woodbury, CT",
-          "dist": "~18 mi",
-          "type": "Family Festival / Food Trucks & Live Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Woodbury CT Chamber of Commerce's popular Fall Festival at Hollow Park features food trucks, a beer garden, live music, a kids' area, and family activities for the whole community.",
-          "source": "woodburyctchamber.com",
-          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -2254,7 +2325,7 @@ const EVENTS_DATA = {
         {
           "score": 8.3,
           "title": "Joshua Radin",
-          "url": "https://www.ticketweb.com/event/joshua-radin-plus-amber-rubarth-daryls-house-tickets/14892793",
+          "url": "https://www.songkick.com/concerts/43198821-joshua-radin-at-daryls-house",
           "dateLabel": "Wed Sep 23",
           "time": "7:00PM",
           "venue": "Daryl's House",
@@ -2332,7 +2403,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.3,
+          "score": 8.5,
           "title": "Strange Souls - A Tribute to The Doors",
           "url": "https://www.housatonicriverbrewing.com/events-1/strange-souls-a-tribute-to-the-doors-5",
           "dateLabel": "Sat Sep 26",
@@ -2415,7 +2486,7 @@ const EVENTS_DATA = {
     },
     {
       "id": "week8",
-      "title": "Week 8 · September 27 – October 3",
+      "title": "Week 8 · September 28 – October 3",
       "open": false,
       "events": [
         {
@@ -2524,10 +2595,6 @@ const EVENTS_DATA = {
   "past": [],
   "daryls": [
     {
-      "date": "Wed Aug 12, 7:00PM",
-      "title": "Larry McCray"
-    },
-    {
       "date": "Thu Aug 27, 8:00PM",
       "title": "Lake & Palmer (ELP Tribute)"
     },
@@ -2558,6 +2625,10 @@ const EVENTS_DATA = {
     {
       "date": "Wed Sep 23, 7:00PM",
       "title": "Joshua Radin"
+    },
+    {
+      "date": "Thu Sep 24, 8:00PM",
+      "title": "Buzzcocks"
     }
   ]
 };
