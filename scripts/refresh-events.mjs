@@ -44,29 +44,30 @@ const SOURCES = [
   ['Sherman Library', 'https://www.shermanlibrary.org/monthly-calendar'],
 ];
 
-// Curation overrides: deterministic score floors for known-strong local acts the
+// Curation overrides: deterministic FunQuality floors for known-strong local acts the
 // model tends to under-research (it defaults cover/tribute bands low regardless of
 // their real draw). The daily model pass can't be trusted for specific bands, so we
 // floor them here. Match = case-insensitive substring of the event title. Add names
-// as Vik flags them.
+// as Vik flags them. Values are FunQuality (0-10), not composite scores — proximity is
+// applied once at the end, so the same floor means the same thing in every town.
 const BAND_FLOORS = [
-  ['the pop rocks', 8.7],   // packs Mohegan Sun Wolf Den; one of CT's most popular party bands
-  ['nashville drive', 8.7], // CT's premier top-40 country band; iTunes-charting, opened for nationals
+  ['the pop rocks', 8.4],   // packs Mohegan Sun Wolf Den; one of CT's most popular party bands
+  ['nashville drive', 8.4], // CT's premier top-40 country band; iTunes-charting, opened for nationals
 ];
 
 function applyBandFloors(events) {
   for (const e of events || []) {
     const title = (e.title || '').toLowerCase();
     for (const [name, floor] of BAND_FLOORS) {
-      if (title.includes(name) && typeof e.score === 'number' && e.score < floor) {
-        e.score = floor;
+      if (title.includes(name) && typeof e.funQuality === 'number' && e.funQuality < floor) {
+        e.funQuality = floor;
       }
     }
   }
 }
 
 // Proximity by town (0-10). Single source of truth for the score formula:
-// score = proximity*0.4 + funQuality*0.6.
+// score = proximity*0.3 + funQuality*0.7.
 const PROX = {
   'sherman': 10, 'new fairfield': 9.5, 'new milford': 9.5, 'brookfield': 8.5,
   'danbury': 8, 'ridgefield': 8, 'kent': 7.5, 'new preston': 7.5, 'washington': 7.5,
@@ -93,21 +94,54 @@ function proxOf(town) {
   return 6.5; // default for out-of-area towns
 }
 const round1 = (x) => Math.round(x * 10) / 10;
+const clampFq = (x) => Math.max(0, Math.min(10, x));
 
-// Deterministic researched-score override: for any event whose title contains a
-// researched act (band-ratings.json, keyed by normalized act name), recompute the
-// score from proximity + the researched funQuality. This makes live-music scoring
-// grounded in real research instead of the model's per-run genre guess. Longest key
-// wins so specific names beat generic ones. Unmatched acts keep the model's score.
+// ---------------------------------------------------------------------------
+// SCORING INVARIANT: score = proxOf(town)*0.3 + funQuality*0.7, and NOTHING else
+// ever writes `score`. Every stage below adjusts `funQuality` (0-10) only; bakeScores()
+// applies the formula exactly once, at the end. That is what keeps a score inside its
+// town's ceiling: a 10.0 requires both proximity 10 (Sherman) and a perfect 10 quality.
+//
+// The old pipeline mutated the composite `score` directly and each stage had to
+// reverse-engineer quality back out of it, so additive boosts could push a score past
+// its ceiling and clamp at 10 — which is how 8 unrelated events all tied at exactly
+// 10.0, including a New Fairfield town fair whose true ceiling is 9.85.
+// ---------------------------------------------------------------------------
+
+// Normalize incoming events onto the single quality field the pipeline mutates.
+// Prefers an explicit funQuality (what the model is now asked for); falls back to
+// backing quality out of a composite `score` (legacy blocks, carried events, and any
+// run where the model regresses to emitting score). Events carrying neither are left
+// untouched — they simply never get a score, exactly as before.
+function ingestFq(events) {
+  for (const e of events || []) {
+    if (typeof e.funQuality === 'number') { e.funQuality = clampFq(e.funQuality); continue; }
+    if (typeof e.score === 'number') e.funQuality = clampFq((e.score - proxOf(e.town) * 0.3) / 0.7);
+  }
+}
+
+// Publish step: apply the formula once, after every quality adjustment has run.
+function bakeScores(events) {
+  for (const e of events || []) {
+    if (typeof e.funQuality !== 'number') continue;
+    e.funQuality = round1(clampFq(e.funQuality));
+    e.score = round1(proxOf(e.town) * 0.3 + e.funQuality * 0.7);
+  }
+}
+
+// Deterministic researched-quality override: for any event whose title contains a
+// researched act (band-ratings.json, keyed by normalized act name), replace the model's
+// per-run genre guess with the researched funQuality. Longest key wins so specific names
+// beat generic ones. Unmatched acts keep the model's quality.
 function applyResearchedScores(events, ratings) {
   const keys = Object.keys(ratings).filter((k) => k.length >= 4).sort((a, b) => b.length - a.length);
   for (const e of events || []) {
-    if (typeof e.score !== 'number') continue;
+    if (typeof e.funQuality !== 'number') continue;
     const nt = norm(e.title);
     const hit = keys.find((k) => nt.includes(k));
     if (hit) {
       const fq = ratings[hit].funQuality;
-      if (typeof fq === 'number') e.score = round1(proxOf(e.town) * 0.3 + fq * 0.7);
+      if (typeof fq === 'number') e.funQuality = clampFq(fq);
     }
   }
 }
@@ -119,13 +153,10 @@ function applyResearchedScores(events, ratings) {
 const GAMMA = 1.0; // curve disabled (identity): the full-range prompt now provides the spread;
                    // stacking the curve on top was double-punishing and cratered good events.
 function applyQualityCurve(events) {
+  if (GAMMA === 1.0) return;
   for (const e of events || []) {
-    if (typeof e.score !== 'number') continue;
-    const p = proxOf(e.town);
-    let fq = (e.score - p * 0.3) / 0.7;          // back out the implied FunQuality
-    fq = Math.max(0, Math.min(10, fq));
-    const curved = 10 * Math.pow(fq / 10, GAMMA); // stretch toward the full 0-10 range
-    e.score = round1(p * 0.3 + curved * 0.7);
+    if (typeof e.funQuality !== 'number') continue;
+    e.funQuality = 10 * Math.pow(clampFq(e.funQuality) / 10, GAMMA);
   }
 }
 
@@ -173,8 +204,8 @@ function parseMD(label) {
 // year). Injected into the correct week by date after scoring. SUPPRESS_TITLES catches the
 // model's own wrong copy so these are the only version shown. Dates verified against sources.
 const PINNED_EVENTS = [
-  { score: 8.7, title: "New Milford Rock the Block — Nashville Drive", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Jul 16", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with country cover band Nashville Drive, street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
-  { score: 8.7, title: "New Milford Rock the Block — The Pop Rocks", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Aug 13", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
+  { score: 8.7, funQuality: 8.4, title: "New Milford Rock the Block — Nashville Drive", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Jul 16", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with country cover band Nashville Drive, street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
+  { score: 8.7, funQuality: 8.4, title: "New Milford Rock the Block — The Pop Rocks", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Aug 13", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
 ];
 
 // A week's declared date span, parsed from its title (e.g. "July 27 – August 2",
@@ -192,26 +223,31 @@ function weekRange(w) {
   return ds.length ? { min: Math.min(...ds), max: Math.max(...ds) } : null;
 }
 
-// Deterministic sanity floor. The model's per-event scores are volatile (it has cratered a
+// Deterministic sanity floor. The model's per-event quality is volatile (it has cratered a
 // jazz festival to 2.3 while scoring the same festival's other night 8.6). If an event made
 // the curated guide it is at least decent, and a real live-music/festival event is at least
-// good — this bounds the model's worst misses without flattening the top.
-// Proximity-aware minimum score so genuine categories aren't buried by a stingy model
-// score. Real local community events (carnivals, fairs, fireworks, parades) get a higher
-// quality floor so a hometown happening surfaces instead of sitting at the bottom.
-function scoreFloor(e) {
+// good — this bounds the model's worst misses without flattening the top. Real local
+// community events (carnivals, fairs, fireworks, parades) get a higher quality floor so a
+// hometown happening surfaces instead of sitting at the bottom. Returns FunQuality (0-10);
+// proximity is applied later by bakeScores.
+function fqFloor(e) {
   const t = (e.type || '').toLowerCase();
-  let minFq;
-  if (/carnival|fair|fireworks|parade|festival|block party|street fair/.test(t)) minFq = 7.0;   // marquee local community event
-  else if (/market|craft|community/.test(t)) minFq = 6.0;                                        // routine community event
-  else if (/music|concert|band|jazz|live|singer|songwriter|orchestra|symphon|quartet|tribute|\bdj\b|blues|folk|funk|soul|country|reggae|rock|pops|cappella|choir/.test(t)) minFq = 5.5;
-  else minFq = 4.5;
-  return round1(proxOf(e.town) * 0.3 + minFq * 0.7);
+  if (/carnival|fair|fireworks|parade|festival|block party|street fair/.test(t)) return 7.0;   // marquee local community event
+  if (/market|craft|community/.test(t)) return 6.0;                                            // routine community event
+  if (/music|concert|band|jazz|live|singer|songwriter|orchestra|symphon|quartet|tribute|\bdj\b|blues|folk|funk|soul|country|reggae|rock|pops|cappella|choir/.test(t)) return 5.5;
+  return 4.5;
+}
+function applyFqFloor(events) {
+  for (const e of events || []) {
+    if (typeof e.funQuality === 'number') e.funQuality = Math.max(e.funQuality, fqFloor(e));
+  }
 }
 
 // Value/cost adjustment: for the same quality, a free or lower-cost event is a better pick
 // than a pricey one. Free gets a boost; cheap a small bump; expensive (e.g. $100+ tickets) a
-// trim. Parses priceType/priceLabel.
+// trim. Parses priceType/priceLabel. Expressed in FunQuality points (not composite points),
+// matching personalScore() in index.html, so it lands weighted at 0.7 and can never push an
+// event past its town ceiling.
 function valueAdj(e) {
   const label = e.priceLabel || '';
   if ((e.priceType || '').toLowerCase() === 'free' || /free/i.test(label + ' ' + (e.type || ''))) return 0.6;
@@ -225,8 +261,26 @@ function valueAdj(e) {
 }
 function applyValueAdj(events) {
   for (const e of events || []) {
-    if (typeof e.score === 'number') e.score = round1(Math.max(0, Math.min(10, e.score + valueAdj(e))));
+    if (typeof e.funQuality === 'number') e.funQuality = clampFq(e.funQuality + valueAdj(e));
   }
+}
+
+// Regression guard for the scoring invariant. Every published score must sit inside its
+// town's ceiling (proximity*0.3 + 10*0.7) — a violation means a stage wrote `score`
+// directly or bypassed bakeScores, so the run aborts rather than publishing it.
+const SCORE_EPS = 0.051; // one rounding step of slack
+function scoreViolations(obj) {
+  const bad = [];
+  const check = (e) => {
+    if (typeof e.score !== 'number') return;
+    const ceiling = proxOf(e.town) * 0.3 + 10 * 0.7;
+    if (e.score > ceiling + SCORE_EPS || e.score < 0) {
+      bad.push(`"${e.title}" (${e.town || 'no town'}): ${e.score} exceeds ceiling ${round1(ceiling)}`);
+    }
+  };
+  for (const w of obj.weeks || []) for (const e of w.events || []) check(e);
+  for (const k of ['tonight', 'past']) for (const e of obj[k] || []) check(e);
+  return bad;
 }
 
 // Inherently free-admission community events (town carnivals, fireworks, parades, block
@@ -384,7 +438,7 @@ RULES:
 - Do NOT carry a recurring series' PRIOR-YEAR date forward (e.g. a summer concert series, "Rock the Block," farmers markets). If only last year's schedule is published and this year's specific date isn't confirmed, OMIT the event. Never reuse a ${CURRENT_YEAR - 1} date and relabel it ${CURRENT_YEAR}.
 - Recompute isTonight and rebuild tonight[]; every tonight[] entry MUST have a real name, venue, and time (omit any you cannot fill completely).
 - Set "lastUpdated" to "${todayLabel}".
-- Score each event: score = Proximity*0.3 + FunQuality*0.7, rounded to one decimal. Proximity by town: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Pawling=7.5, Litchfield=7, Torrington=6.5, Westport/Levitt=6.5. FunQuality (0-10) is how good/worth-it the event is on its own merits. Use a sensible spread — do not cluster everything at 7+, but do NOT bury good events either. Guide: 9-10 standout/marquee (major touring act, acclaimed festival); 7.5-8.5 genuinely good; 6-7 solid and worth-it (most established local concerts, town festivals, and markets with real draw — many vendors, live music, food — belong here); 5-6 ordinary; below 5 ONLY for weak or very niche events with little general appeal. A jazz/music festival, a well-attended community festival, or a popular market is NOT a 2-4.
+- Rate each event with a "funQuality" number from 0 to 10, rounded to one decimal. Do NOT emit a "score" field and do NOT do any proximity arithmetic — this script computes score = Proximity*0.3 + funQuality*0.7 itself from the event's town. Your only job is the quality judgement. FunQuality (0-10) is how good/worth-it the event is on its own merits, independent of how close it is. Use a sensible spread — do not cluster everything at 7+, but do NOT bury good events either. Guide: 9-10 standout/marquee (major touring act, acclaimed festival); 7.5-8.5 genuinely good; 6-7 solid and worth-it (most established local concerts, town festivals, and markets with real draw — many vendors, live music, food — belong here); 5-6 ordinary; below 5 ONLY for weak or very niche events with little general appeal. A jazz/music festival, a well-attended community festival, or a popular market is NOT a 2-4.
 - Live music is the heart of this guide. When you find a live-music act, web_search the artist/band BEFORE scoring and look hard for concrete signals of their DRAW: social following (Facebook/Instagram likes), notable venues played (Mohegan Sun / Foxwoods, casino showrooms, theaters, major festivals), national acts they have opened for, chart or press mentions, and review sentiment. Then set FunQuality by tier based on what the research shows:
     - National touring headliner, GRAMMY/charting/critically acclaimed artist: 9-10
     - Established regional act OR a popular tribute/cover band with a real following — e.g. thousands of fans, plays casinos/theaters/large festivals, has opened for or charted alongside national acts, or is a recognized local favorite: 7.5-8.5
@@ -393,7 +447,7 @@ RULES:
 - Keep the daryls[] quick-reference list current from the Daryl's House content.
 - COVER A FULL 8 WEEKS: build about 8 consecutive weekly buckets in weeks[] (Week 1 = this week, through ~8 weeks out). Do NOT stop at 5 weeks just because the current block below has fewer. The later weeks (6-8) will be sparser and that is fine, but create them and include every confirmed event you find that far out; an under-populated late week is OK, a missing one is not.
 
-Reproduce the EXACT schema and field names of the CURRENT block below (but extend weeks[] to ~8 weeks as above).
+Reproduce the EXACT schema and field names of the CURRENT block below (but extend weeks[] to ~8 weeks as above), with ONE deliberate change: replace each event's "score" field with "funQuality" as described above. If the current block still shows "score" on its events, that is the old format — emit "funQuality" instead, never both.
 
 CURRENT BLOCK:
 ${existingBlock}
@@ -439,31 +493,33 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   obj.tonight = obj.tonight.filter(e => !drop(e));
   if (droppedDates) console.log(`Dropped ${droppedDates} event(s): ${droppedFar} out-of-radius, rest mismatched/unconfirmed dates.`);
 
-  // Researched-score override (band-ratings.json) applied first, then Vik's hard floors.
+  // ---- Scoring. Every stage here adjusts funQuality ONLY; bakeScores applies the
+  // formula once at the end. See the SCORING INVARIANT note above before adding a stage.
   let ratings = {};
   try { ratings = JSON.parse(await readFile('scripts/band-ratings.json', 'utf8')); } catch { /* no cache yet */ }
-  for (const w of obj.weeks) applyResearchedScores(w.events, ratings);
-  applyResearchedScores(obj.tonight, ratings);
-  for (const w of obj.weeks) applyQualityCurve(w.events);
-  applyQualityCurve(obj.tonight);
-  for (const w of obj.weeks) applyBandFloors(w.events);
-  applyBandFloors(obj.tonight);
-
-  // Deterministic sanity floor against the model's volatile lows
-  for (const w of obj.weeks) for (const e of w.events) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
-  for (const e of obj.tonight) if (typeof e.score === 'number') e.score = Math.max(e.score, scoreFloor(e));
-  // Value/cost as the final tweak so free/affordable gets a real lift above the floor and
-  // pricey tickets get trimmed (applied before pinned events, which keep their hand-set scores).
-  for (const w of obj.weeks) normalizeCommunityFree(w.events);
-  normalizeCommunityFree(obj.tonight);
-  for (const w of obj.weeks) applyValueAdj(w.events);
-  applyValueAdj(obj.tonight);
+  const scored = [...obj.weeks.map(w => w.events), obj.tonight];
+  for (const evs of scored) {
+    ingestFq(evs);                        // normalize onto funQuality (accepts legacy score)
+    applyResearchedScores(evs, ratings);  // researched quality beats the model's guess
+    applyQualityCurve(evs);               // spread (disabled at GAMMA=1.0)
+    applyBandFloors(evs);                 // Vik's hard floors for known-strong acts
+    applyFqFloor(evs);                    // sanity floor against the model's volatile lows
+    normalizeCommunityFree(evs);          // tag inherently-free community events before valuing
+    applyValueAdj(evs);                   // free/cheap lifts quality, pricey trims it
+    bakeScores(evs);                      // score = prox*0.3 + funQuality*0.7, exactly once
+  }
 
   injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
   const carried = carryYesterday(obj, existingBlock); // keep yesterday's events one more day
   if (carried) console.log(`Carried ${carried} event(s) from yesterday (visible one more day, tagged Past).`);
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
   if (count === 0) return fail('generated JSON has zero events — refusing to publish an empty guide');
+
+  // Fail closed on a broken invariant rather than publishing an out-of-range score.
+  const violations = scoreViolations(obj);
+  if (violations.length) {
+    return fail(`${violations.length} event(s) violate the scoring invariant — ${violations.slice(0, 3).join('; ')}`);
+  }
 
   const newBlock = `const EVENTS_DATA = ${JSON.stringify(obj, null, 2)};`;
   if (newBlock.trim() === existingBlock) {

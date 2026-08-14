@@ -31,6 +31,14 @@ A curated local events guide for the Candlewood Lake area in Connecticut.
 Combined = (Proximity x 0.3) + (Fun/Quality x 0.7)
 Proximity: Sherman=10, New Fairfield=9.5, New Milford=9.5, Brookfield=8.5, Danbury=8, Ridgefield=8, Kent=7.5, New Preston/Washington=7.5, Woodbury=7.5, Roxbury=7.5, Caramoor=7.5, Westport/Levitt=6.5
 
+IMPORTANT — scoring invariant. `funQuality` (0-10) is the only field the refresh pipeline
+mutates; `score` is derived from the formula exactly once, by `bakeScores()` at the end of
+the chain. Never write `e.score` anywhere else, and never add an adjustment that operates on
+the composite — that is what let boosts push scores past a town's ceiling and pile 8 events
+onto a clamped 10.0. New adjustments (floors, overrides, value tweaks) belong in FunQuality
+space. `scoreViolations()` enforces this and aborts the run if a score exceeds its town
+ceiling, so only Sherman can ever reach 10.0.
+
 ## Score Classes
 - score-must: >= 9.0 (gold gradient)
 - score-great: 7.0-8.9 (navy)
