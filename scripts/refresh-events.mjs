@@ -55,14 +55,15 @@ const BAND_FLOORS = [
   ['nashville drive', 8.4], // CT's premier top-40 country band; iTunes-charting, opened for nationals
 ];
 
+function bandFloorFor(e) {
+  const title = (e.title || '').toLowerCase();
+  for (const [name, floor] of BAND_FLOORS) if (title.includes(name)) return floor;
+  return null;
+}
 function applyBandFloors(events) {
   for (const e of events || []) {
-    const title = (e.title || '').toLowerCase();
-    for (const [name, floor] of BAND_FLOORS) {
-      if (title.includes(name) && typeof e.funQuality === 'number' && e.funQuality < floor) {
-        e.funQuality = floor;
-      }
-    }
+    const floor = bandFloorFor(e);
+    if (floor !== null && typeof e.funQuality === 'number' && e.funQuality < floor) e.funQuality = floor;
   }
 }
 
@@ -129,21 +130,59 @@ function bakeScores(events) {
   }
 }
 
+// Match an event to a researched act in band-ratings.json (keyed by normalized act name).
+// Longest key wins so specific names beat generic ones.
+function ratingKeys(ratings) {
+  return Object.keys(ratings).filter((k) => k.length >= 4).sort((a, b) => b.length - a.length);
+}
+function ratingFor(e, ratings, keys = ratingKeys(ratings)) {
+  const nt = norm(e.title);
+  const hit = keys.find((k) => nt.includes(k));
+  return hit ? ratings[hit] : null;
+}
+
 // Deterministic researched-quality override: for any event whose title contains a
-// researched act (band-ratings.json, keyed by normalized act name), replace the model's
-// per-run genre guess with the researched funQuality. Longest key wins so specific names
-// beat generic ones. Unmatched acts keep the model's quality.
+// researched act, replace the model's per-run genre guess with the researched funQuality.
+// Unmatched acts keep the model's quality (and then face the evidence gate below).
 function applyResearchedScores(events, ratings) {
-  const keys = Object.keys(ratings).filter((k) => k.length >= 4).sort((a, b) => b.length - a.length);
+  const keys = ratingKeys(ratings);
   for (const e of events || []) {
     if (typeof e.funQuality !== 'number') continue;
-    const nt = norm(e.title);
-    const hit = keys.find((k) => nt.includes(k));
-    if (hit) {
-      const fq = ratings[hit].funQuality;
-      if (typeof fq === 'number') e.funQuality = clampFq(fq);
-    }
+    const rec = ratingFor(e, ratings, keys);
+    if (rec && typeof rec.funQuality === 'number') e.funQuality = clampFq(rec.funQuality);
   }
+}
+
+// Evidence gate. A 9.0+ FunQuality is a claim that an event is marquee — a major touring
+// act or an acclaimed festival. The model makes that claim far too freely for acts it has
+// not actually researched (it has rated $10 bar cover bands 9.9), so a claim that high must
+// be backed by a band-ratings.json entry with real sources. Everything else caps at 8.5,
+// which still reads as "genuinely good" but leaves the top of the guide to evidence.
+//
+// This runs LAST, after the floors and the value adjustment, so nothing can sneak over the
+// line via a boost: a free event the model put at 8.8 would otherwise land at 9.4 with no
+// research behind it. A hand-set BAND_FLOORS entry counts as evidence — those are curated
+// by hand with a documented rationale, which is the whole point of the list.
+const EVIDENCE_MIN = 9.0;      // quality at or above this requires a researched entry
+const EVIDENCE_CAP = 8.5;      // where unevidenced claims land instead
+const MAX_VALUE_BOOST = 0.6;   // largest lift valueAdj can add; see collectResearchCandidates
+function hasEvidence(rec) {
+  return !!rec
+    && typeof rec.funQuality === 'number'
+    && Array.isArray(rec.sources) && rec.sources.length > 0
+    && rec.confidence !== 'low';
+}
+function applyEvidenceGate(events, ratings) {
+  const keys = ratingKeys(ratings);
+  let capped = 0;
+  for (const e of events || []) {
+    if (typeof e.funQuality !== 'number' || e.funQuality < EVIDENCE_MIN) continue;
+    if (bandFloorFor(e) !== null) continue;                    // hand-curated = evidence
+    if (hasEvidence(ratingFor(e, ratings, keys))) continue;
+    e.funQuality = EVIDENCE_CAP;
+    capped++;
+  }
+  return capped;
 }
 
 // Quality curve: the model (and cache) cluster most FunQuality in 7-9, which flattens
@@ -377,18 +416,19 @@ function carryYesterday(obj, existingBlock) {
   return carried.length;
 }
 
-async function research(prompt) {
+async function research(prompt, opts = {}) {
+  const { maxTokens = 48000, searchUses = 40, fetchUses = 20 } = opts;
   let messages = [{ role: 'user', content: prompt }];
   let msg;
   for (let i = 0; i < 8; i++) {
     const req = {
       model: MODEL,
-      max_tokens: 48000, // headroom for the full events JSON (more sources = more events)
+      max_tokens: maxTokens, // headroom for the full events JSON (more sources = more events)
       // Basic tool variants (no code-execution dynamic filtering) so paused turns
       // resume with a plain resend — no container_id juggling.
       tools: [
-        { type: 'web_search_20250305', name: 'web_search', max_uses: 40 },
-        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: 20 },
+        { type: 'web_search_20250305', name: 'web_search', max_uses: searchUses },
+        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: fetchUses },
       ],
       messages,
     };
@@ -405,6 +445,132 @@ async function research(prompt) {
     break;
   }
   return msg;
+}
+
+// ---------------------------------------------------------------------------
+// Act research pass. band-ratings.json is the evidence store behind the gate above.
+// It started as a one-off backfill and went stale the moment it was written, so every
+// act outside it fell back to the model's per-run guess — which is what produced 9.9s
+// for $10 bar bands. This pass makes the cache self-maintaining: each run researches
+// only the acts making an unevidenced 9.0+ claim, then writes them back, so the same
+// lookup is never paid for twice and the cache grows exactly where scoring needs it.
+//
+// It runs AFTER the events JSON is parsed, as a separate call. A failure here is
+// non-fatal: the events still publish, and the gate simply caps the unresearched
+// claims. Nothing on the critical path depends on it.
+// ---------------------------------------------------------------------------
+const RATINGS_PATH = 'scripts/band-ratings.json';
+const MAX_RESEARCH_PER_RUN = 20; // bounds cost/latency; the backlog drains over a few days
+const TIERS = new Set(['national-headliner', 'regional-established', 'popular-local-or-tribute', 'local-modest', 'non-music']);
+const CONFIDENCES = new Set(['high', 'medium', 'low']);
+const todayISO = `${CURRENT_YEAR}-${String(CURRENT_MONTH + 1).padStart(2, '0')}-${String(_nowET.getDate()).padStart(2, '0')}`;
+
+// Events that could end up making an unevidenced 9.0+ claim — the set the gate would cap.
+// The threshold sits one value-boost below EVIDENCE_MIN because the gate runs after
+// applyValueAdj: an unresearched free event at 8.5 becomes 9.1 and would be capped. If we
+// only researched events already at 9.0+, those would be capped every run and never enter
+// the cache, so the system would never converge.
+function collectResearchCandidates(obj, ratings) {
+  const keys = ratingKeys(ratings);
+  const threshold = EVIDENCE_MIN - MAX_VALUE_BOOST;
+  const seen = new Set();
+  const out = [];
+  const scan = (events) => {
+    for (const e of events || []) {
+      if (typeof e.funQuality !== 'number' || e.funQuality < threshold) continue;
+      if (bandFloorFor(e) !== null) continue;   // already evidenced by hand
+      if (ratingFor(e, ratings, keys)) continue;
+      const k = norm(e.title);
+      if (!k || seen.has(k)) continue;
+      seen.add(k);
+      out.push({ title: e.title, type: e.type || '', venue: e.venue || '', town: e.town || '' });
+    }
+  };
+  for (const w of obj.weeks || []) scan(w.events);
+  scan(obj.tonight);
+  return out;
+}
+
+function validRecord(r) {
+  return !!r
+    && typeof r.displayName === 'string' && r.displayName.trim().length > 1
+    && typeof r.funQuality === 'number' && r.funQuality >= 0 && r.funQuality <= 10
+    && typeof r.draw === 'string' && r.draw.trim().length > 20
+    && TIERS.has(r.tier) && CONFIDENCES.has(r.confidence)
+    && typeof r.isMusicAct === 'boolean'
+    && Array.isArray(r.sources) && r.sources.length > 0
+    && r.sources.every((s) => typeof s === 'string' && /^https?:\/\//.test(s));
+}
+
+// Research the candidates and return validated records keyed by normalized act name.
+async function researchActs(candidates) {
+  const list = candidates.map((c, i) => `${i + 1}. "${c.title}" — ${c.type} at ${c.venue}, ${c.town}`).join('\n');
+  const prompt = `You are grading how much of a DRAW each of these live acts / events genuinely has, for a curated local events guide in the Candlewood Lake area of Connecticut. Today is ${todayLabel}.
+
+For EACH entry below, identify the actual performing act (or, for a non-music event, the event itself) and web_search it before grading. Look for concrete evidence of draw: social following counts, notable venues played (Mohegan Sun / Foxwoods, casino showrooms, theaters, major festivals), national acts they have opened for, chart or press mentions, awards, attendance figures.
+
+ENTRIES:
+${list}
+
+Grade each on funQuality 0-10 by what the research actually shows:
+- 9-10: national touring headliner, GRAMMY/charting/critically acclaimed artist, or a genuinely major regional festival (large documented attendance, regional press).
+- 7.5-8.5: established regional act, or a popular tribute/cover band with a real following (thousands of fans, plays casinos/theaters/large festivals), or a well-established town festival.
+- 6-7.5: genuine local bar/pickup band, small community event, or an act with little public profile.
+- Below 6: little or no draw, very niche.
+
+Be honest and evidence-driven. Most local bar bands are 6-7.5, and that is the correct answer — do NOT inflate an act to 9+ because it sounds impressive or because the venue is nice. Reserve 9+ for acts where you found real evidence of national or major-regional stature. If you cannot find meaningful evidence for an act, grade it in the 6-7.5 band and set confidence to "low".
+
+Return ONLY a pure JSON array (no prose, no code fences), one object per entry:
+[{"displayName":"Act Name","funQuality":7.2,"tier":"local-modest","isMusicAct":true,"draw":"one or two sentences citing the concrete evidence you found","confidence":"high","sources":["https://..."],"exampleTitle":"the entry title this came from"}]
+
+tier must be one of: national-headliner, regional-established, popular-local-or-tribute, local-modest, non-music.
+confidence must be one of: high, medium, low.
+sources must be real URLs you actually consulted (at least one). Omit any entry you could not research at all rather than inventing sources.`;
+
+  // ~2 searches per act in a full batch, plus headroom for a follow-up on ambiguous names.
+  const data = await research(prompt, { maxTokens: 16000, searchUses: 50, fetchUses: 5 });
+  if (data.stop_reason === 'refusal') throw new Error('model refused the act-research request');
+  let text = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+  text = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+  if (!text.startsWith('[')) {
+    const a = text.indexOf('['), b = text.lastIndexOf(']');
+    if (a >= 0 && b > a) text = text.slice(a, b + 1);
+  }
+  const arr = JSON.parse(text);
+  if (!Array.isArray(arr)) throw new Error('act research did not return a JSON array');
+
+  const records = {};
+  let rejected = 0;
+  for (const r of arr) {
+    if (!validRecord(r)) { rejected++; continue; }
+    const key = norm(r.displayName);
+    if (key.length < 4) { rejected++; continue; }
+    records[key] = {
+      displayName: r.displayName.trim(),
+      funQuality: round1(clampFq(r.funQuality)),
+      tier: r.tier,
+      isMusicAct: r.isMusicAct,
+      draw: r.draw.trim(),
+      confidence: r.confidence,
+      sources: r.sources.slice(0, 4),
+      exampleTitle: typeof r.exampleTitle === 'string' ? r.exampleTitle : '',
+      researchedAt: todayISO, // stamped here, not by the model
+    };
+  }
+  if (rejected) console.log(`Act research: rejected ${rejected} malformed/unsourced record(s).`);
+  return records;
+}
+
+// Merge new records in without touching existing ones — previously researched entries
+// (and any Vik has hand-tuned) win over a fresh guess.
+function mergeRatings(ratings, records) {
+  let added = 0;
+  for (const [k, v] of Object.entries(records)) {
+    if (ratings[k]) continue;
+    ratings[k] = v;
+    added++;
+  }
+  return added;
 }
 
 async function main() {
@@ -496,18 +662,47 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   // ---- Scoring. Every stage here adjusts funQuality ONLY; bakeScores applies the
   // formula once at the end. See the SCORING INVARIANT note above before adding a stage.
   let ratings = {};
-  try { ratings = JSON.parse(await readFile('scripts/band-ratings.json', 'utf8')); } catch { /* no cache yet */ }
+  try { ratings = JSON.parse(await readFile(RATINGS_PATH, 'utf8')); } catch { /* no cache yet */ }
   const scored = [...obj.weeks.map(w => w.events), obj.tonight];
+
   for (const evs of scored) {
     ingestFq(evs);                        // normalize onto funQuality (accepts legacy score)
     applyResearchedScores(evs, ratings);  // researched quality beats the model's guess
+  }
+
+  // Research anything still claiming 9.0+ without evidence, then fold the results in so
+  // this run already benefits. Non-fatal: on failure the gate below caps those claims.
+  let ratingsAdded = 0;
+  const candidates = collectResearchCandidates(obj, ratings);
+  if (candidates.length) {
+    const batch = candidates.slice(0, MAX_RESEARCH_PER_RUN);
+    if (candidates.length > batch.length) {
+      console.log(`Act research: ${candidates.length} unresearched 9.0+ claims, researching ${batch.length} this run (rest next run).`);
+    }
+    try {
+      const records = await researchActs(batch);
+      ratingsAdded = mergeRatings(ratings, records);
+      if (ratingsAdded) {
+        await writeFile(RATINGS_PATH, JSON.stringify(ratings, null, 2) + '\n');
+        console.log(`Act research: added ${ratingsAdded} act(s) to ${RATINGS_PATH} (cache now ${Object.keys(ratings).length}).`);
+      }
+      for (const evs of scored) applyResearchedScores(evs, ratings); // apply the fresh research
+    } catch (err) {
+      console.error(`Act research failed (non-fatal, claims will be capped): ${err.message}`);
+    }
+  }
+
+  let capped = 0;
+  for (const evs of scored) {
     applyQualityCurve(evs);               // spread (disabled at GAMMA=1.0)
     applyBandFloors(evs);                 // Vik's hard floors for known-strong acts
     applyFqFloor(evs);                    // sanity floor against the model's volatile lows
     normalizeCommunityFree(evs);          // tag inherently-free community events before valuing
     applyValueAdj(evs);                   // free/cheap lifts quality, pricey trims it
+    capped += applyEvidenceGate(evs, ratings); // LAST: 9.0+ without sources drops to 8.5
     bakeScores(evs);                      // score = prox*0.3 + funQuality*0.7, exactly once
   }
+  if (capped) console.log(`Evidence gate: capped ${capped} unevidenced 9.0+ claim(s) at ${EVIDENCE_CAP}.`);
 
   injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
   const carried = carryYesterday(obj, existingBlock); // keep yesterday's events one more day
@@ -521,10 +716,13 @@ When you have finished researching, your FINAL message must be ONLY the updated 
     return fail(`${violations.length} event(s) violate the scoring invariant — ${violations.slice(0, 3).join('; ')}`);
   }
 
+  const researchNote = ratingsAdded ? ` +${ratingsAdded} act(s) researched` : '';
+  const gated = capped ? `, ${capped} unevidenced claim(s) capped` : '';
+
   const newBlock = `const EVENTS_DATA = ${JSON.stringify(obj, null, 2)};`;
   if (newBlock.trim() === existingBlock) {
     console.log('No changes.');
-    await notifySlack(`Daily events refresh (${todayLabel}): no changes.`);
+    await notifySlack(`Daily events refresh (${todayLabel}): no changes.${researchNote}`);
     return;
   }
 
@@ -532,7 +730,7 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   await writeFile(INDEX, updated);
 
   console.log(`Updated: ${count} events across ${obj.weeks.length} weeks.`);
-  await notifySlack(`Daily events refresh (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published.`);
+  await notifySlack(`Daily events refresh (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published${researchNote}${gated}.`);
 }
 
 main().catch((e) => fail(e.message));

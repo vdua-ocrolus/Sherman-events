@@ -39,6 +39,24 @@ onto a clamped 10.0. New adjustments (floors, overrides, value tweaks) belong in
 space. `scoreViolations()` enforces this and aborts the run if a score exceeds its town
 ceiling, so only Sherman can ever reach 10.0.
 
+Evidence gate. A FunQuality of 9.0+ is a marquee claim and requires a `band-ratings.json`
+entry with real sources and confidence above "low", or a hand-set `BAND_FLOORS` match.
+Anything else caps at 8.5 — the model rates unresearched $10 bar bands 9.9 if you let it.
+The gate runs LAST, after the floors and the value adjustment, so a boost can't carry an
+event over the line; move it and free events start sneaking into the top.
+
+Note the gate is about *quality*, not the composite. A Sherman event can legitimately score
+9.1 on an 8.7 quality because proximity is 30% of the formula — that is the hometown weighting
+working, not a leak.
+
+## band-ratings.json (researched-act cache)
+Evidence store behind the gate: normalized act name -> {funQuality, tier, draw, confidence,
+sources, researchedAt}. Self-maintaining — each refresh researches only the acts making an
+unevidenced 9.0+ claim (max 20/run, backlog drains over a few days), validates the records,
+and merges NEW keys only, so existing/hand-tuned entries always win. The daily workflow
+commits this file; if it stops being committed, every run re-researches the same acts.
+Research failure is non-fatal: events still publish and the gate caps the unevidenced claims.
+
 ## Score Classes
 - score-must: >= 9.0 (gold gradient)
 - score-great: 7.0-8.9 (navy)

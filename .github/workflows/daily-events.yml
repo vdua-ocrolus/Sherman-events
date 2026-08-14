@@ -31,12 +31,14 @@ jobs:
         run: node scripts/refresh-events.mjs
       - name: Commit and push if changed
         run: |
-          if git diff --quiet -- index.html; then
+          # band-ratings.json is the researched-act cache the refresh writes back to; it
+          # must be committed or every run re-researches the same acts.
+          if git diff --quiet -- index.html scripts/band-ratings.json; then
             echo "No changes to commit."
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add index.html
+            git add index.html scripts/band-ratings.json
             git commit -m "Daily events refresh ($(date -u +%Y-%m-%d))"
             git push
           fi
