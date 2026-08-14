@@ -981,47 +981,37 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 13, 2026",
+  "lastUpdated": "Aug 14, 2026",
   "tonight": [
     {
-      "name": "New Milford Rock the Block — The Pop Rocks",
-      "venue": "Bank Street",
-      "time": "6:30PM"
-    },
-    {
-      "name": "Karaoke & Lip Sync Night",
+      "name": "Gravity Feed",
       "venue": "Housatonic River Brewing",
       "time": "7:00PM"
+    },
+    {
+      "name": "Andrew Dice Clay: Live in Concert",
+      "venue": "Ridgefield Playhouse",
+      "time": "8:00PM"
+    },
+    {
+      "name": "North County Band — CityCenter Danbury Summer Concert Series Finale",
+      "venue": "Danbury CityCenter Green",
+      "time": "7:00PM"
+    },
+    {
+      "name": "Al Fenton Big Band — Summer Sunset Concert Series",
+      "venue": "Litchfield County venue",
+      "time": "6:00PM"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 13–15",
+      "title": "Week 1 · August 14–16",
       "open": true,
       "events": [
         {
-          "score": 6.8,
-          "title": "Karaoke & Lip Sync Night",
-          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-13-19-00",
-          "dateLabel": "Thu Aug 13",
-          "time": "7:00PM–9:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Karaoke Night",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
+          "score": 7,
           "title": "Gravity Feed",
           "url": "https://www.housatonicriverbrewing.com/events-1/gravity-feed-5",
           "dateLabel": "Fri Aug 14",
@@ -1036,7 +1026,7 @@ const EVENTS_DATA = {
           "desc": "Gravity Feed plays modern pop and soul with classic rock ferocity, and classic rock with a 21st century groove, at the HRB stage.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
@@ -1056,7 +1046,7 @@ const EVENTS_DATA = {
           "desc": "Controversial 80s/90s comedy icon in a rare stand-up appearance.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
@@ -1065,7 +1055,7 @@ const EVENTS_DATA = {
           "title": "North County Band — CityCenter Danbury Summer Concert Series (Season Finale)",
           "url": "https://citycenterdanbury.com/event/north-county-band/",
           "dateLabel": "Fri Aug 14",
-          "time": "7:00PM–9:30PM",
+          "time": "7:00PM–9:00PM",
           "venue": "Danbury CityCenter Green",
           "venueType": "danbury",
           "town": "Danbury, CT",
@@ -1073,15 +1063,15 @@ const EVENTS_DATA = {
           "type": "Free Outdoor Concert / Country-Americana",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "Led by Chicago-born singer-songwriter Scott Smith and Texas fiddle sensation Cat Lines, North County Band blends country, Americana, roots rock, and heartfelt storytelling, having sold out Daryl's House Club and earned New England Music Award nominations, closing out the summer series on the Green.",
+          "desc": "Led by Chicago-born singer-songwriter Scott Smith and Texas fiddle sensation Cat Lines, North County Band blends country, Americana, roots rock, and heartfelt storytelling; the band has earned nominations for New England Country Act of the Year and Rising Stars of Connecticut, and previously sold out Daryl's House Club, closing out the summer series on the Green.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/north-county-band/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
         {
-          "score": 9.2,
+          "score": 9.7,
           "title": "Al Fenton Big Band — Summer Sunset Concert Series",
           "url": "https://litchfieldmagazine.com/events/al-fenton-big-band-2/",
           "dateLabel": "Fri Aug 14",
@@ -1096,7 +1086,7 @@ const EVENTS_DATA = {
           "desc": "An 18-member big band performs classic swing favorites as part of the Summer Sunset Concert Series.",
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false
         },
@@ -1201,52 +1191,25 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.7,
-          "title": "New Milford Rock the Block — The Pop Rocks",
-          "url": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
-          "dateLabel": "Thu Aug 13",
-          "time": "6:30PM",
-          "venue": "Bank Street",
-          "venueType": "",
+          "score": 7.5,
+          "title": "Chris Ferguson",
+          "url": "https://www.housatonicriverbrewing.com/events-1/chris-ferguson-8",
+          "dateLabel": "Sun Aug 16",
+          "time": "4:00PM–7:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
           "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Free Block Party / Live Music",
+          "dist": "~7 mi",
+          "type": "Live Music / Singer-Songwriter",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.",
-          "source": "newmilfordnow.org",
-          "sourceUrl": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
+          "desc": "Local singer-songwriter who came to HRB by way of an open mic night, playing everything from rock to country covers.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
         },
-        {
-          "score": 8.4,
-          "title": "Larry McCray",
-          "url": "https://www.songkick.com/concerts/43092888-larry-mccray-at-daryls-house",
-          "dateLabel": "Wed Aug 12",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Blues Guitar Legend",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Acclaimed blues guitarist Larry McCray has shared the stage with B.B. King, Buddy Guy, Albert King, and Joe Bonamassa, and was nominated for a Blues Music Award for Best Contemporary Blues Album.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
-          "isTonight": true,
-          "isPast": true,
-          "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week2",
-      "title": "Week 2 · August 16–22",
-      "open": true,
-      "events": [
         {
           "score": 8.7,
           "title": "Allen Stone",
@@ -1268,7 +1231,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.4,
+          "score": 9,
           "title": "Winvian's August Market with Live Jazz",
           "url": "https://litchfieldmagazine.com/events/live-jazz-at-winvian-farm/",
           "dateLabel": "Sun Aug 16",
@@ -1307,6 +1270,33 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false
         },
+        {
+          "score": 8.7,
+          "title": "New Milford Rock the Block — The Pop Rocks",
+          "url": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
+          "dateLabel": "Thu Aug 13",
+          "time": "6:30PM",
+          "venue": "Bank Street",
+          "venueType": "",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Free Block Party / Live Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.",
+          "source": "newmilfordnow.org",
+          "sourceUrl": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
+          "isTonight": false,
+          "isPast": true,
+          "isNF": false
+        }
+      ]
+    },
+    {
+      "id": "week2",
+      "title": "Week 2 · August 17–23",
+      "open": true,
+      "events": [
         {
           "score": 7.3,
           "title": "Brian Regan (Wednesday)",
@@ -1363,6 +1353,26 @@ const EVENTS_DATA = {
           "desc": "Second night of Brian Regan's sold-out-caliber run at Ridgefield Playhouse.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 7.2,
+          "title": "Karaoke & Lip Sync Night",
+          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-20-19-00",
+          "dateLabel": "Thu Aug 20",
+          "time": "7:00PM–9:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Karaoke Night",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1521,8 +1531,8 @@ const EVENTS_DATA = {
           "priceType": "free",
           "priceLabel": "Free",
           "desc": "The Afro-Semitic Experience, a critically acclaimed jazz ensemble blending Jewish and African-American musical traditions, returns to New Milford's bandstand for a joyous, danceable set.",
-          "source": "afrosemiticexperience.net",
-          "sourceUrl": "https://afrosemiticexperience.net/event/6547073/760504350/summer-concert-in-new-milford-with-the-afro-semitic-experience",
+          "source": "artsnewmilfordct.org",
+          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "isTonight": false,
           "isPast": false,
           "isNF": false
@@ -1548,7 +1558,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.8,
+          "score": 8.4,
           "title": "Gilbert the Party Pig",
           "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12002/1358",
           "dateLabel": "Sat Aug 22",
@@ -1568,7 +1578,7 @@ const EVENTS_DATA = {
           "isNF": true
         },
         {
-          "score": 8.1,
+          "score": 8.7,
           "title": "Veterans Appreciation Picnic",
           "url": "https://www.shermanct.gov/muni-events/veterans-appreciation-picnic",
           "dateLabel": "Sun Aug 23",
@@ -1631,7 +1641,7 @@ const EVENTS_DATA = {
     },
     {
       "id": "week3",
-      "title": "Week 3 · August 24–29",
+      "title": "Week 3 · August 24–30",
       "open": false,
       "events": [
         {
@@ -1655,7 +1665,27 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.2,
+          "score": 7.2,
+          "title": "Karaoke & Lip Sync Night",
+          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-27-19-00",
+          "dateLabel": "Thu Aug 27",
+          "time": "7:00PM–9:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Karaoke Night",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 9.4,
           "title": "VinylCut",
           "url": "https://www.housatonicriverbrewing.com/events-1/vinylcut-12",
           "dateLabel": "Fri Aug 28",
@@ -1733,12 +1763,32 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
+        },
+        {
+          "score": 7.4,
+          "title": "Concerts on the Green — CJ Live",
+          "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "dateLabel": "Sat Aug 29",
+          "time": "7:00PM",
+          "venue": "New Milford Town Green (Bandstand)",
+          "venueType": "",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Free Outdoor Concert Series",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The final night of New Milford's free Concerts on the Green summer series brings CJ Live to the historic bandstand.",
+          "source": "artsnewmilfordct.org",
+          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
         }
       ]
     },
     {
       "id": "week4",
-      "title": "Week 4 · August 30 – September 5",
+      "title": "Week 4 · August 31 – September 6",
       "open": false,
       "events": [
         {
@@ -1782,7 +1832,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.9,
+          "score": 10,
           "title": "Lost Rebel",
           "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
           "dateLabel": "Fri Sep 4",
@@ -1860,14 +1910,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week5",
-      "title": "Week 5 · September 6–12",
-      "open": false,
-      "events": [
+        },
         {
           "score": 7.2,
           "title": "Bedford Music Festival — Headlined by The Motet",
@@ -1881,7 +1924,7 @@ const EVENTS_DATA = {
           "type": "Music Festival / Funk-Soul",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Funk luminaries The Motet headline the Bedford Music Festival at Caramoor, joined by the Jamie McLean Band, Summer Fling, and a kids' set from the Rock and Roll Playhouse playing the music of Taylor Swift.",
+          "desc": "Funk luminaries The Motet, who have sold out shows nationwide and performed seven headlining slots at Red Rocks, headline the Bedford Music Festival at Caramoor, joined by the Jamie McLean Band, Summer Fling, and a kids' set from the Rock and Roll Playhouse.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
           "isTonight": false,
@@ -1889,7 +1932,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.3,
+          "score": 8.5,
           "title": "Third Annual Parrothead Party (Jimmy Buffett Tribute) — Jamie's Junk Show",
           "url": "https://www.housatonicriverbrewing.com/events-1/third-annual-parrothead-party-celebrating-jimmy-buffett-with-jamies-junk-show",
           "dateLabel": "Sun Sep 6",
@@ -1927,7 +1970,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week5",
+      "title": "Week 5 · September 7–13",
+      "open": false,
+      "events": [
         {
           "score": 8.2,
           "title": "George Thorogood & The Destroyers – The Baddest Show On Earth",
@@ -2009,7 +2059,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9,
+          "score": 9.2,
           "title": "ShineBox (Formerly The Winnie Shins)",
           "url": "https://www.housatonicriverbrewing.com/events-1/shinebox-formerly-the-winnie-shins-3",
           "dateLabel": "Fri Sep 11",
@@ -2047,14 +2097,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week6",
-      "title": "Week 6 · September 13–19",
-      "open": false,
-      "events": [
+        },
         {
           "score": 9.6,
           "title": "Brian López Electric Trio",
@@ -2134,27 +2177,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        },
-        {
-          "score": 9.6,
-          "title": "Woodbury Fall Festival",
-          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
-          "dateLabel": "Sun Sep 20",
-          "time": "11:00AM–4:00PM",
-          "venue": "Hollow Park",
-          "venueType": "litchfield",
-          "town": "Woodbury, CT",
-          "dist": "~18 mi",
-          "type": "Family Festival / Food Trucks & Live Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Woodbury CT Chamber of Commerce's popular Fall Festival at Hollow Park features over 75 local vendors, live music, a beer garden, a kid zone, a pet costume contest, and food trucks for the whole community.",
-          "source": "woodburyctchamber.com",
-          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "week6",
+      "title": "Week 6 · September 14–20",
+      "open": false,
+      "events": [
         {
           "score": 7.2,
           "title": "Inherit the Wind (Sherman Players — Preview Night)",
@@ -2196,7 +2226,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 7.9,
+          "score": 8.1,
           "title": "Not My Problem",
           "url": "https://www.housatonicriverbrewing.com/events-1/not-my-problem-4",
           "dateLabel": "Fri Sep 18",
@@ -2216,7 +2246,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 9.1,
+          "score": 9.3,
           "title": "Capricorn - An Allman Brothers Tribute",
           "url": "https://www.housatonicriverbrewing.com/events-1/capricorn-an-allman-brothers-tribute-4",
           "dateLabel": "Sat Sep 19",
@@ -2254,14 +2284,27 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week7",
-      "title": "Week 7 · September 20–26",
-      "open": false,
-      "events": [
+        },
+        {
+          "score": 6.9,
+          "title": "Dave Vargo",
+          "url": "https://www.songkick.com/concerts/43345514-dave-vargo-at-daryls-house",
+          "dateLabel": "Sat Sep 19",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A regional live act performs at Daryl's House on the main stage.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
         {
           "score": 7.1,
           "title": "Samara Joy and Her Septet",
@@ -2283,7 +2326,7 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.5,
+          "score": 8.7,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-6",
           "dateLabel": "Sun Sep 20",
@@ -2302,6 +2345,33 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false
         },
+        {
+          "score": 9.9,
+          "title": "Woodbury Fall Festival",
+          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
+          "dateLabel": "Sun Sep 20",
+          "time": "11:00AM–4:00PM",
+          "venue": "Hollow Park",
+          "venueType": "litchfield",
+          "town": "Woodbury, CT",
+          "dist": "~18 mi",
+          "type": "Family Festival / Food Trucks & Live Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The Woodbury CT Chamber of Commerce's popular Fall Festival at Hollow Park features over 75 local vendors, live music, a beer garden, a kid zone, a pet costume contest, and food trucks for the whole community.",
+          "source": "woodburyctchamber.com",
+          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        }
+      ]
+    },
+    {
+      "id": "week7",
+      "title": "Week 7 · September 21–27",
+      "open": false,
+      "events": [
         {
           "score": 9.6,
           "title": "King Stingray",
@@ -2403,7 +2473,27 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 8.5,
+          "score": 6.6,
+          "title": "Hocus Pocus Live! An All-New Parody Musical",
+          "url": "https://www.warnertheatre.org/events/hocus-pocus-live26/",
+          "dateLabel": "Sat Sep 26 & Sun Sep 27",
+          "time": "7:00PM Sat / 2:00PM Sun",
+          "venue": "Warner Theatre (Nancy Marine Studio Theatre)",
+          "venueType": "warner",
+          "town": "Torrington, CT",
+          "dist": "~20 mi",
+          "type": "Parody Musical / Family",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "An all-new comedic parody musical inspired by the beloved Halloween classic, staged at the Warner's intimate studio theatre.",
+          "source": "warnertheatre.org",
+          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false
+        },
+        {
+          "score": 8.7,
           "title": "Strange Souls - A Tribute to The Doors",
           "url": "https://www.housatonicriverbrewing.com/events-1/strange-souls-a-tribute-to-the-doors-5",
           "dateLabel": "Sat Sep 26",
@@ -2443,24 +2533,24 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.6,
-          "title": "Hocus Pocus Live! An All-New Parody Musical",
-          "url": "https://www.warnertheatre.org/events/hocus-pocus-live26/",
-          "dateLabel": "Sat Sep 26 & Sun Sep 27",
-          "time": "7:00PM Sat / 2:00PM Sun",
-          "venue": "Warner Theatre (Nancy Marine Studio Theatre)",
-          "venueType": "warner",
-          "town": "Torrington, CT",
-          "dist": "~20 mi",
-          "type": "Parody Musical / Family",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "An all-new comedic parody musical inspired by the beloved Halloween classic, staged at the Warner's intimate studio theatre.",
-          "source": "warnertheatre.org",
-          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "score": 9,
+          "title": "New Fairfield Fair Day",
+          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12048/1358",
+          "dateLabel": "Sat Sep 26",
+          "time": "All Day",
+          "venue": "New Fairfield community grounds",
+          "venueType": "newfairfield",
+          "town": "New Fairfield, CT",
+          "dist": "~3 mi",
+          "type": "Family Festival / Fair",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "New Fairfield's community Fair Day (rain date Sept 27) returns with family-friendly fun and activities, per the official town events calendar.",
+          "source": "newfairfield.org",
+          "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": true
         },
         {
           "score": 7.6,
@@ -2486,7 +2576,7 @@ const EVENTS_DATA = {
     },
     {
       "id": "week8",
-      "title": "Week 8 · September 28 – October 3",
+      "title": "Week 8 · September 28 – October 4",
       "open": false,
       "events": [
         {
@@ -2550,26 +2640,6 @@ const EVENTS_DATA = {
           "isNF": false
         },
         {
-          "score": 6.6,
-          "title": "Nobuntu",
-          "url": "https://caramoor.org/event/nobuntu-2026-rhcs",
-          "dateLabel": "Fri Oct 2",
-          "time": "7:30PM",
-          "venue": "Caramoor",
-          "venueType": "caramoor",
-          "town": "Katonah, NY",
-          "dist": "~25 mi",
-          "type": "A Cappella / World Music",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Nobuntu, an acclaimed all-female a cappella quintet from Zimbabwe, performs at Caramoor's intimate concert stage.",
-          "source": "caramoor.org",
-          "sourceUrl": "https://caramoor.org/events/concerts",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
           "score": 7.9,
           "title": "TUSK: A Classic Fleetwood Mac Tribute",
           "url": "https://www.warnertheatre.org/events/tusk-fleetwood-mac/",
@@ -2595,6 +2665,26 @@ const EVENTS_DATA = {
   "past": [],
   "daryls": [
     {
+      "date": "Sat Aug 15, evening",
+      "title": "Joyride"
+    },
+    {
+      "date": "Sat Aug 15, evening",
+      "title": "Ladies of the 80s"
+    },
+    {
+      "date": "Sun Aug 16, evening",
+      "title": "Eddie Seville"
+    },
+    {
+      "date": "Fri Aug 21, evening",
+      "title": "Red Not Chili Peppers"
+    },
+    {
+      "date": "Sun Aug 23, evening",
+      "title": "Rockabilly Riot"
+    },
+    {
       "date": "Thu Aug 27, 8:00PM",
       "title": "Lake & Palmer (ELP Tribute)"
     },
@@ -2611,6 +2701,10 @@ const EVENTS_DATA = {
       "title": "The Tano Jones Revelry"
     },
     {
+      "date": "Wed Sep 9, evening",
+      "title": "PJ Ferguson & The Tennessee Strange"
+    },
+    {
       "date": "Thu Sep 10, 8:00PM",
       "title": "APB"
     },
@@ -2623,11 +2717,15 @@ const EVENTS_DATA = {
       "title": "The Sensational Soul Cruisers"
     },
     {
+      "date": "Sat Sep 19, 8:00PM",
+      "title": "Dave Vargo"
+    },
+    {
       "date": "Wed Sep 23, 7:00PM",
       "title": "Joshua Radin"
     },
     {
-      "date": "Thu Sep 24, 8:00PM",
+      "date": "Thu Sep 24, evening",
       "title": "Buzzcocks"
     }
   ]
