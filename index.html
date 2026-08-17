@@ -981,60 +981,61 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 14, 2026",
-  "tonight": [
-    {
-      "name": "Gravity Feed",
-      "venue": "Housatonic River Brewing",
-      "time": "7:00PM"
-    },
-    {
-      "name": "Andrew Dice Clay: Live in Concert",
-      "venue": "Ridgefield Playhouse",
-      "time": "8:00PM"
-    },
-    {
-      "name": "North County Band — CityCenter Danbury Summer Concert Series Finale",
-      "venue": "Danbury CityCenter Green",
-      "time": "7:00PM"
-    },
-    {
-      "name": "Al Fenton Big Band — Summer Sunset Concert Series",
-      "venue": "Litchfield County venue",
-      "time": "6:00PM"
-    }
-  ],
+  "lastUpdated": "Aug 17, 2026",
+  "tonight": [],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 14–16",
+      "title": "Week 1 · August 17–23",
       "open": true,
       "events": [
         {
-          "score": 7,
-          "title": "Gravity Feed",
-          "url": "https://www.housatonicriverbrewing.com/events-1/gravity-feed-5",
-          "dateLabel": "Fri Aug 14",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / Modern Pop & Classic Rock",
+          "funQuality": 7.3,
+          "title": "Brian Regan (Wednesday)",
+          "url": "https://ridgefieldplayhouse.org/event/brian-regan-wednesday-ridgefield-ct-2026/",
+          "dateLabel": "Wed Aug 19",
+          "time": "7:30PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Comedy",
           "priceType": "paid",
-          "priceLabel": "$7.50",
-          "desc": "Gravity Feed plays modern pop and soul with classic rock ferocity, and classic rock with a 21st century groove, at the HRB stage.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": true,
+          "priceLabel": null,
+          "desc": "One of the most respected comedians in the country returns to Ridgefield for a three-night run — clean, sharp, and consistently packed houses.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.5
         },
         {
-          "score": 8.7,
-          "title": "Andrew Dice Clay: Live in Concert",
-          "url": "https://ridgefieldplayhouse.org/event/andrew-dice-clay-ridgefield-ct-2026/",
-          "dateLabel": "Fri Aug 14",
+          "funQuality": 8.8,
+          "title": "Danbury San Gennaro Festival",
+          "url": "https://citycenterdanbury.com/event/san-gennaro-festival/",
+          "dateLabel": "Wed Aug 19 – Sun Aug 23",
+          "time": "5:00PM–11:00PM (Wed–Fri), 1:00PM–11:00PM (Sat), 1:00PM–10:00PM (Sun)",
+          "venue": "Danbury CityCenter Green / Ives Street",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Italian Street Festival / Food & Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with five free days of Italian food, live music every night (including Beyond Purple, Mullet, and Shooting Star), games, a cannoli eating contest, laser light shows, and an America 250 Fireworks Spectacular on Saturday.",
+          "source": "citycenterdanbury.com",
+          "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.6
+        },
+        {
+          "funQuality": 7.3,
+          "title": "Brian Regan (Thursday)",
+          "url": "https://ridgefieldplayhouse.org/event/brian-regan-thursday-ridgefield-ct-2026/",
+          "dateLabel": "Thu Aug 20",
           "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
@@ -1043,152 +1044,286 @@ const EVENTS_DATA = {
           "type": "Comedy",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Controversial 80s/90s comedy icon in a rare stand-up appearance.",
+          "desc": "Second night of Brian Regan's sold-out-caliber run at Ridgefield Playhouse.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": true,
+          "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.5
         },
         {
-          "score": 10,
-          "title": "North County Band — CityCenter Danbury Summer Concert Series (Season Finale)",
-          "url": "https://citycenterdanbury.com/event/north-county-band/",
-          "dateLabel": "Fri Aug 14",
+          "funQuality": 7.8,
+          "title": "Karaoke & Lip Sync Night",
+          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-20-19-00",
+          "dateLabel": "Thu Aug 20",
           "time": "7:00PM–9:00PM",
-          "venue": "Danbury CityCenter Green",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Free Outdoor Concert / Country-Americana",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Led by Chicago-born singer-songwriter Scott Smith and Texas fiddle sensation Cat Lines, North County Band blends country, Americana, roots rock, and heartfelt storytelling; the band has earned nominations for New England Country Act of the Year and Rising Stars of Connecticut, and previously sold out Daryl's House Club, closing out the summer series on the Green.",
-          "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/north-county-band/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.7,
-          "title": "Al Fenton Big Band — Summer Sunset Concert Series",
-          "url": "https://litchfieldmagazine.com/events/al-fenton-big-band-2/",
-          "dateLabel": "Fri Aug 14",
-          "time": "6:00PM–8:00PM",
-          "venue": "Litchfield County venue",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~10 mi",
-          "type": "Big Band / Free Concert",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "An 18-member big band performs classic swing favorites as part of the Summer Sunset Concert Series.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.3,
-          "title": "Piano Man vs Rocket Man",
-          "url": "https://www.housatonicriverbrewing.com/events-1/piano-man-vs-rocket-man",
-          "dateLabel": "Sat Aug 15",
-          "time": "7:00PM–10:00PM",
           "venue": "Housatonic River Brewing",
           "venueType": "hrb",
           "town": "New Milford, CT",
           "dist": "~7 mi",
-          "type": "Live Music / Elton John & Billy Joel Tribute",
-          "priceType": "paid",
-          "priceLabel": "$20",
-          "desc": "The Ultimate Showdown! Dueling tributes to Billy Joel (Piano Man) and Elton John (Rocket Man), a full band tribute act with a long-established following at venues across the Northeast.",
+          "type": "Karaoke Night",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.3
         },
         {
-          "score": 8.7,
-          "title": "Glenn Miller Orchestra",
-          "url": "https://ridgefieldplayhouse.org/event/glenn-miller-orchestra-4/",
-          "dateLabel": "Sat Aug 15",
+          "funQuality": 7.3,
+          "title": "Brian Regan (Friday)",
+          "url": "https://ridgefieldplayhouse.org/event/brian-regan-friday-ridgefield-ct-2026/",
+          "dateLabel": "Fri Aug 21",
           "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
           "town": "Ridgefield, CT",
           "dist": "~15 mi",
-          "type": "Big Band / Swing",
+          "type": "Comedy",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "The world-famous touring big band plays swing-era classics.",
+          "desc": "Third and final night of Brian Regan's run — one of stand-up's most reliably packed acts.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.5
         },
         {
-          "score": 10,
-          "title": "County Fair!",
-          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12020/1358",
-          "dateLabel": "Sat Aug 15",
+          "funQuality": 6.7,
+          "title": "Junk",
+          "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
+          "dateLabel": "Fri Aug 21",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / 90s-2000s Alt Rock",
+          "priceType": "paid",
+          "priceLabel": "$10",
+          "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.5
+        },
+        {
+          "funQuality": 7.9,
+          "title": "Save the Palace (Sherman Players)",
+          "url": "https://www.shermanct.gov/muni-events/save-the-palace",
+          "dateLabel": "Fri Aug 21 – Sun Aug 23",
+          "time": "8:00PM (Fri/Sat), 2:00PM (Sun)",
+          "venue": "Sherman Playhouse",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Musical / Community Theater Fundraiser",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "The Sherman Players stage a three-performance fundraiser run of \"Save the Palace,\" an award-winning original musical by Roy O'Neil about an aging rock band that reunites to save their hometown theater, as a special event in the group's centennial season.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.5
+        },
+        {
+          "funQuality": 8.4,
+          "title": "Silent Film & Live Music: THE GENERAL (Buster Keaton)",
+          "url": "https://litchfieldmagazine.com/events/silent-film-live-music-2/",
+          "dateLabel": "Sat Aug 22",
+          "time": "7:00PM",
+          "venue": "Gordon Hall, Music Mountain",
+          "venueType": "litchfield",
+          "town": "Falls Village, CT",
+          "dist": "~22 mi",
+          "type": "Silent Film with Live Score",
+          "priceType": "paid",
+          "priceLabel": "$35 General Admission",
+          "desc": "Buster Keaton's legendary Civil War comedy THE GENERAL (1926) screens with live music by pianist Donald Sosin and singer/percussionist Joanna Seaton.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.8
+        },
+        {
+          "funQuality": 7.6,
+          "title": "6th Annual Steve Bennett Memorial Comedy Show",
+          "url": "https://www.shermanct.gov/muni-events/steve-bennett-memorial-comedy-show",
+          "dateLabel": "Sat Aug 22",
+          "time": "7:30PM–8:30PM",
+          "venue": "Sherman community venue",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Comedy",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "An evening of fresh stand-up voices — Emily Azrael, Dillon Krause, Luz Michelle, Peter Wong, and Tayler Yarish — honoring the memory of longtime Sherman resident and comedian Steve Bennett.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.3
+        },
+        {
+          "funQuality": 9,
+          "title": "10,000 Maniacs",
+          "url": "https://ridgefieldplayhouse.org/event/10000-maniacs-ridgefield-ct-2026/",
+          "dateLabel": "Sat Aug 22",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Alt-Rock Legends",
+          "priceType": "soldout",
+          "priceLabel": "SOLD OUT",
+          "desc": "Celebrating their 45th anniversary, platinum-selling alt-rock pioneers 10,000 Maniacs — famous for \"These Are the Days\" and \"Because the Night\" — bring their beloved catalog to a sold-out Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.7
+        },
+        {
+          "funQuality": 7.2,
+          "title": "Struggle Monkey (NMHS Class of 1986 Reunion Show)",
+          "url": "https://www.housatonicriverbrewing.com/events-1/struggle-monkey-4",
+          "dateLabel": "Sat Aug 22",
+          "time": "5:30PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Hard Rock Cover Band",
+          "priceType": "paid",
+          "priceLabel": "$12",
+          "desc": "Struggle Monkey is a popular CT show band known for high-energy sets, delivering a full concert experience with smoke, lightshow, and hard rock covers of Queen, Journey, Def Leppard, and Pink Floyd, tied to the New Milford HS Class of 1986 reunion.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.9
+        },
+        {
+          "funQuality": 6.5,
+          "title": "Northwest Vocal Showcase — 20th Anniversary",
+          "url": "https://www.warnertheatre.org/events/northwest-vocal-showcase/",
+          "dateLabel": "Sat Aug 22",
+          "time": "7:00PM",
+          "venue": "Warner Theatre (Oneglia Auditorium)",
+          "venueType": "warner",
+          "town": "Torrington, CT",
+          "dist": "~20 mi",
+          "type": "Vocal Showcase / Community Talent",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Torrington Parks & Rec presents the 20th Anniversary Northwest Vocal Showcase at the historic Warner Theatre's Oneglia Auditorium.",
+          "source": "warnertheatre.org",
+          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 6.5
+        },
+        {
+          "funQuality": 7.4,
+          "title": "Gilbert the Party Pig",
+          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12002/1358",
+          "dateLabel": "Sat Aug 22",
           "time": "11:00AM",
-          "venue": "New Fairfield community grounds",
+          "venue": "New Fairfield community venue",
           "venueType": "newfairfield",
           "town": "New Fairfield, CT",
           "dist": "~3 mi",
-          "type": "Family Festival / Fair",
+          "type": "Family Event / Animal Entertainment",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "New Fairfield's community County Fair brings family-friendly fun, games, and activities to town, per the official New Fairfield events calendar.",
+          "desc": "New Fairfield hosts a visit from the beloved, widely-followed \"Gilbert the Party Pig\" and friends for a family-friendly meet-and-greet, per the official town events calendar.",
           "source": "newfairfield.org",
           "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": true
+          "isNF": true,
+          "score": 8
         },
         {
-          "score": 6.6,
-          "title": "Zaccai Curtis Quartet",
-          "url": "https://litchfieldmagazine.com/events/zaccai-curtis-quartet/",
-          "dateLabel": "Sat Aug 15",
-          "time": "7:00PM",
+          "funQuality": 6.6,
+          "title": "Veterans Appreciation Picnic",
+          "url": "https://www.shermanct.gov/muni-events/veterans-appreciation-picnic",
+          "dateLabel": "Sun Aug 23",
+          "time": "12:00PM–6:00PM",
+          "venue": "Sherman community venue",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Community Picnic",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A community picnic honoring local veterans, hosted in Sherman with food and family-friendly activities.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.6
+        },
+        {
+          "funQuality": 6.3,
+          "title": "Top of The World: A Carpenters Tribute",
+          "url": "https://ridgefieldplayhouse.org/event/top-of-the-world-carpenters-ridgefield-ct-2026/",
+          "dateLabel": "Sun Aug 23",
+          "time": "7:30PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Carpenters Tribute",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A loving tribute to the soft-pop hits of The Carpenters plays the Ridgefield Playhouse.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 6.8
+        },
+        {
+          "funQuality": 5.1,
+          "title": "Lysander Piano Trio",
+          "url": "https://litchfieldmagazine.com/events/lysander-piano-trio/",
+          "dateLabel": "Sun Aug 23",
+          "time": "3:00PM",
           "venue": "Litchfield County venue",
           "venueType": "litchfield",
           "town": "Litchfield County, CT",
           "dist": "~10 mi",
-          "type": "Jazz",
+          "type": "Chamber Music",
           "priceType": "paid",
-          "priceLabel": "$50 General Admission",
-          "desc": "2025 GRAMMY Award winners Zaccai Curtis (piano), Luques Curtis (bass), and their quartet bring their acclaimed jazz artistry to an intimate Litchfield County concert.",
+          "priceLabel": "$65 General Admission",
+          "desc": "The Lysander Piano Trio performs Mozart's Piano Trio in E Major alongside other works in an elegant chamber concert setting.",
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 5.9,
-          "title": "Songs of Protest",
-          "url": "https://litchfieldmagazine.com/events/songs-of-protest/",
-          "dateLabel": "Sat Aug 15",
-          "time": "7:30PM–9:30PM",
-          "venue": "Litchfield County venue",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~10 mi",
-          "type": "Music / Spoken Word",
-          "priceType": "paid",
-          "priceLabel": "$25",
-          "desc": "A concert celebrating the 250th Anniversary of the Declaration of Independence through songs of protest and civic reflection.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 5.7
         },
         {
           "score": 7.5,
@@ -1207,7 +1342,7 @@ const EVENTS_DATA = {
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1227,7 +1362,7 @@ const EVENTS_DATA = {
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1247,7 +1382,7 @@ const EVENTS_DATA = {
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
-          "isPast": false,
+          "isPast": true,
           "isNF": false
         },
         {
@@ -1267,26 +1402,6 @@ const EVENTS_DATA = {
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.7,
-          "title": "New Milford Rock the Block — The Pop Rocks",
-          "url": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
-          "dateLabel": "Thu Aug 13",
-          "time": "6:30PM",
-          "venue": "Bank Street",
-          "venueType": "",
-          "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Free Block Party / Live Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.",
-          "source": "newmilfordnow.org",
-          "sourceUrl": "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street",
-          "isTonight": false,
           "isPast": true,
           "isNF": false
         }
@@ -1294,358 +1409,11 @@ const EVENTS_DATA = {
     },
     {
       "id": "week2",
-      "title": "Week 2 · August 17–23",
-      "open": true,
-      "events": [
-        {
-          "score": 7.3,
-          "title": "Brian Regan (Wednesday)",
-          "url": "https://ridgefieldplayhouse.org/event/brian-regan-wednesday-ridgefield-ct-2026/",
-          "dateLabel": "Wed Aug 19",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "One of the most respected comedians in the country returns to Ridgefield for a three-night run — clean, sharp, and consistently packed houses.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Danbury San Gennaro Festival",
-          "url": "https://citycenterdanbury.com/event/san-gennaro-festival/",
-          "dateLabel": "Wed Aug 19 – Sun Aug 23",
-          "time": "5:00PM–11:00PM (Wed–Fri), 1:00PM–11:00PM (Sat), 1:00PM–10:00PM (Sun)",
-          "venue": "Danbury CityCenter Green / Ives Street",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Italian Street Festival / Food & Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with five free days of Italian food, live music every night (including Beyond Purple, Mullet, and Shooting Star), games, a cannoli eating contest, laser light shows, and an America 250 Fireworks Spectacular on Saturday.",
-          "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.3,
-          "title": "Brian Regan (Thursday)",
-          "url": "https://ridgefieldplayhouse.org/event/brian-regan-thursday-ridgefield-ct-2026/",
-          "dateLabel": "Thu Aug 20",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Second night of Brian Regan's sold-out-caliber run at Ridgefield Playhouse.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.2,
-          "title": "Karaoke & Lip Sync Night",
-          "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-20-19-00",
-          "dateLabel": "Thu Aug 20",
-          "time": "7:00PM–9:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Karaoke Night",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.3,
-          "title": "Brian Regan (Friday)",
-          "url": "https://ridgefieldplayhouse.org/event/brian-regan-friday-ridgefield-ct-2026/",
-          "dateLabel": "Fri Aug 21",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Third and final night of Brian Regan's run — one of stand-up's most reliably packed acts.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Junk",
-          "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
-          "dateLabel": "Fri Aug 21",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / 90s-2000s Alt Rock",
-          "priceType": "paid",
-          "priceLabel": "$10",
-          "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.9,
-          "title": "Save the Palace (Sherman Players)",
-          "url": "https://www.shermanct.gov/muni-events/save-the-palace",
-          "dateLabel": "Fri Aug 21 – Sun Aug 23",
-          "time": "8:00PM (Fri/Sat), 2:00PM (Sun)",
-          "venue": "Sherman Playhouse",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Musical / Community Theater Fundraiser",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "The Sherman Players stage a three-performance fundraiser run of \"Save the Palace,\" an award-winning original musical by Roy O'Neil about an aging rock band that reunites to save their hometown theater, as a special event in the group's centennial season.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.4,
-          "title": "Silent Film & Live Music: THE GENERAL (Buster Keaton)",
-          "url": "https://litchfieldmagazine.com/events/silent-film-live-music-2/",
-          "dateLabel": "Sat Aug 22",
-          "time": "7:00PM",
-          "venue": "Gordon Hall, Music Mountain",
-          "venueType": "litchfield",
-          "town": "Falls Village, CT",
-          "dist": "~22 mi",
-          "type": "Silent Film with Live Score",
-          "priceType": "paid",
-          "priceLabel": "$35 General Admission",
-          "desc": "Buster Keaton's legendary Civil War comedy THE GENERAL (1926) screens with live music by pianist Donald Sosin and singer/percussionist Joanna Seaton.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 7.6,
-          "title": "6th Annual Steve Bennett Memorial Comedy Show",
-          "url": "https://www.shermanct.gov/muni-events/6th-annual-steve-bennett-memorial-comedy-show",
-          "dateLabel": "Sat Aug 22",
-          "time": "7:30PM–8:30PM",
-          "venue": "Sherman community venue",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "An evening of fresh stand-up voices — Emily Azrael, Dillon Krause, Luz Michelle, Peter Wong, and Tayler Yarish — honoring the memory of longtime Sherman resident and comedian Steve Bennett.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 9.4,
-          "title": "10,000 Maniacs",
-          "url": "https://ridgefieldplayhouse.org/event/10000-maniacs-ridgefield-ct-2026/",
-          "dateLabel": "Sat Aug 22",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Alt-Rock Legends",
-          "priceType": "soldout",
-          "priceLabel": "SOLD OUT",
-          "desc": "Celebrating their 45th anniversary, platinum-selling alt-rock pioneers 10,000 Maniacs — famous for \"These Are the Days\" and \"Because the Night\" — bring their beloved catalog to a sold-out Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Struggle Monkey (NMHS Class of 1986 Reunion Show)",
-          "url": "https://www.housatonicriverbrewing.com/events-1/struggle-monkey-4",
-          "dateLabel": "Sat Aug 22",
-          "time": "5:30PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / Hard Rock Cover Band",
-          "priceType": "paid",
-          "priceLabel": "$12",
-          "desc": "Struggle Monkey is a popular CT show band known for high-energy sets and sold-out shows, delivering a full concert experience with smoke, lightshow, and hard rock covers of Queen, Journey, Def Leppard, and Pink Floyd.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 10,
-          "title": "Concerts on the Green — The Afro-Semitic Experience",
-          "url": "https://afrosemiticexperience.net/event/6547073/760504350/summer-concert-in-new-milford-with-the-afro-semitic-experience",
-          "dateLabel": "Sat Aug 22",
-          "time": "7:00PM",
-          "venue": "New Milford Town Green (Bandstand)",
-          "venueType": "",
-          "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Free Outdoor Concert Series / Jazz-World",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Afro-Semitic Experience, a critically acclaimed jazz ensemble blending Jewish and African-American musical traditions, returns to New Milford's bandstand for a joyous, danceable set.",
-          "source": "artsnewmilfordct.org",
-          "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 6.5,
-          "title": "Northwest Vocal Showcase — 20th Anniversary",
-          "url": "https://www.warnertheatre.org/events/northwest-vocal-showcase/",
-          "dateLabel": "Sat Aug 22",
-          "time": "7:00PM",
-          "venue": "Warner Theatre (Oneglia Auditorium)",
-          "venueType": "warner",
-          "town": "Torrington, CT",
-          "dist": "~20 mi",
-          "type": "Vocal Showcase / Community Talent",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Torrington Parks & Rec presents the 20th Anniversary Northwest Vocal Showcase at the historic Warner Theatre's Oneglia Auditorium.",
-          "source": "warnertheatre.org",
-          "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.4,
-          "title": "Gilbert the Party Pig",
-          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12002/1358",
-          "dateLabel": "Sat Aug 22",
-          "time": "11:00AM",
-          "venue": "New Fairfield community venue",
-          "venueType": "newfairfield",
-          "town": "New Fairfield, CT",
-          "dist": "~3 mi",
-          "type": "Family Event / Animal Entertainment",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "New Fairfield hosts a visit from the beloved, widely-followed \"Gilbert the Party Pig\" and friends for a family-friendly meet-and-greet, per the official town events calendar.",
-          "source": "newfairfield.org",
-          "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": true
-        },
-        {
-          "score": 8.7,
-          "title": "Veterans Appreciation Picnic",
-          "url": "https://www.shermanct.gov/muni-events/veterans-appreciation-picnic",
-          "dateLabel": "Sun Aug 23",
-          "time": "12:00PM–6:00PM",
-          "venue": "Sherman community venue",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Community Picnic",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A community picnic honoring local veterans, hosted in Sherman with food and family-friendly activities.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 6.3,
-          "title": "Top of The World: A Carpenters Tribute",
-          "url": "https://ridgefieldplayhouse.org/event/top-of-the-world-carpenters-ridgefield-ct-2026/",
-          "dateLabel": "Sun Aug 23",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Carpenters Tribute",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A loving tribute to the soft-pop hits of The Carpenters plays the Ridgefield Playhouse.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 5.5,
-          "title": "Lysander Piano Trio",
-          "url": "https://litchfieldmagazine.com/events/lysander-piano-trio/",
-          "dateLabel": "Sun Aug 23",
-          "time": "3:00PM",
-          "venue": "Litchfield County venue",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~10 mi",
-          "type": "Chamber Music",
-          "priceType": "paid",
-          "priceLabel": "$65 General Admission",
-          "desc": "The Lysander Piano Trio performs Mozart's Piano Trio in E Major alongside other works in an elegant chamber concert setting.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        }
-      ]
-    },
-    {
-      "id": "week3",
-      "title": "Week 3 · August 24–30",
+      "title": "Week 2 · August 24–30",
       "open": false,
       "events": [
         {
-          "score": 8,
+          "funQuality": 8,
           "title": "Lake & Palmer (ELP Tribute)",
           "url": "https://www.songkick.com/concerts/43169110-lake-and-palmer-at-daryls-house",
           "dateLabel": "Thu Aug 27",
@@ -1662,10 +1430,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.9
         },
         {
-          "score": 7.2,
+          "funQuality": 7.8,
           "title": "Karaoke & Lip Sync Night",
           "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-27-19-00",
           "dateLabel": "Thu Aug 27",
@@ -1682,10 +1451,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.3
         },
         {
-          "score": 9.4,
+          "funQuality": 6.7,
           "title": "VinylCut",
           "url": "https://www.housatonicriverbrewing.com/events-1/vinylcut-12",
           "dateLabel": "Fri Aug 28",
@@ -1702,10 +1472,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.5
         },
         {
-          "score": 8.6,
+          "funQuality": 9.2,
           "title": "Bill Charlap Trio",
           "url": "https://litchfieldmagazine.com/events/bill-charlap-trio-2/",
           "dateLabel": "Sat Aug 29",
@@ -1722,10 +1493,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.4
         },
         {
-          "score": 7.9,
+          "funQuality": 7.9,
           "title": "James Taylor & Carole King Musical Tribute with Unbroken Glass & Friends",
           "url": "https://www.shermanct.gov/muni-events/james-taylor-carole-king-musical-tribute-with-unbroken-glass-friends",
           "dateLabel": "Sat Aug 29",
@@ -1742,10 +1514,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.5
         },
         {
-          "score": 6.7,
+          "funQuality": 6.7,
           "title": "Beyond Purple — Tribute to Deep Purple, Whitesnake, Rainbow & Dio",
           "url": "https://www.housatonicriverbrewing.com/events-1/beyond-purple",
           "dateLabel": "Sat Aug 29",
@@ -1762,11 +1535,12 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.5
         },
         {
-          "score": 7.4,
-          "title": "Concerts on the Green — CJ Live",
+          "funQuality": 7,
+          "title": "Concerts on the Green (Series Continues)",
           "url": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "dateLabel": "Sat Aug 29",
           "time": "7:00PM",
@@ -1777,22 +1551,23 @@ const EVENTS_DATA = {
           "type": "Free Outdoor Concert Series",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "The final night of New Milford's free Concerts on the Green summer series brings CJ Live to the historic bandstand.",
+          "desc": "New Milford's five-week Concerts on the Green summer series, featuring acts including Ace & Friends and Buena Vista Band, continues at the historic bandstand on the Green.",
           "source": "artsnewmilfordct.org",
           "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.8
         }
       ]
     },
     {
-      "id": "week4",
-      "title": "Week 4 · August 31 – September 6",
+      "id": "week3",
+      "title": "Week 3 · August 31 – September 6",
       "open": false,
       "events": [
         {
-          "score": 8,
+          "funQuality": 8,
           "title": "Willie Nile",
           "url": "https://www.songkick.com/concerts/43209356-willie-nile-at-daryls-house",
           "dateLabel": "Wed Sep 2",
@@ -1809,10 +1584,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.9
         },
         {
-          "score": 8.5,
+          "funQuality": 9.3,
           "title": "Marty Stuart and His Fabulous Superlatives",
           "url": "https://ridgefieldplayhouse.org/event/marty-stuart-ridgefield-ct-2026/",
           "dateLabel": "Thu Sep 3",
@@ -1829,10 +1605,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.9
         },
         {
-          "score": 10,
+          "funQuality": 6.5,
           "title": "Lost Rebel",
           "url": "https://www.housatonicriverbrewing.com/events-1/lost-rebel-14",
           "dateLabel": "Fri Sep 4",
@@ -1849,10 +1626,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.4
         },
         {
-          "score": 7,
+          "funQuality": 7,
           "title": "Street Survivors - Tribute to Lynyrd Skynyrd",
           "url": "https://www.housatonicriverbrewing.com/events-1/street-survivors-tribute-to-lynyrd-skynyrd-2",
           "dateLabel": "Sat Sep 5",
@@ -1869,10 +1647,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.8
         },
         {
-          "score": 6.9,
+          "funQuality": 6.9,
           "title": "Midnight Choir",
           "url": "https://www.songkick.com/concerts/43301271-midnight-choir-at-daryls-house",
           "dateLabel": "Sat Sep 5",
@@ -1889,14 +1668,15 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.1
         },
         {
-          "score": 10,
+          "funQuality": 8.4,
           "title": "Danbury's Brazilian Festival",
           "url": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
           "dateLabel": "Sat Sep 5 – Sun Sep 6",
-          "time": "10:00AM–9:00PM",
+          "time": "11:00AM–10:00PM (Sat), 11:00AM–9:00PM (Sun)",
           "venue": "Danbury CityCenter Green",
           "venueType": "danbury",
           "town": "Danbury, CT",
@@ -1904,35 +1684,16 @@ const EVENTS_DATA = {
           "type": "Cultural Festival / Food & Music",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, and Brazilian food and global vendors.",
+          "desc": "A 2-day celebration of Brazilian culture, food, music, and fun featuring live Brazilian music and performances, games and activities for kids, and Brazilian food and global vendors, kicking off with a Flag Raising Ceremony at City Hall.",
           "source": "citycenterdanbury.com",
           "sourceUrl": "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.3
         },
         {
-          "score": 7.2,
-          "title": "Bedford Music Festival — Headlined by The Motet",
-          "url": "https://caramoor.org/event/bedford-music-festival-2026",
-          "dateLabel": "Sun Sep 6",
-          "time": "2:00PM",
-          "venue": "Caramoor (Friends Field)",
-          "venueType": "caramoor",
-          "town": "Katonah, NY",
-          "dist": "~25 mi",
-          "type": "Music Festival / Funk-Soul",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Funk luminaries The Motet, who have sold out shows nationwide and performed seven headlining slots at Red Rocks, headline the Bedford Music Festival at Caramoor, joined by the Jamie McLean Band, Summer Fling, and a kids' set from the Rock and Roll Playhouse.",
-          "source": "caramoor.org",
-          "sourceUrl": "https://caramoor.org/events/concerts",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
-        },
-        {
-          "score": 8.5,
+          "funQuality": 7,
           "title": "Third Annual Parrothead Party (Jimmy Buffett Tribute) — Jamie's Junk Show",
           "url": "https://www.housatonicriverbrewing.com/events-1/third-annual-parrothead-party-celebrating-jimmy-buffett-with-jamies-junk-show",
           "dateLabel": "Sun Sep 6",
@@ -1949,10 +1710,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.8
         },
         {
-          "score": 6.9,
+          "funQuality": 6.9,
           "title": "The Tano Jones Revelry",
           "url": "https://www.songkick.com/concerts/43192810-tano-jones-revelry-at-daryls-house",
           "dateLabel": "Sun Sep 6",
@@ -1969,17 +1731,18 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.1
         }
       ]
     },
     {
-      "id": "week5",
-      "title": "Week 5 · September 7–13",
+      "id": "week4",
+      "title": "Week 4 · September 7–13",
       "open": false,
       "events": [
         {
-          "score": 8.2,
+          "funQuality": 8.2,
           "title": "George Thorogood & The Destroyers – The Baddest Show On Earth",
           "url": "https://ridgefieldplayhouse.org/event/george-thorogood-ridgefield-ct-2026/",
           "dateLabel": "Mon Sep 7",
@@ -1996,10 +1759,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.1
         },
         {
-          "score": 9.4,
+          "funQuality": 9.3,
           "title": "Justin Hayward – The Story in Your Eyes Tour",
           "url": "https://ridgefieldplayhouse.org/event/justin-hayward-ridgefield-ct-2026/",
           "dateLabel": "Tue Sep 8",
@@ -2016,10 +1780,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.9
         },
         {
-          "score": 8.5,
+          "funQuality": 9.4,
           "title": "Blackberry Smoke: 25th Anniversary Tour 2026",
           "url": "https://www.warnertheatre.org/events/blackberry-smoke/",
           "dateLabel": "Wed Sep 9",
@@ -2036,10 +1801,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.5
         },
         {
-          "score": 6.8,
+          "funQuality": 6.8,
           "title": "APB",
           "url": "https://www.songkick.com/concerts/43106339-apb-at-daryls-house",
           "dateLabel": "Thu Sep 10",
@@ -2056,10 +1822,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7
         },
         {
-          "score": 9.2,
+          "funQuality": 6.5,
           "title": "ShineBox (Formerly The Winnie Shins)",
           "url": "https://www.housatonicriverbrewing.com/events-1/shinebox-formerly-the-winnie-shins-3",
           "dateLabel": "Fri Sep 11",
@@ -2076,10 +1843,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.4
         },
         {
-          "score": 8.9,
+          "funQuality": 8.6,
           "title": "Nashville Drive",
           "url": "https://www.housatonicriverbrewing.com/events-1/nashville-drive-3",
           "dateLabel": "Sat Sep 12",
@@ -2096,10 +1864,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.9
         },
         {
-          "score": 9.6,
+          "funQuality": 8.1,
           "title": "Brian López Electric Trio",
           "url": "https://levittpavilion.com/2026/08/03/brian-lopez-electric-trio/",
           "dateLabel": "Sun Sep 13",
@@ -2116,30 +1885,32 @@ const EVENTS_DATA = {
           "sourceUrl": "https://levittpavilion.com/calendar/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.6
         },
         {
-          "score": 8.7,
+          "funQuality": 8.8,
           "title": "Big Ocean",
           "url": "https://caramoor.org/event/big-ocean-2026",
           "dateLabel": "Sun Sep 13",
           "time": "7:30PM",
-          "venue": "Caramoor",
+          "venue": "Caramoor (Rosen House Music Room)",
           "venueType": "caramoor",
           "town": "Katonah, NY",
           "dist": "~25 mi",
-          "type": "Vocal Trio",
+          "type": "K-Pop / Vocal Trio",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Acclaimed vocal harmony trio Big Ocean performs at Caramoor's intimate concert stage.",
+          "desc": "The world's first K-pop group composed of artists who are hard of hearing, BIG OCEAN has been featured by The New York Times, BBC, CNN, and the Associated Press, blending Korean and American Sign Language with music.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.4
         },
         {
-          "score": 6.9,
+          "funQuality": 6.9,
           "title": "Too Blue",
           "url": "https://www.songkick.com/concerts/43301677-too-blue-at-daryls-house",
           "dateLabel": "Sun Sep 13",
@@ -2156,10 +1927,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.1
         },
         {
-          "score": 6.6,
+          "funQuality": 6.6,
           "title": "Pinkalicious The Musical",
           "url": "https://ridgefieldplayhouse.org/event/pinkalicious-11am-ridgefield-ct-2026/",
           "dateLabel": "Sun Sep 13",
@@ -2176,17 +1948,18 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7
         }
       ]
     },
     {
-      "id": "week6",
-      "title": "Week 6 · September 14–20",
+      "id": "week5",
+      "title": "Week 5 · September 14–20",
       "open": false,
       "events": [
         {
-          "score": 7.2,
+          "funQuality": 7.2,
           "title": "Inherit the Wind (Sherman Players — Preview Night)",
           "url": "https://shermanplayers.org/2026/01/01/season-details/",
           "dateLabel": "Thu Sep 17",
@@ -2203,10 +1976,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://shermanplayers.org/2026/01/01/season-details/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8
         },
         {
-          "score": 7.9,
+          "funQuality": 7.9,
           "title": "The Sensational Soul Cruisers",
           "url": "https://www.songkick.com/concerts/43116592-sensational-soul-cruisers-at-daryls-house",
           "dateLabel": "Fri Sep 18",
@@ -2223,10 +1997,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.8
         },
         {
-          "score": 8.1,
+          "funQuality": 8.3,
           "title": "Not My Problem",
           "url": "https://www.housatonicriverbrewing.com/events-1/not-my-problem-4",
           "dateLabel": "Fri Sep 18",
@@ -2243,10 +2018,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.7
         },
         {
-          "score": 9.3,
+          "funQuality": 7.7,
           "title": "Capricorn - An Allman Brothers Tribute",
           "url": "https://www.housatonicriverbrewing.com/events-1/capricorn-an-allman-brothers-tribute-4",
           "dateLabel": "Sat Sep 19",
@@ -2263,10 +2039,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.2
         },
         {
-          "score": 7.8,
+          "funQuality": 7.8,
           "title": "Taylor Dayne",
           "url": "https://ridgefieldplayhouse.org/event/taylor-dayne-ridgefield-ct-2026/",
           "dateLabel": "Sat Sep 19",
@@ -2283,10 +2060,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.9
         },
         {
-          "score": 6.9,
+          "funQuality": 6.9,
           "title": "Dave Vargo",
           "url": "https://www.songkick.com/concerts/43345514-dave-vargo-at-daryls-house",
           "dateLabel": "Sat Sep 19",
@@ -2303,10 +2081,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.1
         },
         {
-          "score": 7.1,
+          "funQuality": 7.1,
           "title": "Samara Joy and Her Septet",
           "url": "https://ridgefieldplayhouse.org/event/samara-joy-ridgefield-ct-2026/",
           "dateLabel": "Sun Sep 20",
@@ -2323,10 +2102,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.4
         },
         {
-          "score": 8.7,
+          "funQuality": 6.9,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-6",
           "dateLabel": "Sun Sep 20",
@@ -2343,10 +2123,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.7
         },
         {
-          "score": 9.9,
+          "funQuality": 8.5,
           "title": "Woodbury Fall Festival",
           "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
           "dateLabel": "Sun Sep 20",
@@ -2363,17 +2144,18 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.2
         }
       ]
     },
     {
-      "id": "week7",
-      "title": "Week 7 · September 21–27",
+      "id": "week6",
+      "title": "Week 6 · September 21–27",
       "open": false,
       "events": [
         {
-          "score": 9.6,
+          "funQuality": 8.5,
           "title": "King Stingray",
           "url": "https://levittpavilion.com/2026/08/01/king-stingray/",
           "dateLabel": "Wed Sep 23",
@@ -2390,10 +2172,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://levittpavilion.com/calendar/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.9
         },
         {
-          "score": 8.3,
+          "funQuality": 8.3,
           "title": "Joshua Radin",
           "url": "https://www.songkick.com/concerts/43198821-joshua-radin-at-daryls-house",
           "dateLabel": "Wed Sep 23",
@@ -2410,10 +2193,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.1
         },
         {
-          "score": 6.8,
+          "funQuality": 6.8,
           "title": "John Crist Live",
           "url": "https://www.warnertheatre.org/events/john-crist-live/",
           "dateLabel": "Thu Sep 24",
@@ -2430,10 +2214,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 6.7
         },
         {
-          "score": 7.5,
+          "funQuality": 7.5,
           "title": "The Billy Joel Legacy: A Tribute Experience",
           "url": "https://www.warnertheatre.org/events/billy-joel-legacy/",
           "dateLabel": "Fri Sep 25",
@@ -2450,10 +2235,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.2
         },
         {
-          "score": 9.4,
+          "funQuality": 8.5,
           "title": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
           "url": "https://ridgefieldplayhouse.org/event/emerson-lake-and-palmer-ridgefield-ct-2026/",
           "dateLabel": "Fri Sep 25",
@@ -2470,10 +2256,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.4
         },
         {
-          "score": 6.6,
+          "funQuality": 6.6,
           "title": "Hocus Pocus Live! An All-New Parody Musical",
           "url": "https://www.warnertheatre.org/events/hocus-pocus-live26/",
           "dateLabel": "Sat Sep 26 & Sun Sep 27",
@@ -2490,10 +2277,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 6.6
         },
         {
-          "score": 8.7,
+          "funQuality": 8.7,
           "title": "Strange Souls - A Tribute to The Doors",
           "url": "https://www.housatonicriverbrewing.com/events-1/strange-souls-a-tribute-to-the-doors-5",
           "dateLabel": "Sat Sep 26",
@@ -2504,16 +2292,17 @@ const EVENTS_DATA = {
           "dist": "~7 mi",
           "type": "Live Music / The Doors Tribute",
           "priceType": "paid",
-          "priceLabel": "$20",
-          "desc": "Jerad Szadkowski brings Jim Morrison's music and poetry to life fronting veteran musicians in this tribute to The Doors at HRB.",
+          "priceLabel": "$25",
+          "desc": "Jerad Szadkowski brings Jim Morrison's music and poetry to life fronting veteran musicians in this tribute to The Doors, a show that has always sold out well in advance at HRB.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.9
         },
         {
-          "score": 8.9,
+          "funQuality": 8.9,
           "title": "The Robert Cray Band – All Amped Up Tour 2026",
           "url": "https://ridgefieldplayhouse.org/event/the-robert-cray-band-ridgefield-ct-2026/",
           "dateLabel": "Sat Sep 26",
@@ -2530,10 +2319,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 8.6
         },
         {
-          "score": 9,
+          "funQuality": 8.5,
           "title": "New Fairfield Fair Day",
           "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12048/1358",
           "dateLabel": "Sat Sep 26",
@@ -2550,10 +2340,32 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
           "isTonight": false,
           "isPast": false,
-          "isNF": true
+          "isNF": true,
+          "score": 8.8
         },
         {
-          "score": 7.6,
+          "funQuality": 8.8,
+          "title": "The Outcrops",
+          "url": "https://www.housatonicriverbrewing.com/events-1/the-outcrops-14",
+          "dateLabel": "Fri Sep 25",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Blues-Rock",
+          "priceType": "paid",
+          "priceLabel": "$10",
+          "desc": "From the woods of Northern New Jersey, The Outcrops present original blues-infused rock 'n' roll, formed in 2016 by lead vocalist Cassidy Rain and lead guitarist Bryan Schroeder.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 9
+        },
+        {
+          "funQuality": 7.6,
           "title": "One Vision of Queen Ft. Marc Martel",
           "url": "https://ridgefieldplayhouse.org/event/one-vision-of-queen-marc-martel-ridgefield-ct-2026/",
           "dateLabel": "Sun Sep 27",
@@ -2570,17 +2382,18 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.7
         }
       ]
     },
     {
-      "id": "week8",
-      "title": "Week 8 · September 28 – October 4",
+      "id": "week7",
+      "title": "Week 7 · September 28 – October 4",
       "open": false,
       "events": [
         {
-          "score": 7.6,
+          "funQuality": 7.6,
           "title": "UB40 – The Unstoppable Tour 2026",
           "url": "https://ridgefieldplayhouse.org/event/ub40-unstoppable-tour-ridgefield-ct-2026/",
           "dateLabel": "Tue Sep 29",
@@ -2597,10 +2410,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.7
         },
         {
-          "score": 9,
+          "funQuality": 8.5,
           "title": "Graham Nash",
           "url": "https://www.warnertheatre.org/events/graham-nash/",
           "dateLabel": "Wed Sep 30",
@@ -2617,10 +2431,11 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.9
         },
         {
-          "score": 7.9,
+          "funQuality": 7.9,
           "title": "Robin Trower – US Fall Tour 2026",
           "url": "https://ridgefieldplayhouse.org/event/robin-trower-ridgefield-ct-2026/",
           "dateLabel": "Wed Sep 30",
@@ -2637,10 +2452,32 @@ const EVENTS_DATA = {
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.9
         },
         {
-          "score": 7.9,
+          "funQuality": 7.6,
+          "title": "Already Gone - A Tribute to the Eagles",
+          "url": "https://www.housatonicriverbrewing.com/events-1/already-gone-a-tribute-to-the-eagles-3",
+          "dateLabel": "Fri Oct 2",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Eagles Tribute",
+          "priceType": "paid",
+          "priceLabel": "$12",
+          "desc": "Returning by popular demand, Already Gone brings all your favorite Eagles tunes wrapped into one great show at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.2
+        },
+        {
+          "funQuality": 7.9,
           "title": "TUSK: A Classic Fleetwood Mac Tribute",
           "url": "https://www.warnertheatre.org/events/tusk-fleetwood-mac/",
           "dateLabel": "Sat Oct 3",
@@ -2657,25 +2494,105 @@ const EVENTS_DATA = {
           "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": false,
           "isPast": false,
-          "isNF": false
+          "isNF": false,
+          "score": 7.5
+        },
+        {
+          "funQuality": 8,
+          "title": "Beyond The Wall — Pink Floyd Tribute",
+          "url": "https://www.housatonicriverbrewing.com/events-1/beyond-the-wall-4",
+          "dateLabel": "Sat Oct 3",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Pink Floyd Tribute",
+          "priceType": "paid",
+          "priceLabel": "$20",
+          "desc": "Talented artists pay homage to Pink Floyd in an electrifying tribute show, rekindling the spirit and essence of one of the greatest bands of all time at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.5
+        }
+      ]
+    },
+    {
+      "id": "week8",
+      "title": "Week 8 · October 5–11",
+      "open": false,
+      "events": [
+        {
+          "funQuality": 7.6,
+          "title": "Nurse Blake: But Did You Die? Comedy Tour",
+          "url": "https://ridgefieldplayhouse.org/event/nurse-blake-ridgefield-ct-2026/",
+          "dateLabel": "Wed Oct 7",
+          "time": "7:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Comedy",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Nurse-turned-comedian Nurse Blake, known for his viral healthcare-themed comedy, brings his touring stand-up show to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.7
+        },
+        {
+          "funQuality": 8.8,
+          "title": "Ann Wilson: The Voice of Heart & Tripsitter",
+          "url": "https://ridgefieldplayhouse.org/event/ann-wilson-heart-ridgefield-ct-2026/",
+          "dateLabel": "Fri Oct 9",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Rock Legend",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Rock and Roll Hall of Famer Ann Wilson, the powerhouse voice behind Heart, brings her solo show to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.6
+        },
+        {
+          "funQuality": 7.4,
+          "title": "David Cross",
+          "url": "https://ridgefieldplayhouse.org/event/david-cross-ridgefield-ct-2026/",
+          "dateLabel": "Sat Oct 10",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Comedy",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Emmy-winning comedian and Arrested Development star David Cross brings his stand-up act to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.6
         }
       ]
     }
   ],
   "past": [],
   "daryls": [
-    {
-      "date": "Sat Aug 15, evening",
-      "title": "Joyride"
-    },
-    {
-      "date": "Sat Aug 15, evening",
-      "title": "Ladies of the 80s"
-    },
-    {
-      "date": "Sun Aug 16, evening",
-      "title": "Eddie Seville"
-    },
     {
       "date": "Fri Aug 21, evening",
       "title": "Red Not Chili Peppers"
@@ -2727,6 +2644,14 @@ const EVENTS_DATA = {
     {
       "date": "Thu Sep 24, evening",
       "title": "Buzzcocks"
+    },
+    {
+      "date": "Sat Sep 26, evening",
+      "title": "Crybaby (Janis Joplin Experience)"
+    },
+    {
+      "date": "Thu Oct 1, evening",
+      "title": "The Post"
     }
   ]
 };

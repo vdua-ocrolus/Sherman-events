@@ -159,7 +159,7 @@
   },
   "guy tino": {
     "displayName": "Guy Tino",
-    "funQuality": 7.0,
+    "funQuality": 7,
     "tier": "local-modest",
     "isMusicAct": true,
     "draw": "Veteran solo singer-guitarist (30+ years, 300+ song book) from nearby Brookfield who fronted CT blues/rock band The Providers, which opened for NRBQ, Johnny Winter, and John Mayall at Toad's Place; now a steady regional bar/restaurant act rather than a ticketed draw.",
@@ -204,7 +204,7 @@
   },
   "waterbury symphony orchestra 37th annual picnic pops": {
     "displayName": "Waterbury Symphony Orchestra (37th Annual Picnic & Pops)",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "regional-established",
     "isMusicAct": true,
     "draw": "Professional regional orchestra in its 87th season under conductor Leif Bjaland, running a 37-year Picnic & Pops tradition in NW Connecticut and booking national-caliber guests like pianist Garrick Ohlsson.",
@@ -233,7 +233,7 @@
   },
   "nashville drive": {
     "displayName": "Nashville Drive",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "regional-established",
     "isMusicAct": true,
     "draw": "Established CT modern-country band that has opened for nationals (Easton Corbin, LANCo, Thompson Square, Colt Ford, Travis Denning), reached #13 on iTunes new-country downloads in 2015, and plays regional fairs, town concerts, and theaters across CT/NY/NJ/MA.",
@@ -248,7 +248,7 @@
   },
   "vincent pastore s gangster squad": {
     "displayName": "Vincent Pastore's Gangster Squad",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "regional-established",
     "isMusicAct": true,
     "draw": "Celebrity-fronted rock/soul/doo-wop revue led by Sopranos actor Vincent \"Big Pussy\" Pastore that draws on his name recognition to play casino showrooms (Seminole Casino Coconut Creek), City Winery Philadelphia, Live Nation venues, and headlines an annual birthday bash at Daryl's House.",
@@ -263,7 +263,7 @@
   },
   "flor bromley s fiesta global": {
     "displayName": "Flor Bromley's Fiesta Global",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Flor Bromley is a 2026 GRAMMY nominee (Best Children's Music Album, \"Herstory\") and 2023 Latin GRAMMY nominee whose bilingual family music airs on SiriusXM Kids Place Live and PBS, and who headlines major venues including Wolf Trap, Caramoor, and JCCC's Midwest Trust Center.",
@@ -293,7 +293,7 @@
   },
   "conor hanick": {
     "displayName": "Conor Hanick",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Juilliard faculty pianist with major-hall bookings (Barbican, Cal Performances, Ojai Festival, Caramoor) and national press acclaim (NYT compared him to a young Peter Serkin; Boston Globe named his Cage recital \"Best Solo Recital\" of 2019).",
@@ -308,7 +308,7 @@
   },
   "stewart copeland have i said too much": {
     "displayName": "Stewart Copeland - Have I Said Too Much",
-    "funQuality": 10.0,
+    "funQuality": 10,
     "tier": "non-music",
     "isMusicAct": false,
     "draw": "Rock & Roll Hall of Fame drummer of The Police (multi-Grammy winner) on his nationally-touring \"Have I Said Too Much\" spoken-word/Q&A tour, covered by Consequence, Ultimate Classic Rock, and BraveWords.",
@@ -338,7 +338,7 @@
   },
   "pop 2000 tour chris kirkpatrick of nsync o town bbmak ryan cabrera lfo": {
     "displayName": "POP 2000 Tour (Chris Kirkpatrick of NSYNC, O-Town, BBMAK, Ryan Cabrera, LFO)",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "A national 27-date nostalgia package built from genuine chart artists (NSYNC's Chris Kirkpatrick, O-Town's #1 \"Liquid Dreams\"/\"All or Nothing,\" multi-platinum BBMAK, Ryan Cabrera, LFO's #1 \"Summer Girls\"), booked into theaters and venues like SeaWorld Orlando, playing Ridgefield Playhouse Jul 17, 2026.",
@@ -368,7 +368,7 @@
   },
   "the pop rocks 80 s theme party": {
     "displayName": "The Pop Rocks (80's Theme Party)",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "CT's premier 80's tribute act with ~6,400 Facebook followers and a Mohegan Sun Wolf Den casino showroom booking, plus a regular circuit of regional venues (Ballard's Block Island, 314 Beer Garden, Woodbury Brewing).",
@@ -397,7 +397,7 @@
   },
   "pet sounds live a tribute to the beach boys": {
     "displayName": "Pet Sounds Live — A Tribute to the Beach Boys",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "National touring Beach Boys tribute that plays theaters and listening rooms nationwide (Beacon Theatre, City Winery NYC, Capitol Theatre, Feinstein's) with a full 2026 Ticketmaster-ticketed tour and a full-album Pet Sounds multimedia production.",
@@ -412,7 +412,7 @@
   },
   "howie day": {
     "displayName": "Howie Day",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "National singer-songwriter whose platinum single \"Collide\" hit #20 on the Billboard Hot 100 and #7 on Adult Top 40 (1.5M downloads sold); toured with Dave Matthews Band and Gavin DeGraw and now headlines theaters like Infinity Music Hall.",
@@ -427,7 +427,7 @@
   },
   "yachtley crew": {
     "displayName": "Yachtley Crew",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "National-touring yacht rock headliner with a Wikipedia page, Vegas casino residency (KAOS/Palms), coast-to-coast casino/amphitheater headlining, and major-label deals (Jimmy Buffett's Mailboat, then Earache/Universal) plus a Chris Lord-Alge-produced album.",
@@ -442,7 +442,7 @@
   },
   "nektar": {
     "displayName": "Nektar",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Nektar is the real English prog-rock band (formed 1969) whose \"Remember the Future\" reached the US Billboard Top 20 in 1973-74 and sold ~250K copies in Europe; a charting, cult-legendary act still touring internationally 50+ years on, here doing an Ian McDonald / King Crimson tribute set.",
@@ -471,7 +471,7 @@
   },
   "the british rock show": {
     "displayName": "The British Rock Show",
-    "funQuality": 7.0,
+    "funQuality": 7,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "A classic-British-rock tribute act booked at Daryl Hall's Daryl's House Club in Pawling, a respected regional listening room, but with little independent evidence of a large fan following, casino/theater circuit dates, or national support slots.",
@@ -500,7 +500,7 @@
   },
   "cross purpose": {
     "displayName": "Cross Purpose",
-    "funQuality": 7.0,
+    "funQuality": 7,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "Four-piece roots/rock/blues band (formed 2005) with a steady regional circuit: Hopkins Vineyard, White Silo (Sherman), and the Danbury, Bethel, and New Fairfield summer concert series, plus a Bushnell (Hartford) appearance.",
@@ -515,7 +515,7 @@
   },
   "zarna garg million dollar excuses": {
     "displayName": "Zarna Garg — Million Dollar Excuses",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "non-music",
     "isMusicAct": false,
     "draw": "National headlining comedian with 2M+ Instagram followers, two streaming specials (Amazon Prime \"One in a Billion,\" Hulu \"Practical People Win\" which hit #2 on Hulu), a NYT-bestselling memoir, and sold-out theater tours across the US, Europe, India, and the Middle East.",
@@ -530,7 +530,7 @@
   },
   "aztec two step 2 0 plays simon garfunkel": {
     "displayName": "Aztec Two-Step 2.0 plays Simon & Garfunkel",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "regional-established",
     "isMusicAct": true,
     "draw": "Led by Rex Fowler, co-founder of the long-running folk-rock duo Aztec Two-Step (founded 1971, recorded for Elektra Records), the act tours performing arts centers and theaters across the Northeast (Fairfield Theatre Company, Natick TCAN, SOPAC, Towne Crier), giving it a genuine established regional following well beyond a generic tribute.",
@@ -545,7 +545,7 @@
   },
   "litchfield jazz festival 2026 mainstage saturday": {
     "displayName": "Litchfield Jazz Festival 2026 — Mainstage Saturday",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Saturday mainstage of the 31st annual, nationally-regarded Litchfield Jazz Festival features Grammy-nominated saxophonist Jimmy Greene, Grammy-nominated pianist Christian Sands, and trombonist Steve Davis (Art Blakey's Jazz Messengers, 150+ recordings), all top-tier touring jazz artists.",
@@ -590,7 +590,7 @@
   },
   "dokken": {
     "displayName": "Dokken",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Dokken is a platinum-selling, Grammy-nominated 1980s hard rock/metal band (Tooth and Nail, Under Lock and Key, Back for the Attack) that tours nationally and headlines theaters like the 500-seat Ridgefield Playhouse.",
@@ -620,7 +620,7 @@
   },
   "litchfield jazz festival 2026 finale sunday steve kortyka sextet": {
     "displayName": "Litchfield Jazz Festival 2026 — Finale Sunday (Steve Kortyka Sextet)",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "regional-established",
     "isMusicAct": true,
     "draw": "The Sunday finale caps a marquee 31-year jazz festival whose 2026 bill features nationally-touring jazz artists (Jimmy Greene, Steve Davis, Don Braden), with the finale a \"31st Anniversary Brunch\" led by NYC saxophonist Steve Kortyka's sextet.",
@@ -798,7 +798,7 @@
   },
   "stephen pearcy the voice of ratt": {
     "displayName": "Stephen Pearcy: The Voice of RATT",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Founder and lead singer of RATT, a 1980s glam-metal band that sold 20M+ records with the platinum hit \"Round and Round\" (#12 Hot 100) and now tours theaters nationally (Patchogue, Arcada, Ridgefield Playhouse) as \"The Voice of RATT.\"",
@@ -813,7 +813,7 @@
   },
   "moondance the ultimate van morrison tribute": {
     "displayName": "Moondance - The Ultimate Van Morrison Tribute",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "Nationally touring Van Morrison tribute (billed \"top in the country\") that plays theaters and casino showrooms including MGM Springfield, Suquamish Clearwater Casino, Daryl's House and Tarrytown Music Hall, sells via Ticketmaster/Live Nation, and carries press pulls from the LA Times and Dallas News.",
@@ -858,7 +858,7 @@
   },
   "who loves you jersey boys broadway cast": {
     "displayName": "Who Loves You — Jersey Boys Broadway Cast",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "A professionally booked national touring Frankie Valli/Four Seasons tribute staffed by actual Broadway cast members of Jersey Boys, repped by Sharon Klein Productions and playing theaters and PACs across the country (Ridgefield Playhouse, Suffolk Theater, Arcada Theatre, Smoky Mountain Center, Seaside Heights) with dated tour listings on Concertfix.",
@@ -873,7 +873,7 @@
   },
   "paula poundstone": {
     "displayName": "Paula Poundstone",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "non-music",
     "isMusicAct": false,
     "draw": "Nationally touring stand-up comedian, longtime NPR \"Wait Wait... Don't Tell Me!\" panelist who headlines theaters and performing arts centers across the country and hosts her own comedy podcast.",
@@ -888,7 +888,7 @@
   },
   "the outlaws": {
     "displayName": "The Outlaws",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "Legendary Southern Rock band formed 1972 in Tampa (hits \"Green Grass and High Tides,\" \"There Goes Another Love Song\"), touring nationally in 2026 through casino showrooms (Turning Stone) and theaters (Ruth Eckerd Hall) and sharing bills with Hank Williams Jr., Styx, and 38 Special.",
@@ -917,7 +917,7 @@
   },
   "andrew dice clay": {
     "displayName": "Andrew Dice Clay",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "non-music",
     "isMusicAct": false,
     "draw": "Iconic national headliner comedian (first comic to sell out MSG two nights back-to-back) who tours major casino showrooms and theaters including the Venetian/Palazzo in Las Vegas and Parx Casino.",
@@ -945,7 +945,7 @@
   },
   "glenn miller orchestra": {
     "displayName": "Glenn Miller Orchestra",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "The world's longest continuously touring big band (formed 1956), playing ~300 dates a year at theaters and performing arts centers across the US and Europe, with the official band's Facebook page at roughly 47K+ likes.",
@@ -960,7 +960,7 @@
   },
   "eaglemania the world s greatest eagles tribute band": {
     "displayName": "EagleMania - The World's Greatest Eagles Tribute Band",
-    "funQuality": 8.0,
+    "funQuality": 8,
     "tier": "popular-local-or-tribute",
     "isMusicAct": true,
     "draw": "Nationally touring Eagles tribute for over a decade, selling out theaters and performing-arts centers across the country (Mayo PAC, Keswick, State Theatre, Carolina Opry, Tupelo) with strong repeat-positive audience reviews.",
@@ -989,7 +989,7 @@
   },
   "allen stone": {
     "displayName": "Allen Stone",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "national-headliner",
     "isMusicAct": true,
     "draw": "National touring soul/R&B headliner with ~526K Instagram followers, charting releases (2024 EP \"Easy\" hit #8 on Billboard's R&B chart), a Macklemore collaboration and American Idol mentor role, headlining major theaters nationwide (The Fillmore, Webster Hall, 9:30 Club, First Avenue).",
@@ -1001,5 +1001,287 @@
     ],
     "exampleTitle": "Allen Stone",
     "researchedAt": "2026-07-11"
+  },
+  "danbury san gennaro festival": {
+    "displayName": "Danbury San Gennaro Festival",
+    "funQuality": 8.2,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established, growing annual free 5-day street festival now in its 5th year, featuring a bandshell lineup, laser light shows, fireworks, and a religious procession with a Bishop; local press (Patch, Macaroni Kid) covers it as a major recurring Danbury event with charity proceeds.",
+    "confidence": "high",
+    "sources": [
+      "https://danburysangennaro.com/",
+      "https://patch.com/connecticut/danbury/san-gennaro-festival-returns-danbury-3rd-year"
+    ],
+    "exampleTitle": "Danbury San Gennaro Festival",
+    "researchedAt": "2026-08-17"
+  },
+  "junk": {
+    "displayName": "Junk",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A regional cover band playing 90s/2000s alt-rock staples (Nirvana, Alice in Chains, Weezer) at a small local brewery circuit; no evidence of national touring, charting, or press beyond venue listings.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/events-1/junk-3"
+    ],
+    "exampleTitle": "Junk",
+    "researchedAt": "2026-08-17"
+  },
+  "silent film live music the general buster keaton with donald sosin joanna seaton": {
+    "displayName": "Silent Film & Live Music: THE GENERAL (Buster Keaton) with Donald Sosin & Joanna Seaton",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "Performed by internationally recognized silent-film accompanists Donald Sosin and Joanna Seaton, described as internationally acclaimed and who have played major festivals like Telluride, TriBeCa, and San Francisco; hosted at a respected classical concert series (Music Mountain), pairing with a canonical Keaton film.",
+    "confidence": "high",
+    "sources": [
+      "https://musicmountain.org/show-details/silent-film-live-music",
+      "https://lakevillejournal.com/silent-cinema-live-magic"
+    ],
+    "exampleTitle": "Silent Film & Live Music: THE GENERAL (Buster Keaton)",
+    "researchedAt": "2026-08-17"
+  },
+  "10 000 maniacs": {
+    "displayName": "10,000 Maniacs",
+    "funQuality": 9,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Alternative rock band with multiple Top-50 Billboard albums, a platinum record, an MTV Unplugged hit ('Because the Night'), SNL and Tonight Show appearances, and a 2018-founded legacy of over 10 million records sold worldwide; continues to tour nationally with a 45th anniversary festival planned in 2026.",
+    "confidence": "high",
+    "sources": [
+      "https://maniacs.com/",
+      "https://maniacs.com/about",
+      "https://en.wikipedia.org/wiki/10,000_Maniacs"
+    ],
+    "exampleTitle": "10,000 Maniacs",
+    "researchedAt": "2026-08-17"
+  },
+  "struggle monkey nmhs class of 1986 reunion show": {
+    "displayName": "Struggle Monkey (NMHS Class of 1986 Reunion Show)",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A regional hard-rock cover/show band with a loyal local following (1,400+ Facebook likes) known for a full 'concert experience' with smoke, lightshow, and a big sound system; venue notes their shows regularly sell out, though there's no evidence of a national profile.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/Strugglemonkey/",
+      "https://www.housatonicriverbrewing.com/events-1/struggle-monkey-3",
+      "https://www.youtube.com/@strugglemonkeyband"
+    ],
+    "exampleTitle": "Struggle Monkey (NMHS Class of 1986 Reunion Show)",
+    "researchedAt": "2026-08-17"
+  },
+  "gilbert the party pig": {
+    "displayName": "Gilbert the Party Pig",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A well-known regional novelty animal entertainment act with local TV news coverage (NBC10, WWLP) and a large social following (37,000+ Facebook likes), but it's a private party/community entertainment act, not a draw comparable to a concert or festival.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/pigsarepetstoo/",
+      "https://turnto10.com/news/coronavirus/show-us-something-good/gilbert-party-pig-pets-joy-new-england-connecticut-massachusetts-rhode-island-new-hampshire-family-dream-social-media-entertainment-tricks-events-appearances-adventures"
+    ],
+    "exampleTitle": "Gilbert the Party Pig",
+    "researchedAt": "2026-08-17"
+  },
+  "veterans appreciation picnic": {
+    "displayName": "Veterans Appreciation Picnic",
+    "funQuality": 6,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small-scale community veterans picnic typical of local town-level appreciation events; no evidence found of significant regional draw, press coverage, or attendance figures specific to the Sherman, CT event.",
+    "confidence": "low",
+    "sources": [
+      "https://www.shermanct.gov/entities/community-events",
+      "https://www.facebook.com/ShermanCTVeterans/"
+    ],
+    "exampleTitle": "Veterans Appreciation Picnic",
+    "researchedAt": "2026-08-17"
+  },
+  "vinylcut": {
+    "displayName": "VinylCut",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local multi-instrumental classic rock cover band ('60s-90's Rock N Roll) playing regional breweries; some members have prior touring experience since the 1980s per promotional copy, but no independent evidence of a broader draw beyond the local circuit.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/events-1/vinyl-cuts-1",
+      "https://patch.com/connecticut/newmilford/calendar/event/20240225/6c0a8539-3c8f-4d63-8193-cc5f5171c429/live-music-from-vinylcut-band"
+    ],
+    "exampleTitle": "VinylCut",
+    "researchedAt": "2026-08-17"
+  },
+  "bill charlap trio": {
+    "displayName": "Bill Charlap Trio",
+    "funQuality": 9.2,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Grammy Award-winning pianist (2016 Best Traditional Pop Vocal Album with Tony Bennett) with multiple additional Grammy nominations, a longtime Blue Note Records artist, Village Vanguard regular, and former Artistic Director of 92NY's Jazz in July Festival; widely praised in Time, DownBeat, and NPR.",
+    "confidence": "high",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bill_Charlap",
+      "https://www.billcharlap.com/",
+      "https://www.thekurlandagency.com/artist/bill-charlap/"
+    ],
+    "exampleTitle": "Bill Charlap Trio",
+    "researchedAt": "2026-08-17"
+  },
+  "marty stuart and his fabulous superlatives": {
+    "displayName": "Marty Stuart and His Fabulous Superlatives",
+    "funQuality": 9.3,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Five-time Grammy winner, Country Music Hall of Fame inductee, and Grand Ole Opry member since 1992, whose band has toured internationally and opened for/collaborated with Chris Stapleton on the All-American Road Show; has charted over 30 times on Billboard Hot Country Songs.",
+    "confidence": "high",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marty_Stuart",
+      "https://martystuart.net/",
+      "https://www.edmondscenterforthearts.org/events/marty-stuart/"
+    ],
+    "exampleTitle": "Marty Stuart and His Fabulous Superlatives",
+    "researchedAt": "2026-08-17"
+  },
+  "lost rebel": {
+    "displayName": "Lost Rebel",
+    "funQuality": 6.3,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local classic-rock cover band playing 70s hits (Fleetwood Mac, Eagles, Tom Petty, etc.) at regional breweries; no evidence found of any national profile, chart history, or press beyond venue promotional listings.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/livemusic-events"
+    ],
+    "exampleTitle": "Lost Rebel",
+    "researchedAt": "2026-08-17"
+  },
+  "danbury s brazilian festival": {
+    "displayName": "Danbury's Brazilian Festival",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "An established annual 2-day cultural festival at Danbury's CityCenter Green featuring a flag-raising ceremony, parade, live music and dance performances, and vendors; recurs yearly and is listed among Danbury's notable recurring cultural festivals alongside San Gennaro and Irish festivals.",
+    "confidence": "medium",
+    "sources": [
+      "https://citycenterdanbury.com/event/danburys-brazilian-festival/",
+      "https://www.eventbrite.com/d/ct--danbury/events--this-weekend/"
+    ],
+    "exampleTitle": "Danbury's Brazilian Festival",
+    "researchedAt": "2026-08-17"
+  },
+  "third annual parrothead party jimmy buffett tribute jamie s junk show": {
+    "displayName": "Third Annual Parrothead Party (Jimmy Buffett Tribute) — Jamie's Junk Show",
+    "funQuality": 6.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "Jamie's Junk Show is a regional acoustic cover act with a modest but real following (4,600+ Facebook likes) playing weddings and breweries across New England; this themed Buffett tribute night is a local brewery novelty event rather than a nationally recognized tribute act.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/jamiesjunkshow/",
+      "https://www.housatonicriverbrewing.com/events-1/parrothead-party-celebrating-jimmy-buffett-with-jamies-junk-show"
+    ],
+    "exampleTitle": "Third Annual Parrothead Party (Jimmy Buffett Tribute) — Jamie's Junk Show",
+    "researchedAt": "2026-08-17"
+  },
+  "justin hayward the story in your eyes tour": {
+    "displayName": "Justin Hayward – The Story in Your Eyes Tour",
+    "funQuality": 9.3,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Rock and Roll Hall of Fame inductee (2018) and lead singer/guitarist of the Moody Blues, a band that sold a reported 70 million albums worldwide; currently on a well-reviewed, extensively covered national/international solo tour with stops at theaters like City Winery NY and Cadogan Hall London.",
+    "confidence": "high",
+    "sources": [
+      "https://bestclassicbands.com/justin-hayward-2026-tour-dates-1-17-26/",
+      "https://ultimateclassicrock.com/justin-hayward-moody-blues-2026-tour/"
+    ],
+    "exampleTitle": "Justin Hayward – The Story in Your Eyes Tour",
+    "researchedAt": "2026-08-17"
+  },
+  "blackberry smoke 25th anniversary tour 2026": {
+    "displayName": "Blackberry Smoke: 25th Anniversary Tour 2026",
+    "funQuality": 9.4,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Chart-topping Southern rock band with a #1 Billboard Americana/Folk album (You Hear Georgia) and a Top-5 Current Album Sales chart entry (Be Right Here); regularly plays major festivals including Bonnaroo, Austin City Limits, Glastonbury, and Download UK, with a large devoted global fanbase ('Brothers and Sisters').",
+    "confidence": "high",
+    "sources": [
+      "https://www.warnertheatre.org/events/blackberry-smoke/",
+      "https://www.peacecenter.org/events/detail/27-blackberry-smoke"
+    ],
+    "exampleTitle": "Blackberry Smoke: 25th Anniversary Tour 2026",
+    "researchedAt": "2026-08-17"
+  },
+  "shinebox formerly the winnie shins": {
+    "displayName": "ShineBox (Formerly The Winnie Shins)",
+    "funQuality": 6.3,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local classic-rock cover band at a small brewery circuit; distinct from same-named acts elsewhere (San Diego, Georgia, Montreal party bands), with no independent evidence found of significant regional draw or press for this specific Connecticut act.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/"
+    ],
+    "exampleTitle": "ShineBox (Formerly The Winnie Shins)",
+    "researchedAt": "2026-08-17"
+  },
+  "brian lopez electric trio": {
+    "displayName": "Brian López Electric Trio",
+    "funQuality": 7.5,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "Guitarist of XIXA and touring member of Calexico (joined their 20th anniversary 'Feast of Wire' tour across Europe and the U.S.), with acclaim from Rolling Stone France, Americana UK, and KCRW; performs at the well-attended, free nonprofit Levitt Pavilion series that draws 500-2,000 attendees nightly.",
+    "confidence": "high",
+    "sources": [
+      "https://www.levittpavilion.com/2026/08/03/brian-lopez-electric-trio/",
+      "https://www.songkick.com/venues/81561-levitt-pavilion"
+    ],
+    "exampleTitle": "Brian López Electric Trio",
+    "researchedAt": "2026-08-17"
+  },
+  "big ocean": {
+    "displayName": "Big Ocean",
+    "funQuality": 8.8,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "World's first hard-of-hearing K-pop group, with international press coverage from The New York Times, BBC, CNN, and Associated Press, a Billboard 'K-Pop Rookie of the Month' honor, Forbes 30 Under 30 Asia recognition, and nearly 1 million Instagram followers; toured internationally across Brazil, Europe, and the U.S.",
+    "confidence": "high",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Big_Ocean",
+      "https://caramoor.org/event/big-ocean-2026",
+      "https://www.grammy.com/news/big-ocean-kpop-deaf-hard-of-hearing-group-free-soul-pop-underwater/"
+    ],
+    "exampleTitle": "Big Ocean",
+    "researchedAt": "2026-08-17"
+  },
+  "capricorn an allman brothers tribute": {
+    "displayName": "Capricorn - An Allman Brothers Tribute",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A well-established Connecticut-based Allman Brothers tribute act with a real regional following, having played notable regional venues including Infinity Music Hall (Hartford & Norfolk) and Seven Angels Theatre, and regularly booked at breweries and theaters across the state.",
+    "confidence": "medium",
+    "sources": [
+      "https://musictributeproductions.com/capricorn",
+      "https://www.infinityhall.com/Events/capricorn-the-allman-brothers-tribute-band-3-30-2018/",
+      "https://seven-angels-theatre-ivd5.vivenushop.com/event/capricorn-the-music-of-the-allman-brothers-vg7yn4"
+    ],
+    "exampleTitle": "Capricorn - An Allman Brothers Tribute",
+    "researchedAt": "2026-08-17"
+  },
+  "what it is": {
+    "displayName": "What It Is",
+    "funQuality": 6.7,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A Connecticut-based funk/soul/R&B band with horn-driven arrangements playing the regional brewery circuit; described in venue promotional copy as delivering high-energy shows, but no independent press or notable-venue evidence found beyond local listings.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/livemusic-events"
+    ],
+    "exampleTitle": "What It Is",
+    "researchedAt": "2026-08-17"
   }
 }
