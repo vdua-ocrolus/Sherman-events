@@ -1283,5 +1283,181 @@
     ],
     "exampleTitle": "What It Is",
     "researchedAt": "2026-08-17"
+  },
+  "save the palace sherman players": {
+    "displayName": "Save the Palace (Sherman Players)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A fundraiser production by the Sherman Players, a beloved but very small community theater troupe operating in a converted church seating about 100 people; strictly local draw with no regional press or notable attendance figures found.",
+    "confidence": "medium",
+    "sources": [
+      "https://shermanplayers.org/",
+      "https://www.tripadvisor.com/Attraction_Review-g33916-d4102821-Reviews-The_Sherman_Playhouse-Sherman_Connecticut.html",
+      "https://www.facebook.com/sherman.playhouse/"
+    ],
+    "exampleTitle": "Save the Palace (Sherman Players)",
+    "researchedAt": "2026-08-18"
+  },
+  "silent film live music the general with donald sosin joanna seaton": {
+    "displayName": "Silent Film & Live Music: THE GENERAL with Donald Sosin & Joanna Seaton",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "Musicians Donald Sosin and Joanna Seaton are described as internationally acclaimed silent-film accompanists who have performed at major festivals including Tribeca, San Francisco, Telluride and Yorkshire, and this is part of Music Mountain's long-running, well-regarded chamber series.",
+    "confidence": "medium",
+    "sources": [
+      "https://musicmountain.org/show-details/silent-film-live-music",
+      "https://lakevillejournal.com/silent-cinema-live-magic"
+    ],
+    "exampleTitle": "Silent Film & Live Music: THE GENERAL (Buster Keaton)",
+    "researchedAt": "2026-08-18"
+  },
+  "unbroken glass friends james taylor carole king tribute": {
+    "displayName": "Unbroken Glass & Friends (James Taylor & Carole King Tribute)",
+    "funQuality": 6.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A local tribute act performing the songbook of James Taylor and Carole King at a small Sherman venue; no independent web presence, press, or notable venue history was found for this specific act beyond the local listing.",
+    "confidence": "low",
+    "sources": [
+      "https://www.jamestaylor.com/about/news/the-hartford-courant-james-taylor-carole-king-masterful-at-mohegan"
+    ],
+    "exampleTitle": "James Taylor & Carole King Musical Tribute with Unbroken Glass & Friends",
+    "researchedAt": "2026-08-18"
+  },
+  "not my problem": {
+    "displayName": "Not My Problem",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A regional cover band playing rock/pop/funk/new wave that works a steady circuit of CT bars, breweries, weddings, and private events; solid working act but no evidence of larger venues, press, or major following.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.notmyproblem.rocks/shows",
+      "https://hearitthere.com/event/not-my-problem-elicit-brewing-company-fairfield-ct/"
+    ],
+    "exampleTitle": "Not My Problem",
+    "researchedAt": "2026-08-18"
+  },
+  "woodbury fall festival": {
+    "displayName": "Woodbury Fall Festival",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A well-established annual Chamber of Commerce community festival at Hollow Park featuring over 75 local vendors, food trucks, live music, and a pet costume contest; free admission and a recurring fixture drawing steady community turnout, though not major regional press scale.",
+    "confidence": "medium",
+    "sources": [
+      "https://southbury.com/event/woodbury-ct-chamber-of-commerce-fall-festival-2/",
+      "https://ctvisit.com/events/woodbury-fall-festival",
+      "https://www.woodburyctchamber.com/events"
+    ],
+    "exampleTitle": "Woodbury Fall Festival",
+    "researchedAt": "2026-08-18"
+  },
+  "carl palmer s elp legacy welcome back my friends an evening with emerson lake and palmer": {
+    "displayName": "Carl Palmer's ELP Legacy — Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
+    "funQuality": 9.2,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Features Carl Palmer, actual surviving member of the legendary prog-rock supergroup ELP (nine RIAA-certified gold albums, ~48-50 million records sold), touring nationally and internationally with video of Emerson and Lake from a sold-out Royal Albert Hall show; explicitly marketed and reviewed as \"not a tribute act\" but the real band's legacy show.",
+    "confidence": "high",
+    "sources": [
+      "https://ridgefieldplayhouse.org/event/emerson-lake-and-palmer-ridgefield-ct-2026/",
+      "https://www.parkerplayhouse.com/events/detail/emerson-lake-palmer-2025",
+      "https://www.ticketmaster.com/emerson-lake-and-palmer-tickets/artist/1748"
+    ],
+    "exampleTitle": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
+    "researchedAt": "2026-08-18"
+  },
+  "the outcrops": {
+    "displayName": "The Outcrops",
+    "funQuality": 7.2,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "NJ-based blues/rock/soul band named \"Band of the Year\" by The Aquarian (2020), with roughly 3,800+ Facebook followers, who have opened for Grammy-nominated blues artist Alexis P. Suter and shared stages with members of Railroad Earth and the Robert Randolph Band.",
+    "confidence": "high",
+    "sources": [
+      "https://www.theoutcrops.com/",
+      "https://www.theoutcrops.com/about",
+      "https://www.facebook.com/theOutcrops/",
+      "https://www.bandsintown.com/a/13575383-the-outcrops"
+    ],
+    "exampleTitle": "The Outcrops",
+    "researchedAt": "2026-08-18"
+  },
+  "strange souls a tribute to the doors": {
+    "displayName": "Strange Souls - A Tribute to The Doors",
+    "funQuality": 7.3,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "An established touring Doors tribute act with nearly 4,900 Facebook followers, professional booking (Frank Kielb Entertainment), and a history of shows at notable venues including the Whisky a Go Go in Los Angeles.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/StrangeSoulsBand/",
+      "https://www.strangesoulsband.com/",
+      "https://www.housatonicriverbrewing.com/events-1/strange-souls-a-tribute-to-the-doors-2"
+    ],
+    "exampleTitle": "Strange Souls - A Tribute to The Doors",
+    "researchedAt": "2026-08-18"
+  },
+  "the robert cray band all amped up tour 2026": {
+    "displayName": "The Robert Cray Band – All Amped Up Tour 2026",
+    "funQuality": 9.5,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Five-time Grammy Award winner, Blues Hall of Fame inductee, and Rolling Stone cover artist with 19+ studio albums and millions of records sold; currently on a major national theater tour with dozens of dates across the US and Canada.",
+    "confidence": "high",
+    "sources": [
+      "https://www.ticketmaster.com/robert-cray-band-tickets/artist/731693",
+      "https://stringsmusicfestival.com/event/robert-cray-band/",
+      "https://www.parkerplayhouse.com/events/detail/robert-cray-band-2026"
+    ],
+    "exampleTitle": "The Robert Cray Band – All Amped Up Tour 2026",
+    "researchedAt": "2026-08-18"
+  },
+  "new fairfield fair day": {
+    "displayName": "New Fairfield Fair Day",
+    "funQuality": 6.7,
+    "tier": "local-modest",
+    "isMusicAct": false,
+    "draw": "A New Fairfield Parks & Recreation town fair at Memorial Field; a genuine small-town community event with limited online presence and no evidence of significant regional press or attendance figures.",
+    "confidence": "low",
+    "sources": [
+      "https://danbury.macaronikid.com/events/64f2a29528d4dc08d3e7a303/-new-fairfield-fair-day--memorial-field",
+      "https://www.facebook.com/events/memorial-field-new-fairfield/new-fairfield-fair-day/608161047596636/"
+    ],
+    "exampleTitle": "New Fairfield Fair Day",
+    "researchedAt": "2026-08-18"
+  },
+  "beyond the wall pink floyd tribute": {
+    "displayName": "Beyond The Wall — Pink Floyd Tribute",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A regional Pink Floyd tribute act active for over a decade across CT, NY, NJ, and PA, having played notable venues including BB King's and the Highline Ballroom in NYC, plus Danbury Green and city concert series, with a full production including lasers and video.",
+    "confidence": "medium",
+    "sources": [
+      "https://beyondthewall.net/",
+      "https://www.bandmix.com/beyondthewall/",
+      "https://www.ticketsmarter.com/p/beyond-the-wall-pink-floyd-tribute-tickets"
+    ],
+    "exampleTitle": "Beyond The Wall — Pink Floyd Tribute",
+    "researchedAt": "2026-08-18"
+  },
+  "ann wilson the voice of heart tripsitter": {
+    "displayName": "Ann Wilson: The Voice of Heart & Tripsitter",
+    "funQuality": 9.3,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Rock and Roll Hall of Fame inductee (Heart, 2013) with 35+ million records sold, currently touring nationally and internationally (US, Canada, Japan, Australia) behind a new album, with major press coverage and large theater/casino venues on the tour.",
+    "confidence": "high",
+    "sources": [
+      "https://ultimateclassicrock.com/ann-wilson-2026-tour/",
+      "https://ridgefieldplayhouse.org/event/ann-wilson-heart-ridgefield-ct-2026/",
+      "https://www.ticketmaster.com/ann-wilson-tickets/artist/2201487"
+    ],
+    "exampleTitle": "Ann Wilson: The Voice of Heart & Tripsitter",
+    "researchedAt": "2026-08-18"
   }
 }
