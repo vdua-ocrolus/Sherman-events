@@ -1459,5 +1459,49 @@
     ],
     "exampleTitle": "Ann Wilson: The Voice of Heart & Tripsitter",
     "researchedAt": "2026-08-18"
+  },
+  "silent film live music the general buster keaton donald sosin joanna seaton": {
+    "displayName": "Silent Film & Live Music: THE GENERAL (Buster Keaton) — Donald Sosin & Joanna Seaton",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "Donald Sosin and Joanna Seaton are internationally recognized silent-film accompanists who have performed at major festivals including Telluride, TriBeCa, and San Francisco, and this recurring Music Mountain series draws steady community audiences for classic Keaton films, though it is a niche chamber-arts program rather than a mass-draw concert.",
+    "confidence": "medium",
+    "sources": [
+      "https://musicmountain.org/show-details/silent-film-live-music",
+      "https://lakevillejournal.com/silent-cinema-live-magic"
+    ],
+    "exampleTitle": "Silent Film & Live Music: THE GENERAL (Buster Keaton) — Silent Film with Live Score at Gordon Hall, Music Mountain, Falls Village, CT",
+    "researchedAt": "2026-08-19"
+  },
+  "king stingray": {
+    "displayName": "King Stingray",
+    "funQuality": 9,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "King Stingray is an ARIA Award-winning Australian band (Michael Gudinski Breakthrough Artist, 5 ARIA nominations), won the Australian Music Prize, had a #1 triple j track, and has toured supporting Midnight Oil and King Gizzard & the Lizard Wizard, with upcoming 2026 US festival dates including Sea.Hear.Now and Oceans Calling.",
+    "confidence": "high",
+    "sources": [
+      "https://en.wikipedia.org/wiki/King_Stingray",
+      "https://www.greatsouthernnights.com.au/king-stingray",
+      "https://www.bandsintown.com/a/15488313-king-stingray"
+    ],
+    "exampleTitle": "King Stingray — Free Outdoor Concert / Surf Rock at Levitt Pavilion, Westport, CT",
+    "researchedAt": "2026-08-19"
+  },
+  "welcome back my friends an evening with emerson lake and palmer carl palmer s elp legacy": {
+    "displayName": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer (Carl Palmer's ELP Legacy)",
+    "funQuality": 8.5,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "This touring production is led by Carl Palmer, surviving member of the RIAA-certified, multi-platinum progressive rock supergroup ELP (48+ million records sold), presented with the full cooperation of the Emerson and Lake estates and using video footage from a sold-out 1992 Royal Albert Hall show; it plays established theaters nationally with strong reviews, though it is a legacy/multimedia tribute rather than the original full band.",
+    "confidence": "high",
+    "sources": [
+      "https://ridgefieldplayhouse.org/event/emerson-lake-and-palmer-ridgefield-ct-2026/",
+      "https://www.carlpalmer.com/press/2025/PressRelease-Fall2025.pdf",
+      "https://www.parkerplayhouse.com/events/detail/emerson-lake-palmer-2025"
+    ],
+    "exampleTitle": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer — Prog Rock Tribute at Ridgefield Playhouse, Ridgefield, CT",
+    "researchedAt": "2026-08-19"
   }
 }
