@@ -981,56 +981,30 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 19, 2026",
-  "tonight": [],
+  "lastUpdated": "Aug 20, 2026",
+  "tonight": [
+    {
+      "name": "Brian Regan (Thursday)",
+      "venue": "Ridgefield Playhouse",
+      "time": "8:00PM"
+    },
+    {
+      "name": "Danbury San Gennaro Festival",
+      "venue": "Danbury CityCenter Green / Ives Street",
+      "time": "5:00PM–11:00PM"
+    },
+    {
+      "name": "Karaoke & Lip Sync Night",
+      "venue": "Housatonic River Brewing",
+      "time": "7:00PM–9:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 18–23",
+      "title": "Week 1 · August 20–23",
       "open": true,
       "events": [
-        {
-          "funQuality": 7.5,
-          "title": "Brian Regan (Wednesday)",
-          "url": "https://ridgefieldplayhouse.org/event/brian-regan-wednesday-ridgefield-ct-2026/",
-          "dateLabel": "Wed Aug 19",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "One of the most respected comedians in the country returns to Ridgefield for a three-night run — clean, sharp, and consistently packed houses.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "score": 7.7
-        },
-        {
-          "funQuality": 8.8,
-          "title": "Danbury San Gennaro Festival",
-          "url": "https://citycenterdanbury.com/event/san-gennaro-festival/",
-          "dateLabel": "Wed Aug 19 – Sun Aug 23",
-          "time": "5:00PM–11:00PM (Wed–Fri), 1:00PM–11:00PM (Sat), 1:00PM–10:00PM (Sun)",
-          "venue": "Danbury CityCenter Green / Ives Street",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Italian Street Festival / Food & Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with five free days of Italian food, live music every night (including Beyond Purple, The Zoo, and more), games, a cannoli eating contest, laser light shows, and an America 250 Fireworks Spectacular on Saturday.",
-          "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "score": 8.6
-        },
         {
           "funQuality": 7.3,
           "title": "Brian Regan (Thursday)",
@@ -1044,16 +1018,38 @@ const EVENTS_DATA = {
           "type": "Comedy",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Second night of Brian Regan's sold-out-caliber run at Ridgefield Playhouse.",
+          "desc": "Second night of Brian Regan's run at Ridgefield Playhouse — one of stand-up's most reliably packed acts.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.5
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.8,
+          "title": "Danbury San Gennaro Festival",
+          "url": "https://citycenterdanbury.com/event/san-gennaro-festival/",
+          "dateLabel": "Thu Aug 20 – Sun Aug 23",
+          "time": "5:00PM–11:00PM (Thu/Fri), 1:00PM–11:00PM (Sat), 1:00PM–10:00PM (Sun)",
+          "venue": "Danbury CityCenter Green / Ives Street",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Italian Street Festival / Food & Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The 5th annual Danbury San Gennaro Festival returns bigger than ever with free days of Italian food, live music each night (Beyond Purple, The Zoo, Vittorio Di Carlo, Mullet, Shooting Star), games, a cannoli eating contest, laser light shows, and fireworks on Saturday.",
+          "source": "citycenterdanbury.com",
+          "sourceUrl": "https://citycenterdanbury.com/event/san-gennaro-festival/",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false,
+          "score": 8.6
+        },
+        {
+          "funQuality": 8.6,
           "title": "Karaoke & Lip Sync Night",
           "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-20-19-00",
           "dateLabel": "Thu Aug 20",
@@ -1068,10 +1064,10 @@ const EVENTS_DATA = {
           "desc": "Step into the spotlight on the HRB stage in a high energy, welcoming atmosphere, hosted by Rich of HRB Trivia fame.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
-          "score": 8.5
+          "score": 8.9
         },
         {
           "funQuality": 6.7,
@@ -1137,27 +1133,6 @@ const EVENTS_DATA = {
           "score": 7.5
         },
         {
-          "funQuality": 8.4,
-          "title": "Silent Film & Live Music: THE GENERAL (Buster Keaton)",
-          "url": "https://litchfieldmagazine.com/events/silent-film-live-music-2/",
-          "dateLabel": "Sat Aug 22",
-          "time": "7:00PM",
-          "venue": "Gordon Hall, Music Mountain",
-          "venueType": "litchfield",
-          "town": "Falls Village, CT",
-          "dist": "~22 mi",
-          "type": "Silent Film with Live Score",
-          "priceType": "paid",
-          "priceLabel": "$35 General Admission",
-          "desc": "Buster Keaton's legendary Civil War comedy THE GENERAL (1926) screens with live music by pianist Donald Sosin and singer/percussionist Joanna Seaton.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "score": 7.8
-        },
-        {
           "funQuality": 8.3,
           "title": "6th Annual Steve Bennett Memorial Comedy Show",
           "url": "https://www.shermanct.gov/muni-events/steve-bennett-memorial-comedy-show",
@@ -1221,7 +1196,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8.7,
+          "funQuality": 7.9,
           "title": "The Afro-Semitic Experience (Concerts on the Green)",
           "url": "https://afrosemiticexperience.net/event/6547073/760504350/summer-concert-in-new-milford-with-the-afro-semitic-experience",
           "dateLabel": "Sat Aug 22",
@@ -1239,7 +1214,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.9
+          "score": 8.4
         },
         {
           "funQuality": 6.5,
@@ -1345,6 +1320,27 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "score": 5.7
+        },
+        {
+          "funQuality": 7.5,
+          "title": "Brian Regan (Wednesday)",
+          "url": "https://ridgefieldplayhouse.org/event/brian-regan-wednesday-ridgefield-ct-2026/",
+          "dateLabel": "Wed Aug 19",
+          "time": "7:30PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Comedy",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "One of the most respected comedians in the country returns to Ridgefield for a three-night run — clean, sharp, and consistently packed houses.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false,
+          "score": 7.7
         }
       ]
     },
@@ -1375,7 +1371,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.6,
           "title": "Karaoke & Lip Sync Night",
           "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-27-19-00",
           "dateLabel": "Thu Aug 27",
@@ -1393,7 +1389,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.5
+          "score": 8.9
         },
         {
           "funQuality": 6.7,
@@ -1438,7 +1434,7 @@ const EVENTS_DATA = {
           "score": 8.4
         },
         {
-          "funQuality": 8.5,
+          "funQuality": 6.5,
           "title": "James Taylor & Carole King Musical Tribute with Unbroken Glass & Friends",
           "url": "https://www.shermanct.gov/muni-events/james-taylor-carole-king-musical-tribute-with-unbroken-glass-friends",
           "dateLabel": "Sat Aug 29",
@@ -1456,7 +1452,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 9
+          "score": 7.6
         },
         {
           "funQuality": 7.5,
@@ -1470,8 +1466,8 @@ const EVENTS_DATA = {
           "dist": "~7 mi",
           "type": "Live Music / Classic Rock Tribute",
           "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A tribute act covering the classic hard rock catalogs of Deep Purple, Whitesnake, Rainbow, and Dio hits the HRB stage.",
+          "priceLabel": "$25",
+          "desc": "Beyond Purple creates a dynamic journey through the timeless music of Deep Purple, Whitesnake, Rainbow & Dio, with a fast-growing reputation that has propelled them onto top-ranking concert stages and festivals across North America.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
@@ -1613,25 +1609,25 @@ const EVENTS_DATA = {
           "score": 8.3
         },
         {
-          "funQuality": 7.1,
-          "title": "Midnight Choir",
-          "url": "https://www.songkick.com/concerts/43301271-midnight-choir-at-daryls-house",
+          "funQuality": 7.6,
+          "title": "Disciple of The Garden – Tribute to Soundgarden, Audioslave, Chris Cornell",
+          "url": "https://darylshouseclub.com/tm-venue/daryls-house/page/5/",
           "dateLabel": "Sat Sep 5",
           "time": "8:00PM",
           "venue": "Daryl's House",
           "venueType": "darylshouse",
           "town": "Pawling, NY",
           "dist": "~20 mi",
-          "type": "Live Music",
+          "type": "Live Music / Chris Cornell Tribute",
           "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A regional live act performs at Daryl's House on the main stage.",
-          "source": "songkick.com",
-          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "priceLabel": "$40–$50",
+          "desc": "A heartfelt tribute dedicated to celebrating the legacy of Chris Cornell, channeling the raw power and emotional depth of his iconic music covering hits from Soundgarden, Audioslave, and his solo career.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 7.2
+          "score": 7.6
         },
         {
           "funQuality": 8.4,
@@ -1655,7 +1651,7 @@ const EVENTS_DATA = {
           "score": 8.3
         },
         {
-          "funQuality": 8.2,
+          "funQuality": 8.8,
           "title": "6th Annual Danbury Car & Truck Festival",
           "url": "https://allevents.in/danbury/all",
           "dateLabel": "Sun Sep 6",
@@ -1673,7 +1669,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.1
+          "score": 8.6
         },
         {
           "funQuality": 7,
@@ -2327,7 +2323,7 @@ const EVENTS_DATA = {
           "score": 9
         },
         {
-          "funQuality": 8.2,
+          "funQuality": 8.8,
           "title": "New Fairfield Town Fair",
           "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12048/1358",
           "dateLabel": "Sat Sep 26",
@@ -2345,7 +2341,28 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": true,
-          "score": 8.6
+          "score": 9
+        },
+        {
+          "funQuality": 7.8,
+          "title": "California Guitar Trio",
+          "url": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "dateLabel": "Sun Sep 27",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Instrumental Guitar / Progressive",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Mentored by Robert Fripp and having opened for King Crimson, the eclectic and virtuosic California Guitar Trio blends rock, jazz, classical, and surf music into a beloved, decades-running touring act.",
+          "source": "songkick.com",
+          "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "score": 7.7
         },
         {
           "funQuality": 7.7,
@@ -2439,7 +2456,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.2,
           "title": "Already Gone - A Tribute to the Eagles",
           "url": "https://www.housatonicriverbrewing.com/events-1/already-gone-a-tribute-to-the-eagles-3",
           "dateLabel": "Fri Oct 2",
@@ -2457,7 +2474,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.5
+          "score": 8.6
         },
         {
           "funQuality": 7.9,
@@ -2481,7 +2498,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 8.2,
+          "funQuality": 8.8,
           "title": "New Milford RiverFest",
           "url": "https://www.nmriverfest.org/",
           "dateLabel": "Sat Oct 3",
@@ -2493,13 +2510,13 @@ const EVENTS_DATA = {
           "type": "Community Festival / Live Music & Family Fun",
           "priceType": "free",
           "priceLabel": "Free (donations welcome)",
-          "desc": "New Milford's free RiverFest along the Housatonic River features live music, food trucks, touch-a-truck, a kids fun color run, arts & crafts, vendors, and River Lights at dusk.",
+          "desc": "New Milford's free RiverFest along the Housatonic River features live music, food trucks, touch-a-truck, kids' fun color run, a police helicopter visit, arts & crafts, vendors, and River Lights at dusk.",
           "source": "nmriverfest.org",
           "sourceUrl": "https://www.nmriverfest.org/",
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.6
+          "score": 9
         },
         {
           "funQuality": 7.5,
@@ -2670,7 +2687,7 @@ const EVENTS_DATA = {
     },
     {
       "date": "Sat Sep 5, 8:00PM",
-      "title": "Midnight Choir"
+      "title": "Disciple of The Garden – Tribute to Soundgarden, Audioslave, Chris Cornell"
     },
     {
       "date": "Sun Sep 6, 7:00PM",
@@ -2695,6 +2712,10 @@ const EVENTS_DATA = {
     {
       "date": "Wed Sep 23, 7:00PM",
       "title": "Joshua Radin"
+    },
+    {
+      "date": "Sun Sep 27, 7:00PM",
+      "title": "California Guitar Trio"
     }
   ]
 };

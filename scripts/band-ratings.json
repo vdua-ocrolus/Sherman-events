@@ -1503,5 +1503,48 @@
     ],
     "exampleTitle": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer — Prog Rock Tribute at Ridgefield Playhouse, Ridgefield, CT",
     "researchedAt": "2026-08-19"
+  },
+  "the afro semitic experience": {
+    "displayName": "The Afro-Semitic Experience",
+    "funQuality": 7.3,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A long-running (25+ year) touring jazz/roots ensemble that has played festivals, colleges, and houses of worship across the US, with praise from jazz critic Nat Hentoff and coverage as a distinctive regional/national niche act, though its social following remains modest (under 2,000 Facebook likes) and it is not a mainstream chart act.",
+    "confidence": "medium",
+    "sources": [
+      "https://afrosemiticexperience.net/our-story",
+      "https://davidchevan.com/the-afro-semitic-experience",
+      "https://www.facebook.com/afrosemiticexperience/"
+    ],
+    "exampleTitle": "The Afro-Semitic Experience (Concerts on the Green)",
+    "researchedAt": "2026-08-20"
+  },
+  "unbroken glass friends": {
+    "displayName": "Unbroken Glass & Friends",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "No meaningful public profile could be found for this act beyond a listing as a small local duo/band playing a Sherman, CT winery; there is no evidence of notable venues, press, charting, or substantial following.",
+    "confidence": "low",
+    "sources": [
+      "https://whitesilowinery.com/2017-upcoming-events/"
+    ],
+    "exampleTitle": "James Taylor & Carole King Musical Tribute with Unbroken Glass & Friends",
+    "researchedAt": "2026-08-20"
+  },
+  "carl palmer s elp legacy welcome back my friends an evening with emerson lake palmer": {
+    "displayName": "Carl Palmer's ELP Legacy (Welcome Back My Friends: An Evening With Emerson, Lake & Palmer)",
+    "funQuality": 8.7,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "This is the official touring production led by Carl Palmer, the sole surviving member of the internationally famous prog-rock supergroup ELP (48 million records sold, 9 gold albums), combining live drumming with video footage of Emerson and Lake from a legendary Royal Albert Hall show, and has toured major theaters and arenas across North America with strong critical praise, including from Prog Magazine.",
+    "confidence": "high",
+    "sources": [
+      "https://www.carlpalmer.com/press/2025/PressRelease-Fall2025.pdf",
+      "https://www.rutlandherald.com/features/vermont_arts/better-than-a-tribute-band-an-evening-with-emerson-lake-palmer/article_3400b00d-a110-40a1-8d68-cb0f5a680b85.html",
+      "https://ridgefieldplayhouse.org/events/category/event-series/rock/"
+    ],
+    "exampleTitle": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
+    "researchedAt": "2026-08-20"
   }
 }
