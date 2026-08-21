@@ -1546,5 +1546,48 @@
     ],
     "exampleTitle": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
     "researchedAt": "2026-08-20"
+  },
+  "karaoke lip sync night at housatonic river brewing": {
+    "displayName": "Karaoke & Lip Sync Night at Housatonic River Brewing",
+    "funQuality": 6.3,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "This is a recurring participatory karaoke/open-mic style night at a well-regarded but small local brewery venue; the brewery itself has a loyal local following and has been voted Best Live Music Venue by CT Magazine readers, but karaoke night itself is a low-key community activity with no touring act or public performer profile.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/livemusic-events",
+      "https://www.yelp.com/biz/housatonic-river-brewing-new-milford-2"
+    ],
+    "exampleTitle": "Karaoke & Lip Sync Night — Karaoke Night at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-08-21"
+  },
+  "6th annual danbury car truck festival": {
+    "displayName": "6th Annual Danbury Car & Truck Festival",
+    "funQuality": 7.4,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "An established annual community car show now in its 6th year, drawing hundreds of vehicles and spectators with regional press coverage (NBC Connecticut) and over 90 trophies awarded; a solid, well-established local tradition though not a major regional festival.",
+    "confidence": "high",
+    "sources": [
+      "https://www.facebook.com/danburywarmemorialcarshow/",
+      "https://www.newstimes.com/news/article/sunday-danbury-war-memorial-s-third-annual-car-18336723.php",
+      "https://classiccars.ride-ct.com/calendar/"
+    ],
+    "exampleTitle": "6th Annual Danbury Car & Truck Festival — Car Show / Community Festival at Danbury War Memorial, Danbury, CT",
+    "researchedAt": "2026-08-21"
+  },
+  "new fairfield town fair": {
+    "displayName": "New Fairfield Town Fair",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A longstanding annual community event (run in the vein of the town's Lions Club carnival tradition) featuring rides, food, and live bands that draws families from New Fairfield and neighboring towns; described locally as one of the most highly anticipated summer events in town, but with no evidence of large-scale regional attendance or press beyond local outlets.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.thetowntribune.com/features/youre-invited-to-the-new-fairfield-lions-clubs-carnival-tues-july-19-through-sat-july-23/",
+      "https://www.nflions.com/events"
+    ],
+    "exampleTitle": "New Fairfield Town Fair — Family Festival / Fair at New Fairfield community grounds, New Fairfield, CT",
+    "researchedAt": "2026-08-21"
   }
 }
