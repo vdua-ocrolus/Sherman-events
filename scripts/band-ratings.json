@@ -1589,5 +1589,48 @@
     ],
     "exampleTitle": "New Fairfield Town Fair — Family Festival / Fair at New Fairfield community grounds, New Fairfield, CT",
     "researchedAt": "2026-08-21"
+  },
+  "karaoke lip sync night": {
+    "displayName": "Karaoke & Lip Sync Night",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A recurring participatory bar event (not a performing act) at Housatonic River Brewing, part of the venue's regular weekly programming alongside trivia and open mic nights; draw is purely local/community-based with no external act to evaluate.",
+    "confidence": "high",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/livemusic-events"
+    ],
+    "exampleTitle": "Karaoke & Lip Sync Night — Karaoke Night at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-08-22"
+  },
+  "borboletta a tribute to santana": {
+    "displayName": "Borboletta: A Tribute to Santana",
+    "funQuality": 8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A well-established New England Santana tribute band made up of members from notable touring acts (Kung Fu, Turkuaz, Deep Banana Blackout) that has repeatedly packed the Levitt Pavilion in Westport and performed at Gathering of the Vibes festival, with press describing it as delivering 'a high-energy performance' to an enthusiastic sold-out crowd.",
+    "confidence": "high",
+    "sources": [
+      "https://westportlocal.com/news/santana-tribute-band-borboletta-delivers-to-a-packed-levitt-pavilion",
+      "https://gatheringofthevibes.com/artist/borboletta-a-tribute-to-santana/",
+      "https://hearitthere.com/event/borboletta-a-tribute-to-santana-in-westport-ct/"
+    ],
+    "exampleTitle": "Borboletta: A Tribute to Santana — Free Outdoor Concert / Santana Tribute at Levitt Pavilion, Westport, CT",
+    "researchedAt": "2026-08-22"
+  },
+  "already gone a tribute to the eagles ct regional act": {
+    "displayName": "Already Gone - A Tribute to the Eagles (CT/regional act)",
+    "funQuality": 6.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A regional Eagles tribute band (distinct from the larger Houston- and Kentucky-based bands of the same name) that plays Connecticut-area venues like Park City Music Hall in Bridgeport and Brookfield's Concerts in the Park series, with a modest social following of only a few hundred Facebook likes, indicating a genuine but small-scale local/regional bar-and-park-circuit act.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/AlreadyGoneTribute/",
+      "https://townappeal.com/brookfield/events/concerts-in-the-park-already-gone-eagles-tribute/",
+      "https://www.facebook.com/parkcitymusichall/photos/-724-already-gone-eagles-tribute-at-park-city-music-hall-already-gone-is-a-six-p/1449073130583691/"
+    ],
+    "exampleTitle": "Already Gone - A Tribute to the Eagles — Live Music / Eagles Tribute at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-08-22"
   }
 }

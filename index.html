@@ -981,10 +981,15 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 21, 2026",
+  "lastUpdated": "Aug 22, 2026",
   "tonight": [
     {
-      "name": "Brian Regan (Friday)",
+      "name": "6th Annual Steve Bennett Memorial Comedy Show",
+      "venue": "JCC in Sherman",
+      "time": "7:30PM"
+    },
+    {
+      "name": "10,000 Maniacs",
       "venue": "Ridgefield Playhouse",
       "time": "8:00PM"
     },
@@ -994,101 +999,48 @@ const EVENTS_DATA = {
       "time": "8:00PM"
     },
     {
-      "name": "Junk",
+      "name": "Struggle Monkey (NMHS Class of 1986 Reunion Show)",
       "venue": "Housatonic River Brewing",
-      "time": "7:00PM–10:00PM"
+      "time": "5:30PM–10:00PM"
+    },
+    {
+      "name": "The Afro-Semitic Experience (Concerts on the Green)",
+      "venue": "New Milford Town Green (Bandstand)",
+      "time": "7:00PM"
+    },
+    {
+      "name": "Northwest Vocal Showcase — 20th Anniversary",
+      "venue": "Warner Theatre (Oneglia Auditorium)",
+      "time": "7:00PM"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 21–23",
+      "title": "Week 1 · August 22–23",
       "open": true,
       "events": [
         {
-          "funQuality": 7.3,
-          "title": "Brian Regan (Friday)",
-          "url": "https://ridgefieldplayhouse.org/event/brian-regan-friday-ridgefield-ct-2026/",
-          "dateLabel": "Fri Aug 21",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
+          "funQuality": 8.5,
+          "title": "6th Annual Steve Bennett Memorial Comedy Show",
+          "url": "https://www.shermanct.gov/muni-events/6th-annual-steve-bennett-memorial-comedy-show",
+          "dateLabel": "Sat Aug 22",
+          "time": "7:30PM",
+          "venue": "JCC in Sherman",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
           "type": "Comedy",
           "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Third and final night of Brian Regan's run — one of stand-up's most reliably packed acts.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "priceLabel": "Students $10 | Members $20 | Non-Members $25",
+          "desc": "An evening of fresh stand-up voices — Emily Azrael, Dillon Krause, Luz Michelle, Peter Wong, and Tayler Yarish — honoring the memory of longtime Sherman resident and comedian Steve Bennett, held at the JCC in Sherman.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
           "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.5
-        },
-        {
-          "funQuality": 6.7,
-          "title": "Junk",
-          "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
-          "dateLabel": "Fri Aug 21",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Live Music / 90s-2000s Alt Rock",
-          "priceType": "paid",
-          "priceLabel": "$10",
-          "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "score": 7.5
-        },
-        {
-          "funQuality": 6.5,
-          "title": "Save the Palace (Sherman Players)",
-          "url": "https://www.shermanct.gov/muni-events/save-the-palace",
-          "dateLabel": "Fri Aug 21 – Sun Aug 23",
-          "time": "8:00PM (Fri/Sat), 2:00PM (Sun)",
-          "venue": "Sherman Playhouse",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Musical / Community Theater Fundraiser",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "The Sherman Players stage a three-performance fundraiser run of \"Save the Palace,\" an award-winning original musical by Roy O'Neil about an aging rock band that reunites to save their hometown theater, as a special event in the group's centennial season.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "score": 7.6
-        },
-        {
-          "funQuality": 8.3,
-          "title": "6th Annual Steve Bennett Memorial Comedy Show",
-          "url": "https://www.shermanct.gov/muni-events/steve-bennett-memorial-comedy-show",
-          "dateLabel": "Sat Aug 22",
-          "time": "7:30PM–8:30PM",
-          "venue": "Sherman community venue",
-          "venueType": "sherman",
-          "town": "Sherman, CT",
-          "dist": "~2 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "An evening of fresh stand-up voices — Emily Azrael, Dillon Krause, Luz Michelle, Peter Wong, and Tayler Yarish — honoring the memory of longtime Sherman resident and comedian Steve Bennett.",
-          "source": "shermanct.gov",
-          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "score": 8.8
+          "score": 9
         },
         {
           "funQuality": 9,
@@ -1106,10 +1058,33 @@ const EVENTS_DATA = {
           "desc": "Celebrating their 45th anniversary, platinum-selling alt-rock pioneers 10,000 Maniacs — famous for \"These Are the Days\" and \"Because the Night\" — bring their beloved catalog to a sold-out Ridgefield.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.7
+        },
+        {
+          "funQuality": 6.5,
+          "title": "Save the Palace (Sherman Players)",
+          "url": "https://www.shermanct.gov/muni-events/save-the-palace",
+          "dateLabel": "Fri Aug 21 – Sun Aug 23",
+          "time": "8:00PM (Fri/Sat), 2:00PM (Sun)",
+          "venue": "Sherman Playhouse",
+          "venueType": "sherman",
+          "town": "Sherman, CT",
+          "dist": "~2 mi",
+          "type": "Musical / Community Theater Fundraiser",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "The Sherman Players stage a three-performance fundraiser run of \"Save the Palace,\" an award-winning original musical by Roy O'Neil about an aging 60s rock band that reunites for a benefit concert to save their condemned hometown theater, as a special event in the group's centennial season.",
+          "source": "shermanct.gov",
+          "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.6
         },
         {
           "funQuality": 7.2,
@@ -1127,9 +1102,10 @@ const EVENTS_DATA = {
           "desc": "Struggle Monkey is a popular CT show band known for high-energy sets, delivering a full concert experience with smoke, lightshow, and hard rock covers of Queen, Journey, Def Leppard, and Pink Floyd, tied to the New Milford HS Class of 1986 reunion.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.9
         },
         {
@@ -1148,9 +1124,10 @@ const EVENTS_DATA = {
           "desc": "The acclaimed Afro-Semitic Experience returns to New Milford's historic bandstand as part of the town's free Concerts on the Green series, blending jazz, blues, gospel, and Jewish liturgical music.",
           "source": "artsnewmilfordct.org",
           "sourceUrl": "https://artsnewmilfordct.org/event/concerts-on-the-green/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.4
         },
         {
@@ -1169,31 +1146,33 @@ const EVENTS_DATA = {
           "desc": "Torrington Parks & Rec presents the 20th Anniversary Northwest Vocal Showcase at the historic Warner Theatre's Oneglia Auditorium.",
           "source": "warnertheatre.org",
           "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 6.5
         },
         {
-          "funQuality": 7.4,
-          "title": "Gilbert the Party Pig",
-          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12002/1358",
+          "funQuality": 6.7,
+          "title": "Concert & Contra Dance: Kitchen Céilí",
+          "url": "https://litchfieldmagazine.com/events/concert-contra-dance/",
           "dateLabel": "Sat Aug 22",
-          "time": "11:00AM",
-          "venue": "New Fairfield community venue",
-          "venueType": "newfairfield",
-          "town": "New Fairfield, CT",
-          "dist": "~3 mi",
-          "type": "Family Event / Animal Entertainment",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "New Fairfield hosts a visit from the beloved, widely-followed \"Gilbert the Party Pig\" and friends for a family-friendly meet-and-greet, per the official town events calendar.",
-          "source": "newfairfield.org",
-          "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
+          "time": "4:00PM–5:30PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~15 mi",
+          "type": "Traditional Music / Contra Dance",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Kitchen Céilí returns with traditional music from Ireland for a lively concert and contra dance.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
-          "isNF": true,
-          "score": 8
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 6.8
         },
         {
           "funQuality": 6.6,
@@ -1214,6 +1193,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.6
         },
         {
@@ -1235,6 +1215,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.2
         },
         {
@@ -1256,13 +1237,14 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 5.7
         },
         {
           "funQuality": 7.3,
-          "title": "Brian Regan (Thursday)",
-          "url": "https://ridgefieldplayhouse.org/event/brian-regan-thursday-ridgefield-ct-2026/",
-          "dateLabel": "Thu Aug 20",
+          "title": "Brian Regan (Friday)",
+          "url": "https://ridgefieldplayhouse.org/event/brian-regan-friday-ridgefield-ct-2026/",
+          "dateLabel": "Fri Aug 21",
           "time": "8:00PM",
           "venue": "Ridgefield Playhouse",
           "venueType": "playhouse",
@@ -1271,13 +1253,34 @@ const EVENTS_DATA = {
           "type": "Comedy",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Second night of Brian Regan's run at Ridgefield Playhouse — one of stand-up's most reliably packed acts.",
+          "desc": "Third and final night of Brian Regan's run — one of stand-up's most reliably packed acts.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": true,
           "isPast": true,
           "isNF": false,
           "funQualityNote": null,
+          "score": 7.5
+        },
+        {
+          "funQuality": 6.7,
+          "title": "Junk",
+          "url": "https://www.housatonicriverbrewing.com/events-1/junk-18",
+          "dateLabel": "Fri Aug 21",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / 90s-2000s Alt Rock",
+          "priceType": "paid",
+          "priceLabel": "$10",
+          "desc": "Super fun classic 90's and 2000's alternative rock covering Alice in Chains, Weezer, STP and many more at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false,
           "score": 7.5
         }
       ]
@@ -1306,10 +1309,11 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
-          "funQuality": 8.5,
+          "funQuality": 6.8,
           "title": "Karaoke & Lip Sync Night",
           "url": "https://www.housatonicriverbrewing.com/events-1/karaoke-lip-sync-night-2026-08-27-19-00",
           "dateLabel": "Thu Aug 27",
@@ -1327,7 +1331,8 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.8
+          "funQualityNote": null,
+          "score": 7.6
         },
         {
           "funQuality": 6.7,
@@ -1348,28 +1353,8 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.5
-        },
-        {
-          "funQuality": 9.2,
-          "title": "Bill Charlap Trio",
-          "url": "https://litchfieldmagazine.com/events/bill-charlap-trio-2/",
-          "dateLabel": "Sat Aug 29",
-          "time": "7:00PM",
-          "venue": "Gordon Hall, Music Mountain",
-          "venueType": "litchfield",
-          "town": "Falls Village, CT",
-          "dist": "~22 mi",
-          "type": "Jazz",
-          "priceType": "paid",
-          "priceLabel": "$50 General Admission",
-          "desc": "GRAMMY Award-winning pianist Bill Charlap, who has performed with Tony Bennett, Barbra Streisand, and Wynton Marsalis, brings his acclaimed trio with David Wong and Dennis Mackrel to Music Mountain.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "score": 8.4
         },
         {
           "funQuality": 6.5,
@@ -1390,6 +1375,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.6
         },
         {
@@ -1404,13 +1390,14 @@ const EVENTS_DATA = {
           "dist": "~7 mi",
           "type": "Live Music / Classic Rock Tribute",
           "priceType": "paid",
-          "priceLabel": "$25",
+          "priceLabel": null,
           "desc": "Beyond Purple creates a dynamic journey through the timeless music of Deep Purple, Whitesnake, Rainbow & Dio, with a fast-growing reputation that has propelled them onto top-ranking concert stages and festivals across North America.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.1
         },
         {
@@ -1432,28 +1419,8 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 6.9
-        },
-        {
-          "funQuality": 5.1,
-          "title": "Cassatt String Quartet & Montiel",
-          "url": "https://litchfieldmagazine.com/events/cassatt-string-quartet-montiel/",
-          "dateLabel": "Sun Aug 30",
-          "time": "3:00PM",
-          "venue": "Litchfield County venue",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~10 mi",
-          "type": "Chamber Music",
-          "priceType": "paid",
-          "priceLabel": "$65 General Admission",
-          "desc": "The Cassatt String Quartet joins violist Javier Montiel for a clarinet quintet project performance in an elegant chamber concert setting.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "score": 5.7
         }
       ]
     },
@@ -1481,6 +1448,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
@@ -1502,6 +1470,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.9
         },
         {
@@ -1523,6 +1492,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.4
         },
         {
@@ -1544,6 +1514,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.3
         },
         {
@@ -1565,6 +1536,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.6
         },
         {
@@ -1586,6 +1558,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.3
         },
         {
@@ -1607,6 +1580,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8
         },
         {
@@ -1628,6 +1602,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
@@ -1649,6 +1624,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.2
         }
       ]
@@ -1677,6 +1653,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.1
         },
         {
@@ -1698,6 +1675,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.9
         },
         {
@@ -1719,6 +1697,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.5
         },
         {
@@ -1740,6 +1719,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.2
         },
         {
@@ -1761,6 +1741,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.4
         },
         {
@@ -1782,6 +1763,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.9
         },
         {
@@ -1803,6 +1785,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.6
         },
         {
@@ -1824,6 +1807,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.4
         },
         {
@@ -1845,6 +1829,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.2
         },
         {
@@ -1866,6 +1851,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.3
         }
       ]
@@ -1894,10 +1880,11 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.6
         },
         {
-          "funQuality": 8.7,
+          "funQuality": 8.6,
           "title": "Borboletta: A Tribute to Santana",
           "url": "https://levittpavilion.com/2026/08/20/borboletta-sep17/",
           "dateLabel": "Thu Sep 17",
@@ -1915,6 +1902,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8
         },
         {
@@ -1936,6 +1924,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.7
         },
         {
@@ -1957,6 +1946,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
@@ -1978,6 +1968,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.2
         },
         {
@@ -1999,6 +1990,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.9
         },
         {
@@ -2020,6 +2012,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.2
         },
         {
@@ -2041,6 +2034,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.9
         },
         {
@@ -2062,6 +2056,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.6
         },
         {
@@ -2083,6 +2078,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.7
         }
       ]
@@ -2111,6 +2107,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.7
         },
         {
@@ -2132,6 +2129,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.9
         },
         {
@@ -2153,6 +2151,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 6.6
         },
         {
@@ -2174,6 +2173,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7
         },
         {
@@ -2195,6 +2195,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.3
         },
         {
@@ -2216,6 +2217,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8
         },
         {
@@ -2237,6 +2239,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 6.6
         },
         {
@@ -2258,6 +2261,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8
         },
         {
@@ -2279,28 +2283,8 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 9
-        },
-        {
-          "funQuality": 7.6,
-          "title": "New Fairfield Town Fair",
-          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12048/1358",
-          "dateLabel": "Sat Sep 26",
-          "time": "All Day",
-          "venue": "New Fairfield community grounds",
-          "venueType": "newfairfield",
-          "town": "New Fairfield, CT",
-          "dist": "~3 mi",
-          "type": "Family Festival / Fair",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "New Fairfield's community Town Fair (rain date Sept 27) returns with family-friendly fun and activities, per the official town events calendar.",
-          "source": "newfairfield.org",
-          "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": true,
-          "score": 8.2
         },
         {
           "funQuality": 7.8,
@@ -2321,6 +2305,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.7
         },
         {
@@ -2342,6 +2327,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         }
       ]
@@ -2370,6 +2356,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
@@ -2391,6 +2378,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.5
         },
         {
@@ -2412,10 +2400,11 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.9
         },
         {
-          "funQuality": 8.4,
+          "funQuality": 8.6,
           "title": "Already Gone - A Tribute to the Eagles",
           "url": "https://www.housatonicriverbrewing.com/events-1/already-gone-a-tribute-to-the-eagles-3",
           "dateLabel": "Fri Oct 2",
@@ -2433,7 +2422,8 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
-          "score": 8.7
+          "funQualityNote": null,
+          "score": 8.9
         },
         {
           "funQuality": 7.9,
@@ -2454,6 +2444,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
@@ -2475,6 +2466,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.2
         },
         {
@@ -2496,6 +2488,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.5
         }
       ]
@@ -2524,6 +2517,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.8
         },
         {
@@ -2545,6 +2539,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.9
         },
         {
@@ -2566,6 +2561,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 8.9
         },
         {
@@ -2587,6 +2583,7 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 6.7
         },
         {
@@ -2608,7 +2605,30 @@ const EVENTS_DATA = {
           "isTonight": false,
           "isPast": false,
           "isNF": false,
+          "funQualityNote": null,
           "score": 7.7
+        },
+        {
+          "funQuality": 7.9,
+          "title": "An Evening With Andrew McMahon and His Piano",
+          "url": "https://ridgefieldplayhouse.org/event/andrew-mcmahon-ridgefield-ct-2026/",
+          "dateLabel": "Tue Oct 13",
+          "time": "7:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Rock / Piano Pop",
+          "priceType": "soldout",
+          "priceLabel": "SOLD OUT",
+          "desc": "Andrew McMahon (Something Corporate, Jack's Mannequin) brings his intimate piano-driven solo show to a sold-out Ridgefield crowd.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.9
         }
       ]
     }
