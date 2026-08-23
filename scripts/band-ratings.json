@@ -1632,5 +1632,65 @@
     ],
     "exampleTitle": "Already Gone - A Tribute to the Eagles — Live Music / Eagles Tribute at Housatonic River Brewing, New Milford, CT",
     "researchedAt": "2026-08-22"
+  },
+  "101st bethlehem fair": {
+    "displayName": "101st Bethlehem Fair",
+    "funQuality": 8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A 101-year-running traditional Connecticut agricultural fair with strong community following (Facebook page shows 13,534 'were here' check-ins and ~9,855 likes), run by the Bethlehem Fair Society with livestock competitions, rides, and entertainment over a 3-day September weekend.",
+    "confidence": "high",
+    "sources": [
+      "https://www.facebook.com/BethlehemFair/",
+      "https://ctvisit.com/events/101st-bethlehem-fair",
+      "https://bethlehemfair.com/"
+    ],
+    "exampleTitle": "101st Bethlehem Fair",
+    "researchedAt": "2026-08-23"
+  },
+  "pat metheny side eye iii": {
+    "displayName": "Pat Metheny: Side-Eye III+",
+    "funQuality": 10,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Pat Metheny is a globally acclaimed jazz guitarist with three gold albums, 20 Grammy Awards, 39 additional nominations, and over 20 million records sold worldwide; this Ridgefield date is part of a major national/international tour hitting the Beacon Theatre, Foxwoods, and other marquee venues.",
+    "confidence": "high",
+    "sources": [
+      "https://ridgefieldplayhouse.org/event/pat-metheny-side-eye-ridgefield-ct-2026/",
+      "https://patmethenyofficial.bandcamp.com/album/side-eye-iii",
+      "https://www.patmetheny.org/ticket"
+    ],
+    "exampleTitle": "Pat Metheny: Side-Eye III+",
+    "researchedAt": "2026-08-23"
+  },
+  "welcome back my friends an evening with emerson lake and palmer": {
+    "displayName": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
+    "funQuality": 9,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "This is not a standard tribute act but an officially sanctioned show led by Carl Palmer, the surviving member of the supergroup ELP, presented with the full cooperation of the Emerson and Lake estates and combining live performance with video footage from ELP's legendary 1992 Royal Albert Hall show; ELP is one of the best-selling prog rock groups of all time with over 48 million records sold, and this tour plays major theaters nationwide (Beacon Theatre-tier venues, Ticketmaster/Vivid Seats national listings).",
+    "confidence": "high",
+    "sources": [
+      "https://ridgefieldplayhouse.org/event/emerson-lake-and-palmer-ridgefield-ct-2026/",
+      "https://www.carlpalmer.com/press/2025/PressRelease-Fall2025.pdf",
+      "https://www.vividseats.com/emerson-lake-palmer-tickets/performer/24439"
+    ],
+    "exampleTitle": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
+    "researchedAt": "2026-08-23"
+  },
+  "already gone a tribute to the eagles": {
+    "displayName": "Already Gone - A Tribute to the Eagles",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "This is the New England/Tri-State-based six-piece Eagles tribute band (Mitch Kalmus, Tim McGrath, Mike Canavan, Dave Branning, Mark Gutenplan, Ray DiStephan) with a modest Facebook following of only about 423 likes, playing a 300-capacity local brewery venue alongside other regional cover/tribute acts.",
+    "confidence": "medium",
+    "sources": [
+      "https://alreadygoneband.com/",
+      "https://www.facebook.com/AlreadyGoneTribute/",
+      "https://www.bandsintown.com/v/10076318-housatonic-river-brewing"
+    ],
+    "exampleTitle": "Already Gone - A Tribute to the Eagles",
+    "researchedAt": "2026-08-23"
   }
 }
