@@ -1692,5 +1692,35 @@
     ],
     "exampleTitle": "Already Gone - A Tribute to the Eagles",
     "researchedAt": "2026-08-23"
+  },
+  "sherman chamber ensemble sce bluegrass band": {
+    "displayName": "Sherman Chamber Ensemble (SCE Bluegrass Band)",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local Sherman, CT chamber music nonprofit with a modest social following (612 Facebook likes) that puts on a free, informal annual outdoor bluegrass jamboree with community musicians; no evidence of national touring, charting, or major-venue history.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/theShermanChamberEnsemble/",
+      "https://explorewashingtonct.com/events/bluegrass-concert-by-sherman-chamber-ensemble/",
+      "https://www.scemusic.org/"
+    ],
+    "exampleTitle": "Free Bluegrass Concert — Sherman Chamber Ensemble",
+    "researchedAt": "2026-08-26"
+  },
+  "ridgefield fall arts festival": {
+    "displayName": "Ridgefield Fall Arts Festival",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established, long-running juried fine arts festival held in Ballard Park featuring 75-100+ juried artists, live music, and food vendors, organized in partnership with the Ridgefield Arts Council and Ridgefield Guild of Artists as a fixture of the town's fall foliage season.",
+    "confidence": "high",
+    "sources": [
+      "https://inridgefield.com/events/ridgefield-fall-arts-festival/",
+      "https://www.gordonfinearts.org/ridgefield-fall-art-festival-artist-application-copy",
+      "https://www.fairsandfestivals.net/events/details/2026-ridgefield-fall-arts-festival"
+    ],
+    "exampleTitle": "Ridgefield Fall Arts Festival",
+    "researchedAt": "2026-08-26"
   }
 }
