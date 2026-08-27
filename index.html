@@ -981,12 +981,18 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Aug 26, 2026",
-  "tonight": [],
+  "lastUpdated": "Aug 27, 2026",
+  "tonight": [
+    {
+      "title": "Lake & Palmer (ELP Tribute)",
+      "venue": "Daryl's House",
+      "time": "8:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · August 26–30",
+      "title": "Week 1 · August 27–30",
       "open": true,
       "events": [
         {
@@ -1005,7 +1011,7 @@ const EVENTS_DATA = {
           "desc": "A tribute act performing the monstrous catalog of prog-rock supergroup Emerson, Lake & Palmer, whose devoted tribute circuit has been filling theaters, music halls and performing arts centers on the east coast.",
           "source": "songkick.com",
           "sourceUrl": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1122,7 +1128,29 @@ const EVENTS_DATA = {
           "score": 8.5
         },
         {
-          "funQuality": 5.3,
+          "funQuality": 6.9,
+          "title": "Steve Mittelstadt (Acoustic Classic Rock)",
+          "url": "https://www.housatonicriverbrewing.com/events-1/steve-mittelstadt",
+          "dateLabel": "Sun Aug 30",
+          "time": "4:00PM–7:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Acoustic Classic Rock",
+          "priceType": "free",
+          "priceLabel": null,
+          "desc": "Grab a drink and a bite to eat and sing along with Steve as he plays all your favorite acoustic classic rock at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.7
+        },
+        {
+          "funQuality": 5.1,
           "title": "Cassatt String Quartet & Montiel",
           "url": "https://litchfieldmagazine.com/events/cassatt-string-quartet-montiel/",
           "dateLabel": "Sun Aug 30",
@@ -1141,7 +1169,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 5.8
+          "score": 5.7
         }
       ]
     },
@@ -1349,7 +1377,7 @@ const EVENTS_DATA = {
           "score": 8.2
         },
         {
-          "funQuality": 5.4,
+          "funQuality": 5.1,
           "title": "Penderecki Quartet & Schwartzman",
           "url": "https://litchfieldmagazine.com/events/penderecki-quartet-schwartzman/",
           "dateLabel": "Sun Sep 6",
@@ -1368,7 +1396,29 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 5.9
+          "score": 5.7
+        },
+        {
+          "funQuality": 5.2,
+          "title": "Borromeo String Quartet & Friends",
+          "url": "https://litchfieldmagazine.com/events/borromeo-string-quartet/",
+          "dateLabel": "Sat Sep 5",
+          "time": "7:00PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~15 mi",
+          "type": "Chamber Music",
+          "priceType": "paid",
+          "priceLabel": "$65 General Admission",
+          "desc": "The Borromeo String Quartet performs with guest musicians including violinist Nicholas Kitchen and violist Melissa Reardon.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 5.7
         }
       ]
     },
@@ -2074,7 +2124,7 @@ const EVENTS_DATA = {
           "score": 9
         },
         {
-          "funQuality": 7.6,
+          "funQuality": 8.2,
           "title": "New Milford Apple Festival",
           "url": "https://festivalnet.com/99739/New-Milford-Connecticut/Festivals/Sixth-New-Milford-Apple-Festival",
           "dateLabel": "Sat Sep 26",
@@ -2093,7 +2143,51 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8.6
+        },
+        {
+          "funQuality": 7.6,
+          "title": "Mosaica: A Global Experience Concert",
+          "url": "https://thepalacedanbury1.ticketspice.com/mosaica-92626",
+          "dateLabel": "Sat Sep 26",
+          "time": "7:30PM",
+          "venue": "The Palace Danbury",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "World Music & Dance Showcase",
+          "priceType": "paid",
+          "priceLabel": "$35",
+          "desc": "Presented by the Mexican Cultural Center of Danbury, this global showcase features live mariachi, Bollywood and Indian classical dance, Portuguese and Polynesian dance, Israeli music, and more on one stage.",
+          "source": "thepalacedanbury.com",
+          "sourceUrl": "https://thepalacedanbury.com/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.7
+        },
+        {
+          "funQuality": 7,
+          "title": "CAMA Fall Festival",
+          "url": "https://www.ctamachinery.org/events/fall-festival",
+          "dateLabel": "Fri Sep 25 – Sun Sep 27",
+          "time": "10:00AM–4:00PM",
+          "venue": "CT Antique Machinery Association Museum Grounds",
+          "venueType": "litchfield",
+          "town": "Kent, CT",
+          "dist": "~20 mi",
+          "type": "Fall Festival / Antique Machinery & Crafts",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A vibrant celebration of autumn featuring antique engines, blacksmithing and sawmill demonstrations, local artisan booths, live music, and family activities like pumpkin painting and hayrides.",
+          "source": "ctamachinery.org",
+          "sourceUrl": "https://www.ctamachinery.org/events/fall-festival",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.2
         },
         {
           "funQuality": 7.8,
@@ -2343,6 +2437,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.6
+        },
+        {
+          "funQuality": 7.4,
+          "title": "The Carole King & James Taylor Story",
+          "url": "https://thepalacedanbury1.ticketspice.com/the-carole-king-james-taylor-story",
+          "dateLabel": "Sun Oct 4",
+          "time": "4:00PM",
+          "venue": "The Palace Danbury",
+          "venueType": "danbury",
+          "town": "Danbury, CT",
+          "dist": "~8 mi",
+          "type": "Live Music / Tribute Theater",
+          "priceType": "paid",
+          "priceLabel": "$45",
+          "desc": "Fresh off sell-out runs at the Edinburgh and Adelaide Fringe festivals, acclaimed artists Phoebe Katis and Dan Clews bring this celebrated tribute to the music of Carole King and James Taylor to the Palace Danbury.",
+          "source": "thepalacedanbury.com",
+          "sourceUrl": "https://thepalacedanbury.com/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.6
         }
       ]
     },
@@ -2462,7 +2578,7 @@ const EVENTS_DATA = {
           "score": 7.7
         },
         {
-          "funQuality": 7.4,
+          "funQuality": 7.6,
           "title": "9th Annual Pets in the Park Danbury",
           "url": "https://www.bringfido.com/event/45418",
           "dateLabel": "Sun Oct 11",
@@ -2481,7 +2597,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.6
+          "score": 7.7
         }
       ]
     },
