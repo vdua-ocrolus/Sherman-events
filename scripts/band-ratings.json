@@ -1722,5 +1722,36 @@
     ],
     "exampleTitle": "Ridgefield Fall Arts Festival",
     "researchedAt": "2026-08-26"
+  },
+  "sherman chamber ensemble bluegrass concert": {
+    "displayName": "Sherman Chamber Ensemble (Bluegrass Concert)",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local nonprofit chamber-music group's free annual outdoor bluegrass jam; a comparable recent installment of this same touring series drew only about 60 attendees, and it's a donation-based community event, not a touring act with national profile.",
+    "confidence": "medium",
+    "sources": [
+      "https://kentdispatch.org/annual-bluegrass-concert-moves-indoors/",
+      "https://explorewashingtonct.com/events/bluegrass-concert-by-sherman-chamber-ensemble/",
+      "https://www.scemusic.org/ticketsandprograms"
+    ],
+    "exampleTitle": "Free Bluegrass Concert — Sherman Chamber Ensemble",
+    "researchedAt": "2026-08-28"
+  },
+  "beautiful the carole king musical a c t of ct production": {
+    "displayName": "Beautiful: The Carole King Musical (A.C.T. of CT production)",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A licensed regional staging of the Tony/Grammy-winning Broadway musical at A.C.T. of CT, an Equity professional 184-seat theater founded by Broadway veterans that has itself earned a Grammy nomination for a cast album and regularly sells out; the source material is a major Broadway hit, but this specific production is a small regional/community theater run, not the national tour or Broadway cast.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.actofct.org/",
+      "https://www.actofct.org/plan-your-visit",
+      "https://ctvisit.com/listings/act-contemporary-theatre-connecticut",
+      "https://www.tripadvisor.com/Attraction_Review-g33900-d14202190-Reviews-ACT_of_Connecticut-Ridgefield_Connecticut.html"
+    ],
+    "exampleTitle": "Beautiful: The Carole King Musical — A.C.T. of Connecticut, Ridgefield, CT",
+    "researchedAt": "2026-08-28"
   }
 }
