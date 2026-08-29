@@ -1753,5 +1753,50 @@
     ],
     "exampleTitle": "Beautiful: The Carole King Musical — A.C.T. of Connecticut, Ridgefield, CT",
     "researchedAt": "2026-08-28"
+  },
+  "sherman chamber ensemble bluegrass jamboree": {
+    "displayName": "Sherman Chamber Ensemble (Bluegrass Jamboree)",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local Sherman, CT-based chamber ensemble with about 600 Facebook followers that puts on an annual free, donation-based outdoor bluegrass jamboree featuring its own musicians and community 'grassroots' friends; no evidence of national touring, charting, or major-venue play.",
+    "confidence": "medium",
+    "sources": [
+      "https://explorewashingtonct.com/events/bluegrass-concert-by-sherman-chamber-ensemble/",
+      "https://www.facebook.com/theShermanChamberEnsemble/",
+      "https://www.scemusic.org/"
+    ],
+    "exampleTitle": "Free Bluegrass Concert — Sherman Chamber Ensemble",
+    "researchedAt": "2026-08-29"
+  },
+  "john gorka": {
+    "displayName": "John Gorka",
+    "funQuality": 8.3,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "Nationally recognized folk singer-songwriter dubbed by Rolling Stone as \"the preeminent male singer-songwriter of what has been dubbed the New Folk Movement,\" with a 17-album discography on Red House/Windham Hill, a Kerrville Folk Festival New Folk Award, Billboard folk chart success, and collaborations/tours with artists like Mary Chapin Carpenter, Ani DiFranco, and Nanci Griffith.",
+    "confidence": "high",
+    "sources": [
+      "https://en.wikipedia.org/wiki/John_Gorka",
+      "https://www.johngorka.com/bio-2/",
+      "https://www.redhouserecords.com/artists/john-gorka/"
+    ],
+    "exampleTitle": "John Gorka",
+    "researchedAt": "2026-08-29"
+  },
+  "new milford apple festival": {
+    "displayName": "New Milford Apple Festival",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, family-oriented annual town festival on the New Milford Green now in its 5th-6th year, featuring roughly 70 vendor booths, kids' activities, an apple bake-off, and inflatables — a well-liked but modest community event without evidence of major regional press or large documented attendance.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.newmilfordnow.org/stories/new-milford-to-welcome-autumn-with-apple-festival",
+      "https://www.newmilfordnow.org/events/5th-annual-new-milford-apple-festival",
+      "https://litchfieldmagazine.com/events/4th-annual-new-milford-apple-festival/"
+    ],
+    "exampleTitle": "New Milford Apple Festival",
+    "researchedAt": "2026-08-29"
   }
 }
