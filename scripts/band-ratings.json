@@ -1798,5 +1798,35 @@
     ],
     "exampleTitle": "New Milford Apple Festival",
     "researchedAt": "2026-08-29"
+  },
+  "sherman chamber ensemble bluegrass band": {
+    "displayName": "Sherman Chamber Ensemble (Bluegrass Band)",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local Sherman, CT chamber music nonprofit whose annual free outdoor bluegrass jam features its own musicians plus 'area musicians' at small venues like a park, clubhouse lawn, or restaurant lawn with limited/BYO seating; its Facebook page has only 612 likes, indicating a small, devoted local following rather than any regional or national draw.",
+    "confidence": "high",
+    "sources": [
+      "https://www.facebook.com/theShermanChamberEnsemble/",
+      "https://explorewashingtonct.com/events/bluegrass-concert-by-sherman-chamber-ensemble/",
+      "https://www.broadwayworld.com/bwwmusic/article/Sherman-Chamber-Ensemble-to-Offer-Free-Bluegrass-Concerts-Labor-Day-Weekend-20140818"
+    ],
+    "exampleTitle": "Free Bluegrass Concert — Sherman Chamber Ensemble",
+    "researchedAt": "2026-09-01"
+  },
+  "9th annual pets in the park danbury": {
+    "displayName": "9th Annual Pets in the Park Danbury",
+    "funQuality": 7.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (9th annual) free/low-cost ($3) community pet festival at Candlewood Town Park featuring local vendors, an animal blessing, pet costume contest, and rescue groups, sponsored by local businesses like Caraluzzi's Markets — a well-established recurring local event but modest in scale with no evidence of large regional attendance figures or major press coverage.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.crazyforeventsct.com/?event_listing=pets-in-the-park-danbury-ct",
+      "https://www.hellofairfieldcounty.com/events/pets-in-the-park-danbury",
+      "https://www.bringfido.com/event/45418"
+    ],
+    "exampleTitle": "9th Annual Pets in the Park Danbury",
+    "researchedAt": "2026-09-01"
   }
 }
