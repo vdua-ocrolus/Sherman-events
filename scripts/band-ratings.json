@@ -1828,5 +1828,49 @@
     ],
     "exampleTitle": "9th Annual Pets in the Park Danbury",
     "researchedAt": "2026-09-01"
+  },
+  "annual labor day art sale cornwall library benefit": {
+    "displayName": "Annual Labor Day Art Sale (Cornwall Library Benefit)",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (7th annual) community library benefit art sale that draws local and regional attendees with donated works; organizers call it a 'legendary' and 'highly popular' local tradition, and some past sales have featured donated works attributed to notable historical artists, but it remains a small-town fundraiser rather than a major draw event.",
+    "confidence": "medium",
+    "sources": [
+      "https://cornwalllibrary.org/labor-day-art-sale/",
+      "https://theberkshireedge.com/event/benefit-art-sale-in-scenic-cornwall-ct/"
+    ],
+    "exampleTitle": "Annual Labor Day Art Sale",
+    "researchedAt": "2026-09-02"
+  },
+  "plein air litchfield quick paint competition community night": {
+    "displayName": "Plein Air Litchfield: Quick Paint Competition & Community Night",
+    "funQuality": 7.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A rapidly growing juried plein air festival that expanded from a one-day 2024 event with 24-25 artists to a multi-day 2025 festival with 34 artists from 17 states and $8,500 in prizes; regional press calls it 'one of New England's most anticipated cultural celebrations' with growing national reputation among plein air artists, though the free community Quick Paint/Community Night portion is the lower-key public-facing piece of the festival.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.pleinairlitchfield.com/for-artists",
+      "https://litchfieldmagazine.com/onourradar/plein-airs-artistic-fall-celebration/",
+      "https://visitlitchfieldct.com/featured-events/"
+    ],
+    "exampleTitle": "Plein Air Litchfield: Quick Paint Competition & Community Night",
+    "researchedAt": "2026-09-02"
+  },
+  "plein air litchfield hollister house paintings show sale": {
+    "displayName": "Plein Air Litchfield: Hollister House Paintings Show & Sale",
+    "funQuality": 7.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Part of the same expanding Plein Air Litchfield festival, which grew from 24 artists/one day in 2024 to 34 artists from 17 states in 2025 with $8,500 in awards and press describing it as gaining a 'growing national reputation' among plein air painters; the Litchfield Inn show/sale is a satellite exhibition within this broader juried event rather than a separate draw of its own.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.pleinairlitchfield.com/for-artists",
+      "https://litchfieldmagazine.com/onourradar/plein-airs-artistic-fall-celebration/",
+      "https://visitlitchfieldct.com/featured-events/"
+    ],
+    "exampleTitle": "Plein Air Litchfield: Hollister House Paintings Show & Sale",
+    "researchedAt": "2026-09-02"
   }
 }
