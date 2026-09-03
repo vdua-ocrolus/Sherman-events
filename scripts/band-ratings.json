@@ -1872,5 +1872,64 @@
     ],
     "exampleTitle": "Plein Air Litchfield: Hollister House Paintings Show & Sale",
     "researchedAt": "2026-09-02"
+  },
+  "annual labor day art sale the cornwall library": {
+    "displayName": "Annual Labor Day Art Sale (The Cornwall Library)",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (7th annual) local library benefit art sale in a tiny Litchfield County town, drawing area residents and collectors over a weekend; described locally as a beloved tradition but with no evidence of regional-scale attendance or press beyond hyperlocal outlets.",
+    "confidence": "medium",
+    "sources": [
+      "https://cornwalllibrary.org/labor-day-art-sale/",
+      "https://theberkshireedge.com/event/benefit-art-sale-in-scenic-cornwall-ct/"
+    ],
+    "exampleTitle": "Annual Labor Day Art Sale",
+    "researchedAt": "2026-09-03"
+  },
+  "sherman chamber ensemble bluegrass band sherman town center": {
+    "displayName": "Sherman Chamber Ensemble Bluegrass Band (Sherman Town Center)",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local nonprofit chamber-music organization's informal bluegrass side-project, performing a free annual outdoor community concert; local news coverage of a similarly-sized sister event noted only about 60 attendees, and the group's Facebook following is modest (612 likes).",
+    "confidence": "medium",
+    "sources": [
+      "https://kentdispatch.org/annual-bluegrass-concert-moves-indoors/",
+      "https://www.facebook.com/theShermanChamberEnsemble/",
+      "https://www.scemusic.org/event-details/bluegrass-jamboree-sherman-2"
+    ],
+    "exampleTitle": "Bluegrass Jamboree — Sherman Chamber Ensemble",
+    "researchedAt": "2026-09-03"
+  },
+  "sherman chamber ensemble bluegrass band judy black memorial park washington depot": {
+    "displayName": "Sherman Chamber Ensemble Bluegrass Band (Judy Black Memorial Park, Washington Depot)",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "Same small chamber-ensemble bluegrass side-project performing its annual free outdoor concert at a small-town park; evidence points to a modest, low-key local community draw (comparable sister concert drew roughly 60 people) rather than a regional touring act.",
+    "confidence": "medium",
+    "sources": [
+      "https://explorewashingtonct.com/events/bluegrass-concert-by-sherman-chamber-ensemble/",
+      "https://kentdispatch.org/annual-bluegrass-concert-moves-indoors/",
+      "https://judyblackpark.org/"
+    ],
+    "exampleTitle": "Bluegrass Jamboree — Sherman Chamber Ensemble (Washington)",
+    "researchedAt": "2026-09-03"
+  },
+  "community day at the aldrich contemporary art museum": {
+    "displayName": "Community Day at The Aldrich Contemporary Art Museum",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A free family/community day at a respected, nationally-recognized contemporary art institution in a designated Cultural District; The Aldrich is described as occupying a notable niche in the contemporary art world, though this specific day is a recurring free-admission family program rather than a ticketed blockbuster event.",
+    "confidence": "medium",
+    "sources": [
+      "https://thealdrich.org/events/",
+      "https://www.wonderfulmuseums.com/museum/the-aldrich-contemporary-art-museum-main-street-ridgefield-ct/",
+      "https://thealdrich.org/visit"
+    ],
+    "exampleTitle": "Community Day at The Aldrich",
+    "researchedAt": "2026-09-03"
   }
 }
