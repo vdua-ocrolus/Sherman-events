@@ -1931,5 +1931,20 @@
     ],
     "exampleTitle": "Community Day at The Aldrich",
     "researchedAt": "2026-09-03"
+  },
+  "a weekend in the life": {
+    "displayName": "A Weekend in the Life (Gilmore Girls Fan Convention)",
+    "funQuality": 9.0,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Ticketed fan convention run by Decade Days in New Milford, the Connecticut town widely identified as the inspiration for Stars Hollow, drawing national Gilmore Girls fandom with cast guests Sean Gunn and Scott Patterson, panels, photo ops and a vendor marketplace; covered by the Danbury News-Times and regional CT film/TV press, with panel seating sold out in advance.",
+    "confidence": "high",
+    "sources": [
+      "https://www.newstimes.com/things-to-do/article/gilmore-girls-festival-new-milford-ct-2026-22411112.php",
+      "https://ctvideoservices.com/film-tv-connecticut/news/gilmore-girls-new-milford-festival-2026",
+      "https://smalltownconvention.com/"
+    ],
+    "exampleTitle": "A Weekend in the Life — Gilmore Girls Fan Convention",
+    "researchedAt": "2026-09-03"
   }
 }

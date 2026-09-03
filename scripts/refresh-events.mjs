@@ -42,6 +42,11 @@ const SOURCES = [
   ['Ridgefield Library', 'https://ridgefieldlibrary.librarymarket.com/events/upcoming'],
   ['New Milford Library', 'https://newmilford.libcal.com/'],
   ['Sherman Library', 'https://www.shermanlibrary.org/monthly-calendar'],
+  // Big one-off festivals and ticketed conventions are usually absent from town and venue
+  // calendars — they live on the organizer's site, on Eventbrite, or in the local paper.
+  ['News-Times things to do', 'https://www.newstimes.com/things-to-do/'],
+  ['Eventbrite (New Milford)', 'https://www.eventbrite.com/d/ct--new-milford/events/'],
+  ['Eventbrite (Danbury area)', 'https://www.eventbrite.com/d/ct--danbury/events/'],
 ];
 
 // Curation overrides: deterministic FunQuality floors for known-strong local acts the
@@ -245,6 +250,10 @@ function parseMD(label) {
 const PINNED_EVENTS = [
   { score: 8.7, funQuality: 8.4, title: "New Milford Rock the Block — Nashville Drive", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Jul 16", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with country cover band Nashville Drive, street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
   { score: 8.7, funQuality: 8.4, title: "New Milford Rock the Block — The Pop Rocks", url: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", dateLabel: "Thu Aug 13", time: "6:30PM", venue: "Bank Street", venueType: "", town: "New Milford, CT", dist: "~10 mi", type: "Free Block Party / Live Music", priceType: "free", priceLabel: "Free", desc: "Free downtown block party on Bank Street with Connecticut 80s favorites The Pop Rocks, plus street games, local eats, and sidewalk sales.", source: "newmilfordnow.org", sourceUrl: "https://www.newmilfordnow.org/stories/rock-the-block-to-transform-bank-street", isTonight: false, isPast: false, isNF: false },
+  // Gilmore Girls fan convention. The model misses this every run: it is on no town or
+  // venue calendar (private convention, organizer site + Eventbrite only) and is
+  // deliberately NOT branded "Gilmore Girls" for licensing, so a town search skips it.
+  { score: 9.2, funQuality: 9.0, title: "A Weekend in the Life — Gilmore Girls Fan Convention", url: "https://smalltownconvention.com/", dateLabel: "Fri Sep 4 – Sun Sep 6", time: "12PM–10PM", venue: "Downtown New Milford (multiple venues)", venueType: "", town: "New Milford, CT", dist: "~7 mi", type: "Fan Convention / Festival", priceType: "paid", priceLabel: "Ticketed", desc: "Decade Days brings its Gilmore Girls-inspired convention back to New Milford, the town behind Stars Hollow, with cast guests Sean Gunn and Scott Patterson, panels, photo ops, and a vendor marketplace. Ticketed through Eventbrite; much of Friday's downtown programming is open to the public.", source: "smalltownconvention.com", sourceUrl: "https://smalltownconvention.com/", isTonight: false, isPast: false, isNF: false },
 ];
 
 // A week's declared date span, parsed from its title (e.g. "July 27 – August 2",
@@ -597,6 +606,7 @@ From Litchfield Magazine (litchfieldmagazine.com/things-to-do), include the BEST
 RULES:
 - Ground every event in a real source and set a real sourceUrl. Do NOT invent events, dates, times, or prices. Accuracy over volume — omit anything you cannot confirm.
 - Quality over quantity — this is a curated guide, not a full calendar. SKIP routine no-draw filler: open-mic nights, generic recurring bar/restaurant background music with no following, tiny library storytimes, and similar. Include an event only if a discerning local would actually consider going.
+- DO NOT MISS BIG ONE-OFF FESTIVALS, CONVENTIONS, AND FAN EVENTS. These are among the most valuable listings in the guide and the easiest to miss: they are usually absent from every town and venue calendar because an outside organizer runs them, so they live only on that organizer's own site, on Eventbrite, or in the local paper. They are also frequently branded under a name that does NOT contain the thing people know them by (a Gilmore Girls fan convention officially titled "A Weekend in the Life", for instance). For EACH town, web_search specifically for named festivals, conventions, fan events, fairs, and expos in the next 8 weeks - not just "events in <town>". A ticket price is NEVER a reason to skip an event with real draw.
 - Every event must be today (${todayLabel}) or later; set isPast to false and leave the past[] array empty ([]).
 - STAY LOCAL: this is a Candlewood Lake guide, roughly a 25-mile radius. Do NOT include events in Norfolk, Hartford, Woodbridge, New Haven, Waterbury, Bridgeport, Stamford, Norwalk, or anywhere ~30+ minutes away, no matter how good the act. Farthest acceptable towns: Litchfield, Torrington, Woodbury, Kent, Katonah/Caramoor, Pawling, plus Levitt Pavilion in Westport (free outdoor concerts) as a deliberate exception.
 - HOMETOWN COVERAGE IS A PRIORITY: Sherman and New Fairfield are the closest towns and matter most. ALWAYS fetch their community calendars (shermanct.gov community-events page, newfairfield.org community calendar) and the Sherman Playhouse / Sherman Players, and include every qualifying event you find there (live music, theater, comedy, festivals, markets, carnivals). Do not skip a town just because it's small. Tag each event with the town it physically takes place in — the Sherman Players / Sherman Playhouse is "Sherman, CT", not the venue's mailing town.
