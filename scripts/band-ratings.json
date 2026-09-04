@@ -1934,7 +1934,7 @@
   },
   "a weekend in the life": {
     "displayName": "A Weekend in the Life (Gilmore Girls Fan Convention)",
-    "funQuality": 9.0,
+    "funQuality": 9,
     "tier": "non-music",
     "isMusicAct": false,
     "draw": "Ticketed fan convention run by Decade Days in New Milford, the Connecticut town widely identified as the inspiration for Stars Hollow, drawing national Gilmore Girls fandom with cast guests Sean Gunn and Scott Patterson, panels, photo ops and a vendor marketplace; covered by the Danbury News-Times and regional CT film/TV press, with panel seating sold out in advance.",
@@ -1946,5 +1946,77 @@
     ],
     "exampleTitle": "A Weekend in the Life — Gilmore Girls Fan Convention",
     "researchedAt": "2026-09-03"
+  },
+  "annual labor day art sale": {
+    "displayName": "Annual Labor Day Art Sale",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running, well-loved local library benefit art sale now in its seventh year, drawing community donors and shoppers, but it is a small-town fundraiser with no regional press beyond local outlets like The Berkshire Edge and Kent News.",
+    "confidence": "medium",
+    "sources": [
+      "https://cornwalllibrary.org/labor-day-art-sale/",
+      "https://theberkshireedge.com/event/benefit-art-sale-in-scenic-cornwall-ct/",
+      "https://kentgtd.org/labor-day-art-sale-will-benefit-cornwall-library/"
+    ],
+    "exampleTitle": "Annual Labor Day Art Sale",
+    "researchedAt": "2026-09-04"
+  },
+  "sherman chamber ensemble bluegrass jamboree sherman": {
+    "displayName": "Sherman Chamber Ensemble Bluegrass Jamboree (Sherman)",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A well-established annual free outdoor bluegrass event by the respected local Sherman Chamber Ensemble, whose regular chamber concerts sell out, but the group itself has under 1,000 Facebook likes and no national or casino-level profile.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.scemusic.org/event-details/bluegrass-jamboree-sherman-2",
+      "https://www.facebook.com/theShermanChamberEnsemble/"
+    ],
+    "exampleTitle": "Bluegrass Jamboree — Sherman Chamber Ensemble",
+    "researchedAt": "2026-09-04"
+  },
+  "sherman chamber ensemble bluegrass jamboree washington depot": {
+    "displayName": "Sherman Chamber Ensemble Bluegrass Jamboree (Washington Depot)",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "Same well-regarded local chamber group performing its annual free bluegrass jamboree at a second town venue; strong local reputation and sold-out chamber concerts, but small social following and no major-venue or national credits found.",
+    "confidence": "medium",
+    "sources": [
+      "https://explorewashingtonct.com/events/bluegrass-concert-by-sherman-chamber-ensemble/",
+      "https://www.facebook.com/theShermanChamberEnsemble/"
+    ],
+    "exampleTitle": "Bluegrass Jamboree — Sherman Chamber Ensemble (Washington)",
+    "researchedAt": "2026-09-04"
+  },
+  "100 proof": {
+    "displayName": "100 Proof",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A Connecticut-based rock/country cover band formed in 2023, playing regional bars and breweries across CT/NY/NH/MA; it has a modest Instagram following (290) and no evidence of casino, theater, or festival-headliner bookings — a genuine working bar band.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.100proofct.com/",
+      "https://www.instagram.com/100proofct/",
+      "https://www.bandmix.com/100-proof-ct/"
+    ],
+    "exampleTitle": "100 Proof",
+    "researchedAt": "2026-09-04"
+  },
+  "community day at the aldrich": {
+    "displayName": "Community Day at The Aldrich",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free family day at a respected, historically significant contemporary art museum (only one in CT dedicated to contemporary art, founded 1964) offering wide-ranging activities tied to its current exhibition, but it is a routine recurring community program rather than a major draw event.",
+    "confidence": "medium",
+    "sources": [
+      "https://thealdrich.org/events/",
+      "https://en.wikipedia.org/wiki/The_Aldrich_Contemporary_Art_Museum"
+    ],
+    "exampleTitle": "Community Day at The Aldrich",
+    "researchedAt": "2026-09-04"
   }
 }

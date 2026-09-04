@@ -981,38 +981,49 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Sep 3, 2026",
-  "tonight": [],
+  "lastUpdated": "Sep 4, 2026",
+  "tonight": [
+    {
+      "name": "A Weekend in the Life — Gilmore Girls Fan Convention (Opening Day)",
+      "venue": "Downtown New Milford (multiple venues)",
+      "time": "12:00PM–10:00PM"
+    },
+    {
+      "name": "Kelli Baker: The Phoenix of Modern Blues",
+      "venue": "Daryl's House",
+      "time": "8:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · September 3–6",
+      "title": "Week 1 · September 4–6",
       "open": true,
       "events": [
         {
-          "funQuality": 9.3,
-          "title": "Marty Stuart and His Fabulous Superlatives",
-          "url": "https://ridgefieldplayhouse.org/event/marty-stuart-ridgefield-ct-2026/",
-          "dateLabel": "Thu Sep 3",
-          "time": "8:00PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Country / Americana Legend",
+          "funQuality": 9,
+          "title": "A Weekend in the Life — Gilmore Girls Fan Convention",
+          "url": "https://smalltownconvention.com/",
+          "dateLabel": "Fri Sep 4 – Sun Sep 6",
+          "time": "12PM–10PM",
+          "venue": "Downtown New Milford (multiple venues)",
+          "venueType": "",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Fan Convention / Festival",
           "priceType": "paid",
-          "priceLabel": null,
-          "desc": "GRAMMY-winning country and Americana icon Marty Stuart brings his acclaimed band The Fabulous Superlatives to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "priceLabel": "Ticketed",
+          "desc": "Decade Days brings its Gilmore Girls-inspired convention back to New Milford, the town behind Stars Hollow, with cast guests including Chad Michael Murray, Matt Czuchry, Scott Patterson, Sean Gunn, Gregg Henry, Yanic Truesdale, and more, plus panels, photo ops, and a vendor marketplace. Ticketed through Eventbrite; much of Friday's downtown programming is open to the public.",
+          "source": "smalltownconvention.com",
+          "sourceUrl": "https://smalltownconvention.com/",
           "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.9
+          "score": 9.2
         },
         {
-          "funQuality": 8.5,
+          "funQuality": 7.1,
           "title": "Annual Labor Day Art Sale",
           "url": "https://litchfieldmagazine.com/events/annual-labor-day-art-sale/",
           "dateLabel": "Fri Sep 4",
@@ -1027,11 +1038,33 @@ const EVENTS_DATA = {
           "desc": "The legendary Labor Day Weekend Benefit Art Sale returns to The Cornwall Library, marking its eighth anniversary.",
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.9
+          "score": 6.9
+        },
+        {
+          "funQuality": 6.7,
+          "title": "Kelli Baker: The Phoenix of Modern Blues",
+          "url": "https://www.ticketmaster.com/daryls-house-tickets-pawling/venue/338757",
+          "dateLabel": "Fri Sep 4",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music / Blues",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Rising blues artist Kelli Baker brings her powerhouse vocals and modern blues sound to the intimate Daryl's House stage.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 6.9
         },
         {
           "funQuality": 6.5,
@@ -1049,7 +1082,7 @@ const EVENTS_DATA = {
           "desc": "Lost Rebel plays 70s favorites from Fleetwood Mac, The Eagles, Tom Petty, Creedence Clearwater Revival, Lynyrd Skynyrd, and The Allman Brothers at HRB.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1190,9 +1223,9 @@ const EVENTS_DATA = {
         {
           "funQuality": 8.5,
           "title": "Bluegrass Jamboree — Sherman Chamber Ensemble (Washington)",
-          "url": "https://www.scemusic.org/event-details/bluegrass-jamboree-washington-2026",
+          "url": "https://litchfieldmagazine.com/events/free-bluegrass-concert/",
           "dateLabel": "Sun Sep 6",
-          "time": "See website for time",
+          "time": "5:30PM",
           "venue": "Judy Black Memorial Park and Gardens",
           "venueType": "litchfield",
           "town": "Washington Depot, CT",
@@ -1201,13 +1234,35 @@ const EVENTS_DATA = {
           "priceType": "free",
           "priceLabel": "Free (suggested $10 donation)",
           "desc": "The Sherman Chamber Ensemble returns to Judy Black Memorial Park and Gardens for its annual hand-clapping, foot-stomping Bluegrass Jamboree.",
-          "source": "scemusic.org",
-          "sourceUrl": "https://www.scemusic.org/ticketsandprograms",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": false,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
           "score": 8.2
+        },
+        {
+          "funQuality": 6.4,
+          "title": "Borromeo String Quartet & Friends",
+          "url": "https://litchfieldmagazine.com/events/borromeo-string-quartet/",
+          "dateLabel": "Sat Sep 5",
+          "time": "7:00PM",
+          "venue": "Litchfield County venue",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~15 mi",
+          "type": "Chamber Music",
+          "priceType": "paid",
+          "priceLabel": "$65 General Admission",
+          "desc": "Borromeo String Quartet & Friends, featuring Nicholas Kitchen on violin and Melissa Reardon on viola, perform an evening of chamber music.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 6.6
         },
         {
           "funQuality": 5.1,
@@ -1232,25 +1287,26 @@ const EVENTS_DATA = {
           "score": 5.7
         },
         {
-          "score": 9.2,
-          "funQuality": 9,
-          "title": "A Weekend in the Life — Gilmore Girls Fan Convention",
-          "url": "https://smalltownconvention.com/",
-          "dateLabel": "Fri Sep 4 – Sun Sep 6",
-          "time": "12PM–10PM",
-          "venue": "Downtown New Milford (multiple venues)",
-          "venueType": "",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Fan Convention / Festival",
+          "funQuality": 9.3,
+          "title": "Marty Stuart and His Fabulous Superlatives",
+          "url": "https://ridgefieldplayhouse.org/event/marty-stuart-ridgefield-ct-2026/",
+          "dateLabel": "Thu Sep 3",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Country / Americana Legend",
           "priceType": "paid",
-          "priceLabel": "Ticketed",
-          "desc": "Decade Days brings its Gilmore Girls-inspired convention back to New Milford, the town behind Stars Hollow, with cast guests Sean Gunn and Scott Patterson, panels, photo ops, and a vendor marketplace. Ticketed through Eventbrite; much of Friday's downtown programming is open to the public.",
-          "source": "smalltownconvention.com",
-          "sourceUrl": "https://smalltownconvention.com/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false
+          "priceLabel": null,
+          "desc": "GRAMMY-winning country and Americana icon Marty Stuart brings his acclaimed band The Fabulous Superlatives to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.9
         }
       ]
     },
@@ -1326,26 +1382,26 @@ const EVENTS_DATA = {
           "score": 8.5
         },
         {
-          "funQuality": 8.3,
-          "title": "John Gorka",
-          "url": "https://litchfieldmagazine.com/events/john-gorka/",
+          "funQuality": 6.8,
+          "title": "APB",
+          "url": "https://concerts.consequence.net/events/apb-at-daryls-house-on-2026-09-10-20-00",
           "dateLabel": "Thu Sep 10",
-          "time": "7:00PM–9:00PM",
-          "venue": "Litchfield County venue",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~15 mi",
-          "type": "Folk / Singer-Songwriter",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music / Post-Punk & New Wave",
           "priceType": "paid",
-          "priceLabel": "$40",
-          "desc": "Rolling Stone once called him the preeminent male singer-songwriter of the New Folk Movement; the world-renowned John Gorka brings his rich baritone and acclaimed songcraft to an intimate show.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "priceLabel": null,
+          "desc": "Scottish post-punk pioneers APB, known for early '80s alternative radio hits and dance-club favorites, bring their new wave sound to Daryl's House.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
           "isTonight": false,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.9
+          "score": 7
         },
         {
           "funQuality": 6.5,
@@ -1491,7 +1547,7 @@ const EVENTS_DATA = {
           "title": "Inherit the Wind (Sherman Players — Preview Night)",
           "url": "https://shermanplayers.org/2026/01/01/season-details/",
           "dateLabel": "Thu Sep 17",
-          "time": "Evening",
+          "time": "8:00PM",
           "venue": "Sherman Playhouse",
           "venueType": "sherman",
           "town": "Sherman, CT",
@@ -1888,6 +1944,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 8
+        },
+        {
+          "funQuality": 7.6,
+          "title": "New Fairfield Town Fair",
+          "url": "https://www.newfairfield.org/Home/Components/Calendar/Event/12048/1358",
+          "dateLabel": "Sat Sep 26",
+          "time": "See website for hours",
+          "venue": "New Fairfield town grounds",
+          "venueType": "newfairfield",
+          "town": "New Fairfield, CT",
+          "dist": "~4 mi",
+          "type": "Community Fair / Family Festival",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "New Fairfield's community-wide Town Fair returns with a rain date of Sunday, September 27, bringing the hometown crowd out for a day of local fun.",
+          "source": "newfairfield.org",
+          "sourceUrl": "https://www.newfairfield.org/community/community-event-calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": true,
+          "funQualityNote": null,
+          "score": 8.2
         },
         {
           "funQuality": 6.6,
@@ -2315,7 +2393,7 @@ const EVENTS_DATA = {
           "score": 6.9
         },
         {
-          "funQuality": 7.9,
+          "funQuality": 8.1,
           "title": "The Mighty Ploughboys",
           "url": "https://www.housatonicriverbrewing.com/events-1/the-mighty-ploughboys-6",
           "dateLabel": "Sun Oct 4",
@@ -2334,7 +2412,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.4
+          "score": 8.5
         },
         {
           "funQuality": 7.4,
@@ -2410,7 +2488,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8.4,
+          "funQuality": 6.7,
           "title": "100 Proof",
           "url": "https://www.housatonicriverbrewing.com/events-1/100-proof",
           "dateLabel": "Fri Oct 9",
@@ -2429,7 +2507,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.7
+          "score": 7.5
         },
         {
           "funQuality": 9.3,
@@ -2452,6 +2530,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 8.9
+        },
+        {
+          "funQuality": 6.8,
+          "title": "Disciple of The Garden - The Legacy of Chris Cornell",
+          "url": "https://www.housatonicriverbrewing.com/events-1/disciple-of-the-garden",
+          "dateLabel": "Sat Oct 10",
+          "time": "7:00PM–10:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Chris Cornell & Soundgarden Tribute",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Disciple of the Garden is a heartfelt tribute dedicated to celebrating the legacy of the legendary Chris Cornell of Soundgarden and Audioslave.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.6
         },
         {
           "funQuality": 6.8,
@@ -2501,7 +2601,7 @@ const EVENTS_DATA = {
           "funQuality": 7.4,
           "title": "9th Annual Pets in the Park Danbury",
           "url": "https://www.bringfido.com/event/45418",
-          "dateLabel": "Sat Oct 10",
+          "dateLabel": "Sun Oct 11",
           "time": "11:00AM–4:00PM",
           "venue": "Danbury Town Park (Candlewood Town Park)",
           "venueType": "danbury",
@@ -2637,7 +2737,7 @@ const EVENTS_DATA = {
           "score": 8.3
         },
         {
-          "funQuality": 8.5,
+          "funQuality": 7.6,
           "title": "Community Day at The Aldrich",
           "url": "https://thealdrich.org/events/community-day-2",
           "dateLabel": "Sat Oct 17",
@@ -2656,7 +2756,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.4
+          "score": 7.7
         },
         {
           "funQuality": 7.8,
@@ -2701,6 +2801,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.6
+        },
+        {
+          "funQuality": 6.8,
+          "title": "Ballet Hispánico's BH2",
+          "url": "https://ridgefieldplayhouse.org/event/ballet-hispanico-ridgefield-ct-2026/",
+          "dateLabel": "Sun Oct 18",
+          "time": "4:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Dance",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Ballet Hispánico's second company BH2 brings vibrant, Latino-rooted contemporary dance to the Ridgefield Playhouse stage.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.2
         }
       ]
     },
@@ -2798,28 +2920,6 @@ const EVENTS_DATA = {
           "score": 6.8
         },
         {
-          "funQuality": 7.4,
-          "title": "Almost Taylor - Tribute Band Live",
-          "url": "https://allevents.in/danbury/all",
-          "dateLabel": "Sat Oct 24",
-          "time": "7:00PM",
-          "venue": "The Palace Danbury",
-          "venueType": "danbury",
-          "town": "Danbury, CT",
-          "dist": "~8 mi",
-          "type": "Live Music / Taylor Swift Tribute",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A high-energy Taylor Swift tribute band brings a family-friendly night of hit-filled performance to the historic Palace Theatre.",
-          "source": "allevents.in",
-          "sourceUrl": "https://allevents.in/danbury/all",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.6
-        },
-        {
           "funQuality": 6.6,
           "title": "123 Andrés – ¡No Tengo Miedo! – A Bilingual Concert for Halloween",
           "url": "https://ridgefieldplayhouse.org/event/123-andres-ridgefield-ct-2026/",
@@ -2890,6 +2990,18 @@ const EVENTS_DATA = {
   ],
   "past": [],
   "daryls": [
+    {
+      "date": "Fri Sep 4, 8:00PM",
+      "title": "Kelli Baker: The Phoenix of Modern Blues"
+    },
+    {
+      "date": "Thu Sep 10, 8:00PM",
+      "title": "APB"
+    },
+    {
+      "date": "Wed Sep 23, 7:00PM",
+      "title": "Joshua Radin"
+    },
     {
       "date": "Sun Sep 27, 7:00PM",
       "title": "California Guitar Trio"
