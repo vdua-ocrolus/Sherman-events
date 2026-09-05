@@ -2018,5 +2018,65 @@
     ],
     "exampleTitle": "Community Day at The Aldrich",
     "researchedAt": "2026-09-04"
+  },
+  "sherman players inherit the wind preview night": {
+    "displayName": "Sherman Players — Inherit the Wind (Preview Night)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A volunteer community theater troupe (marking its 100th season) staging a classic courtroom drama in a converted 19th-century church venue; covered only by local/regional culture outlets emphasizing its grassroots, all-volunteer, non-commercial nature rather than any major draw.",
+    "confidence": "high",
+    "sources": [
+      "https://shermanplayers.org/2026/01/01/season-details/",
+      "https://lakevillejournal.com/sherman-players-celebrate-a-century-of-community-theater"
+    ],
+    "exampleTitle": "Inherit the Wind (Sherman Players — Preview Night)",
+    "researchedAt": "2026-09-05"
+  },
+  "new milford riverfest": {
+    "displayName": "New Milford RiverFest",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established, long-running (since 2018) two-day town festival at Young's Field with a certified 5K, kids' events, food trucks, a beer/wine garden, local business sponsorships (including a law firm as 'Gold Sponsor'), and consistent multi-year local newspaper coverage, though it is a free community event rather than a major regional draw.",
+    "confidence": "high",
+    "sources": [
+      "https://patch.com/connecticut/newmilford/new-milford-riverfest-returns-music-food-family-events",
+      "https://www.newstimes.com/newmilford/article/new-milford-riverfest-activities-2024-19795674.php",
+      "https://www.newmilfordnow.org/stories/celebration-of-riverfront-to-take-center-stage-at-riverfest"
+    ],
+    "exampleTitle": "New Milford RiverFest",
+    "researchedAt": "2026-09-05"
+  },
+  "the mighty ploughboys": {
+    "displayName": "The Mighty Ploughboys",
+    "funQuality": 8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A Connecticut-based Celtic rock band active since 2007 that has headlined Daryl's House Club and the Greater Danbury Irish Festival at Ives Concert Park, and shared stages with notable national/regional Celtic acts like Black 47, Great Big Sea, Gaelic Storm and Flatfoot 56; however, their digital footprint is modest (Spotify ~2.7K monthly listeners, Facebook ~2,252 likes), consistent with a strong regional/festival act rather than a national headliner.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.mightyploughboys.com/tour",
+      "https://darylshouseclub.com/tm-attraction/the-mighty-ploughboys/",
+      "https://open.spotify.com/artist/4nJugRUDXdggWIQ0UYK7Ou",
+      "https://www.facebook.com/mightyploughboys/"
+    ],
+    "exampleTitle": "The Mighty Ploughboys",
+    "researchedAt": "2026-09-05"
+  },
+  "beautiful the carole king musical a c t of ct": {
+    "displayName": "Beautiful: The Carole King Musical (A.C.T. of CT)",
+    "funQuality": 8.5,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A Tony- and Grammy-winning Broadway musical staged by A.C.T. of CT, a professional Equity theater near NYC known for a prior Grammy-nominated cast recording and collaborations with top-tier theatre artists; while the underlying musical is a major national title, this is a regional professional production (not a national tour) in an intimate ~104-seat theater.",
+    "confidence": "high",
+    "sources": [
+      "https://www.actofct.org/",
+      "https://ctvisit.com/listings/act-contemporary-theatre-connecticut",
+      "https://www.palacetheaterct.org/shows-and-events/upcoming/beautiful-carole-king-musical"
+    ],
+    "exampleTitle": "Beautiful: The Carole King Musical (Opening)",
+    "researchedAt": "2026-09-05"
   }
 }
