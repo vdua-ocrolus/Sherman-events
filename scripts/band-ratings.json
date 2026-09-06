@@ -2078,5 +2078,20 @@
     ],
     "exampleTitle": "Beautiful: The Carole King Musical (Opening)",
     "researchedAt": "2026-09-05"
+  },
+  "danbury halloween on the green": {
+    "displayName": "Danbury Halloween on the Green",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A well-established annual tradition now in its 30s (33rd/34th year) that reliably draws over 1,000 costumed children and family members plus regional press coverage from CT Post, Patch, and Hearst Connecticut Media, making it a genuinely popular established local festival rather than a small niche event.",
+    "confidence": "high",
+    "sources": [
+      "https://www.newstimes.com/news/article/danbury-citycenter-celebrates-halloween-local-18451777.php",
+      "https://citycenterdanbury.com/event/halloween-on-the-green-2/",
+      "https://patch.com/connecticut/danbury/families-invited-citycenter-danbury-s-33rd-annual-halloween-green"
+    ],
+    "exampleTitle": "Danbury Halloween on the Green",
+    "researchedAt": "2026-09-06"
   }
 }
