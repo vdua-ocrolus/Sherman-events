@@ -2093,5 +2093,19 @@
     ],
     "exampleTitle": "Danbury Halloween on the Green",
     "researchedAt": "2026-09-06"
+  },
+  "inherit the wind sherman players": {
+    "displayName": "Inherit the Wind (Sherman Players)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A volunteer community theater production at the small, century-old Sherman Playhouse; evidence shows only local press coverage and a purely community-driven, noncommercial production with no regional or national profile.",
+    "confidence": "high",
+    "sources": [
+      "https://shermanplayers.org/2026/01/01/season-details/",
+      "https://lakevillejournal.com/sherman-players-celebrate-a-century-of-community-theater"
+    ],
+    "exampleTitle": "Inherit the Wind (Sherman Players — Preview Night)",
+    "researchedAt": "2026-09-07"
   }
 }
