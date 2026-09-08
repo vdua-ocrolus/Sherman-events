@@ -2107,5 +2107,35 @@
     ],
     "exampleTitle": "Inherit the Wind (Sherman Players — Preview Night)",
     "researchedAt": "2026-09-07"
+  },
+  "plein air litchfield palates palettes at the pink house": {
+    "displayName": "Plein Air Litchfield: Palates & Palettes at The Pink House",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A live-painting satellite event of Plein Air Litchfield, a growing juried art festival that in 2025 hosted 34 artists from 17 states and tripled its art sales at the gala, but this specific 'Palates & Palettes' stop is a small, free community event at a boutique restaurant, not the festival's major draw itself.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.pleinairlitchfield.com/for-artists",
+      "https://visitlitchfieldct.com/featured-events/",
+      "https://litchfieldmagazine.com/onourradar/the-pink-house/"
+    ],
+    "exampleTitle": "Plein Air Litchfield: Opening Weekend — Palates & Palettes at The Pink House",
+    "researchedAt": "2026-09-08"
+  },
+  "beautiful the carole king musical": {
+    "displayName": "Beautiful: The Carole King Musical",
+    "funQuality": 8.2,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A Tony and Grammy Award-winning Broadway musical staged by A.C.T. of Connecticut, a professional regional theater in Ridgefield that has itself earned a Grammy nomination for Best Musical Theater Album and draws on Broadway-caliber talent close to NYC; strong regional/critical pedigree though it's a non-Broadway regional production rather than a touring national headliner.",
+    "confidence": "high",
+    "sources": [
+      "https://www.actofct.org/",
+      "https://ctvisit.com/listings/act-contemporary-theatre-connecticut",
+      "https://www.palacetheaterct.org/shows-and-events/upcoming/beautiful-carole-king-musical"
+    ],
+    "exampleTitle": "Beautiful: The Carole King Musical (Opening)",
+    "researchedAt": "2026-09-08"
   }
 }
