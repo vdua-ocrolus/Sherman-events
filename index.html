@@ -981,36 +981,25 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Sep 9, 2026",
-  "tonight": [],
+  "lastUpdated": "Sep 10, 2026",
+  "tonight": [
+    {
+      "name": "John Gorka",
+      "venue": "Merryall Center for the Arts",
+      "time": "7:00PM–9:00PM"
+    },
+    {
+      "name": "Cocktails & Jazz in the Barn",
+      "venue": "Litchfield County venue (see Litchfield Magazine)",
+      "time": "Evening"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
       "title": "Week 1 · September 8–14",
       "open": true,
       "events": [
-        {
-          "funQuality": 9.4,
-          "title": "Blackberry Smoke: 25th Anniversary Tour 2026",
-          "url": "https://www.warnertheatre.org/events/blackberry-smoke/",
-          "dateLabel": "Wed Sep 9",
-          "time": "7:30PM",
-          "venue": "Warner Theatre (Oneglia Auditorium)",
-          "venueType": "warner",
-          "town": "Torrington, CT",
-          "dist": "~20 mi",
-          "type": "Southern Rock / Blues Rock",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Blackberry Smoke celebrates 25 years with their signature Southern rock and blues rock sound at the historic Warner Theatre.",
-          "source": "warnertheatre.org",
-          "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.5
-        },
         {
           "funQuality": 8.3,
           "title": "John Gorka",
@@ -1027,33 +1016,11 @@ const EVENTS_DATA = {
           "desc": "World-renowned New Jersey singer-songwriter John Gorka, who got his start at a Pennsylvania coffeehouse and has released 11 critically acclaimed albums, performs at the intimate Merryall Center.",
           "source": "litchfieldmagazine.com",
           "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
           "score": 8.7
-        },
-        {
-          "funQuality": 7.2,
-          "title": "APB",
-          "url": "https://concerts.consequence.net/events/apb-at-daryls-house-on-2026-09-10-20-00",
-          "dateLabel": "Thu Sep 10",
-          "time": "8:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Live Music / Post-Punk & New Wave",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Scottish post-punk pioneers APB, known for early '80s alternative radio hits and dance-club favorites, bring their new wave sound to Daryl's House.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.3
         },
         {
           "funQuality": 8.1,
@@ -1144,6 +1111,28 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
+          "funQuality": 7.3,
+          "title": "The Garden Party (Hollister House Garden Benefit)",
+          "url": "https://litchfieldmagazine.com/events/the-garden-party-2/",
+          "dateLabel": "Sat Sep 12",
+          "time": "4:00PM–7:00PM",
+          "venue": "Hollister House Garden",
+          "venueType": "litchfield",
+          "town": "Washington, CT",
+          "dist": "~20 mi",
+          "type": "Garden Party / Fundraiser",
+          "priceType": "paid",
+          "priceLabel": "Ticketed",
+          "desc": "Gather with friends and neighbors to support Hollister House Garden with wine, beer, and hors d'oeuvres at this scenic Litchfield County garden party.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.4
+        },
+        {
           "funQuality": 8.1,
           "title": "Plein Air Litchfield: Quick Paint Competition & Community Night",
           "url": "https://visitlitchfieldct.com/featured-events/",
@@ -1164,6 +1153,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.8
+        },
+        {
+          "funQuality": 8,
+          "title": "Pilobolus Day",
+          "url": "https://litchfieldmagazine.com/events/pilobolus-day-2/",
+          "dateLabel": "Sun Sep 13",
+          "time": "Afternoon",
+          "venue": "Pilobolus / Litchfield area",
+          "venueType": "litchfield",
+          "town": "Washington, CT",
+          "dist": "~20 mi",
+          "type": "Dance / Community Celebration",
+          "priceType": "free",
+          "priceLabel": "See website",
+          "desc": "Pilobolus's annual community celebration returns this fall, a full afternoon celebrating the joy of dance and movement for all ages.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.9
         },
         {
           "funQuality": 8.1,
@@ -1232,26 +1243,26 @@ const EVENTS_DATA = {
           "score": 7.7
         },
         {
-          "funQuality": 9.3,
-          "title": "Justin Hayward – The Story in Your Eyes Tour",
-          "url": "https://ridgefieldplayhouse.org/event/justin-hayward-ridgefield-ct-2026/",
-          "dateLabel": "Tue Sep 8",
+          "funQuality": 9.4,
+          "title": "Blackberry Smoke: 25th Anniversary Tour 2026",
+          "url": "https://www.warnertheatre.org/events/blackberry-smoke/",
+          "dateLabel": "Wed Sep 9",
           "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Rock Legend",
-          "priceType": "soldout",
-          "priceLabel": "SOLD OUT",
-          "desc": "The Moody Blues' legendary frontman Justin Hayward brings his solo tour to Ridgefield — a sold-out night with a true rock icon.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
+          "venue": "Warner Theatre (Oneglia Auditorium)",
+          "venueType": "warner",
+          "town": "Torrington, CT",
+          "dist": "~20 mi",
+          "type": "Southern Rock / Blues Rock",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Blackberry Smoke celebrates 25 years with their signature Southern rock and blues rock sound at the historic Warner Theatre.",
+          "source": "warnertheatre.org",
+          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "isTonight": true,
           "isPast": true,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.9
+          "score": 8.5
         }
       ]
     },
@@ -1435,35 +1446,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.4
-        }
-      ]
-    },
-    {
-      "id": "week3",
-      "title": "Week 3 · September 22–28",
-      "open": false,
-      "events": [
-        {
-          "funQuality": 8.1,
-          "title": "Woodbury Fall Festival",
-          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
-          "dateLabel": "Sun Sep 20",
-          "time": "10:00AM–4:00PM",
-          "venue": "Hollow Park",
-          "venueType": "litchfield",
-          "town": "Woodbury, CT",
-          "dist": "~18 mi",
-          "type": "Family Festival / Food Trucks & Live Music",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Woodbury CT Chamber of Commerce's popular Fall Festival at Hollow Park features over 75 local vendors, live music, a beer garden, a kid zone, a pet costume contest, and food trucks for the whole community.",
-          "source": "woodburyctchamber.com",
-          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.9
         },
         {
           "funQuality": 7.7,
@@ -1488,6 +1470,28 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
+          "funQuality": 8.1,
+          "title": "Woodbury Fall Festival",
+          "url": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
+          "dateLabel": "Sun Sep 20",
+          "time": "10:00AM–4:00PM",
+          "venue": "Hollow Park",
+          "venueType": "litchfield",
+          "town": "Woodbury, CT",
+          "dist": "~18 mi",
+          "type": "Family Festival / Food Trucks & Live Music",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The Woodbury CT Chamber of Commerce's popular Fall Festival at Hollow Park features local vendors, live music, a beer garden, a kid zone, a pet costume contest, and food trucks for the whole community.",
+          "source": "woodburyctchamber.com",
+          "sourceUrl": "https://www.woodburyctchamber.com/events/6qsyncabm8iti969lno9ndu1adj1ky",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.9
+        },
+        {
           "funQuality": 6.9,
           "title": "What It Is",
           "url": "https://www.housatonicriverbrewing.com/events-1/what-it-is-6",
@@ -1509,6 +1513,35 @@ const EVENTS_DATA = {
           "funQualityNote": null,
           "score": 7.7
         },
+        {
+          "funQuality": 8,
+          "title": "Housatonic Heritage Hike at Bulls Bridge",
+          "url": "https://www.kentlandtrust.org/upcoming-events",
+          "dateLabel": "Sun Sep 20",
+          "time": "10:00AM",
+          "venue": "Bulls Bridge",
+          "venueType": "litchfield",
+          "town": "Kent, CT",
+          "dist": "~22 mi",
+          "type": "Guided Hike / Nature",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The Kent Land Trust leads a guided Housatonic Heritage Hike starting at the scenic Bulls Bridge covered bridge area.",
+          "source": "kentlandtrust.org",
+          "sourceUrl": "https://www.kentlandtrust.org/upcoming-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.9
+        }
+      ]
+    },
+    {
+      "id": "week3",
+      "title": "Week 3 · September 22–28",
+      "open": false,
+      "events": [
         {
           "funQuality": 10,
           "title": "Pat Metheny: Side-Eye III+",
@@ -1860,6 +1893,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 8
+        },
+        {
+          "funQuality": 7,
+          "title": "Kent Land Trust Annual Benefit Cocktail Party",
+          "url": "https://www.kentlandtrust.org/upcoming-events",
+          "dateLabel": "Sat Sep 26",
+          "time": "5:00PM–7:00PM",
+          "venue": "Anderson Acres Farm",
+          "venueType": "litchfield",
+          "town": "Kent, CT",
+          "dist": "~22 mi",
+          "type": "Fundraiser / Cocktail Party",
+          "priceType": "paid",
+          "priceLabel": "Ticketed",
+          "desc": "The Kent Land Trust hosts its annual benefit cocktail party at scenic Anderson Acres Farm to support local land conservation.",
+          "source": "kentlandtrust.org",
+          "sourceUrl": "https://www.kentlandtrust.org/upcoming-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.2
         }
       ]
     },
@@ -2155,7 +2210,7 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
-          "funQuality": 8.2,
+          "funQuality": 8.8,
           "title": "Bethel Autumn Craft Festival",
           "url": "https://www.bethelgrapevine.com/the-bethel-grapevine-events",
           "dateLabel": "Sat Oct 3",
@@ -2174,7 +2229,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.7
+          "score": 8.1
         },
         {
           "funQuality": 8.4,
@@ -2197,6 +2252,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 8.7
+        },
+        {
+          "funQuality": 6.6,
+          "title": "Ground Zero: Witchcraft in Connecticut",
+          "url": "https://www.glebehousemuseum.org/calendar",
+          "dateLabel": "Sat Oct 3",
+          "time": "See website",
+          "venue": "Old Town Hall",
+          "venueType": "litchfield",
+          "town": "Woodbury, CT",
+          "dist": "~18 mi",
+          "type": "Historical Talk / Special Event",
+          "priceType": "paid",
+          "priceLabel": "See website",
+          "desc": "A special program on the history of witchcraft persecution in colonial Connecticut, presented at Woodbury's Old Town Hall.",
+          "source": "glebehousemuseum.org",
+          "sourceUrl": "https://www.glebehousemuseum.org/calendar",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 6.9
         }
       ]
     },
@@ -2404,6 +2481,28 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
+          "funQuality": 8.1,
+          "title": "New Fairfield Lions Club Car Show — 33rd Annual",
+          "url": "https://www.nflions.com/post/the-leaves-are-beginning-to-change-color-just-in-time-for-the-33rd-annual-nf-lions-car-show-at-squa",
+          "dateLabel": "Sun Oct 11",
+          "time": "9:00AM–3:30PM (Gates 9AM, Judging 12:30–2PM)",
+          "venue": "Squantz Pond State Park",
+          "venueType": "newfairfield",
+          "town": "New Fairfield, CT",
+          "dist": "~3 mi",
+          "type": "Car Show / Community Fundraiser",
+          "priceType": "paid",
+          "priceLabel": "$20 vehicle / $5 spectators",
+          "desc": "The New Fairfield Lions Club's 33rd Annual Car Show brings hundreds of vintage, classic, and custom cars, trucks, and motorcycles to scenic Squantz Pond, with vendors, a flea market, and a Lions Club food tent, drawing car owners and spectators from across New England.",
+          "source": "nflions.com",
+          "sourceUrl": "https://www.nflions.com/post/the-leaves-are-beginning-to-change-color-just-in-time-for-the-33rd-annual-nf-lions-car-show-at-squa",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": true,
+          "funQualityNote": null,
+          "score": 8.5
+        },
+        {
           "funQuality": 7.4,
           "title": "9th Annual Pets in the Park Danbury",
           "url": "https://www.bringfido.com/event/45418",
@@ -2607,6 +2706,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.2
+        },
+        {
+          "funQuality": 7.4,
+          "title": "Brookfield Craft Center Fall Open House",
+          "url": "https://brookfieldcraft.org/coming-events/",
+          "dateLabel": "Sat Oct 17",
+          "time": "See website",
+          "venue": "Brookfield Craft Center",
+          "venueType": "danbury",
+          "town": "Brookfield, CT",
+          "dist": "~10 mi",
+          "type": "Open House / Craft Demonstrations",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "Instructors demonstrate their craft and welcome visitors to explore the Brookfield Craft Center's studios and campus during this fall open house.",
+          "source": "brookfieldcraft.org",
+          "sourceUrl": "https://brookfieldcraft.org/coming-events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.7
         }
       ]
     },
@@ -2998,8 +3119,8 @@ const EVENTS_DATA = {
         },
         {
           "funQuality": 8.4,
-          "title": "Danbury Halloween on the Green",
-          "url": "https://citycenterdanbury.com/",
+          "title": "Danbury Halloween on the Green — 34th Annual",
+          "url": "https://citycenterdanbury.com/event/halloween-on-the-green-2/",
           "dateLabel": "Sat Oct 31",
           "time": "1:00PM–4:00PM",
           "venue": "CityCenter Danbury Green",
@@ -3009,9 +3130,9 @@ const EVENTS_DATA = {
           "type": "Family Festival / Halloween",
           "priceType": "free",
           "priceLabel": "Free",
-          "desc": "CityCenter Danbury and the Kiwanis Club of Greater Danbury host their long-running Halloween on the Green, featuring a children's costume parade, goodie bags, live entertainment, local vendors, and photo ops on the Green.",
+          "desc": "CityCenter Danbury and the Kiwanis Club of Greater Danbury host their 34th Annual Halloween on the Green, featuring a children's costume parade, goodie bags, local vendors, music, a photo booth, and kid-friendly activities.",
           "source": "citycenterdanbury.com",
-          "sourceUrl": "https://citycenterdanbury.com/",
+          "sourceUrl": "https://citycenterdanbury.com/event/halloween-on-the-green-2/",
           "isTonight": false,
           "isPast": false,
           "isNF": false,
@@ -3067,10 +3188,6 @@ const EVENTS_DATA = {
   ],
   "past": [],
   "daryls": [
-    {
-      "date": "Thu Sep 10, 8:00PM",
-      "title": "APB"
-    },
     {
       "date": "Wed Sep 23, 7:00PM",
       "title": "Joshua Radin"
