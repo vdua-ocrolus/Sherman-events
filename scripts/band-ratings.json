@@ -2153,5 +2153,20 @@
     ],
     "exampleTitle": "Plein Air Litchfield: Opening Weekend — Palates & Palettes at The Pink House",
     "researchedAt": "2026-09-09"
+  },
+  "bethel autumn craft festival": {
+    "displayName": "Bethel Autumn Craft Festival",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, long-running local craft fair on the Bethel Municipal Center lawn with about 60 exhibitors and estimated attendance around 1,000; it is one of four similar seasonal shows run annually by the Artisans Alliance, with no evidence of regional press or major draw beyond the immediate community.",
+    "confidence": "medium",
+    "sources": [
+      "https://festivalnet.com/49263/Bethel-Connecticut/Craft-Shows/Bethel-Autumn-Craft-Festival",
+      "https://www.bethelgrapevine.com/the-bethel-grapevine-events",
+      "https://meetmeatthefair.com/events/bethel-holiday-weekend-craft-festival-2026"
+    ],
+    "exampleTitle": "Bethel Autumn Craft Festival",
+    "researchedAt": "2026-09-11"
   }
 }

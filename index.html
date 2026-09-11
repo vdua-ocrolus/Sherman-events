@@ -981,17 +981,17 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Sep 10, 2026",
+  "lastUpdated": "Sep 11, 2026",
   "tonight": [
     {
-      "name": "John Gorka",
-      "venue": "Merryall Center for the Arts",
-      "time": "7:00PM–9:00PM"
+      "name": "ShineBox (Formerly The Winnie Shins)",
+      "venue": "Housatonic River Brewing",
+      "time": "7:00PM–10:00PM"
     },
     {
-      "name": "Cocktails & Jazz in the Barn",
-      "venue": "Litchfield County venue (see Litchfield Magazine)",
-      "time": "Evening"
+      "name": "Ridgefield Lions Oktoberfest",
+      "venue": "Abrams Park",
+      "time": "See website for hours"
     }
   ],
   "weeks": [
@@ -1000,50 +1000,6 @@ const EVENTS_DATA = {
       "title": "Week 1 · September 8–14",
       "open": true,
       "events": [
-        {
-          "funQuality": 8.3,
-          "title": "John Gorka",
-          "url": "https://litchfieldmagazine.com/events/john-gorka/",
-          "dateLabel": "Thu Sep 10",
-          "time": "7:00PM–9:00PM",
-          "venue": "Merryall Center for the Arts",
-          "venueType": "litchfield",
-          "town": "New Milford, CT",
-          "dist": "~10 mi",
-          "type": "Folk / Singer-Songwriter",
-          "priceType": "paid",
-          "priceLabel": "$40",
-          "desc": "World-renowned New Jersey singer-songwriter John Gorka, who got his start at a Pennsylvania coffeehouse and has released 11 critically acclaimed albums, performs at the intimate Merryall Center.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.7
-        },
-        {
-          "funQuality": 8.1,
-          "title": "Ridgefield Lions Oktoberfest",
-          "url": "https://www.ridgefieldlions.org/ridgefield-lions-oktoberfest-2026-friday-sept-10th-sat-sept-11th-abrams-park-ridgefield/",
-          "dateLabel": "Fri Sep 11 – Sat Sep 12",
-          "time": "See website for hours",
-          "venue": "Abrams Park",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Beer Festival / Community Fundraiser",
-          "priceType": "paid",
-          "priceLabel": "Ticketed",
-          "desc": "The Ridgefield Lions Club's annual Oktoberfest returns to Abrams Park with German beer, food, and live traditional music, raising funds for community causes.",
-          "source": "ridgefieldlions.org",
-          "sourceUrl": "https://www.ridgefieldlions.org/ridgefield-lions-oktoberfest-2026-friday-sept-10th-sat-sept-11th-abrams-park-ridgefield/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.1
-        },
         {
           "funQuality": 6.5,
           "title": "ShineBox (Formerly The Winnie Shins)",
@@ -1060,11 +1016,33 @@ const EVENTS_DATA = {
           "desc": "ShineBox keeps things simple, playing the best classic rock songs at HRB just like you remember them on the records.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
           "score": 7.4
+        },
+        {
+          "funQuality": 8.1,
+          "title": "Ridgefield Lions Oktoberfest",
+          "url": "https://www.ridgefieldlions.org/ridgefield-lions-oktoberfest-2026-friday-sept-10th-sat-sept-11th-abrams-park-ridgefield/",
+          "dateLabel": "Fri Sep 11",
+          "time": "4:00PM–10:00PM",
+          "venue": "Abrams Park",
+          "venueType": "ridgefield",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Beer Festival / Community Fundraiser",
+          "priceType": "paid",
+          "priceLabel": "Ticketed",
+          "desc": "The Ridgefield Lions Club's annual Oktoberfest returns to Abrams Park with German beer, food, and live traditional music, raising funds for community causes.",
+          "source": "ridgefieldlions.org",
+          "sourceUrl": "https://www.ridgefieldlions.org/ridgefield-lions-oktoberfest-2026-friday-sept-10th-sat-sept-11th-abrams-park-ridgefield/",
+          "isTonight": true,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
         },
         {
           "funQuality": 8.6,
@@ -1133,6 +1111,28 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
+          "funQuality": 7.5,
+          "title": "15th Annual Health Wellness & Lifestyle Expo",
+          "url": "https://litchfieldmagazine.com/events/15th-annual-health-wellness-li/",
+          "dateLabel": "Sat Sep 12",
+          "time": "See website for hours",
+          "venue": "Harbor Point Boardwalk area / Stamford Health partnership event",
+          "venueType": "litchfield",
+          "town": "Litchfield County, CT",
+          "dist": "~15 mi",
+          "type": "Health & Wellness Expo",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The 15th Annual Health, Wellness & Lifestyle Expo returns with health screenings, vendors, and family-friendly wellness activities.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.4
+        },
+        {
           "funQuality": 8.1,
           "title": "Plein Air Litchfield: Quick Paint Competition & Community Night",
           "url": "https://visitlitchfieldct.com/featured-events/",
@@ -1155,7 +1155,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.6,
           "title": "Pilobolus Day",
           "url": "https://litchfieldmagazine.com/events/pilobolus-day-2/",
           "dateLabel": "Sun Sep 13",
@@ -1174,7 +1174,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.9
+          "score": 8.3
         },
         {
           "funQuality": 8.1,
@@ -1243,26 +1243,48 @@ const EVENTS_DATA = {
           "score": 7.7
         },
         {
-          "funQuality": 9.4,
-          "title": "Blackberry Smoke: 25th Anniversary Tour 2026",
-          "url": "https://www.warnertheatre.org/events/blackberry-smoke/",
-          "dateLabel": "Wed Sep 9",
-          "time": "7:30PM",
-          "venue": "Warner Theatre (Oneglia Auditorium)",
-          "venueType": "warner",
-          "town": "Torrington, CT",
-          "dist": "~20 mi",
-          "type": "Southern Rock / Blues Rock",
+          "funQuality": 6.8,
+          "title": "Ian D'Arcangelo",
+          "url": "https://www.housatonicriverbrewing.com/events-1/ian-darcangelo",
+          "dateLabel": "Sun Sep 13",
+          "time": "4:00PM–7:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Live Music / Singer-Songwriter",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Blackberry Smoke celebrates 25 years with their signature Southern rock and blues rock sound at the historic Warner Theatre.",
-          "source": "warnertheatre.org",
-          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "desc": "Ian is a singer/songwriter whose style ranges from folk to reggae to indie rock, performing at HRB.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.6
+        },
+        {
+          "funQuality": 8.3,
+          "title": "John Gorka",
+          "url": "https://litchfieldmagazine.com/events/john-gorka/",
+          "dateLabel": "Thu Sep 10",
+          "time": "7:00PM–9:00PM",
+          "venue": "Merryall Center for the Arts",
+          "venueType": "litchfield",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Folk / Singer-Songwriter",
+          "priceType": "paid",
+          "priceLabel": "$40",
+          "desc": "World-renowned New Jersey singer-songwriter John Gorka, who got his start at a Pennsylvania coffeehouse and has released 11 critically acclaimed albums, performs at the intimate Merryall Center.",
+          "source": "litchfieldmagazine.com",
+          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
           "isTonight": true,
           "isPast": true,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.5
+          "score": 8.7
         }
       ]
     },
@@ -1314,6 +1336,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 8
+        },
+        {
+          "funQuality": 6.7,
+          "title": "RVNAhealth Autumn Dinner 2026",
+          "url": "https://newmilford-chamber.com/events/rvnahealth-autumn-dinner-2026-2/",
+          "dateLabel": "Thu Sep 17",
+          "time": "6:00PM–10:00PM",
+          "venue": "Silver Spring Country Club",
+          "venueType": "ridgefield",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Gala / Fundraiser",
+          "priceType": "paid",
+          "priceLabel": "Ticketed",
+          "desc": "RVNAhealth's annual Autumn Dinner brings cocktails, dinner, live music, raffles, and a special auction to Silver Spring Country Club, honoring The Bossidy Family.",
+          "source": "newmilford-chamber.com",
+          "sourceUrl": "https://newmilford-chamber.com/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.1
         },
         {
           "funQuality": 7,
@@ -1514,7 +1558,7 @@ const EVENTS_DATA = {
           "score": 7.7
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.6,
           "title": "Housatonic Heritage Hike at Bulls Bridge",
           "url": "https://www.kentlandtrust.org/upcoming-events",
           "dateLabel": "Sun Sep 20",
@@ -1533,7 +1577,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.9
+          "score": 8.3
         }
       ]
     },
@@ -1915,6 +1959,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.2
+        },
+        {
+          "funQuality": 7.5,
+          "title": "Sunday Speaker Series: Gerard Monaghan \"Connecticut Heroes\"",
+          "url": "https://newmilford-chamber.com/events/sunday-speaker-series-gerard-monaghan-connecticut-heroes/",
+          "dateLabel": "Sun Sep 27",
+          "time": "1:00PM–2:00PM",
+          "venue": "Village Center for the Arts",
+          "venueType": "newmilford",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Talk / History",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A free talk on Connecticut heroes and the history of military merit awards, part of the Sunday Speaker Series.",
+          "source": "newmilford-chamber.com",
+          "sourceUrl": "https://newmilford-chamber.com/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
         }
       ]
     },
@@ -1946,7 +2012,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 7.6,
           "title": "California Guitar Trio",
           "url": "https://darylshouseclub.com/tm-attraction/california-guitar-trio/",
           "dateLabel": "Sun Sep 27",
@@ -2034,6 +2100,28 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
+          "funQuality": 6.9,
+          "title": "Back To The Barre LIVE With Christi & Kelly",
+          "url": "https://ridgefieldplayhouse.org/event/back-to-the-barre-ridgefield-ct-2026/",
+          "dateLabel": "Fri Oct 2",
+          "time": "8:00PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Podcast / Live Show",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Popular Bravo-adjacent podcast hosts Christi and Kelly bring their \"Back To The Barre\" live show to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.2
+        },
+        {
           "funQuality": 7,
           "title": "Already Gone - A Tribute to the Eagles",
           "url": "https://www.housatonicriverbrewing.com/events-1/already-gone-a-tribute-to-the-eagles-3",
@@ -2056,7 +2144,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 7.6,
           "title": "Nobuntu",
           "url": "https://caramoor.org/event/nobuntu-2026-rhcs",
           "dateLabel": "Fri Oct 2",
@@ -2120,6 +2208,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.6
+        },
+        {
+          "funQuality": 6.6,
+          "title": "Merryall Presents: ROAD TO BARABOO — Play Reading",
+          "url": "https://newmilford-chamber.com/events/merryall-presents-road-to-baraboo-play-reading/",
+          "dateLabel": "Sat Oct 3",
+          "time": "7:30PM–9:30PM",
+          "venue": "Merryall Center for the Arts",
+          "venueType": "litchfield",
+          "town": "New Milford, CT",
+          "dist": "~10 mi",
+          "type": "Theater / Play Reading",
+          "priceType": "paid",
+          "priceLabel": "$20",
+          "desc": "A new comedic work gets an early staged reading featuring Renée Jaworski and Matt Kent, the artistic directors of the internationally acclaimed Pilobolus Dance Theater.",
+          "source": "newmilford-chamber.com",
+          "sourceUrl": "https://newmilford-chamber.com/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.5
         },
         {
           "funQuality": 7,
@@ -2188,29 +2298,7 @@ const EVENTS_DATA = {
           "score": 7.3
         },
         {
-          "funQuality": 7.2,
-          "title": "Explore Art and Artists in Litchfield County",
-          "url": "https://thealdrich.org/events/explore-art-and-artists-in-litchfield-county",
-          "dateLabel": "Sat Oct 3",
-          "time": "12:00PM",
-          "venue": "The Aldrich Contemporary Art Museum",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Member Tour / Art",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Spend an afternoon exploring the studios and galleries of Litchfield County with The Aldrich.",
-          "source": "thealdrich.org",
-          "sourceUrl": "https://thealdrich.org/events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.4
-        },
-        {
-          "funQuality": 8.8,
+          "funQuality": 7.6,
           "title": "Bethel Autumn Craft Festival",
           "url": "https://www.bethelgrapevine.com/the-bethel-grapevine-events",
           "dateLabel": "Sat Oct 3",
@@ -2229,7 +2317,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
+          "score": 7.3
         },
         {
           "funQuality": 8.4,
@@ -2481,7 +2569,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8.1,
+          "funQuality": 8.3,
           "title": "New Fairfield Lions Club Car Show — 33rd Annual",
           "url": "https://www.nflions.com/post/the-leaves-are-beginning-to-change-color-just-in-time-for-the-33rd-annual-nf-lions-car-show-at-squa",
           "dateLabel": "Sun Oct 11",
@@ -2500,7 +2588,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": true,
           "funQualityNote": null,
-          "score": 8.5
+          "score": 8.7
         },
         {
           "funQuality": 7.4,
@@ -2523,6 +2611,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.6
+        },
+        {
+          "funQuality": 7.4,
+          "title": "Tommy's Tattoo Convention — 14th Annual",
+          "url": "https://ctvisit.com/articles/ct-big-events",
+          "dateLabel": "Fri Oct 9 – Sun Oct 11",
+          "time": "See website for hours",
+          "venue": "Mohegan Sun",
+          "venueType": "danbury",
+          "town": "Uncasville, CT",
+          "dist": "~40 mi",
+          "type": "Tattoo Convention",
+          "priceType": "paid",
+          "priceLabel": "Ticketed",
+          "desc": "The 14th Annual Tommy's Tattoo Convention brings artists and enthusiasts from across the region to Mohegan Sun for a weekend of tattoo artistry and vendors.",
+          "source": "ctvisit.com",
+          "sourceUrl": "https://ctvisit.com/articles/ct-big-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": "Outside typical 25-mile radius but included for regional draw; verify distance before travel.",
+          "score": 7.1
         }
       ]
     },
@@ -2598,7 +2708,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 7.6,
           "title": "Bandits on the Run",
           "url": "https://caramoor.org/event/bandits-on-the-run-2026-rhcs",
           "dateLabel": "Fri Oct 16",
@@ -2708,7 +2818,7 @@ const EVENTS_DATA = {
           "score": 7.2
         },
         {
-          "funQuality": 7.4,
+          "funQuality": 8,
           "title": "Brookfield Craft Center Fall Open House",
           "url": "https://brookfieldcraft.org/coming-events/",
           "dateLabel": "Sat Oct 17",
@@ -2727,7 +2837,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.7
+          "score": 8.1
         }
       ]
     },
@@ -3175,6 +3285,28 @@ const EVENTS_DATA = {
           "priceType": "paid",
           "priceLabel": null,
           "desc": "The second concert of Caramoor's Evnin Rising Stars residency features the program's eight promising young musicians performing chamber works under distinguished mentors.",
+          "source": "caramoor.org",
+          "sourceUrl": "https://caramoor.org/events/concerts",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.5
+        },
+        {
+          "funQuality": 7.5,
+          "title": "Aaron Diehl, piano",
+          "url": "https://caramoor.org/event/aaron-diehl-2026-rhcs",
+          "dateLabel": "Fri Nov 6",
+          "time": "7:30PM",
+          "venue": "Caramoor (Rosen House Music Room)",
+          "venueType": "caramoor",
+          "town": "Katonah, NY",
+          "dist": "~25 mi",
+          "type": "Classical / Jazz Piano",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Acclaimed pianist Aaron Diehl, known for bridging jazz and classical traditions, performs a recital at Caramoor's Rosen House.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
           "isTonight": false,
