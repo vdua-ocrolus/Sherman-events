@@ -2168,5 +2168,50 @@
     ],
     "exampleTitle": "Bethel Autumn Craft Festival",
     "researchedAt": "2026-09-11"
+  },
+  "housatonic heritage hike at bulls bridge": {
+    "displayName": "Housatonic Heritage Hike at Bulls Bridge",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, volunteer-led guided nature/history hike at a well-known scenic covered bridge and Appalachian Trail site; part of the Housatonic Heritage Walks series run by local historical societies and land trusts, with modest, community-scale participation rather than large public draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://housatonicheritage.org/heritage-experiences/heritage-walks/",
+      "https://housatonicheritage.org/places/bulls-bridge-scenic-area-trail-covered-bridge-kent-conn/"
+    ],
+    "exampleTitle": "Housatonic Heritage Hike at Bulls Bridge",
+    "researchedAt": "2026-09-12"
+  },
+  "disciple of the garden the legacy of chris cornell": {
+    "displayName": "Disciple of The Garden - The Legacy of Chris Cornell",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A Westchester NY-based touring Chris Cornell/Soundgarden/Audioslave tribute band that debuted to a sold-out show and a packed follow-up at Daryl's House Club, tours multiple states with Live Nation/Ticketweb ticketing, and has an actively growing regional fanbase (~4,400 Facebook followers).",
+    "confidence": "high",
+    "sources": [
+      "https://the-set-list.com/2025/03/12/disciple-of-the-garden-at-claremont-oprea-house-in-claremont-nh/",
+      "https://www.facebook.com/DiscipleofTheGarden/",
+      "https://darylshouseclub.com/tm-attraction/disciples-of-the-garden-legacy-of-chris-cornell/",
+      "https://www.livenation.com/event/rZ7HnEZ1Afu3_S/disciple-of-the-garden-tribute-to-soundgarden-audioslave-chris-cornell"
+    ],
+    "exampleTitle": "Disciple of The Garden - The Legacy of Chris Cornell",
+    "researchedAt": "2026-09-12"
+  },
+  "new fairfield lions club car show 33rd annual": {
+    "displayName": "New Fairfield Lions Club Car Show — 33rd Annual",
+    "funQuality": 7.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A well-established, long-running (33rd annual) community car show at Squantz Pond State Park drawing hundreds of vintage/classic vehicles and spectators from Connecticut, New York, Massachusetts and beyond; it is a major fundraiser for the Lions Club with decades of consistent local press coverage.",
+    "confidence": "high",
+    "sources": [
+      "https://www.nflions.com/post/the-leaves-are-beginning-to-change-color-just-in-time-for-the-33rd-annual-nf-lions-car-show-at-squa",
+      "https://news.hamlethub.com/new-fairfield-connecticut/50039-new-fairfield-lions-club-s-car-show-at-squantz-pond-sunday-oct-10",
+      "https://danbury.macaronikid.com/events/5bb6c23e4084b310529d372b/new-fairfield-lions-club-annual-car-show-@-squantz-pond-state-park"
+    ],
+    "exampleTitle": "New Fairfield Lions Club Car Show — 33rd Annual",
+    "researchedAt": "2026-09-12"
   }
 }
