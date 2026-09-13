@@ -2213,5 +2213,19 @@
     ],
     "exampleTitle": "New Fairfield Lions Club Car Show — 33rd Annual",
     "researchedAt": "2026-09-12"
+  },
+  "brookfield craft center fall open house": {
+    "displayName": "Brookfield Craft Center Fall Open House",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "An annual free community open house with instructor demonstrations, gallery shop, and studio tours at a well-established regional craft school; it is a recurring local institutional event rather than a high-draw attraction, though the Center is described as one of the nation's premier fine craft education institutions.",
+    "confidence": "medium",
+    "sources": [
+      "https://brookfieldcraft.org/2025-fall-open-house/",
+      "https://www.brookfieldcraft.org/2019/fall-open-house-october-19-at-brookfield-craft-center/"
+    ],
+    "exampleTitle": "Brookfield Craft Center Fall Open House",
+    "researchedAt": "2026-09-13"
   }
 }
