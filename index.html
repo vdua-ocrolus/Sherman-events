@@ -981,7 +981,7 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Sep 13, 2026",
+  "lastUpdated": "Sep 14, 2026",
   "tonight": [
     {
       "name": "Brian López Electric Trio",
@@ -992,46 +992,19 @@ const EVENTS_DATA = {
       "name": "Big Ocean",
       "venue": "Caramoor (Rosen House Music Room)",
       "time": "7:30PM"
-    },
-    {
-      "name": "Ian D'Arcangelo",
-      "venue": "Housatonic River Brewing",
-      "time": "4:00PM–7:00PM"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · September 13–14",
+      "title": "Week 1 · September 14–14",
       "open": true,
       "events": [
         {
           "funQuality": 8.1,
-          "title": "Plein Air Litchfield: Quick Paint Competition & Community Night",
-          "url": "https://visitlitchfieldct.com/featured-events/",
-          "dateLabel": "Sun Sep 13",
-          "time": "9:00AM–12:00PM (paint); 6:00PM (Community Night)",
-          "venue": "Litchfield Historic District & Litchfield Community Center",
-          "venueType": "litchfield",
-          "town": "Litchfield, CT",
-          "dist": "~15 mi",
-          "type": "Art Festival / Community Event",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "A fast-paced Quick Paint competition runs through Litchfield's Historic District, followed by a free Artist Meet & Greet Show & Sale at the Community Center with food truck eats and Litchfield Distillery drinks, part of the town's premier multi-day plein air painting festival running Sept 12-20.",
-          "source": "visitlitchfieldct.com",
-          "sourceUrl": "https://visitlitchfieldct.com/featured-events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.8
-        },
-        {
-          "funQuality": 8.1,
           "title": "Brian López Electric Trio",
           "url": "https://levittpavilion.com/2026/08/03/brian-lopez-electric-trio/",
-          "dateLabel": "Sun Sep 13",
+          "dateLabel": "Sun Sep 13 (final night, check-in)",
           "time": "7:00PM",
           "venue": "Levitt Pavilion",
           "venueType": "levitt",
@@ -1043,7 +1016,7 @@ const EVENTS_DATA = {
           "desc": "Brian López Electric Trio brings its genre-blending Latin/desert rock sound to the free Levitt Pavilion stage as a featured season show.",
           "source": "levittpavilion.com",
           "sourceUrl": "https://levittpavilion.com/calendar/",
-          "isTonight": true,
+          "isTonight": false,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1065,11 +1038,55 @@ const EVENTS_DATA = {
           "desc": "The world's first K-pop group composed of artists who are hard of hearing, BIG OCEAN has been featured by The New York Times, BBC, CNN, and the Associated Press, blending Korean and American Sign Language with music.",
           "source": "caramoor.org",
           "sourceUrl": "https://caramoor.org/events/concerts",
-          "isTonight": true,
+          "isTonight": false,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
           "score": 8.4
+        },
+        {
+          "funQuality": 7,
+          "title": "Family Feud Trivia",
+          "url": "https://www.housatonicriverbrewing.com/events-1/family-feud-trivia-9",
+          "dateLabel": "Wed Sep 16",
+          "time": "7:00PM–9:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Trivia Night",
+          "priceType": "free",
+          "priceLabel": "Free to Play",
+          "desc": "Family Feud-style trivia night at HRB with gift card prizes, free to play.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.8
+        },
+        {
+          "funQuality": 8.1,
+          "title": "Plein Air Litchfield: Quick Paint Competition & Community Night",
+          "url": "https://visitlitchfieldct.com/featured-events/",
+          "dateLabel": "Sun Sep 13",
+          "time": "9:00AM–12:00PM (paint); 6:00PM (Community Night)",
+          "venue": "Litchfield Historic District & Litchfield Community Center",
+          "venueType": "litchfield",
+          "town": "Litchfield, CT",
+          "dist": "~15 mi",
+          "type": "Art Festival / Community Event",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "A fast-paced Quick Paint competition runs through Litchfield's Historic District, followed by a free Artist Meet & Greet Show & Sale at the Community Center with food truck eats and Litchfield Distillery drinks, part of the town's premier multi-day plein air painting festival running Sept 12-20.",
+          "source": "visitlitchfieldct.com",
+          "sourceUrl": "https://visitlitchfieldct.com/featured-events/",
+          "isTonight": false,
+          "isPast": true,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.8
         },
         {
           "funQuality": 7.5,
@@ -1088,7 +1105,7 @@ const EVENTS_DATA = {
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
           "isTonight": false,
-          "isPast": false,
+          "isPast": true,
           "isNF": false,
           "funQualityNote": null,
           "score": 7.7
@@ -1110,7 +1127,7 @@ const EVENTS_DATA = {
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": true,
-          "isPast": false,
+          "isPast": true,
           "isNF": false,
           "funQualityNote": null,
           "score": 7.6
@@ -1132,94 +1149,6 @@ const EVENTS_DATA = {
           "source": "litchfieldhistoricalsociety.org",
           "sourceUrl": "https://www.litchfieldhistoricalsociety.org/calendar-list/",
           "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.8
-        },
-        {
-          "funQuality": 8.6,
-          "title": "Nashville Drive",
-          "url": "https://www.housatonicriverbrewing.com/events-1/nashville-drive-3",
-          "dateLabel": "Sat Sep 12",
-          "time": "7:00PM–10:00PM",
-          "venue": "Housatonic River Brewing",
-          "venueType": "hrb",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Country",
-          "priceType": "paid",
-          "priceLabel": "$15",
-          "desc": "Nashville recording artists Nashville Drive is a modern Country band with over 5,000 Facebook followers that performs originals and covers today's country favorites at HRB.",
-          "source": "housatonicriverbrewing.com",
-          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": true,
-          "isPast": true,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.9
-        },
-        {
-          "funQuality": 7.6,
-          "title": "Plein Air Litchfield: Opening Weekend — Palates & Palettes at The Pink House",
-          "url": "https://visitlitchfieldct.com/featured-events/",
-          "dateLabel": "Sat Sep 12",
-          "time": "See website for hours",
-          "venue": "The Pink House (West Cornwall, by the Covered Bridge)",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~18 mi",
-          "type": "Art Festival / Live Painting",
-          "priceType": "free",
-          "priceLabel": "Free to view",
-          "desc": "Plein Air Litchfield's 2026 festival kicks off its 9-day run (Sept 12-20) with a Palates & Palettes live-painting session at The Pink House by the Covered Bridge, part of a premier multi-day festival featuring 30 nationally recognized landscape painters.",
-          "source": "visitlitchfieldct.com",
-          "sourceUrl": "https://visitlitchfieldct.com/featured-events/",
-          "isTonight": false,
-          "isPast": true,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.4
-        },
-        {
-          "funQuality": 7.3,
-          "title": "The Garden Party (Hollister House Garden Benefit)",
-          "url": "https://litchfieldmagazine.com/events/the-garden-party-2/",
-          "dateLabel": "Sat Sep 12",
-          "time": "4:00PM–7:00PM",
-          "venue": "Hollister House Garden",
-          "venueType": "litchfield",
-          "town": "Washington, CT",
-          "dist": "~20 mi",
-          "type": "Garden Party / Fundraiser",
-          "priceType": "paid",
-          "priceLabel": "Ticketed",
-          "desc": "Gather with friends and neighbors to support Hollister House Garden with wine, beer, and hors d'oeuvres at this scenic Litchfield County garden party.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
-          "isPast": true,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.4
-        },
-        {
-          "funQuality": 8.1,
-          "title": "15th Annual Health Wellness & Lifestyle Expo",
-          "url": "https://litchfieldmagazine.com/events/15th-annual-health-wellness-li/",
-          "dateLabel": "Sat Sep 12",
-          "time": "See website for hours",
-          "venue": "Litchfield County area event",
-          "venueType": "litchfield",
-          "town": "Litchfield County, CT",
-          "dist": "~15 mi",
-          "type": "Health & Wellness Expo",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The 15th Annual Health, Wellness & Lifestyle Expo returns with health screenings, vendors, and family-friendly wellness activities, presented with Stamford Health as Exclusive Healthcare Partner.",
-          "source": "litchfieldmagazine.com",
-          "sourceUrl": "https://litchfieldmagazine.com/things-to-do/",
-          "isTonight": false,
           "isPast": true,
           "isNF": false,
           "funQualityNote": null,
@@ -1230,7 +1159,7 @@ const EVENTS_DATA = {
     {
       "id": "week2",
       "title": "Week 2 · September 15–21",
-      "open": false,
+      "open": true,
       "events": [
         {
           "funQuality": 6.5,
@@ -1312,6 +1241,28 @@ const EVENTS_DATA = {
           "priceType": "paid",
           "priceLabel": "$7.50",
           "desc": "Not My Problem plays a fun mix of rock, pop, dance, disco, funk and new wave covers at HRB, an established Fairfield County party band with over a thousand Facebook followers.",
+          "source": "housatonicriverbrewing.com",
+          "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.8
+        },
+        {
+          "funQuality": 7,
+          "title": "Iron Law 13th Annual BBQ & Ride",
+          "url": "https://www.housatonicriverbrewing.com/events-1/iron-law-13th-annual-bbq-ride",
+          "dateLabel": "Sat Sep 19",
+          "time": "9:00AM–6:00PM",
+          "venue": "Housatonic River Brewing",
+          "venueType": "hrb",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Motorcycle Ride / Fundraiser",
+          "priceType": "paid",
+          "priceLabel": "$25",
+          "desc": "The 13th annual Iron Law motorcycle ride starts and finishes at HRB with a pig roast dinner, with all proceeds supporting the local VFW.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
           "isTonight": false,
@@ -1517,28 +1468,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.2
-        },
-        {
-          "funQuality": 6.9,
-          "title": "Duck Day at the Livingston Ripley Waterfowl Conservancy",
-          "url": "https://visitlitchfieldct.com/its-time-for-litchfields-major-family-nature-events/",
-          "dateLabel": "Sun Sep 20",
-          "time": "See website for hours",
-          "venue": "Livingston Ripley Waterfowl Conservancy",
-          "venueType": "litchfield",
-          "town": "Litchfield, CT",
-          "dist": "~15 mi",
-          "type": "Family Nature Event",
-          "priceType": "paid",
-          "priceLabel": "$20 members / $30 non-members",
-          "desc": "A family-friendly celebration at the Ripley Waterfowl Conservancy featuring a raptor demonstration, guided tours of the aviaries, games, crafts, local artisans, and free pizza.",
-          "source": "visitlitchfieldct.com",
-          "sourceUrl": "https://visitlitchfieldct.com/its-time-for-litchfields-major-family-nature-events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 6.9
         }
       ]
     },
@@ -1614,7 +1543,7 @@ const EVENTS_DATA = {
           "score": 8.1
         },
         {
-          "funQuality": 8.2,
+          "funQuality": 8.8,
           "title": "White Memorial 41st Annual Family Nature Day",
           "url": "https://visitlitchfieldct.com/fall-festivals-fairs-in-and-around-litchfield/",
           "dateLabel": "Wed Sep 23",
@@ -1633,7 +1562,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.8
+          "score": 8.3
         },
         {
           "funQuality": 6.6,
@@ -1890,7 +1819,7 @@ const EVENTS_DATA = {
           "type": "Special Event / Farm-to-Museum Dinner",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "The Aldrich's bi-annual farm-to-museum dinner takes place in the newly renovated Sculpture Garden, opening with a tide-to-table oyster bar and a locally sourced dinner alongside exhibiting artists.",
+          "desc": "The Aldrich's annual farm-to-museum dinner takes place in the newly renovated Sculpture Garden, opening with a tide-to-table oyster bar and a locally sourced dinner alongside exhibiting artists.",
           "source": "thealdrich.org",
           "sourceUrl": "https://thealdrich.org/events",
           "isTonight": false,
@@ -1944,7 +1873,7 @@ const EVENTS_DATA = {
           "score": 7.2
         },
         {
-          "funQuality": 8.7,
+          "funQuality": 6.8,
           "title": "Sunday Speaker Series: Gerard Monaghan \"Connecticut Heroes\"",
           "url": "https://newmilford-chamber.com/events/sunday-speaker-series-gerard-monaghan-connecticut-heroes/",
           "dateLabel": "Sun Sep 27",
@@ -1963,7 +1892,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.9
+          "score": 7.6
         },
         {
           "funQuality": 7.9,
@@ -2193,7 +2122,29 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 7,
+          "funQuality": 8.4,
+          "title": "New Milford RiverFest",
+          "url": "https://www.nmriverfest.org/",
+          "dateLabel": "Sat Oct 3 – Sun Oct 4",
+          "time": "10:00AM–6:00PM",
+          "venue": "Young's Field",
+          "venueType": "newmilford",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Community Festival / Live Music & Food",
+          "priceType": "free",
+          "priceLabel": "Free (donations encouraged)",
+          "desc": "New Milford's beloved riverfront festival returns to Young's Field with a 5K River Run, Kids Super Hero Sprint, live music, food trucks, family entertainment, historic reenactments, and community booths.",
+          "source": "98q.com",
+          "sourceUrl": "https://98q.com/local-news-stories/a2440e6c20434dcf12ae0313090a12bb",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.7
+        },
+        {
+          "funQuality": 7.2,
           "title": "Merryall Presents: ROAD TO BARABOO — Play Reading",
           "url": "https://newmilford-chamber.com/events/merryall-presents-road-to-baraboo-play-reading/",
           "dateLabel": "Sat Oct 3",
@@ -2212,7 +2163,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.8
+          "score": 7.9
         },
         {
           "funQuality": 6.9,
@@ -2303,7 +2254,7 @@ const EVENTS_DATA = {
           "score": 7.3
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.3,
           "title": "Museum of the American Revolution: First Oval Office Project",
           "url": "https://www.litchfieldhistoricalsociety.org/calendar-list/",
           "dateLabel": "Sat Oct 3",
@@ -2322,7 +2273,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.7
+          "score": 7.9
         },
         {
           "funQuality": 8.2,
@@ -2347,7 +2298,7 @@ const EVENTS_DATA = {
           "score": 8.6
         },
         {
-          "funQuality": 7.8,
+          "funQuality": 7.9,
           "title": "The Carole King & James Taylor Story",
           "url": "https://thepalacedanbury1.ticketspice.com/the-carole-king-james-taylor-story",
           "dateLabel": "Sun Oct 4",
@@ -2375,28 +2326,6 @@ const EVENTS_DATA = {
       "title": "Week 5 · October 6–12",
       "open": false,
       "events": [
-        {
-          "funQuality": 8.4,
-          "title": "New Milford RiverFest",
-          "url": "https://www.nmriverfest.org/",
-          "dateLabel": "Mon Oct 5 – Tue Oct 6",
-          "time": "Oct 5: 11AM–8PM; Oct 6: 11AM–6PM",
-          "venue": "Young's Field",
-          "venueType": "newmilford",
-          "town": "New Milford, CT",
-          "dist": "~7 mi",
-          "type": "Community Festival / Live Music & Food",
-          "priceType": "free",
-          "priceLabel": "Free (suggested $5 donation)",
-          "desc": "New Milford's beloved riverfront festival returns to Young's Field with a 5K River Run, Kids' Superhero Sprint, live music, nearly a dozen food trucks daily, a beer-and-wine taproom truck, magic shows, a new Spirit Walk of New Milford history display, and a police helicopter visit.",
-          "source": "newmilfordnow.org",
-          "sourceUrl": "https://www.newmilfordnow.org/stories/celebration-of-riverfront-to-take-center-stage-at-riverfest",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.7
-        },
         {
           "funQuality": 6.7,
           "title": "100 Proof",
@@ -2618,7 +2547,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 8.4,
+          "funQuality": 8.7,
           "title": "Washington Harvest Festival — 8th Annual",
           "url": "https://explorewashingtonct.com/events/washington-harvest-festival-2026/",
           "dateLabel": "Sun Oct 11",
@@ -2637,7 +2566,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
+          "score": 8.3
         }
       ]
     },
@@ -2691,7 +2620,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 7.8,
+          "funQuality": 7.9,
           "title": "The Blind Boys of Alabama – Songs in the Key of Life",
           "url": "https://ridgefieldplayhouse.org/event/blind-boys-of-alabama-ridgefield-ct-2026/",
           "dateLabel": "Fri Oct 16",
@@ -2802,72 +2731,6 @@ const EVENTS_DATA = {
         },
         {
           "funQuality": 8.7,
-          "title": "Fall in Love with Ridgefield",
-          "url": "https://chamber.inridgefield.com/events/fall-in-love-with-ridgefield/",
-          "dateLabel": "Sun Oct 18",
-          "time": "10:00AM–2:00PM",
-          "venue": "Main Street",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Community Festival / Family",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Ridgefield Chamber's fall street festival features live music, face painting, a scarecrow contest, fall selfie stations, merchant discounts, and giveaways along Main Street.",
-          "source": "chamber.inridgefield.com",
-          "sourceUrl": "https://chamber.inridgefield.com/events/fall-in-love-with-ridgefield/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.5
-        },
-        {
-          "funQuality": 7.2,
-          "title": "CAMA Fall Festival (Additional Day)",
-          "url": "https://www.ctamachinery.org/events",
-          "dateLabel": "Sat Oct 17",
-          "time": "10:00AM–4:00PM",
-          "venue": "CAMA Museum Grounds",
-          "venueType": "litchfield",
-          "town": "Kent, CT",
-          "dist": "~22 mi",
-          "type": "Family Festival / Antique Machinery",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "An added open day at the Connecticut Antique Machinery Association grounds featuring operating steam and gas engines and the museum's working exhibits.",
-          "source": "ctamachinery.org",
-          "sourceUrl": "https://www.ctamachinery.org/events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.3
-        },
-        {
-          "funQuality": 7.1,
-          "title": "Brookfield Craft Center Fall Open House",
-          "url": "https://brookfieldcraft.org/coming-events/",
-          "dateLabel": "Sat Oct 17",
-          "time": "See website",
-          "venue": "Brookfield Craft Center",
-          "venueType": "danbury",
-          "town": "Brookfield, CT",
-          "dist": "~10 mi",
-          "type": "Open House / Craft Demonstrations",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Instructors demonstrate their craft and welcome visitors to explore the Brookfield Craft Center's studios and campus during this fall open house.",
-          "source": "brookfieldcraft.org",
-          "sourceUrl": "https://brookfieldcraft.org/coming-events/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.5
-        },
-        {
-          "funQuality": 8.1,
           "title": "Performance | Anindita Dutta: The Dream of Being",
           "url": "https://thealdrich.org/events/performance-anindita-dutta-the-dream-of-being",
           "dateLabel": "Sat Oct 17",
@@ -2886,7 +2749,29 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
+          "score": 8.5
+        },
+        {
+          "funQuality": 7.2,
+          "title": "Fall Blood Drive (with American Red Cross)",
+          "url": "https://www.warnertheatre.org/events/blood-drive/",
+          "dateLabel": "Sat Oct 17",
+          "time": "8:00AM–2:00PM",
+          "venue": "Warner Club",
+          "venueType": "warner",
+          "town": "Torrington, CT",
+          "dist": "~20 mi",
+          "type": "Community Blood Drive",
+          "priceType": "free",
+          "priceLabel": "Free",
+          "desc": "The Warner Theatre partners with the American Red Cross to host a fall community blood drive at the Warner Club.",
+          "source": "warnertheatre.org",
+          "sourceUrl": "https://www.warnertheatre.org/events/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7
         }
       ]
     },
@@ -2962,7 +2847,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 7.8,
+          "funQuality": 7.9,
           "title": "The Man In Black: A Tribute to Johnny Cash",
           "url": "https://ridgefieldplayhouse.org/event/man-in-black-ridgefield-ct-2026/",
           "dateLabel": "Wed Oct 21",
@@ -3072,7 +2957,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 7.9,
+          "funQuality": 8.5,
           "title": "Sensory Saturday at The Aldrich",
           "url": "https://thealdrich.org/events/sensory-saturday-5",
           "dateLabel": "Sat Oct 24",
@@ -3091,7 +2976,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.9
+          "score": 8.4
         },
         {
           "funQuality": 6.7,
@@ -3202,28 +3087,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.4
-        },
-        {
-          "funQuality": 8.1,
-          "title": "Litchfield Lions Club Fall Festival",
-          "url": "https://visitlitchfieldct.com/category/uncategorized/",
-          "dateLabel": "Mon Oct 26",
-          "time": "10:00AM–2:00PM",
-          "venue": "Litchfield town green area",
-          "venueType": "litchfield",
-          "town": "Litchfield, CT",
-          "dist": "~15 mi",
-          "type": "Family Festival / Car Show",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "The Litchfield Lions Club hosts a Fall Festival featuring a car show, food trucks, a cornhole tournament, vendors, and pumpkin carving.",
-          "source": "visitlitchfieldct.com",
-          "sourceUrl": "https://visitlitchfieldct.com/category/uncategorized/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.8
         }
       ]
     },
@@ -3255,7 +3118,7 @@ const EVENTS_DATA = {
           "score": 6.7
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 8.2,
           "title": "Phenomenon",
           "url": "https://www.housatonicriverbrewing.com/events-1/phenomenon-2",
           "dateLabel": "Fri Oct 30",
@@ -3274,7 +3137,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8.6
         },
         {
           "funQuality": 6.6,
@@ -3343,28 +3206,6 @@ const EVENTS_DATA = {
           "score": 7.5
         },
         {
-          "funQuality": 7.8,
-          "title": "Trunk or Treat with Ridgefield Police Department",
-          "url": "https://inridgefield.com/outstanding-october-events-in-ridgefield/",
-          "dateLabel": "Sat Oct 31",
-          "time": "4:30PM–8:30PM",
-          "venue": "Lounsbury House",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Family Halloween Event",
-          "priceType": "free",
-          "priceLabel": "Free",
-          "desc": "Ridgefield's Trunk or Treat with the Police Department brings spooky outdoor fun for families to Lounsbury House on Halloween night, no registration required.",
-          "source": "inridgefield.com",
-          "sourceUrl": "https://inridgefield.com/outstanding-october-events-in-ridgefield/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.9
-        },
-        {
           "funQuality": 7.5,
           "title": "Evnin Rising Stars II",
           "url": "https://caramoor.org/event/evnin-rising-stars-ii-2026-rhcs",
@@ -3385,28 +3226,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.5
-        },
-        {
-          "funQuality": 7,
-          "title": "Co-Create, A Family Art Adventure",
-          "url": "https://thealdrich.org/events/co-create-a-family-art-adventure-2",
-          "dateLabel": "Sat Nov 7",
-          "time": "10:30AM",
-          "venue": "The Aldrich Contemporary Art Museum",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Family Art Program",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A family art experience for 7-11 year olds that begins in the galleries with exploration of materials and process inspired by The Aldrich Decennial exhibition, before continuing with a hands-on Studio workshop.",
-          "source": "thealdrich.org",
-          "sourceUrl": "https://thealdrich.org/events",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.3
         }
       ]
     }
@@ -3424,10 +3243,6 @@ const EVENTS_DATA = {
     {
       "date": "Sun Oct 18, 7:00PM",
       "title": "Bywater Call"
-    },
-    {
-      "date": "Sat Oct 31, 8:00PM",
-      "title": "Roomful of Blues"
     }
   ]
 };

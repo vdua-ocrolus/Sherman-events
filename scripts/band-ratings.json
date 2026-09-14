@@ -2227,5 +2227,19 @@
     ],
     "exampleTitle": "Brookfield Craft Center Fall Open House",
     "researchedAt": "2026-09-13"
+  },
+  "sunday speaker series gerard monaghan connecticut heroes": {
+    "displayName": "Sunday Speaker Series: Gerard Monaghan \"Connecticut Heroes\"",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A local history talk by Gerard Monaghan, who has previously spoken at the New Milford Historical Society (e.g., a 2024 talk titled \"Vietnam Revisited\"); this is a small community lecture with no evidence of broader public draw, press coverage, or notable audience size.",
+    "confidence": "low",
+    "sources": [
+      "https://www.newmilfordnow.org/events/historical-society-speaker---gerard-monaghan-vietnam-revisited",
+      "https://www.villagecenterarts.org/"
+    ],
+    "exampleTitle": "Sunday Speaker Series: Gerard Monaghan \"Connecticut Heroes\"",
+    "researchedAt": "2026-09-14"
   }
 }
