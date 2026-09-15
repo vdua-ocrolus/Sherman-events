@@ -2241,5 +2241,103 @@
     ],
     "exampleTitle": "Sunday Speaker Series: Gerard Monaghan \"Connecticut Heroes\"",
     "researchedAt": "2026-09-14"
+  },
+  "third saturdays at the aldrich community day free admission": {
+    "displayName": "Third Saturdays at The Aldrich (Community Day / Free Admission)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A recurring free monthly community program at a respected but small contemporary art museum; The Aldrich is a well-regarded regional nonprofit institution, but Third Saturdays is a modest, family-oriented, free open-house style event rather than a major draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://thealdrich.org/events/",
+      "https://thealdrich.org/visit"
+    ],
+    "exampleTitle": "Third Saturdays at The Aldrich (Free Admission)",
+    "researchedAt": "2026-09-15"
+  },
+  "white memorial 41st annual family nature day": {
+    "displayName": "White Memorial 41st Annual Family Nature Day",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A long-running, well-established annual community nature festival (now in its 41st-42nd year) described by local press as one of Litchfield's 'major annual family nature events,' featuring live animal presenters, wagon rides, and multiple food vendors.",
+    "confidence": "high",
+    "sources": [
+      "https://visitlitchfieldct.com/its-time-for-litchfields-major-family-nature-events/",
+      "https://mommypoppins.com/connecticut-kids/event/events/family-nature-day-at-white-memorial-cc"
+    ],
+    "exampleTitle": "White Memorial 41st Annual Family Nature Day",
+    "researchedAt": "2026-09-15"
+  },
+  "washington harvest festival 8th annual": {
+    "displayName": "Washington Harvest Festival — 8th Annual",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": false,
+    "draw": "A modest, free, town-sponsored community fall festival now in its 8th year, organized by the Washington Business Association and Parks & Rec, with local live music, food, and family activities; first edition drew about 700 attendees.",
+    "confidence": "medium",
+    "sources": [
+      "https://explorewashingtonct.com/washingtons-first-annual-harvest-festival-was-a-great-success/",
+      "https://www.myconnecticutkids.com/wp-event/washington-harvest-festival/"
+    ],
+    "exampleTitle": "Washington Harvest Festival — 8th Annual",
+    "researchedAt": "2026-09-15"
+  },
+  "anindita dutta the dream of being": {
+    "displayName": "Anindita Dutta: The Dream of Being",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": false,
+    "draw": "Anindita Dutta is an internationally exhibited sculptor/performance artist with shows at institutions like the Fukuoka Asian Art Museum and Sean Kelly Gallery, but this is a single niche, small-scale gallery performance piece at a small contemporary art museum, not a mass-audience draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Anindita_Dutta",
+      "https://thealdrich.org/events/community-day-2"
+    ],
+    "exampleTitle": "Performance | Anindita Dutta: The Dream of Being",
+    "researchedAt": "2026-09-15"
+  },
+  "sensory saturday at the aldrich": {
+    "displayName": "Sensory Saturday at The Aldrich",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, purpose-built accessibility program for children with developmental/learning disabilities at The Aldrich; valuable community service but by design a low-attendance, niche offering, not a draw event.",
+    "confidence": "medium",
+    "sources": [
+      "https://thealdrich.org/events/",
+      "https://thealdrich.org/learn"
+    ],
+    "exampleTitle": "Sensory Saturday at The Aldrich",
+    "researchedAt": "2026-09-15"
+  },
+  "classic seger rock roll never forgets": {
+    "displayName": "Classic Seger: Rock & Roll Never Forgets",
+    "funQuality": 8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A nationally touring Bob Seger tribute act playing numerous mid-size theaters (Warner Theatre, The Lerner, The Empire Theatre) on a dedicated 2026 tour billed as following a 'critically acclaimed 2025 World Tour,' indicating a substantial, dedicated touring fanbase for classic rock tribute audiences.",
+    "confidence": "high",
+    "sources": [
+      "https://www.warnertheatre.org/events/classic-seger26/",
+      "https://theempiretheatre.com/live/classic-seger-rock-and-roll-never-forgets-2026/"
+    ],
+    "exampleTitle": "Classic Seger: Rock & Roll Never Forgets 2026 Live",
+    "researchedAt": "2026-09-15"
+  },
+  "comedian bob marley": {
+    "displayName": "Comedian Bob Marley",
+    "funQuality": 8.3,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "An established touring stand-up comedian with over 100 national TV appearances (Leno, Letterman, Conan, Fallon), a Comedy Central special, a Guinness World Record, film roles in the Boondock Saints franchise, and a busy nationwide theater tour with strong ticket sales at venues like the Warner Theatre.",
+    "confidence": "high",
+    "sources": [
+      "https://www.warnertheatre.org/events/comedian-bob-marley/",
+      "https://www.vividseats.com/comedian-bob-marley-tickets--theater-comedy/performer/14596"
+    ],
+    "exampleTitle": "Comedian Bob Marley",
+    "researchedAt": "2026-09-15"
   }
 }
