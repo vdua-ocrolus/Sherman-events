@@ -2339,5 +2339,35 @@
     ],
     "exampleTitle": "Comedian Bob Marley",
     "researchedAt": "2026-09-15"
+  },
+  "third saturdays at the aldrich community day family programs": {
+    "displayName": "Third Saturdays at The Aldrich (Community Day / Family Programs)",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Recurring free monthly museum-access day at a respected regional contemporary art museum, featuring story time, docent tours, and family art-making; supported by local sponsors like Fairfield County Bank and the Ridgefield Rotary Club, but it is a low-key community program rather than a major draw event.",
+    "confidence": "high",
+    "sources": [
+      "https://thealdrich.org/events/community-day-2",
+      "https://thealdrich.org/events/third-saturdays-22",
+      "https://thealdrich.org/visit"
+    ],
+    "exampleTitle": "Third Saturdays at The Aldrich (Free Admission)",
+    "researchedAt": "2026-09-16"
+  },
+  "museum of the american revolution first oval office project": {
+    "displayName": "Museum of the American Revolution: First Oval Office Project",
+    "funQuality": 7.3,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A traveling handsewn replica of George Washington's Revolutionary War headquarters tent from the nationally recognized Museum of the American Revolution, presented with living history interpreters as part of the America's 250th anniversary programming; it is an established touring exhibit (since 2013) with legitimate institutional backing, though it's a ticketed single-day local history event rather than a mass-attendance spectacle.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.litchfieldhistoricalsociety.org/firstovaloffice/",
+      "https://www.amrevmuseum.org/learn-and-explore/first-oval-office-project/first-oval-office-project-programs-and-events",
+      "https://www.litchfieldhistoricalsociety.org/calendar-list/"
+    ],
+    "exampleTitle": "Museum of the American Revolution: First Oval Office Project",
+    "researchedAt": "2026-09-16"
   }
 }
