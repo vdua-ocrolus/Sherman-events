@@ -2369,5 +2369,33 @@
     ],
     "exampleTitle": "Museum of the American Revolution: First Oval Office Project",
     "researchedAt": "2026-09-16"
+  },
+  "third saturdays at the aldrich free admission": {
+    "displayName": "Third Saturdays at The Aldrich (Free Admission)",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free monthly community/family program at a respected contemporary art museum, featuring museum tours, story time, and family art-making rather than a headline performer; supported by local sponsors like Fairfield County Bank and the Ridgefield Rotary Club, indicating a well-run but modest-scale local recurring event.",
+    "confidence": "medium",
+    "sources": [
+      "https://thealdrich.org/",
+      "https://thealdrich.org/events/third-saturdays-22"
+    ],
+    "exampleTitle": "Third Saturdays at The Aldrich (Free Admission)",
+    "researchedAt": "2026-09-17"
+  },
+  "fall blood drive with american red cross": {
+    "displayName": "Fall Blood Drive (with American Red Cross)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A standard recurring community blood drive held at the Warner Club in Torrington in partnership with the American Red Cross, similar to past drives there (e.g., a 2024 drive tied to a Warner Theatre production); it is a routine civic/charitable event with local catering, not a performance or major draw event.",
+    "confidence": "medium",
+    "sources": [
+      "https://theriver1059.iheart.com/calendar/content/2024-10-05-warner-theatre-blood-drive-inspired-by-dracula/",
+      "https://ctvisit.com/events/summer-blood-drive"
+    ],
+    "exampleTitle": "Fall Blood Drive (with American Red Cross)",
+    "researchedAt": "2026-09-17"
   }
 }
