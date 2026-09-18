@@ -2397,5 +2397,34 @@
     ],
     "exampleTitle": "Fall Blood Drive (with American Red Cross)",
     "researchedAt": "2026-09-17"
+  },
+  "raptor migration watch open house ct audubon society deer pond farm": {
+    "displayName": "Raptor Migration Watch Open House (CT Audubon Society, Deer Pond Farm)",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": true,
+    "draw": "A free, small-scale community nature program where a sanctuary naturalist helps visitors spot migrating hawks and raptors from a teaching terrace; it is a recurring seasonal open house with no attendance figures or press suggesting more than modest local turnout.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.ctaudubon.org/2025/07/raptor-migration-watch/",
+      "https://www.newmilfordnow.org/events/raptor-migration-watch-deer-pond-farm"
+    ],
+    "exampleTitle": "RAPTOR MIGRATION (Open House)",
+    "researchedAt": "2026-09-18"
+  },
+  "the gerard hill duo charley gerard jenny hill": {
+    "displayName": "The Gerard-Hill Duo (Charley Gerard & Jenny Hill)",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A jazz/Latin duo led by saxophonist-author Charley Gerard (author of 'Salsa: The Rhythm of Latin Music,' founder of the Broken Reed Saxophone Quartet, recipient of a Chamber Music America New Jazz Works grant) and Jenny Hill; respected within niche jazz/Latin circles but performing a small free library concert with no evidence of large public draw, chart success, or major-venue history.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/latin-american-music-with-the-gerard-hill-duo",
+      "https://www.brokenreedsax.com/epk",
+      "https://www.tonerow.com/charleygerard_1"
+    ],
+    "exampleTitle": "Latin American Music with the Gerard-Hill Duo",
+    "researchedAt": "2026-09-18"
   }
 }
