@@ -2426,5 +2426,19 @@
     ],
     "exampleTitle": "Latin American Music with the Gerard-Hill Duo",
     "researchedAt": "2026-09-18"
+  },
+  "13th annual litchfield t e a l walk": {
+    "displayName": "13th Annual Litchfield T.E.A.L.® Walk",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (13th annual) local charity walk for ovarian cancer awareness held at Forman School in Litchfield, organized by the nonprofit Tell Every Amazing Lady; it draws community participants and fundraising teams but has no regional press coverage or large attendance figures beyond a modest local turnout.",
+    "confidence": "medium",
+    "sources": [
+      "https://events.telleveryamazinglady.org/teal-walk-run-program/tealwalk-litchfield/",
+      "https://litchfieldmagazine.com/events/12th-annual-t-e-a-l-walk/"
+    ],
+    "exampleTitle": "13th Annual Litchfield T.E.A.L.® Walk",
+    "researchedAt": "2026-09-19"
   }
 }
