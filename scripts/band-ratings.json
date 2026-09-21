@@ -2440,5 +2440,19 @@
     ],
     "exampleTitle": "13th Annual Litchfield T.E.A.L.® Walk",
     "researchedAt": "2026-09-19"
+  },
+  "road to baraboo play reading": {
+    "displayName": "Road to Baraboo (Play Reading)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A play reading in Merryall Center's 2026 season lineup, held at an intimate 75-seat community arts venue in rural New Milford; no evidence of broader press, notable cast, or off-site production history was found, consistent with a small community theater reading rather than a major draw.",
+    "confidence": "low",
+    "sources": [
+      "https://www.merryallcenter.org/2025-season",
+      "https://www.kentct.com/merryall-center-for-the-arts"
+    ],
+    "exampleTitle": "Merryall Presents: ROAD TO BARABOO — Play Reading",
+    "researchedAt": "2026-09-21"
   }
 }
