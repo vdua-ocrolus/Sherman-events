@@ -2454,5 +2454,93 @@
     ],
     "exampleTitle": "Merryall Presents: ROAD TO BARABOO — Play Reading",
     "researchedAt": "2026-09-21"
+  },
+  "the gerard hill duo": {
+    "displayName": "The Gerard-Hill Duo",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A small chamber/jazz duo — Charley Gerard (a Chamber Music America New Jazz Works grant recipient and author) and saxophonist Jenny Hill — that plays free, low-key library programs; a real credentialed act but with a niche, non-mass-market draw typical of a local library concert series.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/latin-american-music-with-the-gerard-hill-duo",
+      "https://www.shermanct.gov/muni-events/the-gerard-hill-duo-plays-duke-ellington"
+    ],
+    "exampleTitle": "Latin American Music with the Gerard-Hill Duo",
+    "researchedAt": "2026-09-22"
+  },
+  "hildaland": {
+    "displayName": "Hildaland",
+    "funQuality": 7.3,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A genuine touring folk duo (Louise Bichan & Ethan Setiawan) with a real regional/national footprint: they've played Celtic Connections in Glasgow, the Rochester International Jazz Festival, and multiple folk festivals and listening rooms across the US and Scotland, with a 2023 album on Adhyâropa Records and BBC appearances; still a niche acoustic folk act rather than a big draw.",
+    "confidence": "high",
+    "sources": [
+      "https://www.sassafrashillproductions.com/hildaland",
+      "https://ossipeevalley.com/performer/hildaland/",
+      "https://klofmag.com/2023/12/hildaland-sule-skerry-album-review/"
+    ],
+    "exampleTitle": "Merryall Presents: HILDALAND — Traditional Scottish & American Music",
+    "researchedAt": "2026-09-22"
+  },
+  "on the rocks": {
+    "displayName": "On The Rocks",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local cover band playing pop/soul/rock at a small brewery stage with modest $7.50 tickets; no evidence of any regional profile, press, or notable venues beyond the brewery circuit.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/events-1/on-the-rocks-11",
+      "https://hearitthere.com/event/on-the-rocks-housatonic-river-brewing-new-milford-ct/"
+    ],
+    "exampleTitle": "On The Rocks",
+    "researchedAt": "2026-09-22"
+  },
+  "phenomenon": {
+    "displayName": "Phenomenon",
+    "funQuality": 6.7,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A small independent original rock band from the Hudson Valley (813 Facebook likes) that plays bar/club circuit gigs, fairs, and released an EP and full-length album; genuine grassroots band but no major venue, chart, or festival headline evidence.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.facebook.com/Phenomenonrocknroll/",
+      "https://phenomenonrocknroll.com/",
+      "https://www.bigmountainentertainment.com/phenomenon-rock-n-roll.html"
+    ],
+    "exampleTitle": "Phenomenon",
+    "researchedAt": "2026-09-22"
+  },
+  "every breath you take a tribute to sting the police": {
+    "displayName": "Every Breath You Take: A Tribute to Sting & The Police",
+    "funQuality": 8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "An established national touring tribute act (NYC-based, fronted by a member of 80s tribute act Jessie's Girl) that plays legitimate theaters like the Katharine Hepburn Cultural Arts Center and Smithtown Center for the Performing Arts, has toured internationally including sold-out shows in Brazil, and has a Facebook following over 2,000.",
+    "confidence": "high",
+    "sources": [
+      "https://www.providencemusicgrp.com/artists/every-breath-you-take---tribute-to-the-police",
+      "https://www.eventticketscenter.com/every-breath-you-take-tribute-to-sting-the-police-old-saybrook-tickets/1469039/e",
+      "https://www.facebook.com/everybreathyoutaketribute/"
+    ],
+    "exampleTitle": "Every Breath You Take: A Tribute to Sting & The Police",
+    "researchedAt": "2026-09-22"
+  },
+  "crossfire hurricane rolling stones tribute": {
+    "displayName": "Crossfire Hurricane — Rolling Stones Tribute",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A long-running (25+ years) regional Rolling Stones tribute band billed as New York's top Stones tribute act, playing established theaters like The Palace Theatres, Cheney Hall, and The Glove Theatre, though its Facebook following is modest (842 likes).",
+    "confidence": "medium",
+    "sources": [
+      "https://www.crossfirehurricanestonestribute.com/",
+      "https://palacetheatre.org/events/crossfire-hurricane-rolling-stones-tribute-band/",
+      "https://www.cheneyhall.org/crossfire-hurricane"
+    ],
+    "exampleTitle": "Crossfire Hurricane — Rolling Stones Tribute",
+    "researchedAt": "2026-09-22"
   }
 }
