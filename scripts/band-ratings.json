@@ -2542,5 +2542,75 @@
     ],
     "exampleTitle": "Crossfire Hurricane — Rolling Stones Tribute",
     "researchedAt": "2026-09-22"
+  },
+  "greater danbury irish festival": {
+    "displayName": "Greater Danbury Irish Festival",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A long-running (29th year) two-day community festival with free admission, live Irish bands, dancers, and vendors, historically held at CityCenter Danbury Green before returning to the Irish Cultural Center; it has multi-decade regional history and sponsor backing but is a modest free community festival rather than a major ticketed draw.",
+    "confidence": "high",
+    "sources": [
+      "https://citycenterdanbury.com/event/2025-greater-danbury-irish-festival/",
+      "https://danburyirishfestival.org/festival_history/"
+    ],
+    "exampleTitle": "Greater Danbury Irish Festival",
+    "researchedAt": "2026-09-23"
+  },
+  "remember warsaw film oratorio screening": {
+    "displayName": "Remember Warsaw (film/oratorio screening)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This is a screening of a 2011 oratorio film performed by the Minnesota Oratorio Society with the librettist present for Q&A, not a live band performance; it's a niche cultural/historical program with limited public draw evidence beyond a small multi-venue CT tour.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.rememberwarsaw.org/",
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw",
+    "researchedAt": "2026-09-23"
+  },
+  "sherman players centennial gala": {
+    "displayName": "Sherman Players Centennial Gala",
+    "funQuality": 7.5,
+    "tier": "local-modest",
+    "isMusicAct": false,
+    "draw": "A milestone gala celebrating 100 years of the Sherman Players community theater, covered by local press (Town Tribune, BroadwayWorld-CT) and tied to a full season of productions; genuine but small-town community-theater scale rather than regional star power.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.thetowntribune.com/features/the-sherman-players-celebrate-their-centennial-with-exciting-upcoming-season-special-musical-event-and-a-gala-ahead/",
+      "https://shermanplayers.org/2026/01/01/season-details/"
+    ],
+    "exampleTitle": "Sherman Players Centennial Gala",
+    "researchedAt": "2026-09-23"
+  },
+  "stew leonard s in danbury pumpkin palooza": {
+    "displayName": "Stew Leonard's in Danbury Pumpkin Palooza",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, recurring seasonal in-store family activity (pumpkin painting with purchase) at a regional grocery chain, part of routine annual Halloween promotions rather than a ticketed or performance-based draw.",
+    "confidence": "high",
+    "sources": [
+      "https://stewleonards.com/stew-leonards-locations/danbury-store/",
+      "https://findingconnecticut.com/stew-leonards-announces-2026-halloween-events/"
+    ],
+    "exampleTitle": "Stew Leonard's in Danbury Pumpkin Palooza",
+    "researchedAt": "2026-09-23"
+  },
+  "dave wonsey jazz trio": {
+    "displayName": "Dave Wonsey Jazz Trio",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local Connecticut jazz trio led by a retired Ridgefield Symphony percussionist and music educator; members have side credits backing touring rock acts (Blue Öyster Cult, Alice Cooper Group) and playing NYC clubs, but the group itself is a small-venue community act with no independent chart, award, or major-festival presence found.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/the-dave-wonsey-jazz-trio-jcc-members-20-non-members-25",
+      "https://www.newmilfordnow.org/events/dave-wonsey-jazz-trio"
+    ],
+    "exampleTitle": "Wonsey Jazz Trio",
+    "researchedAt": "2026-09-23"
   }
 }
