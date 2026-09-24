@@ -2612,5 +2612,78 @@
     ],
     "exampleTitle": "Wonsey Jazz Trio",
     "researchedAt": "2026-09-23"
+  },
+  "stew leonard s halloween touch a truck": {
+    "displayName": "Stew Leonard's Halloween Touch-A-Truck",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, family-friendly promotional event held in the store parking lot with fire trucks, a bounce house, and face painting; it is one of many recurring seasonal Stew Leonard's promotions with no ticketing or headline draw beyond store visitors.",
+    "confidence": "high",
+    "sources": [
+      "https://stewleonards.com/press-releases/visual-composer-38941/",
+      "https://findingconnecticut.com/stew-leonards-announces-2026-halloween-events/",
+      "https://kidsinconnecticut.com/event/stew-leonard-danbury-touch-a-truck/"
+    ],
+    "exampleTitle": "Stew Leonard's Halloween Touch-A-Truck",
+    "researchedAt": "2026-09-24"
+  },
+  "remember warsaw dinner music night": {
+    "displayName": "Remember Warsaw (Dinner & Music night)",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A ticketed dinner-and-music night at the small, volunteer-run JCC in Sherman; public listings for this specific date show only the dinner menu and pricing with no identifiable act biography, credits, or notable venue history found.",
+    "confidence": "low",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw",
+    "researchedAt": "2026-09-24"
+  },
+  "wonsey jazz trio dave wonsey jazz trio": {
+    "displayName": "Wonsey Jazz Trio (Dave Wonsey Jazz Trio)",
+    "funQuality": 7,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A Connecticut-based trio led by a retired Ridgefield Symphony principal percussionist whose members have backed notable rock musicians (Blue Öyster Cult's Joe Bouchard, Alice Cooper's Dennis Dunaway) and played respected NY clubs, but the trio itself performs at small regional venues like the JCC in Sherman rather than major stages.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/the-dave-wonsey-jazz-trio-jcc-members-20-non-members-25",
+      "https://www.newmilfordnow.org/events/dave-wonsey-jazz-trio",
+      "https://hearitthere.com/event/wonsey-jazz-trio-jcc-sherman-ct/"
+    ],
+    "exampleTitle": "Wonsey Jazz Trio",
+    "researchedAt": "2026-09-24"
+  },
+  "brookfield ct festival of crafts 36th annual": {
+    "displayName": "Brookfield CT Festival of Crafts — 36th Annual",
+    "funQuality": 7.5,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established, 36-year-running juried craft fair and Brookfield Historical Society fundraiser featuring over 50 curated crafters, described by organizers as having grown into a leading regional pre-holiday craft show, though it has modest social media reach (a few hundred Instagram followers).",
+    "confidence": "medium",
+    "sources": [
+      "https://www.skybluedesigns.com/event/brookfield-festival-of-crafts-2025/",
+      "https://patch.com/connecticut/brookfield/calendar/event/20251101/91a17222-2efd-4500-9cea-3fcb783a0f9d/36th-annual-festival-of-crafts",
+      "https://www.instagram.com/brookfieldctfestivalofcrafts/"
+    ],
+    "exampleTitle": "Brookfield CT Festival of Crafts — 36th Annual",
+    "researchedAt": "2026-09-24"
+  },
+  "story songs of the 70s tribute to cat stevens gordon lightfoot and harry chapin": {
+    "displayName": "Story Songs of the 70s: Tribute to Cat Stevens, Gordon Lightfoot and Harry Chapin",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "Despite being listed as 'Yusuf/Cat Stevens,' the actual Nov 19, 2026 Daryl's House booking is a tribute show ('Story Songs of the 70s') covering Cat Stevens, Gordon Lightfoot and Harry Chapin material, not a performance by the real Yusuf/Cat Stevens, who is a Rock & Roll Hall of Fame inductee currently touring theaters like Boston's Wang Theatre and Toronto's Massey Hall; the tribute act itself has no independent national profile found.",
+    "confidence": "high",
+    "sources": [
+      "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+      "https://www.eventticketscenter.com/story-songs-of-the-70s-tribute-to-cat-stevens-gordon-lightfoot-and-harry-chapin-pawling-11-19-2026/8050951/t",
+      "https://www.songkick.com/artists/329262-cat-stevens/calendar"
+    ],
+    "exampleTitle": "Yusuf / Cat Stevens",
+    "researchedAt": "2026-09-24"
   }
 }

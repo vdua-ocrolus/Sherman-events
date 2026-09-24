@@ -981,58 +981,20 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Sep 23, 2026",
-  "tonight": [],
+  "lastUpdated": "Sep 24, 2026",
+  "tonight": [
+    {
+      "name": "John Crist Live",
+      "venue": "Warner Theatre (Oneglia Auditorium), Torrington, CT",
+      "time": "7:00PM"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · September 23–28",
+      "title": "Week 1 · September 24–28",
       "open": true,
       "events": [
-        {
-          "funQuality": 8.1,
-          "title": "Kenny G Live",
-          "url": "https://ridgefieldplayhouse.org/event/kenny-g-ridgefield-ct-2026/",
-          "dateLabel": "Wed Sep 23",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Smooth Jazz Legend",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Multi-platinum smooth jazz icon Kenny G, one of the best-selling instrumental artists of all time, brings his saxophone to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.1
-        },
-        {
-          "funQuality": 7.6,
-          "title": "Joshua Radin",
-          "url": "https://www.songkick.com/concerts/43198821-joshua-radin-at-daryls-house",
-          "dateLabel": "Wed Sep 23",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Singer-Songwriter",
-          "priceType": "paid",
-          "priceLabel": "$45–$55",
-          "desc": "Singer-songwriter Joshua Radin has tallied over 1 billion streams and a gold-certified single, and has shared stages with Ed Sheeran, Sara Bareilles, and Sheryl Crow.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.6
-        },
         {
           "funQuality": 6.6,
           "title": "John Crist Live",
@@ -1049,7 +1011,7 @@ const EVENTS_DATA = {
           "desc": "Popular touring comedian John Crist, known for his viral sketches, brings his stand-up show to the Warner Theatre.",
           "source": "warnertheatre.org",
           "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1386,7 +1348,7 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
-          "funQuality": 8,
+          "funQuality": 8.2,
           "title": "Litchfield Hills Highland Games",
           "url": "https://limerock.com/community-events/litchfield-hills-highland-games/",
           "dateLabel": "Sun Sep 27",
@@ -1405,7 +1367,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.6
+          "score": 7.7
         },
         {
           "funQuality": 7.1,
@@ -1516,6 +1478,50 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.4
+        },
+        {
+          "funQuality": 8.1,
+          "title": "Kenny G Live",
+          "url": "https://ridgefieldplayhouse.org/event/kenny-g-ridgefield-ct-2026/",
+          "dateLabel": "Wed Sep 23",
+          "time": "7:30PM",
+          "venue": "Ridgefield Playhouse",
+          "venueType": "playhouse",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Smooth Jazz Legend",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Multi-platinum smooth jazz icon Kenny G, one of the best-selling instrumental artists of all time, brings his saxophone to Ridgefield.",
+          "source": "ridgefieldplayhouse.org",
+          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
+        },
+        {
+          "funQuality": 7.6,
+          "title": "Joshua Radin",
+          "url": "https://www.songkick.com/concerts/43198821-joshua-radin-at-daryls-house",
+          "dateLabel": "Wed Sep 23",
+          "time": "7:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Singer-Songwriter",
+          "priceType": "paid",
+          "priceLabel": "$45–$55",
+          "desc": "Singer-songwriter Joshua Radin has tallied over 1 billion streams and a gold-certified single, and has shared stages with Ed Sheeran, Sara Bareilles, and Sheryl Crow.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": true,
+          "isPast": true,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.6
         }
       ]
     },
@@ -1792,7 +1798,7 @@ const EVENTS_DATA = {
           "funQuality": 8.4,
           "title": "New Milford RiverFest",
           "url": "https://newmilford-chamber.com/events/new-milford-riverfest/",
-          "dateLabel": "Sat Oct 3",
+          "dateLabel": "Fri Oct 2 – Sat Oct 3",
           "time": "See website for hours",
           "venue": "Young's Field",
           "venueType": "newmilford",
@@ -1833,7 +1839,7 @@ const EVENTS_DATA = {
           "score": 7.3
         },
         {
-          "funQuality": 8.9,
+          "funQuality": 7.1,
           "title": "Stew Leonard's Halloween Touch-A-Truck",
           "url": "https://stewleonards.com/press-releases/visual-composer-38941/",
           "dateLabel": "Sat Oct 3",
@@ -1852,7 +1858,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.6
+          "score": 7.4
         },
         {
           "funQuality": 7.9,
@@ -2016,6 +2022,28 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
+          "funQuality": 8,
+          "title": "Badfish – A Tribute to Sublime (Acoustic Tour 2026)",
+          "url": "https://darylshouseclub.com/tm-event/badfish-a-tribute-to-sublime-the-blizzy-tour/",
+          "dateLabel": "Thu Oct 8",
+          "time": "8:00PM",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music / Sublime Tribute",
+          "priceType": "paid",
+          "priceLabel": "$40+",
+          "desc": "For almost 25 years, Rhode Island-based Badfish has faithfully channeled the ska-punk and reggae-rock spirit of Sublime, developing a devoted following that has let them headline theaters and sell out shows nationwide.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.9
+        },
+        {
           "funQuality": 7.9,
           "title": "Art Garfunkel: What a Wonderful World Concerts",
           "url": "https://ridgefieldplayhouse.org/event/art-garfunkel-ridgefield-ct-2026/",
@@ -2126,7 +2154,7 @@ const EVENTS_DATA = {
           "score": 8.3
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 7.9,
           "title": "Connecticut Garlic & Harvest Festival",
           "url": "https://garlicfestct.com/",
           "dateLabel": "Sat Oct 10 – Sun Oct 11",
@@ -2145,7 +2173,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.3
+          "score": 7.5
         },
         {
           "funQuality": 7.8,
@@ -2302,7 +2330,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 8.1,
+          "funQuality": 8.3,
           "title": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
           "url": "https://www.danburyrail.org/pumpkin",
           "dateLabel": "Sat Oct 10 – Sun Oct 11",
@@ -2321,7 +2349,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
+          "score": 8.2
         }
       ]
     },
@@ -2639,7 +2667,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8.1,
+          "funQuality": 8.3,
           "title": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
           "url": "https://www.danburyrail.org/pumpkin",
           "dateLabel": "Sat Oct 17 – Sun Oct 18",
@@ -2658,7 +2686,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
+          "score": 8.2
         }
       ]
     },
@@ -2688,28 +2716,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.9
-        },
-        {
-          "funQuality": 8.2,
-          "title": "Beautiful: The Carole King Musical (Opening)",
-          "url": "https://www.actofct.org/season",
-          "dateLabel": "Thu Oct 22",
-          "time": "See website for showtimes",
-          "venue": "A.C.T. of Connecticut",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Broadway Musical",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A.C.T. of CT opens its acclaimed regional production of the Tony and GRAMMY Award-winning \"Beautiful: The Carole King Musical,\" tracing King's rise from Brooklyn songwriter to the voice of Tapestry, packed with over two dozen timeless hits, running through Nov 22.",
-          "source": "actofct.org",
-          "sourceUrl": "https://www.actofct.org/season",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.1
         },
         {
           "funQuality": 7.9,
@@ -2778,6 +2784,28 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
+          "funQuality": 8.2,
+          "title": "Beautiful: The Carole King Musical (Opening)",
+          "url": "https://www.actofct.org/season",
+          "dateLabel": "Sat Oct 24",
+          "time": "See website for showtimes",
+          "venue": "A.C.T. of Connecticut",
+          "venueType": "ridgefield",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Broadway Musical",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A.C.T. of CT opens its acclaimed regional production of the Tony and GRAMMY Award-winning \"Beautiful: The Carole King Musical,\" tracing King's rise from Brooklyn songwriter to the voice of Tapestry, packed with over two dozen timeless hits, running through Nov 22.",
+          "source": "actofct.org",
+          "sourceUrl": "https://www.actofct.org/season",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
+        },
+        {
           "funQuality": 6.7,
           "title": "On The Rocks",
           "url": "https://www.housatonicriverbrewing.com/events-1/on-the-rocks-12",
@@ -2844,7 +2872,7 @@ const EVENTS_DATA = {
           "score": 6.6
         },
         {
-          "funQuality": 8.8,
+          "funQuality": 8.5,
           "title": "Wonsey Jazz Trio",
           "url": "https://www.shermanct.gov/muni-events/wonsey-jazz-trio",
           "dateLabel": "Sat Oct 24",
@@ -2863,7 +2891,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 9.2
+          "score": 9
         },
         {
           "funQuality": 7.7,
@@ -2954,7 +2982,7 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
-          "funQuality": 8.1,
+          "funQuality": 8.3,
           "title": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
           "url": "https://www.danburyrail.org/pumpkin",
           "dateLabel": "Sat Oct 24 – Sun Oct 25",
@@ -2973,7 +3001,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
+          "score": 8.2
         }
       ]
     },
@@ -3071,6 +3099,28 @@ const EVENTS_DATA = {
           "score": 8.7
         },
         {
+          "funQuality": 7.6,
+          "title": "Jessica Lynn",
+          "url": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "dateLabel": "Sat Oct 31",
+          "time": "See website for time",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Live Music / Country-Rock",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Rising country-rock singer-songwriter and violinist Jessica Lynn, known for her high-energy live shows and international touring, plays a Halloween-night show at Daryl's House.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.6
+        },
+        {
           "funQuality": 6.6,
           "title": "Behind The Scream: A Live Conversation with David Arquette",
           "url": "https://www.warnertheatre.org/events/behind-the-scream/",
@@ -3137,28 +3187,6 @@ const EVENTS_DATA = {
           "score": 7.5
         },
         {
-          "funQuality": 8.6,
-          "title": "Spring Hill Vineyards Harvest Festival",
-          "url": "https://explorewashingtonct.com/events/spring-hill-vineyards-harvest-festival/",
-          "dateLabel": "Sat Oct 31",
-          "time": "12:00PM–5:00PM",
-          "venue": "Spring Hill Vineyards",
-          "venueType": "litchfield",
-          "town": "New Preston, CT",
-          "dist": "~20 mi",
-          "type": "Fall Festival / Wine & Live Music",
-          "priceType": "free",
-          "priceLabel": "Free entry",
-          "desc": "Spring Hill Vineyards closes its season with hay wagon rides, a fire pit with s'mores, the Crepe Royal food truck, mulled wine, and live music at the scenic New Preston vineyard.",
-          "source": "explorewashingtonct.com",
-          "sourceUrl": "https://explorewashingtonct.com/events/spring-hill-vineyards-harvest-festival/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.3
-        },
-        {
           "funQuality": 7.5,
           "title": "Evnin Rising Stars II",
           "url": "https://caramoor.org/event/evnin-rising-stars-ii-2026-rhcs",
@@ -3179,28 +3207,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.5
-        },
-        {
-          "funQuality": 8.6,
-          "title": "Spring Hill Vineyards Harvest Festival",
-          "url": "https://explorewashingtonct.com/events/spring-hill-vineyards-harvest-festival/",
-          "dateLabel": "Sun Nov 1",
-          "time": "12:00PM–5:00PM",
-          "venue": "Spring Hill Vineyards",
-          "venueType": "litchfield",
-          "town": "New Preston, CT",
-          "dist": "~20 mi",
-          "type": "Fall Festival / Wine & Live Music",
-          "priceType": "free",
-          "priceLabel": "Free entry",
-          "desc": "Day two of Spring Hill Vineyards' end-of-season Harvest Festival, with hay wagon rides, fire pit s'mores, mulled wine, food trucks, and live music.",
-          "source": "explorewashingtonct.com",
-          "sourceUrl": "https://explorewashingtonct.com/events/spring-hill-vineyards-harvest-festival/",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.3
         }
       ]
     },
@@ -3320,7 +3326,7 @@ const EVENTS_DATA = {
           "score": 7.8
         },
         {
-          "funQuality": 8.7,
+          "funQuality": 8.1,
           "title": "Brookfield CT Festival of Crafts — 36th Annual",
           "url": "https://ctcraftfairconnection.com/events/tag/brookfield/",
           "dateLabel": "Sat Nov 7",
@@ -3339,7 +3345,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.6
+          "score": 8.2
         }
       ]
     },
@@ -3393,6 +3399,28 @@ const EVENTS_DATA = {
           "score": 8.5
         },
         {
+          "funQuality": 8.5,
+          "title": "Yusuf / Cat Stevens",
+          "url": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
+          "dateLabel": "Thu Nov 19",
+          "time": "See website for time",
+          "venue": "Daryl's House",
+          "venueType": "darylshouse",
+          "town": "Pawling, NY",
+          "dist": "~20 mi",
+          "type": "Rock & Roll Hall of Fame Legend",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Rock and Roll Hall of Fame legend Yusuf / Cat Stevens, the voice behind timeless classics like \"Peace Train,\" \"Wild World,\" and \"Morning Has Broken,\" plays an intimate, rare club show at Daryl's House.",
+          "source": "darylshouseclub.com",
+          "sourceUrl": "https://darylshouseclub.com/shows/",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.2
+        },
+        {
           "funQuality": 7.5,
           "title": "Renaissance String Quartet (Ernst Stiefel String Quartet-in-Residence)",
           "url": "https://caramoor.org/event/renaissance-string-quartet-2026-rhcs",
@@ -3420,16 +3448,24 @@ const EVENTS_DATA = {
   "past": [],
   "daryls": [
     {
-      "date": "Wed Sep 23, 7:00PM",
-      "title": "Joshua Radin"
-    },
-    {
       "date": "Sun Sep 27, 7:00PM",
       "title": "California Guitar Trio"
     },
     {
+      "date": "Thu Oct 8, 8:00PM",
+      "title": "Badfish – A Tribute to Sublime"
+    },
+    {
       "date": "Sun Oct 18, 7:00PM",
       "title": "Bywater Call"
+    },
+    {
+      "date": "Sat Oct 31",
+      "title": "Jessica Lynn"
+    },
+    {
+      "date": "Thu Nov 19",
+      "title": "Yusuf / Cat Stevens"
     }
   ]
 };
