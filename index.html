@@ -981,44 +981,37 @@ function initClickTracking() {
 // =============================================
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
-  "lastUpdated": "Sep 24, 2026",
+  "lastUpdated": "Sep 25, 2026",
   "tonight": [
     {
-      "name": "John Crist Live",
+      "name": "The Billy Joel Legacy: A Tribute Experience",
       "venue": "Warner Theatre (Oneglia Auditorium), Torrington, CT",
-      "time": "7:00PM"
+      "time": "7:30PM"
+    },
+    {
+      "name": "Welcome Back My Friends: An Evening With Emerson, Lake, and Palmer",
+      "venue": "Ridgefield Playhouse, Ridgefield, CT",
+      "time": "8:00PM"
+    },
+    {
+      "name": "The Outcrops",
+      "venue": "Housatonic River Brewing, New Milford, CT",
+      "time": "7:00PM–10:00PM"
+    },
+    {
+      "name": "Latin American Music with the Gerard-Hill Duo",
+      "venue": "Sherman Library, Sherman, CT",
+      "time": "1:00PM–2:00PM"
     }
   ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · September 24–28",
+      "title": "Week 1 · September 25–28",
       "open": true,
       "events": [
         {
           "funQuality": 6.6,
-          "title": "John Crist Live",
-          "url": "https://www.warnertheatre.org/events/john-crist-live/",
-          "dateLabel": "Thu Sep 24",
-          "time": "7:00PM",
-          "venue": "Warner Theatre (Oneglia Auditorium)",
-          "venueType": "warner",
-          "town": "Torrington, CT",
-          "dist": "~20 mi",
-          "type": "Comedy",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "Popular touring comedian John Crist, known for his viral sketches, brings his stand-up show to the Warner Theatre.",
-          "source": "warnertheatre.org",
-          "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": true,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 6.6
-        },
-        {
-          "funQuality": 6.7,
           "title": "The Billy Joel Legacy: A Tribute Experience",
           "url": "https://www.warnertheatre.org/events/billy-joel-legacy/",
           "dateLabel": "Fri Sep 25",
@@ -1033,7 +1026,7 @@ const EVENTS_DATA = {
           "desc": "A note-for-note tribute experience recreating the iconic songbook and stagecraft of Billy Joel at the historic Warner Theatre.",
           "source": "warnertheatre.org",
           "sourceUrl": "https://www.warnertheatre.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1055,7 +1048,7 @@ const EVENTS_DATA = {
           "desc": "A celebrated tribute act pays homage to prog-rock giants Emerson, Lake & Palmer, recreating the legendary trio's iconic live shows for a devoted fan following.",
           "source": "ridgefieldplayhouse.org",
           "sourceUrl": "https://ridgefieldplayhouse.org/events/",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1077,7 +1070,7 @@ const EVENTS_DATA = {
           "desc": "From the woods of Northern New Jersey, The Outcrops present original blues-infused rock 'n' roll, formed in 2016 by lead vocalist Cassidy Rain and lead guitarist Bryan Schroeder.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1121,7 +1114,7 @@ const EVENTS_DATA = {
           "desc": "The Gerard-Hill Duo performs a program of Latin American music at the Sherman Library as part of the town's community events series.",
           "source": "shermanct.gov",
           "sourceUrl": "https://www.shermanct.gov/municipal-calendar-list---community-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1326,7 +1319,7 @@ const EVENTS_DATA = {
           "score": 8
         },
         {
-          "funQuality": 7.3,
+          "funQuality": 7.4,
           "title": "Kent Land Trust Annual Benefit Cocktail Party",
           "url": "https://www.kentlandtrust.org/upcoming-events",
           "dateLabel": "Sat Sep 26",
@@ -1348,7 +1341,7 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
-          "funQuality": 8.2,
+          "funQuality": 8.4,
           "title": "Litchfield Hills Highland Games",
           "url": "https://limerock.com/community-events/litchfield-hills-highland-games/",
           "dateLabel": "Sun Sep 27",
@@ -1367,10 +1360,10 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.7
+          "score": 7.8
         },
         {
-          "funQuality": 7.1,
+          "funQuality": 7,
           "title": "Best in Bloom Dahlia Festival",
           "url": "https://sharonhist.org/event/best-in-bloom/",
           "dateLabel": "Sat Sep 26 – Sun Sep 27",
@@ -1480,48 +1473,26 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
-          "funQuality": 8.1,
-          "title": "Kenny G Live",
-          "url": "https://ridgefieldplayhouse.org/event/kenny-g-ridgefield-ct-2026/",
-          "dateLabel": "Wed Sep 23",
-          "time": "7:30PM",
-          "venue": "Ridgefield Playhouse",
-          "venueType": "playhouse",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Smooth Jazz Legend",
+          "funQuality": 6.6,
+          "title": "John Crist Live",
+          "url": "https://www.warnertheatre.org/events/john-crist-live/",
+          "dateLabel": "Thu Sep 24",
+          "time": "7:00PM",
+          "venue": "Warner Theatre (Oneglia Auditorium)",
+          "venueType": "warner",
+          "town": "Torrington, CT",
+          "dist": "~20 mi",
+          "type": "Comedy",
           "priceType": "paid",
           "priceLabel": null,
-          "desc": "Multi-platinum smooth jazz icon Kenny G, one of the best-selling instrumental artists of all time, brings his saxophone to Ridgefield.",
-          "source": "ridgefieldplayhouse.org",
-          "sourceUrl": "https://ridgefieldplayhouse.org/events/",
+          "desc": "Popular touring comedian John Crist, known for his viral sketches, brings his stand-up show to the Warner Theatre.",
+          "source": "warnertheatre.org",
+          "sourceUrl": "https://www.warnertheatre.org/events/",
           "isTonight": true,
           "isPast": true,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.1
-        },
-        {
-          "funQuality": 7.6,
-          "title": "Joshua Radin",
-          "url": "https://www.songkick.com/concerts/43198821-joshua-radin-at-daryls-house",
-          "dateLabel": "Wed Sep 23",
-          "time": "7:00PM",
-          "venue": "Daryl's House",
-          "venueType": "darylshouse",
-          "town": "Pawling, NY",
-          "dist": "~20 mi",
-          "type": "Singer-Songwriter",
-          "priceType": "paid",
-          "priceLabel": "$45–$55",
-          "desc": "Singer-songwriter Joshua Radin has tallied over 1 billion streams and a gold-certified single, and has shared stages with Ed Sheeran, Sara Bareilles, and Sheryl Crow.",
-          "source": "darylshouseclub.com",
-          "sourceUrl": "https://darylshouseclub.com/shows/",
-          "isTonight": true,
-          "isPast": true,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 7.6
+          "score": 6.6
         }
       ]
     },
@@ -1553,7 +1524,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 6.9,
+          "funQuality": 6.8,
           "title": "Graham Nash",
           "url": "https://www.warnertheatre.org/events/graham-nash/",
           "dateLabel": "Wed Sep 30",
@@ -1572,7 +1543,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 6.8
+          "score": 6.7
         },
         {
           "funQuality": 7.9,
@@ -1597,7 +1568,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 7.4,
+          "funQuality": 7.6,
           "title": "Back To The Barre LIVE With Christi & Kelly",
           "url": "https://ridgefieldplayhouse.org/event/back-to-the-barre-ridgefield-ct-2026/",
           "dateLabel": "Fri Oct 2",
@@ -1616,7 +1587,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.6
+          "score": 7.7
         },
         {
           "funQuality": 7,
@@ -1663,7 +1634,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 7.8,
+          "funQuality": 7.9,
           "title": "Manhattan Short Film Festival",
           "url": "https://thepalacedanbury1.ticketspice.com/manhattan-short-film-festival-10-2-26",
           "dateLabel": "Fri Oct 2",
@@ -1729,7 +1700,7 @@ const EVENTS_DATA = {
           "score": 7.5
         },
         {
-          "funQuality": 6.7,
+          "funQuality": 6.6,
           "title": "TUSK: A Classic Fleetwood Mac Tribute",
           "url": "https://www.warnertheatre.org/events/tusk-fleetwood-mac/",
           "dateLabel": "Sat Oct 3",
@@ -1905,7 +1876,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8.7,
+          "funQuality": 8.5,
           "title": "Dinner & Music: Remember Warsaw",
           "url": "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw",
           "dateLabel": "Sat Oct 3",
@@ -1924,10 +1895,10 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 9.1
+          "score": 9
         },
         {
-          "funQuality": 7.6,
+          "funQuality": 8.2,
           "title": "Frank Brocklehurst",
           "url": "https://www.merryallcenter.org/",
           "dateLabel": "Sun Oct 4",
@@ -1946,7 +1917,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8.6
         },
         {
           "funQuality": 8.2,
@@ -2022,7 +1993,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8,
+          "funQuality": 7.9,
           "title": "Badfish – A Tribute to Sublime (Acoustic Tour 2026)",
           "url": "https://darylshouseclub.com/tm-event/badfish-a-tribute-to-sublime-the-blizzy-tour/",
           "dateLabel": "Thu Oct 8",
@@ -2041,7 +2012,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.9
+          "score": 7.8
         },
         {
           "funQuality": 7.9,
@@ -2154,7 +2125,7 @@ const EVENTS_DATA = {
           "score": 8.3
         },
         {
-          "funQuality": 7.9,
+          "funQuality": 7.7,
           "title": "Connecticut Garlic & Harvest Festival",
           "url": "https://garlicfestct.com/",
           "dateLabel": "Sat Oct 10 – Sun Oct 11",
@@ -2173,7 +2144,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.5
+          "score": 7.3
         },
         {
           "funQuality": 7.8,
@@ -2330,7 +2301,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 8.3,
+          "funQuality": 8.4,
           "title": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
           "url": "https://www.danburyrail.org/pumpkin",
           "dateLabel": "Sat Oct 10 – Sun Oct 11",
@@ -2349,7 +2320,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8.3
         }
       ]
     },
@@ -2447,7 +2418,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 8.3,
+          "funQuality": 6,
           "title": "Poetry Showcase: Season Of The Witch",
           "url": "https://www.shermanct.gov/muni-events/poetry-showcase-season-of-the-witch",
           "dateLabel": "Fri Oct 16",
@@ -2466,7 +2437,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.8
+          "score": 7.2
         },
         {
           "funQuality": 8,
@@ -2579,7 +2550,7 @@ const EVENTS_DATA = {
           "score": 6.9
         },
         {
-          "funQuality": 7.5,
+          "funQuality": 7.7,
           "title": "Danbury Oktoberfest — 1st Annual",
           "url": "https://happeningnext.com/event/danbury-irish-festival-2026-eid3a0dj46skn",
           "dateLabel": "Sat Oct 17",
@@ -2598,7 +2569,29 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.7
+          "score": 7.8
+        },
+        {
+          "funQuality": 7.5,
+          "title": "Scarrybrooke Park CT's Haunted Trail (Opening Weekend)",
+          "url": "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+          "dateLabel": "Fri Oct 16 – Sat Oct 17",
+          "time": "See website for hours",
+          "venue": "Harrybrooke Park",
+          "venueType": "newmilford",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Haunted Attraction / Family Halloween",
+          "priceType": "paid",
+          "priceLabel": "See website",
+          "desc": "Celebrating its 13th anniversary, this 100% volunteer-run haunted trail and hayride winds over Harrybrooke Park's 48 acres and is billed as the longest haunted walking attraction in the state, benefiting six local nonprofits.",
+          "source": "ticketsignup.io",
+          "sourceUrl": "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
         },
         {
           "funQuality": 7.6,
@@ -2667,7 +2660,7 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
-          "funQuality": 8.3,
+          "funQuality": 8.4,
           "title": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
           "url": "https://www.danburyrail.org/pumpkin",
           "dateLabel": "Sat Oct 17 – Sun Oct 18",
@@ -2686,7 +2679,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8.3
         }
       ]
     },
@@ -2740,6 +2733,28 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
+          "funQuality": 8.2,
+          "title": "Beautiful: The Carole King Musical (Opening)",
+          "url": "https://www.actofct.org/beautiful",
+          "dateLabel": "Thu Oct 22",
+          "time": "See website for showtimes",
+          "venue": "A.C.T. of Connecticut",
+          "venueType": "ridgefield",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Broadway Musical",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "A.C.T. of CT opens its acclaimed regional production of the Tony and GRAMMY Award-winning \"Beautiful: The Carole King Musical,\" tracing King's rise from Brooklyn songwriter to the voice of Tapestry, packed with over two dozen timeless hits, running through Nov 22.",
+          "source": "actofct.org",
+          "sourceUrl": "https://www.actofct.org/beautiful",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
+        },
+        {
           "funQuality": 7.9,
           "title": "Dar Williams",
           "url": "https://ridgefieldplayhouse.org/event/dar-williams-ridgefield-ct-2026/",
@@ -2762,6 +2777,28 @@ const EVENTS_DATA = {
           "score": 7.9
         },
         {
+          "funQuality": 7.5,
+          "title": "Scarrybrooke Park CT's Haunted Trail",
+          "url": "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+          "dateLabel": "Fri Oct 23",
+          "time": "See website for hours",
+          "venue": "Harrybrooke Park",
+          "venueType": "newmilford",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Haunted Attraction / Family Halloween",
+          "priceType": "paid",
+          "priceLabel": "See website",
+          "desc": "The 13th-anniversary run of Connecticut's longest haunted walking trail continues at Harrybrooke Park, a 100% volunteer effort benefiting six local nonprofits including the New Milford Lions Club and area Boy Scout troops.",
+          "source": "ticketsignup.io",
+          "sourceUrl": "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
+        },
+        {
           "funQuality": 7.9,
           "title": "Peter Antoniou: Pretty Psychic",
           "url": "https://thepalacedanbury1.ticketspice.com/peter-antoniou-october-25-2026-",
@@ -2782,28 +2819,6 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 7.9
-        },
-        {
-          "funQuality": 8.2,
-          "title": "Beautiful: The Carole King Musical (Opening)",
-          "url": "https://www.actofct.org/season",
-          "dateLabel": "Sat Oct 24",
-          "time": "See website for showtimes",
-          "venue": "A.C.T. of Connecticut",
-          "venueType": "ridgefield",
-          "town": "Ridgefield, CT",
-          "dist": "~15 mi",
-          "type": "Broadway Musical",
-          "priceType": "paid",
-          "priceLabel": null,
-          "desc": "A.C.T. of CT opens its acclaimed regional production of the Tony and GRAMMY Award-winning \"Beautiful: The Carole King Musical,\" tracing King's rise from Brooklyn songwriter to the voice of Tapestry, packed with over two dozen timeless hits, running through Nov 22.",
-          "source": "actofct.org",
-          "sourceUrl": "https://www.actofct.org/season",
-          "isTonight": false,
-          "isPast": false,
-          "isNF": false,
-          "funQualityNote": null,
-          "score": 8.1
         },
         {
           "funQuality": 6.7,
@@ -2894,7 +2909,7 @@ const EVENTS_DATA = {
           "score": 9
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 7.6,
           "title": "Kent Pumpkin Run — 50th Anniversary",
           "url": "https://www.kentct.com/signature-events/50th-anniversary-kent-pumpkin-run-2026",
           "dateLabel": "Sun Oct 25",
@@ -2916,7 +2931,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 8.1,
+          "funQuality": 6.8,
           "title": "Mark Winters",
           "url": "https://www.housatonicriverbrewing.com/events-1/mark-winters",
           "dateLabel": "Sun Oct 25",
@@ -2935,10 +2950,10 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.5
+          "score": 7.6
         },
         {
-          "funQuality": 7.7,
+          "funQuality": 7.8,
           "title": "123 Andrés – ¡No Tengo Miedo! – A Bilingual Concert for Halloween",
           "url": "https://ridgefieldplayhouse.org/event/123-andres-ridgefield-ct-2026/",
           "dateLabel": "Sun Oct 25",
@@ -2957,7 +2972,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 7.8
+          "score": 7.9
         },
         {
           "funQuality": 7.4,
@@ -2982,7 +2997,7 @@ const EVENTS_DATA = {
           "score": 7.4
         },
         {
-          "funQuality": 8.3,
+          "funQuality": 8.4,
           "title": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
           "url": "https://www.danburyrail.org/pumpkin",
           "dateLabel": "Sat Oct 24 – Sun Oct 25",
@@ -3001,7 +3016,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8.3
         }
       ]
     },
@@ -3077,7 +3092,29 @@ const EVENTS_DATA = {
           "score": 7.5
         },
         {
-          "funQuality": 8.1,
+          "funQuality": 7.5,
+          "title": "Scarrybrooke Park CT's Haunted Trail (Closing Weekend)",
+          "url": "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+          "dateLabel": "Fri Oct 30",
+          "time": "See website for hours",
+          "venue": "Harrybrooke Park",
+          "venueType": "newmilford",
+          "town": "New Milford, CT",
+          "dist": "~7 mi",
+          "type": "Haunted Attraction / Family Halloween",
+          "priceType": "paid",
+          "priceLabel": "See website",
+          "desc": "The final night of the 13th-anniversary Scarrybrooke Park Haunted Trail, Connecticut's longest walking haunted attraction, wraps up its run through Harrybrooke Park's 48 acres.",
+          "source": "ticketsignup.io",
+          "sourceUrl": "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
+        },
+        {
+          "funQuality": 6.5,
           "title": "Square Dancing with Jim Emory",
           "url": "https://www.shermanct.gov/muni-events/square-dancing-with-jim-emory",
           "dateLabel": "Fri Oct 30",
@@ -3096,7 +3133,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.7
+          "score": 7.6
         },
         {
           "funQuality": 7.6,
@@ -3141,6 +3178,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 6.6
+        },
+        {
+          "funQuality": 8.2,
+          "title": "Beautiful: The Carole King Musical — Sensory Friendly Performance",
+          "url": "https://www.actofct.org/beautiful",
+          "dateLabel": "Sat Oct 31",
+          "time": "2:00PM",
+          "venue": "A.C.T. of Connecticut",
+          "venueType": "ridgefield",
+          "town": "Ridgefield, CT",
+          "dist": "~15 mi",
+          "type": "Sensory-Friendly Broadway Musical",
+          "priceType": "paid",
+          "priceLabel": "Not available to general public",
+          "desc": "A.C.T. of CT offers a specially adapted sensory-friendly performance of Beautiful: The Carole King Musical, designed for audience members who benefit from a modified sensory environment.",
+          "source": "actofct.org",
+          "sourceUrl": "https://www.actofct.org/beautiful",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 8.1
         },
         {
           "funQuality": 8.4,
@@ -3238,7 +3297,7 @@ const EVENTS_DATA = {
           "score": 7.6
         },
         {
-          "funQuality": 7.1,
+          "funQuality": 6.9,
           "title": "Almost, Maine (Stage @ The Warner)",
           "url": "https://www.warnertheatre.org/events/almost-maine/",
           "dateLabel": "Fri Nov 6",
@@ -3257,7 +3316,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 6.9
+          "score": 6.8
         },
         {
           "funQuality": 7.6,
@@ -3346,6 +3405,28 @@ const EVENTS_DATA = {
           "isNF": false,
           "funQualityNote": null,
           "score": 8.2
+        },
+        {
+          "funQuality": 7.5,
+          "title": "Conversations at Caramoor: Anthony Roth Costanzo",
+          "url": "https://caramoor.org/events/concerts",
+          "dateLabel": "Sun Nov 8",
+          "time": "3:00PM",
+          "venue": "Caramoor (Rosen House Music Room)",
+          "venueType": "caramoor",
+          "town": "Katonah, NY",
+          "dist": "~25 mi",
+          "type": "Talk / Classical Music",
+          "priceType": "paid",
+          "priceLabel": null,
+          "desc": "Leading opera countertenor and author Anthony Roth Costanzo discusses his new book \"Countertenor\" as part of Caramoor's Conversations series in the Rosen House Music Room.",
+          "source": "caramoor.org",
+          "sourceUrl": "https://caramoor.org/events/concerts",
+          "isTonight": false,
+          "isPast": false,
+          "isNF": false,
+          "funQualityNote": null,
+          "score": 7.5
         }
       ]
     },
@@ -3399,7 +3480,7 @@ const EVENTS_DATA = {
           "score": 8.5
         },
         {
-          "funQuality": 8.5,
+          "funQuality": 8.2,
           "title": "Yusuf / Cat Stevens",
           "url": "https://www.songkick.com/venues/2795673-daryls-house/calendar",
           "dateLabel": "Thu Nov 19",
@@ -3418,7 +3499,7 @@ const EVENTS_DATA = {
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
-          "score": 8.2
+          "score": 8
         },
         {
           "funQuality": 7.5,

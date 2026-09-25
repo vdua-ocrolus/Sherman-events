@@ -2685,5 +2685,105 @@
     ],
     "exampleTitle": "Yusuf / Cat Stevens",
     "researchedAt": "2026-09-24"
+  },
+  "remember warsaw bernard kaplan oratorio film screening": {
+    "displayName": "Remember Warsaw (Bernard Kaplan oratorio film screening)",
+    "funQuality": 6,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This is a screening of a Holocaust-remembrance oratorio film written by librettist Bernard Kaplan, performed by the Minnesota Oratorio Society in 2011, touring small CT venues like libraries and community centers with a Q&A rather than a live musical performance by a touring act.",
+    "confidence": "high",
+    "sources": [
+      "https://www.rememberwarsaw.org/",
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw",
+    "researchedAt": "2026-09-25"
+  },
+  "poetry showcase season of the witch": {
+    "displayName": "Poetry Showcase: Season Of The Witch",
+    "funQuality": 6,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A community open-mic style poetry and spoken word showcase at a small local JCC with featured poet readings and open mic, with no evidence of notable performers or regional draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/poetry-showcase-season-of-the-witch"
+    ],
+    "exampleTitle": "Poetry Showcase: Season Of The Witch",
+    "researchedAt": "2026-09-25"
+  },
+  "scarrybrooke park ct s haunted trail opening weekend": {
+    "displayName": "Scarrybrooke Park CT's Haunted Trail (Opening Weekend)",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A long-running (13th year), well-regarded volunteer-run haunted trail billed as the longest walk-through haunted attraction in Connecticut, winning 'Haunt of the Year' awards in 2022 and 2025, run by six local nonprofits with hundreds of volunteers.",
+    "confidence": "high",
+    "sources": [
+      "https://www.haunts.com/harrybrookepark",
+      "https://www.cthauntedhouses.com/media/harrybrooke-park-haunted-trail-ct.html",
+      "https://www.facebook.com/HarrybrookeParkHauntedTrail/"
+    ],
+    "exampleTitle": "Scarrybrooke Park CT's Haunted Trail (Opening Weekend)",
+    "researchedAt": "2026-09-25"
+  },
+  "scarrybrooke park ct s haunted trail": {
+    "displayName": "Scarrybrooke Park CT's Haunted Trail",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "Same long-running, award-winning regional haunted attraction (13th anniversary in 2026), described as THE LONGEST attraction to walk in the state and a staple of the Western CT Halloween season.",
+    "confidence": "high",
+    "sources": [
+      "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+      "https://www.cthauntedhouses.com/halloween/harrybrooke-park-haunted-trail-ct.html"
+    ],
+    "exampleTitle": "Scarrybrooke Park CT's Haunted Trail",
+    "researchedAt": "2026-09-25"
+  },
+  "mark winters": {
+    "displayName": "Mark Winters",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A Texas-based independent singer-songwriter (former aerospace engineer) with a self-released 2019 debut album that has racked up over a million streams and radio/press placements, but plays small venues, breweries and regional tours rather than major festivals or headline theaters.",
+    "confidence": "medium",
+    "sources": [
+      "https://markwintersmusic.com/biography/",
+      "https://soprissun.com/mark-winters-makes-his-steves-debut/",
+      "https://open.spotify.com/concert/73b3CDxqYNQUHNcIAT61Wc"
+    ],
+    "exampleTitle": "Mark Winters",
+    "researchedAt": "2026-09-25"
+  },
+  "scarrybrooke park ct s haunted trail closing weekend": {
+    "displayName": "Scarrybrooke Park CT's Haunted Trail (Closing Weekend)",
+    "funQuality": 7.5,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "Same established, award-winning regional Halloween attraction in its 13th year, billed as the longest haunted walk-through in the state and staffed by hundreds of volunteers from local nonprofits.",
+    "confidence": "high",
+    "sources": [
+      "https://www.ticketsignup.io/TicketEvent/ScarrybrookeParkCTSHauntedTrail",
+      "https://www.cthauntedhouses.com/media/harrybrooke-park-haunted-trail-ct.html"
+    ],
+    "exampleTitle": "Scarrybrooke Park CT's Haunted Trail (Closing Weekend)",
+    "researchedAt": "2026-09-25"
+  },
+  "square dancing with jim emory": {
+    "displayName": "Square Dancing with Jim Emory",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A community square dance led by Jim Emory, a Callerlab/ACA-certified professional caller with over 25-30 years of experience mainly working private parties, church socials, and family events rather than large public draws.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/square-dancing-with-jim-emory",
+      "https://www.thebash.com/square-dance-caller/jim-emory",
+      "https://emorydance.com/"
+    ],
+    "exampleTitle": "Square Dancing with Jim Emory",
+    "researchedAt": "2026-09-25"
   }
 }
