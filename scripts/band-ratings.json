@@ -2785,5 +2785,64 @@
     ],
     "exampleTitle": "Square Dancing with Jim Emory",
     "researchedAt": "2026-09-25"
+  },
+  "litchfield hills highland games": {
+    "displayName": "Litchfield Hills Highland Games",
+    "funQuality": 8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established annual regional Scottish heritage festival at the historic Lime Rock Park racetrack, with multiple sponsors, ticketed admission ($20-25), and local press describing a large crowd of visitors despite bad weather; the event has run for multiple years and features pipe bands, heavy athletics competitions, and dedicated Scottish entertainment acts.",
+    "confidence": "high",
+    "sources": [
+      "https://limerock.com/community-events/litchfield-hills-highland-games/",
+      "https://lakevillejournal.com/lime-rock-park-hosts-highland-games",
+      "https://litchfieldmagazine.com/events/highland-games/"
+    ],
+    "exampleTitle": "Litchfield Hills Highland Games — Scottish Heritage Festival at Lime Rock Park, Lakeville, CT",
+    "researchedAt": "2026-09-26"
+  },
+  "remember warsaw jcc community presentation": {
+    "displayName": "Remember Warsaw (JCC community presentation)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This is a local/community classical music drama about the Warsaw Ghetto written by JCC community member Bernard Kaplan and Roger Ames, presented as a dinner-and-screening event at the JCC in Sherman rather than a touring performance; the specific Oct 3, 2026 date was actually cancelled per the town event listing.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw",
+      "https://www.rememberwarsaw.org/"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw — Dinner & Live Music at The JCC in Sherman, Sherman, CT",
+    "researchedAt": "2026-09-26"
+  },
+  "frank brocklehurst": {
+    "displayName": "Frank Brocklehurst",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A working New England multi-instrumentalist and luthier who has performed/collaborated with notable musicians like Charles Neville (Neville Brothers) and Joe Bouchard (Blue Oyster Cult), but has no significant independent fanbase (288 Instagram followers) and primarily plays small local venues and private events with his own cover band and jazz quartet.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.zoominfo.com/p/Frank-Brocklehurst/17761236108",
+      "https://www.merryallcenter.org/event-details/frank-brocklehurst",
+      "https://www.instagram.com/frank.brocklehurst/"
+    ],
+    "exampleTitle": "Frank Brocklehurst — Live Music at Merryall Center for the Arts, New Milford, CT",
+    "researchedAt": "2026-09-26"
+  },
+  "wonsey jazz trio dave wonsey": {
+    "displayName": "Wonsey Jazz Trio (Dave Wonsey)",
+    "funQuality": 6.7,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "This is the local Dave Wonsey trio (drummer, retired Ridgefield Symphony principal percussionist and adjunct music educator) playing with guitarist Phil Forbes and bassist Kevin Callaghan, a genuine working local jazz group at small community venues, not the more nationally-recognized New York jazz pianist Anthony Wonsey who plays clubs like Smalls/Mezzrow.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.jccinsherman.org/upcomingevents/jazz-trio",
+      "https://events.cawct.org/events/dave-wonsey-jazz-trio",
+      "https://hearitthere.com/event/wonsey-jazz-trio-jcc-sherman-ct/"
+    ],
+    "exampleTitle": "Wonsey Jazz Trio — Live Jazz at The JCC in Sherman, Sherman, CT",
+    "researchedAt": "2026-09-26"
   }
 }
