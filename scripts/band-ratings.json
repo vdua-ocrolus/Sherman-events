@@ -2844,5 +2844,35 @@
     ],
     "exampleTitle": "Wonsey Jazz Trio — Live Jazz at The JCC in Sherman, Sherman, CT",
     "researchedAt": "2026-09-26"
+  },
+  "remember warsaw holocaust oratorio film screening presentation": {
+    "displayName": "Remember Warsaw (Holocaust oratorio film screening/presentation)",
+    "funQuality": 5.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This is not a live band but a community screening of a filmed 2011 performance of the oratorio by the Minnesota Oratorio Society, with librettist Bernard Kaplan present for Q&A; a niche commemorative cultural event with no live performers or independent draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.rememberwarsaw.org/",
+      "https://www.primepublishers.com/voicesnews/arts_and_living/entertainment/screening-of-remember-warsaw-at-southbury-public-library-september-27/article_f95cf504-b023-4b63-b05b-59eb17aee701.html",
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw — Dinner & Live Music at The JCC in Sherman, Sherman, CT",
+    "researchedAt": "2026-09-27"
+  },
+  "danbury railway museum pumpkin patch train the husking bee": {
+    "displayName": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\")",
+    "funQuality": 7.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A well-established, popular annual family fundraiser at a beloved local museum, running multiple weekends every October with strong regional press coverage (Patch, CTvisit, Macaroni KID) describing it as a treasured seasonal tradition, though it is a small-scale family attraction rather than a major festival.",
+    "confidence": "high",
+    "sources": [
+      "https://patch.com/connecticut/danbury/danbury-railway-museum-hosting-annual-pumpkin-patch-train-rides-october",
+      "https://www.danburyrail.org/pumpkin",
+      "https://ctvisit.com/events/ride-husking-bee-pumpkin-patch-train"
+    ],
+    "exampleTitle": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\") — Family Event / Vintage Train Ride at Danbury Railway Museum, Danbury, CT",
+    "researchedAt": "2026-09-27"
   }
 }
