@@ -2874,5 +2874,34 @@
     ],
     "exampleTitle": "Danbury Railway Museum Pumpkin Patch Train (\"The Husking Bee\") — Family Event / Vintage Train Ride at Danbury Railway Museum, Danbury, CT",
     "researchedAt": "2026-09-27"
+  },
+  "remember warsaw oratorio film screening community event": {
+    "displayName": "Remember Warsaw (oratorio film screening/community event)",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This is a screening/presentation of the 'Remember Warsaw' oratorio (Minnesota Oratorio Society, with librettist Bernard Kaplan appearing), a Holocaust-remembrance cultural program touring small community centers and libraries in CT, not a performing band with any independent public draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.rememberwarsaw.org/",
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw",
+    "researchedAt": "2026-09-28"
+  },
+  "shotguns n roses guns n roses tribute": {
+    "displayName": "Shotguns N Roses (Guns N' Roses Tribute)",
+    "funQuality": 7.6,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A Charlotte, NC-based touring Guns N' Roses tribute act that bills itself as 'the number 1 most authentic' GNR tribute and plays a circuit of dedicated live venues across the U.S. (e.g., MadLife Stage & Studios, Blue Ocean Hall, Uptown Alley), indicating an established regional/touring tribute circuit presence, though no evidence of casino-showroom or major-festival bookings was found.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shotgunsnroses.com/",
+      "https://www.madlifestageandstudios.com/shows/1995990838328",
+      "https://www.blueoceanhall.com/event/shotguns-n-roses-a-power-blast-of-gnr/"
+    ],
+    "exampleTitle": "Shotguns N Roses — Guns N' Roses Tribute",
+    "researchedAt": "2026-09-28"
   }
 }
