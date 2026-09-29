@@ -2903,5 +2903,19 @@
     ],
     "exampleTitle": "Shotguns N Roses — Guns N' Roses Tribute",
     "researchedAt": "2026-09-28"
+  },
+  "remember warsaw": {
+    "displayName": "Remember Warsaw",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This is a Holocaust-remembrance stage/concert drama and screening event about the Warsaw Ghetto, paired with a community dinner at the JCC in Sherman; it is a small-scale, meaningful local commemorative program rather than a touring musical act, with no evidence of broad public draw or press beyond its own promotional site.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.rememberwarsaw.org/about-remember-warsaw/synopsis",
+      "https://www.shermanct.gov/muni-events/dinner-music-remember-warsaw"
+    ],
+    "exampleTitle": "Dinner & Music: Remember Warsaw",
+    "researchedAt": "2026-09-29"
   }
 }
