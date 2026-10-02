@@ -2917,5 +2917,20 @@
     ],
     "exampleTitle": "Dinner & Music: Remember Warsaw",
     "researchedAt": "2026-09-29"
+  },
+  "pinchas zukerman shai wosner": {
+    "displayName": "Pinchas Zukerman & Shai Wosner",
+    "funQuality": 9.5,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Zukerman is a world-renowned violinist with a five-decade career, two GRAMMY Awards and 21 nominations, who regularly headlines major venues like Davies Symphony Hall, Kimmel Center, and Carnegie-adjacent Town Hall NYC; Wosner tours internationally and with Joshua Bell, and the duo performs at top-tier halls worldwide including a China tour and Verbier/Tanglewood-caliber festivals via the related Zukerman Trio.",
+    "confidence": "high",
+    "sources": [
+      "https://www.hotchkiss.org/arts/post/~board/art-news/post/pinchas-zukerman-and-shai-wosner-to-perform-beethoven-at-hotchkiss",
+      "https://www.encoreplus.app/all/pinchas-zukerman-and-shai-wosner-2026-sfs/",
+      "https://www.soka.edu/soka-performing-arts-center/calendar-events/pinchas-zukerman-trio-shai-wosner-and-amanda-forsyth"
+    ],
+    "exampleTitle": "Pinchas Zukerman & Shai Wosner: An Afternoon of Beethoven",
+    "researchedAt": "2026-10-02"
   }
 }
