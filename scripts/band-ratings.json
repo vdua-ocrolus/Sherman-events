@@ -2932,5 +2932,19 @@
     ],
     "exampleTitle": "Pinchas Zukerman & Shai Wosner: An Afternoon of Beethoven",
     "researchedAt": "2026-10-02"
+  },
+  "1st annual danbury oktoberfest": {
+    "displayName": "1st Annual Danbury Oktoberfest",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Brand-new, first-ever free community event run by the Danbury Recreation Department with local BBQ/beer vendors, live music, games, and a stein-holding contest; no prior history or attendance track record, but organized by the city and covered by local press/radio.",
+    "confidence": "medium",
+    "sources": [
+      "https://danburycountry.com/ixp/677/p/danbury-first-annual-oktoberfest/",
+      "https://wlad.com/local-news/eb40e2b7627c0c097f769041602af342"
+    ],
+    "exampleTitle": "1st Annual Danbury Oktoberfest",
+    "researchedAt": "2026-10-03"
   }
 }
