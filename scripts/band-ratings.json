@@ -2946,5 +2946,75 @@
     ],
     "exampleTitle": "1st Annual Danbury Oktoberfest",
     "researchedAt": "2026-10-03"
+  },
+  "the remnants": {
+    "displayName": "The Remnants",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "This is a New Milford, CT-based classic rock covers band that plays regularly at Housatonic River Brewing with no evidence of national/regional stature, press coverage, or large following — a standard local bar band confirmed via its own gig-listing site.",
+    "confidence": "medium",
+    "sources": [
+      "https://remnantsmusic.com/gigs/housatonic-river-brewery-hf3hk",
+      "https://remnantsmusic.com/"
+    ],
+    "exampleTitle": "\"The Remnants\" — Live Music / Classic Rock Covers at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-04"
+  },
+  "wonsey jazz trio": {
+    "displayName": "Wonsey Jazz Trio",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "Led by drummer Dave Wonsey, a retired longtime Ridgefield Symphony Principal Timpanist/Percussionist, with bassist Kevin Callaghan (Principal Bassist of the Ridgefield Symphony) who has performed at the Blue Note, CBGB's, and Birdland West and appeared with acts like Yes and Judy Collins, and guitarist Phil Forbes, a professional guitarist since 1991 who has taught 1000s of students; this gives the trio real regional music-scene credentials despite being a small community jazz night.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.jccinsherman.org/upcomingevents/jazz-trio",
+      "https://jcc-in-sherman.square.site/product/jazz-trio/304?cp=true&sa=true&sbp=false&q=false"
+    ],
+    "exampleTitle": "\"Wonsey Jazz Trio\" — Live Jazz at The JCC in Sherman, Sherman, CT",
+    "researchedAt": "2026-10-04"
+  },
+  "acid wash": {
+    "displayName": "Acid Wash",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A Connecticut-based female-fronted 70s/80s hard rock tribute act with video evidence of performances at The Webster, a well-known Hartford concert venue, and a polished brand/following across multiple states' tribute circuits, putting it a notch above a typical bar band.",
+    "confidence": "medium",
+    "sources": [
+      "https://acidwashrock.carrd.co/",
+      "https://www.housatonicriverbrewing.com/events-1/acid-wash",
+      "https://www.thebash.com/80s-band/acid-wash"
+    ],
+    "exampleTitle": "\"Acid Wash\" — Live Music / 70s-80s Rock Covers at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-04"
+  },
+  "two dollar hat": {
+    "displayName": "Two Dollar Hat",
+    "funQuality": 6.3,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A small acoustic duo/trio (Jim Lynch and Mike Walsh of local projects Future Tense and The New Desperation) with only a modest Facebook following (under 400 likes) and no evidence of notable venues, press, or regional draw.",
+    "confidence": "low",
+    "sources": [
+      "https://www.facebook.com/p/Two-Dollar-Hat-100063444176169/"
+    ],
+    "exampleTitle": "\"Two Dollar Hat\" — Live Music / Acoustic Trio at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-04"
+  },
+  "third saturdays at the aldrich": {
+    "displayName": "Third Saturdays at The Aldrich",
+    "funQuality": 7.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A recurring free monthly community museum program at The Aldrich Contemporary Art Museum featuring family-friendly discovery tours and storytime; a well-established, ongoing local institutional offering rather than a major draw event, with no large-attendance or press evidence found.",
+    "confidence": "medium",
+    "sources": [
+      "https://ridgefieldmom.com/event/third-saturdays-at-the-aldrich-contemporary-art-museum/",
+      "https://news.hamlethub.com/ridgefield-connecticut/third-saturdays-at-the-aldrich-1737069078836"
+    ],
+    "exampleTitle": "\"Third Saturdays at The Aldrich\" — Free Museum Day at The Aldrich Contemporary Art Museum, Ridgefield, CT",
+    "researchedAt": "2026-10-04"
   }
 }
