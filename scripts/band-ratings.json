@@ -3016,5 +3016,36 @@
     ],
     "exampleTitle": "\"Third Saturdays at The Aldrich\" — Free Museum Day at The Aldrich Contemporary Art Museum, Ridgefield, CT",
     "researchedAt": "2026-10-04"
+  },
+  "cobblestone road": {
+    "displayName": "CobbleStone Road",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A Tolland, CT-based country cover/party band with a 40,000+ Facebook following, described as 'CT's premier country party band,' that regularly plays regional venues, opera houses, fairs (Big E), and festivals (e.g., Stanley Park's Sunday concert series) across New England.",
+    "confidence": "high",
+    "sources": [
+      "https://www.facebook.com/Cobblestone.Road.CT/",
+      "https://www.stanleypark.org/events/stanley-parks-sunday-night-concert-series-cobblestone-road-band",
+      "https://www.medallionoperahouse.org/events/cobblestone-road"
+    ],
+    "exampleTitle": "Cobblestone Road — Live Music / Country at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-05"
+  },
+  "julian lage": {
+    "displayName": "Julian Lage",
+    "funQuality": 9.5,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "GRAMMY-nominated, multi-GRAMMY-nominated jazz guitar virtuoso signed to Blue Note Records with critical acclaim from The New Yorker and New York Times, who tours major venues/festivals internationally (Newport Jazz, The Met, BOZAR Brussels) and has performed with Bob Dylan's touring band.",
+    "confidence": "high",
+    "sources": [
+      "https://www.bluenote.com/artist/julian-lage/",
+      "https://grokipedia.com/page/Julian_Lage",
+      "https://www.jambase.com/band/julian-lage",
+      "https://www.iloveny.com/thebeat/post/caramoor-center-for-music-and-the-arts-announces-2026-2027-rosen-house-concert-series/"
+    ],
+    "exampleTitle": "Guitarist Julian Lage – Benefit Concert — Jazz Guitar / Benefit Concert at Caramoor (Rosen House Music Room), Katonah, NY",
+    "researchedAt": "2026-10-05"
   }
 }
