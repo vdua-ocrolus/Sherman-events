@@ -3047,5 +3047,19 @@
     ],
     "exampleTitle": "Guitarist Julian Lage – Benefit Concert — Jazz Guitar / Benefit Concert at Caramoor (Rosen House Music Room), Katonah, NY",
     "researchedAt": "2026-10-05"
+  },
+  "senior tour at the aldrich": {
+    "displayName": "Senior Tour at The Aldrich",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, recurring one-hour guided museum tour program for seniors at The Aldrich Contemporary Art Museum in Ridgefield, CT; it's a modest, community-oriented educational offering rather than a draw-generating performance or headline event.",
+    "confidence": "high",
+    "sources": [
+      "https://thealdrich.org/events",
+      "https://thealdrich.org/exhibitions/the-aldrich-decennial-new-art-made-in-connecticut"
+    ],
+    "exampleTitle": "Senior Tour at The Aldrich",
+    "researchedAt": "2026-10-06"
   }
 }
