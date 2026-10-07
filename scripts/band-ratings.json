@@ -3061,5 +3061,61 @@
     ],
     "exampleTitle": "Senior Tour at The Aldrich",
     "researchedAt": "2026-10-06"
+  },
+  "kent barns second saturday market": {
+    "displayName": "Kent Barns Second Saturday Market",
+    "funQuality": 7.2,
+    "tier": "local-modest",
+    "isMusicAct": false,
+    "draw": "A recurring monthly outdoor market/arts event at a well-regarded shopping complex; local press notes it 'brings tons of people to town' and draws visitors from across the Northwest Corner, but it's a modest community market/live-music-as-backdrop event, not a major regional festival.",
+    "confidence": "medium",
+    "sources": [
+      "https://kentbarnsct.com/events",
+      "https://kentdispatch.org/its-kind-of-like-wandering-the-streets-of-paris/"
+    ],
+    "exampleTitle": "Kent Barns Second Saturday — October",
+    "researchedAt": "2026-10-07"
+  },
+  "siqing lu violinist with hotchkiss philharmonic orchestra": {
+    "displayName": "Siqing Lu (violinist) with Hotchkiss Philharmonic Orchestra",
+    "funQuality": 9,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Siqing Lu was the first Asian violinist to win the Paganini International Violin Competition, has sold millions of recordings of 'The Butterfly Lovers' concerto, and performs regularly with major orchestras including the San Francisco Symphony, Royal Philharmonic, and at venues like the Sydney Opera House and Hollywood Bowl.",
+    "confidence": "high",
+    "sources": [
+      "https://www.hotchkiss.org/post-page/~board/art-news/post/violinist-siqing-lu-opens-hotchkiss-philharmonic-season-nov-2",
+      "https://www.mso.com.au/behind-the-music/guest-artists/lu-siqing"
+    ],
+    "exampleTitle": "Hotchkiss Philharmonic Orchestra Season Opener (with violinist Siqing Lu)",
+    "researchedAt": "2026-10-07"
+  },
+  "scarecrows in the meadow litchfield historical society": {
+    "displayName": "Scarecrows in the Meadow (Litchfield Historical Society)",
+    "funQuality": 8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established annual (6th/7th year) Litchfield Historical Society fall tradition featuring 50+ scarecrows, praised by regional press as potentially 'one of the best harvest and Halloween season events in the state — if not the entire Northeast.'",
+    "confidence": "high",
+    "sources": [
+      "https://visitlitchfieldct.com/fall-preview-six-litchfield-experiences-not-to-miss/",
+      "https://www.civiclift.com/feeds/449/events/6th-annual-scarecrows-in-the-meadow-10-26-2025"
+    ],
+    "exampleTitle": "Scarecrows in the Meadow — 7th Annual (Opening Celebration)",
+    "researchedAt": "2026-10-07"
+  },
+  "ridgefield s halloween walk": {
+    "displayName": "Ridgefield's Halloween Walk",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": false,
+    "draw": "A free, two-hour, town-organized trick-or-treat stroll along Main Street where merchants hand out candy; long-running annual tradition but small in scale and scope, essentially a merchant-sponsored community warm-up event for Halloween.",
+    "confidence": "medium",
+    "sources": [
+      "https://inridgefield.com/events/ridgefields-halloween-walk/",
+      "https://www.hamlethub.com/ridgefield-connecticut/ridgefield-halloween"
+    ],
+    "exampleTitle": "Ridgefield's Halloween Walk",
+    "researchedAt": "2026-10-07"
   }
 }
