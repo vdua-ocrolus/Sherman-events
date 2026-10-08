@@ -3117,5 +3117,35 @@
     ],
     "exampleTitle": "Ridgefield's Halloween Walk",
     "researchedAt": "2026-10-07"
+  },
+  "new milford trunk or treat thriller flash mob": {
+    "displayName": "New Milford Trunk or Treat (Thriller Flash Mob)",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, long-running (10+ years) town-run Halloween community event where volunteer participants (not professional performers) learn and perform a modified 'Thriller' dance; local press describes it as drawing hundreds of families for trick-or-treating but it has no national or professional performance pedigree.",
+    "confidence": "high",
+    "sources": [
+      "https://www.crameranderson.com/cramer-anderson-participating-in-new-milford-trunk-or-treat/",
+      "https://www.newstimes.com/local/article/Zombies-take-over-New-Milford-green-with-flash-mob-10432931.php",
+      "https://www.halloweennewengland.com/events/michael-jackson-thriller-mob-live-new-milford-ct"
+    ],
+    "exampleTitle": "New Milford Trunk or Treat on the Town Green (with Thriller Flash Mob)",
+    "researchedAt": "2026-10-08"
+  },
+  "brookfield ct festival of crafts 37th annual": {
+    "displayName": "Brookfield CT Festival of Crafts — 37th Annual",
+    "funQuality": 7.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A well-established 37-year-old juried craft fair run by the Brookfield Historical Society featuring 50+ artisans; described by organizers as having grown into the largest and most successful pre-holiday sales event of its kind in the northwest CT region, with estimated attendance around 1,000.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.brookfieldcthistory.org/calendar",
+      "https://www.skybluedesigns.com/event/brookfield-festival-of-crafts-2025/",
+      "https://festivalnet.com/13491/Brookfield-Connecticut/Craft-Shows/Festival-of-Crafts"
+    ],
+    "exampleTitle": "Brookfield CT Festival of Crafts — 37th Annual",
+    "researchedAt": "2026-10-08"
   }
 }
