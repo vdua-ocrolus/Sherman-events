@@ -3147,5 +3147,50 @@
     ],
     "exampleTitle": "Brookfield CT Festival of Crafts — 37th Annual",
     "researchedAt": "2026-10-08"
+  },
+  "cars for kids automobile show 13th annual": {
+    "displayName": "Cars for Kids Automobile Show — 13th Annual",
+    "funQuality": 7.3,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A well-established, long-running (13 years) charity car show run with the Litchfield Hills Historical Automobile Club that draws up to 400 show cars and over 1,000 total exhibitors/spectators/volunteers, raising tens of thousands of dollars annually for CJR, but it remains a local/regional charity event without national press or major-festival scale.",
+    "confidence": "high",
+    "sources": [
+      "https://litchfieldmagazine.com/events/cars-for-kids-automobile-show/",
+      "https://cjrimpact.org/support/annual-cars-for-kids-automobile-show/",
+      "https://www.ctpost.com/things-to-do/article/Litchfield-s-CJR-holding-Cars-for-Kids-show-Oct-9-17494692.php"
+    ],
+    "exampleTitle": "Cars for Kids Automobile Show — 13th Annual",
+    "researchedAt": "2026-10-09"
+  },
+  "scarecrows in the meadow 7th annual opening celebration": {
+    "displayName": "Scarecrows in the Meadow — 7th Annual (Opening Celebration)",
+    "funQuality": 7.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A beloved, free annual Litchfield Historical Society tradition featuring 50+ community-made scarecrows, with regional press describing it as one of the best harvest/Halloween season events in the state or Northeast, though it is a modest, no-admission local-history event rather than a large ticketed festival.",
+    "confidence": "medium",
+    "sources": [
+      "https://visitlitchfieldct.com/fall-preview-six-litchfield-experiences-not-to-miss/",
+      "https://www.enaturalawakenings.com/2025/09/30/548220/scarecrow-season-returns-to-litchfield",
+      "https://www.civiclift.com/feeds/449/events/6th-annual-scarecrows-in-the-meadow-10-26-2025"
+    ],
+    "exampleTitle": "Scarecrows in the Meadow — 7th Annual (Opening Celebration)",
+    "researchedAt": "2026-10-09"
+  },
+  "new milford trunk or treat on the town green with thriller flash mob": {
+    "displayName": "New Milford Trunk or Treat on the Town Green (with Thriller Flash Mob)",
+    "funQuality": 7.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (10+ years), well-loved town tradition that local press describes as a major Halloween celebration drawing hundreds of families, highlighted by a volunteer-run Thriller zombie flash mob (originally choreographed by a former Radio City Rockette) that has been featured in local news coverage and YouTube videos, but it remains a free community parks-and-rec event rather than a professional touring act.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.crameranderson.com/look-for-cramer-anderson-at-new-milford-trunk-or-treat/",
+      "https://www.newstimes.com/local/article/Dancing-zombies-wanted-for-Thriller-flash-mob-5827447.php",
+      "https://www.newstimes.com/local/article/Zombies-take-over-New-Milford-green-with-flash-mob-10432931.php"
+    ],
+    "exampleTitle": "New Milford Trunk or Treat on the Town Green (with Thriller Flash Mob)",
+    "researchedAt": "2026-10-09"
   }
 }
