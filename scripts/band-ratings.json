@@ -3192,5 +3192,33 @@
     ],
     "exampleTitle": "New Milford Trunk or Treat on the Town Green (with Thriller Flash Mob)",
     "researchedAt": "2026-10-09"
+  },
+  "dan sawyer": {
+    "displayName": "Dan Sawyer",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "Search results surface only a well-known Los Angeles session musician/composer (credits with Al Jarreau, Streisand, Aretha Franklin, TV themes like 'Doug') who is almost certainly a different person of the same name; no evidence ties any 'Dan Sawyer' act to Housatonic River Brewing or the New Milford/Candlewood area, indicating this is a low-profile local acoustic performer with no discoverable public footprint.",
+    "confidence": "low",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/contact",
+      "https://www.dansawyermusic.com/about"
+    ],
+    "exampleTitle": "Live Music / Acoustic at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-11"
+  },
+  "the funk express": {
+    "displayName": "The Funk Express",
+    "funQuality": 7,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "Confirmed as a regional funk covers band made up of musicians from Connecticut and NYC that plays community venues like the JCC in Sherman and similar local events; no evidence of casino, festival, or national-level bookings, consistent with a well-liked local party/covers band rather than a major draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/the-funk-express",
+      "https://danbury.macaronikid.com/events/672187dfaecc965aca09b527/the-funk-express--jcc-in-sherman-ct"
+    ],
+    "exampleTitle": "Live Music / Funk Covers at Sherman Library, Sherman, CT",
+    "researchedAt": "2026-10-11"
   }
 }
