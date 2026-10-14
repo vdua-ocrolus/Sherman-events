@@ -3220,5 +3220,47 @@
     ],
     "exampleTitle": "Live Music / Funk Covers at Sherman Library, Sherman, CT",
     "researchedAt": "2026-10-11"
+  },
+  "a haunting on market street": {
+    "displayName": "A Haunting on Market Street",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, family-friendly local Halloween event at a small artisan marketplace/gift shop venue with a modest social following (~4,100 Instagram followers); no evidence of regional draw beyond the local community.",
+    "confidence": "medium",
+    "sources": [
+      "https://happeninginthehills.com/things-to-do/",
+      "https://www.instagram.com/marketstreetcreatives/",
+      "https://www.marketstreetcreatives.com/"
+    ],
+    "exampleTitle": "A Haunting on Market Street — Family Halloween Event at Market Street Creatives, New Milford, CT",
+    "researchedAt": "2026-10-14"
+  },
+  "veterans day ceremony": {
+    "displayName": "Veterans Day Ceremony",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, traditional annual community tribute ceremony organized by the New Fairfield Lions Club at the local Veterans Park, with no indications of large attendance or regional press beyond routine local civic coverage.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.nflions.com/events-1/veterans-day-2025"
+    ],
+    "exampleTitle": "Veterans Day Ceremony — Community Ceremony at New Fairfield Veterans Park, New Fairfield, CT",
+    "researchedAt": "2026-10-14"
+  },
+  "new fairfield lions club craft day": {
+    "displayName": "New Fairfield Lions Club Craft Day",
+    "funQuality": 6.3,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small-scale local community craft fair run by the New Fairfield Lions Club at the town Senior Center, drawing local crafters and residents with no evidence of regional-scale attendance or press.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.nflions.com/",
+      "https://givebutter.com/NFLionsCraftDay"
+    ],
+    "exampleTitle": "New Fairfield Lions Club Craft Day — Community Craft Fair at New Fairfield Senior Center, New Fairfield, CT",
+    "researchedAt": "2026-10-14"
   }
 }
