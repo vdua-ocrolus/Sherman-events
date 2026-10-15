@@ -3262,5 +3262,35 @@
     ],
     "exampleTitle": "New Fairfield Lions Club Craft Day — Community Craft Fair at New Fairfield Senior Center, New Fairfield, CT",
     "researchedAt": "2026-10-14"
+  },
+  "warren octoberfest warren volunteer fire company fundraiser": {
+    "displayName": "Warren OctoberFest (Warren Volunteer Fire Company Fundraiser)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small-town fundraiser organized by the Warren Volunteer Fire Company's 'Friends of WVFC' group, now in its 3rd year (prior iterations were a longer-running Fall Festival), featuring a cider run 5K, local breweries/wineries, food vendors, and live music at a town park with a dining hall that seats under 100 people.",
+    "confidence": "medium",
+    "sources": [
+      "https://events.humanitix.com/warren-octoberfest-2026-3rd-annual",
+      "https://events.humanitix.com/harvest-fest-warren-woods-2024",
+      "https://www.warrenlandtrust.org/events"
+    ],
+    "exampleTitle": "3rd Annual Warren OctoberFest",
+    "researchedAt": "2026-10-15"
+  },
+  "brookfield ct festival of crafts": {
+    "displayName": "Brookfield CT Festival of Crafts",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (36th annual in 2025) juried craft fair at Whisconier Middle School sponsored by the Brookfield Historical Society, featuring about 40-50 vendors and an estimated attendance of roughly 1,000 people, with local press describing it as a well-established regional pre-holiday sales event.",
+    "confidence": "medium",
+    "sources": [
+      "https://patch.com/connecticut/brookfield/calendar/event/20251101/91a17222-2efd-4500-9cea-3fcb783a0f9d/36th-annual-festival-of-crafts",
+      "https://festivalnet.com/13491/Brookfield-Connecticut/Craft-Shows/Festival-of-Crafts",
+      "https://patch.com/connecticut/brookfield/brookfield-historical-society-festival-crafts-november-2"
+    ],
+    "exampleTitle": "Brookfield CT Festival of Crafts",
+    "researchedAt": "2026-10-15"
   }
 }
