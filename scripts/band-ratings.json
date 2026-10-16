@@ -3292,5 +3292,47 @@
     ],
     "exampleTitle": "Brookfield CT Festival of Crafts",
     "researchedAt": "2026-10-15"
+  },
+  "aziz ansari hypothetical tour": {
+    "displayName": "Aziz Ansari – Hypothetical Tour",
+    "funQuality": 9.5,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "National Live Nation-promoted stand-up tour playing theaters like the Beacon Theatre and Dolby Theatre, with a recent sold-out show grossing over $330,000 in Boston; Ansari is an Emmy winner and Grammy-nominated recording artist who has headlined and sold out Madison Square Garden.",
+    "confidence": "high",
+    "sources": [
+      "https://news.pollstar.com/2026/08/03/aziz-ansari-adds-fall-2026-leg-to-hypothetical-tour/",
+      "https://australianmusician.com.au/aziz-ansari-hypothetical-tour-australia-nz-2026/"
+    ],
+    "exampleTitle": "Aziz Ansari – Hypothetical Tour",
+    "researchedAt": "2026-10-16"
+  },
+  "john legend": {
+    "displayName": "John Legend",
+    "funQuality": 10,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "EGOT-winning, multiplatinum global superstar; tickets for this intimate gala performance are reselling for $984-$4,484, reflecting extreme demand far beyond a typical theater show.",
+    "confidence": "high",
+    "sources": [
+      "https://ridgefieldplayhouse.org/event/fall-gala-john-legend-2026/",
+      "https://www.tickpick.com/buy-john-legend-tickets-the-ridgefield-playhouse-11-14-26-8pm/8018341/"
+    ],
+    "exampleTitle": "Ridgefield Playhouse 2026 Fall Gala: An Evening with John Legend",
+    "researchedAt": "2026-10-16"
+  },
+  "new milford holiday fair": {
+    "displayName": "New Milford Holiday Fair",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small church-run holiday vendor/craft fair at St. Francis Xavier Church Hall with local crafters and vendors, comparable to many similar small parish craft fairs in the region; no evidence of large attendance or regional press coverage.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.fairsandfestivals.net/states/CT",
+      "https://ctcraftfairconnection.com/event/holiday-craft-fair-5/"
+    ],
+    "exampleTitle": "New Milford Holiday Fair",
+    "researchedAt": "2026-10-16"
   }
 }
