@@ -3334,5 +3334,62 @@
     ],
     "exampleTitle": "New Milford Holiday Fair",
     "researchedAt": "2026-10-16"
+  },
+  "danbury record cd expo": {
+    "displayName": "Danbury Record & CD Expo",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Connecticut's longest-running record show, held twice a year since 1997 at VFW Hall #149, draws 30+ dealers and documented crowds of several hundred attendees with regional radio/press coverage (WPDH, 94.3 Lite FM, The Vinyl District), making it a well-established niche community event rather than a music performance.",
+    "confidence": "medium",
+    "sources": [
+      "https://vinyltimesradio.com/vinyl-records-shows-calendar/",
+      "https://10times.com/danbury-record-and-cd-expo",
+      "https://wpdh.com/the-longest-running-record-show-in-ct-returns-to-danbury-this-weekend/",
+      "https://allevents.in/danbury/danbury-record-and-cd-expo/200029404581033"
+    ],
+    "exampleTitle": "Danbury Record & CD Expo",
+    "researchedAt": "2026-10-17"
+  },
+  "note to self": {
+    "displayName": "Note To Self",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local acoustic act playing a dense Fairfield/Litchfield County bar and restaurant circuit (e.g. Bethel's Shakedown Street Eats, Redding's Milestone) alongside other small local acts; no evidence of charting, major venue bookings, or broad public profile under this name in this market.",
+    "confidence": "low",
+    "sources": [
+      "https://www.fairfieldafterdark.com/new-milford",
+      "https://www.fairfieldafterdark.com/stamford-restaurant-weeks-returns-august-19-september-2"
+    ],
+    "exampleTitle": "Note To Self — Live Music / Acoustic Trio at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-17"
+  },
+  "five to one": {
+    "displayName": "Five to One",
+    "funQuality": 7,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A Connecticut-based rock and roll cover band performing songs by acts like The Police, Fleetwood Mac, Queen and The Rolling Stones, booked as a regular recurring act at Housatonic River Brewing; no evidence of national press, charting, or major-venue/festival credits.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/events-1/five-to-one-3"
+    ],
+    "exampleTitle": "Five to One — Live Music / Classic Rock Covers at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-10-17"
+  },
+  "the sherman players present an american christmas carol": {
+    "displayName": "The Sherman Players Present: An American Christmas Carol",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running, beloved community theater troupe celebrating its 100th season in 2026, staging an original Dickens adaptation by its artistic director; strong local/regional identity and press coverage (Lakeville Journal) but an amateur/volunteer-driven, noncommercial production with a small venue and local audience base.",
+    "confidence": "medium",
+    "sources": [
+      "https://lakevillejournal.com/sherman-players-celebrate-a-century-of-community-theater",
+      "https://shermanplayers.org/2026/01/01/season-details/"
+    ],
+    "exampleTitle": "The Sherman Players Present: An American Christmas Carol (Preview Night)",
+    "researchedAt": "2026-10-17"
   }
 }
