@@ -3391,5 +3391,20 @@
     ],
     "exampleTitle": "The Sherman Players Present: An American Christmas Carol (Preview Night)",
     "researchedAt": "2026-10-17"
+  },
+  "washington harvest festival": {
+    "displayName": "Washington Harvest Festival",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Free, family-friendly annual community festival organized by the Washington Business Association, now in its 7th–8th year, featuring live music alongside food, local vendors, a scarecrow competition, train rides, and fire truck tours — a well-established but small-town local event with no evidence of regional draw or notable attendance figures.",
+    "confidence": "medium",
+    "sources": [
+      "https://explorewashingtonct.com/events/washington-harvest-festival-2026/",
+      "https://steeprockassoc.org/event/washington-harvest-festival-sunday-october-11-2026/",
+      "https://vendorbound.com/event/washington-harvest-festival-washington-depot-ct-734b86e418"
+    ],
+    "exampleTitle": "Washington Harvest Festival",
+    "researchedAt": "2026-10-18"
   }
 }
