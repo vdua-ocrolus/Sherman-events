@@ -3406,5 +3406,34 @@
     ],
     "exampleTitle": "Washington Harvest Festival",
     "researchedAt": "2026-10-18"
+  },
+  "annual community halloween bash safe trick or treating": {
+    "displayName": "Annual Community Halloween Bash — Safe Trick or Treating",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A free, volunteer-coordinated neighborhood trick-or-treat event looping around the Sherman Playhouse and Scout House, offering hot dogs, treats, and inflatable decorations; it is a small town-run community gathering with no regional draw beyond local families.",
+    "confidence": "high",
+    "sources": [
+      "https://www.shermanct.gov/muni-events/annual-community-halloweenbash2026--safe-trick-or-treating",
+      "https://www.shermanct.gov/muni-events/an-invitation-to-the-children-in-sherman-families-and-guests-annual-community-halloween-bash-2025---safe-trick-or-treating-event-coordinated-by-barbara-richardson"
+    ],
+    "exampleTitle": "Annual Community Halloween Bash — Safe Trick or Treating",
+    "researchedAt": "2026-10-19"
+  },
+  "the spooky trail washington primary school pto": {
+    "displayName": "The Spooky Trail (Washington Primary School PTO)",
+    "funQuality": 6.3,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small-scale, PTO-organized Halloween trail at the Sheila Anson River Walk Pavilion featuring a food truck and local-business-sponsored trick-or-treat tables, now in its 6th/7th year, serving a tiny rural elementary school community (under 160 students) with no regional press or notable draw.",
+    "confidence": "high",
+    "sources": [
+      "https://explorewashingtonct.com/events/6th-annual-halloween-spooky-trail/",
+      "https://litchfieldmagazine.com/onourradar/halloween-events-in-litchfield-county/",
+      "https://explorewashingtonct.com/"
+    ],
+    "exampleTitle": "The Spooky Trail (Washington Primary School PTO)",
+    "researchedAt": "2026-10-19"
   }
 }
