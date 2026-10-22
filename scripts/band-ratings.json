@@ -3435,5 +3435,78 @@
     ],
     "exampleTitle": "The Spooky Trail (Washington Primary School PTO)",
     "researchedAt": "2026-10-19"
+  },
+  "fall festival vendor and craft fair at st marguerite bourgeoys parish": {
+    "displayName": "Fall Festival (Vendor and Craft Fair) at St. Marguerite Bourgeoys Parish",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, long-running annual parish craft/vendor fair with roughly 40 exhibitors and an estimated attendance of about 500, mainly serving the local Brookfield community as early Christmas shopping.",
+    "confidence": "medium",
+    "sources": [
+      "https://festivalnet.com/86495/Brookfield-Connecticut/Festivals/Fall-Festival-Vendor-and-Craft-Fair"
+    ],
+    "exampleTitle": "Fall Festival (Vendor and Craft Fair)",
+    "researchedAt": "2026-10-22"
+  },
+  "third saturdays free admission at the aldrich": {
+    "displayName": "Third Saturdays (Free Admission) at The Aldrich",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A recurring monthly free-admission program at a respected contemporary art museum, featuring story times, drop-in art activities, and docent tours; it's a steady community offering rather than a major draw event in itself.",
+    "confidence": "medium",
+    "sources": [
+      "https://thealdrich.org/events/third-saturdays-4-18-26",
+      "https://thealdrich.org/events"
+    ],
+    "exampleTitle": "Third Saturdays (Free Admission) at The Aldrich",
+    "researchedAt": "2026-10-22"
+  },
+  "the aldrich the glimmerglass festival an evening of art opera": {
+    "displayName": "The Aldrich × The Glimmerglass Festival: An Evening of Art & Opera",
+    "funQuality": 8.3,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "Glimmerglass Festival is the second-largest summer opera festival in the U.S., drawing over 25,000-30,000 attendees per summer, has featured GRAMMY-winning artists, and just won a 2025 International Opera Award; this crossover event with The Aldrich sold out (listed 'AT CAPACITY').",
+    "confidence": "high",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Glimmerglass_Festival",
+      "https://glimmerglass.org/2026/03/the-glimmerglass-festival-announces-tour-details-and-cast-for-collaborative-production-of-happy-end/",
+      "https://www.cnhinews.com/newyork/article_a627d610-4850-57c5-9a88-af19bf6dfb38.html",
+      "https://thealdrich.org/"
+    ],
+    "exampleTitle": "The Aldrich × The Glimmerglass Festival: An Evening of Art & Opera",
+    "researchedAt": "2026-10-22"
+  },
+  "woodbury junior women s club christmas craft fair and boutique": {
+    "displayName": "Woodbury Junior Women's Club Christmas Craft Fair and Boutique",
+    "funQuality": 7.2,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A well-established, long-running (40th annual) community craft fair with 50+ crafters held in conjunction with the townwide Woodbury Christmas Festival, drawing regional vendor and shopper interest and regular local press coverage.",
+    "confidence": "medium",
+    "sources": [
+      "https://woodburyjuniors.org/events",
+      "https://www.primepublishers.com/towntimesnews/arts_and_living/food_and_cooking/woodbury-junior-women-s-club-to-host-christmas-craft-fair-and-boutique-december-6/article_428ef6a0-25c5-4609-85df-a96888761402.html",
+      "https://patch.com/connecticut/woodbury-middlebury/woodbury-junior-womens-club-presents-30th-annual-christmas-craft-fair"
+    ],
+    "exampleTitle": "Woodbury Junior Women's Club Christmas Craft Fair and Boutique",
+    "researchedAt": "2026-10-22"
+  },
+  "danbury citycenter light the lights winter festival": {
+    "displayName": "Danbury CityCenter Light the Lights – Winter Festival",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": false,
+    "draw": "A well-established annual city-sponsored tree-lighting festival with mayoral participation, a 40-foot tree, Santa fire-truck parade, live entertainment, and regional press describing it as drawing families from across the region and being one of Danbury's largest seasonal celebrations.",
+    "confidence": "high",
+    "sources": [
+      "https://patch.com/connecticut/danbury/downtown-danbury-host-light-lights-winter-festival-tree-lighting-santa-holiday",
+      "https://www.newstimes.com/news/article/danbury-area-christmas-tree-lightings-2024-19934723.php",
+      "https://wlad.com/local-news/09300f2d86bfa7f9592522d877966764"
+    ],
+    "exampleTitle": "Danbury CityCenter Light the Lights – Winter Festival",
+    "researchedAt": "2026-10-22"
   }
 }
