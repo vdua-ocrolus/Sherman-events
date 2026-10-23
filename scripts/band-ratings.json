@@ -3508,5 +3508,35 @@
     ],
     "exampleTitle": "Danbury CityCenter Light the Lights – Winter Festival",
     "researchedAt": "2026-10-22"
+  },
+  "woodbury lion s club haunted hayride": {
+    "displayName": "Woodbury Lion's Club Haunted Hayride",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (23rd+ annual) volunteer-run community Halloween hayride/haunted barn at Mitchell School, drawing local and some regional family attendance, with coverage in local Patch and town event listings but no indication of broader regional or statewide draw beyond the local area.",
+    "confidence": "medium",
+    "sources": [
+      "https://patch.com/connecticut/woodbury-middlebury/woodbury-lions-haunted-hayride-promises-frightful-sights",
+      "https://www.halloweennewengland.com/events/woodbury-lions-haunted-hayride-ct",
+      "https://www.yelp.com/biz/mitchell-elementary-school-woodbury"
+    ],
+    "exampleTitle": "Woodbury Lion's Club Haunted Hayride",
+    "researchedAt": "2026-10-23"
+  },
+  "flags of valor veterans tribute display": {
+    "displayName": "Flags of Valor — Veterans Tribute Display",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A modest annual community tribute display (300 flags installed on the museum lawn by the Kiwanis Club Foundation of Greater Danbury) at the New Milford Historical Society, a small local charitable/educational installation with $5 admission and no evidence of significant regional press or attendance figures.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.nmhistorical.org/collection/",
+      "https://www.nmhistorical.org/upcoming-events/?program=375",
+      "https://happeningnext.com/event/flags-of-valor-installation-eid3a0d0ame1k"
+    ],
+    "exampleTitle": "Flags of Valor — Veterans Tribute Display",
+    "researchedAt": "2026-10-23"
   }
 }
