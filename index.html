@@ -3226,6 +3226,18 @@ const RESTAURANTS_DATA = [
     "reviews": 266
   },
   {
+    "name": "Minas Carne Brazilian BBQ & Bar",
+    "town": "Danbury",
+    "cuisine": "Brazilian / churrasco buffet",
+    "price": "$$",
+    "note": "The Reyes family's second Minas Carne, in the former Mariposa space on Mill Plain Road: a pay-by-weight buffet with churrasco meats like picanha and housemade linguiça sliced to order, Brazilian dishes from the kitchen, and a small bar.",
+    "website": "https://minascarne.com/",
+    "sourceUrl": "https://www.ctbites.com/blog/2026/7/8/minas-carne",
+    "opened": "2026",
+    "justOpened": true,
+    "lakeside": false
+  },
+  {
     "name": "Amai Sushi",
     "town": "Brookfield",
     "cuisine": "Japanese / Sushi",
@@ -3438,6 +3450,19 @@ const RESTAURANTS_DATA = [
     "rating": 4.8,
     "reviews": 285,
     "opened": "Jan 2026",
+    "justOpened": true,
+    "lakeside": false
+  },
+  {
+    "name": "Momma's Tacos",
+    "town": "New Milford",
+    "cuisine": "Mexican",
+    "price": "$$",
+    "note": "Back on Church Street after a 2025 fire, now with full table service: birria tacos and birria fries, cochinita pibil, tortas, and enmoladas under a poblano mole made from more than 30 ingredients.",
+    "website": "https://mommas-tacos.com/",
+    "sourceUrl": "https://www.ctbites.com/blog/2026/8/11/mommas-tacos-reopen",
+    "opened": "May 2026",
+    "reopened": true,
     "justOpened": true,
     "lakeside": false
   },
@@ -3890,17 +3915,20 @@ function openedMonthsAgo(opened) {
   const now = new Date();
   return (now.getFullYear() - yr) * 12 + (now.getMonth() - mo);
 }
-// "New" expires ~a year after opening (auto — no manual un-flagging needed).
+// "Just Opened" means opened (or reopened) within the last ~6 months; it expires on its own,
+// so no manual un-flagging is needed. A spot with no parseable `opened` date is never shown as
+// new — otherwise a missing date would keep it "new" forever.
+const REST_NEW_MONTHS = 6;
 function restIsNew(r) {
   if (!r.justOpened) return false;
   const months = openedMonthsAgo(r.opened);
-  return months == null || months <= 12;
+  return months != null && months >= 0 && months <= REST_NEW_MONTHS;
 }
 
 function restCard(r, showTown) {
   const name = r.website ? `<a href="${r.website}" target="_blank" rel="noopener">${cleanText(r.name)}</a>` : cleanText(r.name);
   const lake = r.lakeside ? ` <span class="tag tag-free">Lakeside</span>` : '';
-  const isNew = restIsNew(r) ? ` <span class="tag tag-new">${r.opened ? 'New · ' + esc(r.opened) : 'New'}</span>` : '';
+  const isNew = restIsNew(r) ? ` <span class="tag tag-new">${r.reopened ? 'Reopened' : 'New'} · ${esc(r.opened)}</span>` : '';
   const sc = restScore(r);
   const circle = sc != null
     ? `<div class="score-circle ${scoreClass(sc)}">${sc.toFixed(1)}</div>`

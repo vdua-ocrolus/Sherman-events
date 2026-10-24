@@ -55,6 +55,11 @@ Built by `scripts/refresh-events.mjs` from the final EVENTS_DATA on every run (`
   Both go through `handleEmailSignup`, which tags each subscriber with `placement: inline|footer`.
   The inline block hides once a device has subscribed (`se_subscribed` in localStorage).
 - GA4 events: `share`, `add_to_calendar`, `deep_link_open`, `subscribe {placement}`, plus the existing ones.
+- Where to Eat (`RESTAURANTS_DATA` in index.html) is hand-maintained — nothing refreshes it, so new
+  openings only appear if someone adds them. "Just Opened" shows `justOpened` spots whose `opened`
+  date is within `REST_NEW_MONTHS` (6); it expires on its own, and a spot with no parseable date is
+  never shown as new. Set `reopened: true` for a returning spot to badge it "Reopened". Edit the
+  array as text: re-serializing it rewrites ratings like `5.0` as `5` across every entry.
 
 ## Scoring Formula
 Combined = (Proximity x 0.3) + (Fun/Quality x 0.7)
