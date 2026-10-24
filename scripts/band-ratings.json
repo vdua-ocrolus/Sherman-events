@@ -3538,5 +3538,63 @@
     ],
     "exampleTitle": "Flags of Valor — Veterans Tribute Display",
     "researchedAt": "2026-10-23"
+  },
+  "new milford trunk or treat on the town green": {
+    "displayName": "New Milford Trunk or Treat on the Town Green",
+    "funQuality": 7.3,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Long-running, well-established town Parks & Recreation event on the New Milford Town Green that distributes candy for approximately 2,000 participants and features a recurring 'Thriller' zombie flash mob, with multi-year press coverage and community sponsor participation (e.g. local law firm).",
+    "confidence": "high",
+    "sources": [
+      "https://newmilfordct.myrec.com/info/activities/program_details.aspx?ProgramID=29899",
+      "https://www.newmilfordnow.org/events/trunk-or-treat",
+      "https://www.crameranderson.com/cramer-anderson-participating-in-new-milford-trunk-or-treat/"
+    ],
+    "exampleTitle": "New Milford Trunk or Treat on the Town Green",
+    "researchedAt": "2026-10-24"
+  },
+  "new fairfield tricks and treats fest": {
+    "displayName": "New Fairfield Tricks and Treats Fest",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "An annual town Parks & Recreation sponsored trick-or-treat event at New Fairfield Town Hall/Town Center with a trick-or-treat map, small local performances (e.g. a kids' dance group Thriller routine), but no evidence of major regional scale or large attendance figures.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.newfairfield.org/our-town/events-calendar",
+      "https://danbury.macaronikid.com/events/66fcb6fe4080a22e01d1258b/-tricks-and-treats-fest--new-fairfield-town-hall"
+    ],
+    "exampleTitle": "New Fairfield Tricks and Treats Fest",
+    "researchedAt": "2026-10-24"
+  },
+  "operation thanksgiving food collection": {
+    "displayName": "Operation Thanksgiving Food Collection",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running, modest-scale charitable food/monetary collection drive (formerly 'Stuff the Gazebo') run by United Way of Western CT and the Woman's Club of Greater New Milford at the Town Green Bandstand; past drives have collected enough for just over 200 local families, indicating genuine but small community-level draw rather than a large public spectacle.",
+    "confidence": "high",
+    "sources": [
+      "https://www.unitedwaycwc.org/blog/operation-thanksgiving-new-milford-needs-you",
+      "https://citizenportal.ai/articles/10719889/connecticut/western-connecticut-planning-region/new-milford/new-milford-calendar-gala-farmers-market-haunted-trails-and-thanksgiving-drive"
+    ],
+    "exampleTitle": "Operation Thanksgiving Food Collection",
+    "researchedAt": "2026-10-24"
+  },
+  "watkins family hour": {
+    "displayName": "Watkins Family Hour",
+    "funQuality": 8.5,
+    "tier": "regional-established",
+    "isMusicAct": true,
+    "draw": "Sean and Sara Watkins are established national touring artists via Nickel Creek and I'm With Her, with Watkins Family Hour recordings featuring collaborators like Fiona Apple, Jackson Browne, and Jon Brion; their 2026 tour includes prestigious stops like Nashville's Ryman Auditorium and this Caramoor benefit is a premium ($125+ tickets) annual flagship event at a well-regarded regional arts venue.",
+    "confidence": "high",
+    "sources": [
+      "https://riverjournalonline.com/around-town/arts-culture/caramoors-annual-rosen-house-benefit-concert-to-feature-watkins-family-hour/322713/",
+      "https://caramoor.org/event/watkins-family-hour-2026",
+      "https://www.songkick.com/artists/2340101-watkins-family-hour/calendar"
+    ],
+    "exampleTitle": "Watkins Family Hour — Caramoor December Benefit Concert",
+    "researchedAt": "2026-10-24"
   }
 }
