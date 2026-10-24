@@ -692,7 +692,7 @@ details.fold[open] .fold-chevron { transform: rotate(180deg); }
   </nav>
   <!-- TOWN_NAV:END -->
 
-  <footer id="footer">Auto-updated daily · Sherman CT Events Digest · <a href="privacy.html" style="color:var(--gold-bright)">Privacy</a></footer>
+  <footer id="footer"><span id="footerMeta">Candlewood Lake Events · A curated local guide</span> · <a href="privacy.html" style="color:var(--gold-bright)">Privacy</a></footer>
 </div>
 
 <!-- Admin FAB -->
@@ -4013,7 +4013,7 @@ function renderEvents() {
 
   // Header meta
   document.getElementById('headerMeta').textContent = `Updated ${d.lastUpdated} · Fairfield & Litchfield Counties, CT`;
-  document.getElementById('footer').textContent = `Candlewood Lake Events · A curated local guide · Updated ${d.lastUpdated}`;
+  document.getElementById('footerMeta').textContent = `Candlewood Lake Events · A curated local guide · Updated ${d.lastUpdated}`; // span only, so the Privacy link survives
 
   // Tonight banner
   const tonight = (d.tonight || []).filter(s => s && s.name);
