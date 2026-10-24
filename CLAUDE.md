@@ -14,6 +14,9 @@ A curated local events guide for the Candlewood Lake area in Connecticut.
 - index.html — the entire site. Single-file HTML/CSS/JS. No build step.
   - CONFIG block near the top of the <script> (API_BASE, ADMIN_PASSWORD, GA_MEASUREMENT_ID).
   - EVENTS_DATA object lives between the `/* EVENTS_DATA:START */` and `/* EVENTS_DATA:END */` markers (regenerated daily — see below).
+  - Two more generated regions, also rewritten daily — never hand-edit inside them:
+    `<!-- EVENTS_JSONLD:START/END -->` in `<head>` (schema.org Event markup) and
+    `<!-- TOWN_NAV:START/END -->` above the footer (links to the town pages).
 
 ## Architecture
 - No build step. Pure static HTML — edit index.html and push; GitHub Pages serves it.
@@ -26,6 +29,32 @@ A curated local events guide for the Candlewood Lake area in Connecticut.
 - The old hardcoded GitHub token and admin password have been removed. Data writes/reads go through the serverless proxy (/data-proxy), which holds the token as a server-side env var.
 - CONFIG.GA_MEASUREMENT_ID is a Google Analytics ID and is meant to be public — fine to commit.
 - CI secrets live in GitHub → Settings → Secrets and variables → Actions (see "Daily events refresh"), never in the repo.
+
+## Generated site (search + social)
+Built by `scripts/refresh-events.mjs` from the final EVENTS_DATA on every run (`buildSite()`):
+- **JSON-LD** — one schema.org `Event` per upcoming event in index.html `<head>`, so events are
+  eligible for Google's event results. Events whose dates can't be parsed are skipped, never guessed.
+  Offsets are America/New_York (-04:00 / -05:00 across DST); prices only when there's a real `$N`.
+- **Town pages** — `towns/<slug>/index.html`, server-rendered (crawlable without JS), each with its
+  own title/description/canonical, that town's JSON-LD and a breadcrumb. The town list is the fixed
+  `TOWN_PAGES` table (the PROX towns), so URLs stay stable: a quiet town gets an empty-state page
+  rather than a 404. Removing a town from the table does NOT delete its directory — do that by hand.
+- **sitemap.xml** (home + town pages) and a static **robots.txt** pointing at it.
+- Everything is built in memory and validated before any file is written; a generation error fails
+  the run (fail-closed, like the rest of the refresh).
+- To rebuild after a template change without calling the API: `node scripts/refresh-events.mjs --site-only`.
+- `og-image.png` (1200x630) is the social preview for the home page and every town page.
+- Date/time parsing exists twice — `eventSchedule()`/`parseTimes()` in the script (JSON-LD, town pages)
+  and in index.html (Add to calendar). Keep them in step.
+
+## Client features worth knowing
+- Each event card has Share (Web Share API, falls back to copy-link) and Add to calendar (Google
+  link or a downloaded .ics). Shared links are `/#ev-<favKey>`; the page opens that card's week,
+  reveals it if it's in the "show all" overflow, and keeps it open across the post-sign-in re-render.
+- An inline signup renders right after the first week (the footer form is still there, `#subscribe`).
+  Both go through `handleEmailSignup`, which tags each subscriber with `placement: inline|footer`.
+  The inline block hides once a device has subscribed (`se_subscribed` in localStorage).
+- GA4 events: `share`, `add_to_calendar`, `deep_link_open`, `subscribe {placement}`, plus the existing ones.
 
 ## Scoring Formula
 Combined = (Proximity x 0.3) + (Fun/Quality x 0.7)
@@ -74,7 +103,8 @@ Research failure is non-fatal: events still publish and the gate caps the unevid
 
 ## Daily events refresh (CI)
 - .github/workflows/daily-events.yml runs daily (~10:00 UTC / ~6am ET) and on manual "Run workflow".
-- It runs scripts/refresh-events.mjs: fetches the source calendars, asks Claude (Anthropic API) to extract/score/format events grounded ONLY on fetched content, validates the JSON, and rewrites the EVENTS_DATA block between the markers. Commits + pushes only if changed. Aborts without writing on any failure, so a bad run never publishes.
+- It runs scripts/refresh-events.mjs: fetches the source calendars, asks Claude (Anthropic API) to extract/score/format events grounded ONLY on fetched content, validates the JSON, rewrites the EVENTS_DATA block between the markers, and regenerates the generated site (JSON-LD, town pages, sitemap). Commits + pushes only if changed. Aborts without writing on any failure, so a bad run never publishes.
+- The commit step stages `index.html scripts/band-ratings.json sitemap.xml towns` and checks `git diff --cached --quiet` — a plain `git diff` ignores new untracked files and would never commit new pages.
 - Required repo secret: ANTHROPIC_API_KEY. Optional: SLACK_WEBHOOK_URL (posts a run summary). Model via EVENTS_MODEL (default claude-sonnet-5).
 - To change sources or scoring, edit scripts/refresh-events.mjs.
 

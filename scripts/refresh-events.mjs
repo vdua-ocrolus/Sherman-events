@@ -10,8 +10,7 @@
 //
 // Env: ANTHROPIC_API_KEY (required), SLACK_WEBHOOK_URL (optional), EVENTS_MODEL (optional).
 
-import { readFile, writeFile } from 'node:fs/promises';
-import Anthropic from '@anthropic-ai/sdk';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 
 const INDEX = 'index.html';
 const START = '/* EVENTS_DATA:START';
@@ -380,7 +379,15 @@ async function fail(msg) {
   process.exit(1);
 }
 
-const client = new Anthropic({ maxRetries: 5 }); // reads ANTHROPIC_API_KEY; retry 429/5xx/overloaded
+// Created on first use, so `--site-only` runs without the SDK installed or an API key set.
+let _client = null;
+async function anthropic() {
+  if (!_client) {
+    const { default: Anthropic } = await import('@anthropic-ai/sdk');
+    _client = new Anthropic({ maxRetries: 5 }); // reads ANTHROPIC_API_KEY; retry 429/5xx/overloaded
+  }
+  return _client;
+}
 
 // Stream (avoids connection timeouts on long web-tool research) and resume on
 // pause_turn (server-tool loop hit its iteration cap). Returns the final message.
@@ -445,7 +452,7 @@ async function research(prompt, opts = {}) {
     // explicit disabled flag — omitting it turns adaptive thinking ON. Haiku 4.5 and older
     // don't accept the flag; they're thinking-off by default, so we just omit it.
     if (!/haiku/i.test(MODEL)) req.thinking = { type: 'disabled' };
-    const stream = client.messages.stream(req);
+    const stream = (await anthropic()).messages.stream(req);
     msg = await stream.finalMessage();
     if (msg.stop_reason === 'pause_turn') {
       messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
@@ -580,6 +587,422 @@ function mergeRatings(ratings, records) {
     added++;
   }
   return added;
+}
+
+// ---------------------------------------------------------------------------
+// SITE GENERATION — search/social surface built from the final EVENTS_DATA:
+//   * schema.org Event JSON-LD in index.html <head> (EVENTS_JSONLD markers), so events are
+//     eligible for Google's event results instead of living only inside a JS object;
+//   * one crawlable, server-rendered page per core town at /towns/<slug>/ ("things to do in
+//     New Milford" can't rank off a single URL), linked from index.html (TOWN_NAV markers);
+//   * sitemap.xml listing the home page and every town page.
+// Everything is built in memory and validated BEFORE any file is written, so a generation
+// bug fails the run instead of publishing a half-written site. The town list is fixed (the
+// PROX towns) so URLs stay stable for search engines — a town with nothing on renders an
+// empty-state page rather than disappearing. Run `node scripts/refresh-events.mjs --site-only`
+// to rebuild these from the current data without calling the API.
+// ---------------------------------------------------------------------------
+const SITE = 'https://candlewoodlakeevents.com';
+const OG_IMAGE = `${SITE}/og-image.png`;
+const JSONLD_START = '<!-- EVENTS_JSONLD:START';
+const JSONLD_END = '<!-- EVENTS_JSONLD:END -->';
+const TOWNNAV_START = '<!-- TOWN_NAV:START';
+const TOWNNAV_END = '<!-- TOWN_NAV:END -->';
+const TOWN_PAGES = [
+  ['sherman', 'Sherman', 'CT'], ['new fairfield', 'New Fairfield', 'CT'], ['new milford', 'New Milford', 'CT'],
+  ['brookfield', 'Brookfield', 'CT'], ['danbury', 'Danbury', 'CT'], ['ridgefield', 'Ridgefield', 'CT'],
+  ['kent', 'Kent', 'CT'], ['new preston', 'New Preston', 'CT'], ['washington', 'Washington', 'CT'],
+  ['woodbury', 'Woodbury', 'CT'], ['roxbury', 'Roxbury', 'CT'], ['litchfield', 'Litchfield', 'CT'],
+  ['torrington', 'Torrington', 'CT'], ['westport', 'Westport', 'CT'], ['katonah', 'Katonah', 'NY'],
+  ['pawling', 'Pawling', 'NY'],
+].map(([key, name, state]) => ({ key, name, state, slug: key.replace(/\s+/g, '-') }));
+
+const escHtml = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const safeUrl = (u) => (typeof u === 'string' && /^https?:\/\//i.test(u.trim()) ? u.trim() : '');
+const plain = (v) => String(v ?? '').replace(/\p{Extended_Pictographic}/gu, '').replace(/\s{2,}/g, ' ').trim();
+const favKey = (e) => ((e.title || '') + '|' + (e.dateLabel || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const townKey = (t) => (t || '').replace(/,\s*(ct|ny|ma|connecticut|new york)\s*$/i, '').replace(/\s+/g, ' ').trim();
+const stateOf = (t) => (/,\s*(ny|new york)\s*$/i.test(t || '') ? 'NY' : 'CT');
+// Which core town page an event belongs to (longest key wins: "New Fairfield" before "Fairfield").
+// County-level towns ("Litchfield County, CT") stay off town pages; they could be anywhere.
+function townPageFor(e) {
+  const t = norm(e.town);
+  if (!t || /\bcounty\b/.test(t)) return null;
+  let best = null;
+  for (const tp of TOWN_PAGES) if (t.includes(tp.key) && (!best || tp.key.length > best.key.length)) best = tp;
+  return best;
+}
+
+// Date/time parsing. Mirrors eventSchedule() in index.html (which builds the calendar buttons);
+// keep the two in step. Wall-clock America/New_York; the year comes from lastUpdated so a
+// December guide listing January events rolls over.
+const MO = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+function dataYearMonth(lastUpdated) {
+  const m = /([A-Za-z]{3})\w*\s+\d{1,2},\s*(\d{4})/.exec(lastUpdated || '');
+  return m ? { year: parseInt(m[2], 10), month: MO[m[1].toLowerCase()] } : { year: CURRENT_YEAR, month: CURRENT_MONTH };
+}
+function clock(h, m, mer) {
+  h = parseInt(h, 10); m = m ? parseInt(m, 10) : 0;
+  if (h > 12 || m > 59) return null;
+  mer = (mer || '').toLowerCase().replace(/\./g, '');
+  if (mer.startsWith('p') && h !== 12) h += 12;
+  if (mer.startsWith('a') && h === 12) h = 0;
+  return [h, m];
+}
+function parseTimes(t) {
+  t = (t || '').replace(/\bnoon\b/i, '12:00PM');
+  const R = /(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*[–—-]\s*(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)/i.exec(t);
+  if (R) {
+    const endMer = R[6];
+    let startMer = R[3];
+    if (!startMer) startMer = (parseInt(R[1], 10) > parseInt(R[4], 10) && /^p/i.test(endMer)) ? 'am' : endMer;
+    const start = clock(R[1], R[2], startMer), end = clock(R[4], R[5], endMer);
+    if (start && end) return { start, end };
+  }
+  const S = /(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)/i.exec(t);
+  if (S) { const start = clock(S[1], S[2], S[3]); if (start) return { start, end: null }; }
+  return null;
+}
+function eventSchedule(e, ym) {
+  const found = [...(e.dateLabel || '').matchAll(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})\b/gi)]
+    .map((m) => [MO[m[1].slice(0, 3).toLowerCase()], parseInt(m[2], 10)]);
+  if (!found.length) return null;
+  const yr = found[0][0] < ym.month - 6 ? ym.year + 1 : ym.year;
+  const start = new Date(Date.UTC(yr, found[0][0], found[0][1]));
+  if (start.getUTCDate() !== found[0][1]) return null; // "Feb 31"
+  let end = start;
+  if (found.length > 1 && /[–—-]/.test(e.dateLabel)) {
+    end = new Date(Date.UTC(yr, found[1][0], found[1][1]));
+    if (end < start) end = new Date(Date.UTC(yr + 1, found[1][0], found[1][1]));
+  }
+  const multiDay = end.getTime() !== start.getTime();
+  return { start, end, times: multiDay ? null : parseTimes(e.time) };
+}
+const p2 = (n) => String(n).padStart(2, '0');
+const isoDay = (d) => `${d.getUTCFullYear()}-${p2(d.getUTCMonth() + 1)}-${p2(d.getUTCDate())}`;
+// UTC offset of America/New_York on a given calendar day ("-04:00" in summer, "-05:00" in winter).
+function nyOffset(d) {
+  const noon = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 16));
+  const tz = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeZoneName: 'longOffset' })
+    .formatToParts(noon).find((x) => x.type === 'timeZoneName').value; // "GMT-04:00"
+  const m = /GMT([+-]\d{2}:\d{2})/.exec(tz);
+  if (!m) throw new Error(`unexpected tz offset format: ${tz}`);
+  return m[1];
+}
+const isoAt = (d, [h, m]) => `${isoDay(d)}T${p2(h)}:${p2(m)}:00${nyOffset(d)}`;
+
+function eventJsonLd(e, ym) {
+  const sc = eventSchedule(e, ym);
+  if (!sc || !e.title) return null; // never guess a date
+  const url = safeUrl(e.url) || safeUrl(e.sourceUrl);
+  const town = townKey(e.town);
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: plain(e.title),
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: plain(e.venue) || town || 'Candlewood Lake area',
+      address: { '@type': 'PostalAddress', addressLocality: town || undefined, addressRegion: stateOf(e.town), addressCountry: 'US' },
+    },
+    image: [OG_IMAGE],
+  };
+  if (sc.times) {
+    ld.startDate = isoAt(sc.start, sc.times.start);
+    if (sc.times.end) {
+      const endDay = (sc.times.end[0] * 60 + sc.times.end[1] <= sc.times.start[0] * 60 + sc.times.start[1])
+        ? new Date(sc.start.getTime() + 86400000) : sc.start; // 9PM–1AM ends the next day
+      ld.endDate = isoAt(endDay, sc.times.end);
+    }
+  } else {
+    ld.startDate = isoDay(sc.start);
+    ld.endDate = isoDay(sc.end);
+  }
+  const desc = plain(e.desc);
+  if (desc) ld.description = desc;
+  if (url) ld.url = url;
+  const label = e.priceLabel || '';
+  const free = (e.priceType || '').toLowerCase() === 'free' || /\bfree\b/i.test(label);
+  const dollars = /\$\s*(\d+(?:\.\d{1,2})?)/.exec(label);
+  const soldOut = (e.priceType || '').toLowerCase() === 'soldout' || /sold\s*out/i.test(label);
+  if (free) {
+    ld.isAccessibleForFree = true;
+    ld.offers = { '@type': 'Offer', price: 0, priceCurrency: 'USD', availability: 'https://schema.org/InStock', ...(url && { url }) };
+  } else if (dollars) {
+    ld.offers = { '@type': 'Offer', price: Number(dollars[1]), priceCurrency: 'USD',
+      availability: soldOut ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock', ...(url && { url }) };
+  }
+  return JSON.parse(JSON.stringify(ld)); // drops undefined fields
+}
+// JSON inside <script> must not be able to close the tag.
+const ldScript = (data) => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+
+const scoreClass = (s) => (s >= 9 ? 'must' : s >= 7 ? 'great' : s >= 5 ? 'good' : 'ok');
+function googleCalUrl(e, ym) {
+  const sc = eventSchedule(e, ym);
+  if (!sc) return '';
+  const ymd = (d) => isoDay(d).replace(/-/g, '');
+  let dates, timed = false;
+  if (!sc.times) {
+    dates = `${ymd(sc.start)}/${ymd(new Date(sc.end.getTime() + 86400000))}`;
+  } else {
+    timed = true;
+    const [sh, sm] = sc.times.start;
+    let endDay = sc.start, eh, em;
+    if (sc.times.end) {
+      [eh, em] = sc.times.end;
+      if (eh * 60 + em <= sh * 60 + sm) endDay = new Date(sc.start.getTime() + 86400000);
+    } else {
+      const mins = sh * 60 + sm + 120;
+      eh = Math.floor(mins / 60) % 24; em = mins % 60;
+      if (mins >= 1440) endDay = new Date(sc.start.getTime() + 86400000);
+    }
+    dates = `${ymd(sc.start)}T${p2(sh)}${p2(sm)}00/${ymd(endDay)}T${p2(eh)}${p2(em)}00`;
+  }
+  const q = new URLSearchParams({ action: 'TEMPLATE', text: plain(e.title), dates,
+    details: [plain(e.desc), safeUrl(e.url) || safeUrl(e.sourceUrl), `Found on Candlewood Lake Events · ${SITE}/`].filter(Boolean).join('\n\n'),
+    location: [e.venue, e.town].filter(Boolean).join(', ') });
+  if (timed) q.set('ctz', 'America/New_York');
+  return `https://calendar.google.com/calendar/render?${q}`;
+}
+
+function townCard(e, ym) {
+  const url = safeUrl(e.url), src = safeUrl(e.sourceUrl), cal = googleCalUrl(e, ym);
+  const title = url ? `<a href="${escHtml(url)}" target="_blank" rel="noopener">${escHtml(plain(e.title))}</a>` : escHtml(plain(e.title));
+  const when = [e.dateLabel, e.time, e.venue].filter(Boolean).map(plain).join(' · ');
+  const price = (e.priceType === 'free' || /\bfree\b/i.test(e.priceLabel || '')) ? 'Free'
+    : e.priceType === 'soldout' ? (e.priceLabel || 'Sold out') : (e.priceLabel || (e.priceType === 'paid' ? 'Ticketed' : ''));
+  const tags = [e.type, price].filter(Boolean).map((t) => `<span>${escHtml(plain(t))}</span>`).join('');
+  const links = [src ? `<a href="${escHtml(src)}" target="_blank" rel="noopener">${escHtml(plain(e.source) || 'Source')}</a>` : '',
+    cal ? `<a href="${escHtml(cal)}" target="_blank" rel="noopener">Add to Google Calendar</a>` : ''].filter(Boolean).join('<span class="dot">·</span>');
+  return `<article class="card" id="ev-${favKey(e)}">
+      <div class="score s-${scoreClass(e.score)}">${Number(e.score).toFixed(1)}</div>
+      <div class="body">
+        <h3>${title}</h3>
+        <p class="when">${escHtml(when)}</p>
+        ${tags ? `<p class="tags">${tags}</p>` : ''}
+        ${e.desc ? `<p class="desc">${escHtml(plain(e.desc))}</p>` : ''}
+        ${links ? `<p class="links">${links}</p>` : ''}
+      </div>
+    </article>`;
+}
+
+const TOWN_CSS = `:root{color-scheme:dark;--bg:#0a1424;--surface:#13233d;--border:#26385a;--text:#f4ecdb;--soft:#cdd7e6;--muted:#93a4bd;--gold:#d4a24a;--gold-b:#e7c988;--aqua:#67d3c9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,#0a1424,#0f1d35) fixed;color:var(--text);font-family:Inter,-apple-system,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:760px;margin:0 auto;padding:18px 16px;border-bottom:1px solid var(--border)}
+.brand{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--text);text-decoration:none}
+.back{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap}
+main{max-width:760px;margin:0 auto;padding:30px 16px 20px}
+.kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,42px);line-height:1.12;font-weight:800;margin:8px 0 10px}
+.sub{color:var(--muted);font-size:14px}
+.rule{width:64px;height:2px;background:var(--gold);margin:22px 0 8px}
+section{margin-top:26px}
+section h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.card{display:flex;gap:14px;padding:14px 2px;border-bottom:1px solid var(--border)}
+.card:last-child{border-bottom:0}
+.score{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#0b1424}
+.s-must{background:linear-gradient(180deg,#e7c988,#d4a24a)}.s-great{background:var(--aqua)}.s-good{background:#93a4bd}.s-ok{background:#5c6f8a}
+.body{min-width:0}
+.card h3{font-size:16px;line-height:1.35;font-weight:600}
+.card h3 a{color:var(--text);text-decoration:none}.card h3 a:hover{color:var(--gold-b)}
+.when{font-size:13px;color:var(--muted);margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:7px 0 4px}
+.tags span{font-size:11px;padding:2px 8px;border:1px solid var(--border);border-radius:20px;color:var(--soft)}
+.desc{font-size:13.5px;color:var(--soft);line-height:1.5;margin-top:4px}
+.links{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;margin-top:6px}
+.links a{text-decoration:none;font-weight:600}.links a:hover{text-decoration:underline}
+.dot{color:var(--muted);margin:0 8px}
+.empty{margin-top:24px;color:var(--soft)}
+.cta{margin-top:34px;padding:22px;border:1px solid rgba(212,162,74,.38);border-radius:4px;background:linear-gradient(180deg,rgba(212,162,74,.10),rgba(212,162,74,.03))}
+.cta h2{font-family:'Playfair Display',serif;font-size:21px;line-height:1.25;margin-bottom:14px}
+.btn{display:inline-block;padding:11px 22px;background:linear-gradient(180deg,#e7c988,#d4a24a);color:#0b1424;text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;border-radius:2px}
+.towns{margin-top:30px}
+.towns h2{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px}
+.towns div{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px}
+.towns a{text-decoration:none}.towns a:hover{text-decoration:underline}
+footer{max-width:760px;margin:30px auto 0;padding:28px 16px 60px;border-top:1px solid var(--border);text-align:center;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}`;
+
+function analyticsSnippet(gaId) {
+  if (!/^G-[A-Z0-9]+$/.test(gaId || '')) return '';
+  // Same self-exclude switch as the home page (?me=1 once per device).
+  return `<script>try{if(localStorage.getItem('cle_exclude')!=='1'){var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=${gaId}';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','${gaId}')}}catch(e){}</script>`;
+}
+
+function renderTownPage(tp, weeks, counts, obj, ym, gaId) {
+  const total = weeks.reduce((a, w) => a + w.events.length, 0);
+  const label = `${tp.name}, ${tp.state}`;
+  const url = `${SITE}/towns/${tp.slug}/`;
+  const top = weeks.flatMap((w) => w.events).sort((a, b) => b.score - a.score).slice(0, 3).map((e) => plain(e.title));
+  const title = `Things to Do in ${label} This Weekend · Candlewood Lake Events`;
+  let description = total
+    ? `${total} upcoming event${total === 1 ? '' : 's'} in ${label}${top.length ? ': ' + top.join(', ') : ''}. Curated and updated daily.`
+    : `Live music, festivals and things to do in ${label}, near Candlewood Lake. Curated and updated daily.`;
+  if (description.length > 158) description = description.slice(0, 155).replace(/[\s,:;]+\S*$/, '') + '…';
+  const events = weeks.flatMap((w) => w.events).map((e) => eventJsonLd(e, ym)).filter(Boolean);
+  const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Candlewood Lake Events', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: label, item: url }] };
+  const body = total
+    ? weeks.map((w) => `<section>
+    <h2>${escHtml(plain(w.title))}</h2>
+    ${w.events.map((e) => townCard(e, ym)).join('\n    ')}
+  </section>`).join('\n  ')
+    : `<p class="empty">Nothing is listed in ${escHtml(tp.name)} right now. <a href="/">See everything happening around the lake →</a></p>`;
+  const others = TOWN_PAGES.filter((t) => t.slug !== tp.slug)
+    .map((t) => `<a href="/towns/${t.slug}/">${escHtml(t.name)}${counts[t.slug] ? ` (${counts[t.slug]})` : ''}</a>`).join('');
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escHtml(title)}</title>
+<meta name="description" content="${escHtml(description)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Candlewood Lake Events">
+<meta property="og:url" content="${url}">
+<meta property="og:title" content="${escHtml(`Things to do in ${label}`)}">
+<meta property="og:description" content="${escHtml(description)}">
+<meta property="og:image" content="${OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${OG_IMAGE}">
+<meta name="theme-color" content="#0a1424">
+${ldScript([...events, breadcrumb])}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+${TOWN_CSS}
+</style>
+${analyticsSnippet(gaId)}
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Candlewood Lake Events</a><a class="back" href="/">Full guide →</a></header>
+<main>
+  <p class="kicker">Candlewood Lake · ${escHtml(tp.state === 'NY' ? 'New York' : 'Connecticut')}</p>
+  <h1>Things to do in ${escHtml(label)}</h1>
+  <p class="sub">${total ? `${total} upcoming event${total === 1 ? '' : 's'}` : 'Nothing listed right now'} · Updated ${escHtml(obj.lastUpdated)} · Scored for quality and distance from the lake</p>
+  <div class="rule"></div>
+  ${body}
+  <aside class="cta">
+    <h2>The week's best around the lake, in your inbox every Thursday.</h2>
+    <a class="btn" href="/#subscribe">Get the weekly picks</a>
+  </aside>
+  <nav class="towns" aria-label="Events by town">
+    <h2>More towns around the lake</h2>
+    <div><a href="/">All towns</a>${others}</div>
+  </nav>
+</main>
+<footer>Candlewood Lake Events · A curated local guide · <a href="/privacy.html">Privacy</a></footer>
+</body>
+</html>
+`;
+}
+
+function renderTownNav(counts) {
+  const links = TOWN_PAGES.map((t) => `<a href="/towns/${t.slug}/">${escHtml(t.name)}${counts[t.slug] ? ` (${counts[t.slug]})` : ''}</a>`).join('\n      ');
+  return `<nav class="town-nav" aria-label="Events by town">
+    <h2>Events by town</h2>
+    <div class="town-nav-links">
+      ${links}
+    </div>
+  </nav>`;
+}
+
+function renderSitemap(lastmod) {
+  const urls = [`${SITE}/`, ...TOWN_PAGES.map((t) => `${SITE}/towns/${t.slug}/`)];
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map((u) => `  <url><loc>${u}</loc><lastmod>${lastmod}</lastmod><changefreq>daily</changefreq></url>`).join('\n')}
+</urlset>
+`;
+}
+
+// Replace the content between a start marker (an HTML comment, through the end of its line)
+// and an end marker. Throws if either is missing so a broken template fails the run.
+function replaceRegion(file, startMarker, endMarker, inner) {
+  const a = file.indexOf(startMarker);
+  const b = file.indexOf(endMarker);
+  if (a === -1 || b === -1 || b < a) throw new Error(`markers not found: ${startMarker.trim()}`);
+  const from = file.indexOf('\n', a) + 1;
+  const indent = (/^[ \t]*/.exec(file.slice(file.lastIndexOf('\n', b) + 1, b)) || [''])[0];
+  return file.slice(0, from) + inner + '\n' + indent + file.slice(b);
+}
+
+// Build every generated artifact from the final data. Pure: returns strings, writes nothing.
+function buildSite(obj, gaId) {
+  const ym = dataYearMonth(obj.lastUpdated);
+  const upcoming = (obj.weeks || []).map((w) => ({ title: w.title, events: (w.events || []).filter((e) => !e.isPast && typeof e.score === 'number') }));
+  const all = upcoming.flatMap((w) => w.events);
+
+  const homeLd = all.map((e) => eventJsonLd(e, ym)).filter(Boolean);
+  const counts = {};
+  for (const e of all) { const tp = townPageFor(e); if (tp) counts[tp.slug] = (counts[tp.slug] || 0) + 1; }
+
+  const pages = TOWN_PAGES.map((tp) => {
+    const weeks = upcoming
+      .map((w) => ({ title: w.title, events: w.events.filter((e) => townPageFor(e) === tp).sort((a, b) => b.score - a.score) }))
+      .filter((w) => w.events.length);
+    return { slug: tp.slug, html: renderTownPage(tp, weeks, counts, obj, ym, gaId) };
+  });
+
+  // Validate before anyone writes: every JSON-LD block must parse, every page must be whole.
+  const checkLd = (html, where) => {
+    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      const parsed = JSON.parse(m[1]);
+      const list = Array.isArray(parsed) ? parsed : [parsed];
+      for (const ev of list.filter((x) => x['@type'] === 'Event')) {
+        if (!ev.name || !ev.startDate || !ev.location || !ev.location.address) throw new Error(`incomplete Event in ${where}: ${ev.name}`);
+      }
+    }
+  };
+  const jsonld = ldScript(homeLd);
+  checkLd(jsonld, 'home');
+  for (const p of pages) {
+    if (!/<title>[^<]+<\/title>/.test(p.html) || !p.html.trimEnd().endsWith('</html>')) throw new Error(`malformed town page ${p.slug}`);
+    checkLd(p.html, p.slug);
+  }
+  const skipped = all.length - homeLd.length;
+  return { jsonld, townNav: renderTownNav(counts), pages, sitemap: renderSitemap(todayISO), skipped, counts };
+}
+
+// Apply a built site: splice the generated regions into index.html's text, then write the
+// town pages and sitemap. Returns the updated index.html text (the caller writes it).
+function spliceSite(fileText, site) {
+  let out = replaceRegion(fileText, JSONLD_START, JSONLD_END, site.jsonld);
+  out = replaceRegion(out, TOWNNAV_START, TOWNNAV_END, '  ' + site.townNav);
+  return out;
+}
+async function writeSitePages(site) {
+  for (const p of site.pages) {
+    await mkdir(`towns/${p.slug}`, { recursive: true });
+    await writeFile(`towns/${p.slug}/index.html`, p.html);
+  }
+  await writeFile('sitemap.xml', site.sitemap);
+}
+const gaIdFrom = (fileText) => (/GA_MEASUREMENT_ID:\s*'([^']*)'/.exec(fileText) || [])[1] || '';
+
+// `--site-only`: rebuild the generated site from the CURRENT EVENTS_DATA, no API call, no
+// rescoring. For template changes and for seeding the pages the first time.
+async function siteOnly() {
+  const file = await readFile(INDEX, 'utf8');
+  const s = file.indexOf(START), e = file.indexOf(END);
+  if (s === -1 || e === -1) return fail('EVENTS_DATA markers not found in index.html');
+  const block = file.slice(file.indexOf('\n', s) + 1, e);
+  const obj = JSON.parse(block.slice(block.indexOf('{'), block.lastIndexOf('}') + 1));
+  let site;
+  try { site = buildSite(obj, gaIdFrom(file)); } catch (err) { return fail(`site generation failed: ${err.message}`); }
+  const updated = spliceSite(file, site);
+  await writeSitePages(site);
+  await writeFile(INDEX, updated);
+  console.log(`Site rebuilt: ${site.pages.length} town pages, ${JSON.parse(site.jsonld.replace(/^<script[^>]*>|<\/script>$/g, '')).length} events in JSON-LD (${site.skipped} skipped: unparseable dates).`);
 }
 
 async function main() {
@@ -729,6 +1152,11 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   const researchNote = ratingsAdded ? ` +${ratingsAdded} act(s) researched` : '';
   const gated = capped ? `, ${capped} unevidenced claim(s) capped` : '';
 
+  // Build (and validate) the generated site before writing anything — fail closed.
+  let site;
+  try { site = buildSite(obj, gaIdFrom(file)); } catch (err) { return fail(`site generation failed: ${err.message}`); }
+  if (site.skipped) console.log(`JSON-LD: skipped ${site.skipped} event(s) with unparseable dates.`);
+
   const newBlock = `const EVENTS_DATA = ${JSON.stringify(obj, null, 2)};`;
   if (newBlock.trim() === existingBlock) {
     console.log('No changes.');
@@ -736,11 +1164,12 @@ When you have finished researching, your FINAL message must be ONLY the updated 
     return;
   }
 
-  const updated = file.slice(0, blockStart) + newBlock + '\n' + file.slice(endIdx);
+  const updated = spliceSite(file.slice(0, blockStart) + newBlock + '\n' + file.slice(endIdx), site);
+  await writeSitePages(site);
   await writeFile(INDEX, updated);
 
   console.log(`Updated: ${count} events across ${obj.weeks.length} weeks.`);
   await notifySlack(`Daily events refresh (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published${researchNote}${gated}.`);
 }
 
-main().catch((e) => fail(e.message));
+(process.argv.includes('--site-only') ? siteOnly() : main()).catch((e) => fail(e.message));
