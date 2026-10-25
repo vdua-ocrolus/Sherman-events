@@ -1,1 +1,194 @@
-{}
+{
+  "lucky 13 saloon|644 sackett st brooklyn ny 11217": {
+    "key": "lucky-13-saloon",
+    "name": "Lucky 13 Saloon",
+    "addr": "644 Sackett St, Brooklyn, NY 11217",
+    "lat": 40.6782,
+    "lon": -73.9836
+  },
+  "1st street bond street|1st st bond st brooklyn ny 11231": {
+    "key": "1st-street-bond-street",
+    "name": "1st Street & Bond Street",
+    "addr": "1st St & Bond St, Brooklyn, NY 11231",
+    "lat": 40.6781,
+    "lon": -73.9909
+  },
+  "st paul hall|190 court st brooklyn ny 11201": {
+    "key": "st-paul-hall",
+    "name": "St. Paul Hall",
+    "addr": "190 Court St, Brooklyn, NY 11201",
+    "lat": 40.68743,
+    "lon": -73.99357
+  },
+  "7th avenue and 14th street|7th ave 14th st brooklyn ny 11215": {
+    "key": "7th-avenue-and-14th-street",
+    "name": "7th Avenue and 14th Street",
+    "addr": "7th Ave & 14th St, Brooklyn, NY 11215",
+    "lat": 40.66389,
+    "lon": -73.98409
+  },
+  "fifth avenue union st to 4th st|5th ave union st to 4th st brooklyn ny 11215": {
+    "miss": "2026-10-25"
+  },
+  "nycha wyckoff gardens community center|brooklyn ny": {
+    "key": "nycha-wyckoff-gardens-community-center",
+    "name": "NYCHA Wyckoff Gardens Community Center",
+    "addr": "Brooklyn, NY",
+    "lat": 40.6526,
+    "lon": -73.94972
+  },
+  "big reuse|brooklyn ny": {
+    "key": "big-reuse",
+    "name": "Big Reuse",
+    "addr": "Brooklyn, NY",
+    "lat": 40.6526,
+    "lon": -73.94972
+  },
+  "336 douglass st|336 douglass st brooklyn ny 11217": {
+    "key": "336-douglass-st",
+    "name": "336 Douglass St",
+    "addr": "336 Douglass St, Brooklyn, NY 11217",
+    "lat": 40.67937,
+    "lon": -73.98216
+  },
+  "207 4th ave|207 4th ave brooklyn ny 11217": {
+    "key": "207-4th-ave",
+    "name": "207 4th Ave",
+    "addr": "207 4th Ave, Brooklyn, NY 11217",
+    "lat": 40.67754,
+    "lon": -73.98283
+  },
+  "the shop workspace|420 carroll st brooklyn ny 11215": {
+    "key": "the-shop-workspace",
+    "name": "The Shop Workspace",
+    "addr": "420 Carroll St, Brooklyn, NY 11215",
+    "lat": 40.67763,
+    "lon": -73.98797
+  },
+  "4th st and 5th ave|4th st 5th ave brooklyn ny 11215": {
+    "key": "4th-st-and-5th-ave",
+    "name": "4th St and 5th Ave",
+    "addr": "4th St & 5th Ave, Brooklyn, NY 11215",
+    "lat": 40.6526,
+    "lon": -73.94972
+  },
+  "prospect park|prospect park brooklyn ny 11215": {
+    "key": "prospect-park",
+    "name": "Prospect Park",
+    "addr": "Prospect Park, Brooklyn, NY 11215",
+    "lat": 40.66161,
+    "lon": -73.96225
+  },
+  "other half brewing company|brooklyn ny": {
+    "key": "other-half-brewing-company",
+    "name": "Other Half Brewing Company",
+    "addr": "Brooklyn, NY",
+    "lat": 40.6526,
+    "lon": -73.94972
+  },
+  "3rd street|3rd street gowanus brooklyn ny": {
+    "key": "3rd-street",
+    "name": "3rd Street",
+    "addr": "3rd Street, Gowanus, Brooklyn, NY",
+    "lat": 40.67615,
+    "lon": -73.99022
+  },
+  "thomas greene park|3rd avenue and degraw street brooklyn ny": {
+    "key": "thomas-greene-park",
+    "name": "Thomas Greene Park",
+    "addr": "3rd Avenue and Degraw Street, Brooklyn, NY",
+    "lat": 40.68028,
+    "lon": -73.98525
+  },
+  "park slope|7th avenue park slope brooklyn ny": {
+    "key": "park-slope",
+    "name": "Park Slope",
+    "addr": "7th Avenue, Park Slope, Brooklyn, NY",
+    "lat": 40.66627,
+    "lon": -73.98031
+  },
+  "sponge park bond street gardens|gowanus brooklyn ny": {
+    "key": "sponge-park-bond-street-gardens",
+    "name": "Sponge Park / Bond Street gardens",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.67917,
+    "lon": -73.9885
+  },
+  "judgy baby|170 2nd avenue gowanus brooklyn ny 11215": {
+    "key": "judgy-baby",
+    "name": "Judgy Baby",
+    "addr": "170 2nd Avenue, Gowanus, Brooklyn, NY 11215",
+    "lat": 40.67479,
+    "lon": -73.99156
+  },
+  "fort greene park|fort greene park brooklyn ny": {
+    "key": "fort-greene-park",
+    "name": "Fort Greene Park",
+    "addr": "Fort Greene Park, Brooklyn, NY",
+    "lat": 40.69148,
+    "lon": -73.97562
+  },
+  "library for arts culture|brooklyn ny": {
+    "key": "library-for-arts-culture",
+    "name": "Library for Arts & Culture",
+    "addr": "Brooklyn, NY",
+    "lat": 40.6526,
+    "lon": -73.94972
+  },
+  "p s 39 henry bristow|417 6th ave brooklyn ny 11215": {
+    "key": "p-s-39-henry-bristow",
+    "name": "P.S. 39 Henry Bristow",
+    "addr": "417 6th Ave, Brooklyn, NY 11215",
+    "lat": 40.66865,
+    "lon": -73.98291
+  },
+  "court street|court street atlantic avenue to joralemon street brooklyn ny": {
+    "key": "court-street",
+    "name": "Court Street",
+    "addr": "Court Street, Atlantic Avenue to Joralemon Street, Brooklyn, NY",
+    "lat": 40.6941,
+    "lon": -73.99178
+  },
+  "carroll gardens library|396 clinton street brooklyn ny": {
+    "key": "carroll-gardens-library",
+    "name": "Carroll Gardens Library",
+    "addr": "396 Clinton Street, Brooklyn, NY",
+    "lat": 40.68322,
+    "lon": -73.99802
+  },
+  "arts gowanus studio|gowanus brooklyn ny": {
+    "key": "arts-gowanus-studio",
+    "name": "Arts Gowanus studio",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.67917,
+    "lon": -73.9885
+  },
+  "park slope food coop|park slope brooklyn ny": {
+    "key": "park-slope-food-coop",
+    "name": "Park Slope Food Coop",
+    "addr": "Park Slope, Brooklyn, NY",
+    "lat": 40.6701,
+    "lon": -73.98597
+  },
+  "gowanus|gowanus brooklyn ny": {
+    "key": "gowanus",
+    "name": "Gowanus",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.67917,
+    "lon": -73.9885
+  },
+  "brooklyn community board 6|park slope brooklyn ny": {
+    "key": "brooklyn-community-board-6",
+    "name": "Brooklyn Community Board 6",
+    "addr": "Park Slope, Brooklyn, NY",
+    "lat": 40.6701,
+    "lon": -73.98597
+  },
+  "78th precinct|65 6th avenue brooklyn ny": {
+    "key": "78th-precinct",
+    "name": "78th Precinct",
+    "addr": "65 6th Avenue, Brooklyn, NY",
+    "lat": 40.68094,
+    "lon": -73.9742
+  }
+}
