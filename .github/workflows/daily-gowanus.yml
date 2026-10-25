@@ -1,0 +1,56 @@
+name: Daily Gowanus events refresh
+
+on:
+  schedule:
+    # 11:00 UTC ≈ 7:00 AM ET (EDT) / 6:00 AM ET (EST), an hour after the Candlewood refresh.
+    # GitHub delays scheduled runs, often by hours, so the concurrency group below is what
+    # actually keeps the two from overlapping.
+    - cron: '0 11 * * *'
+  workflow_dispatch: {}   # manual "Run workflow" button for testing
+
+permissions:
+  contents: write
+
+# Shared with daily-events.yml on purpose: both jobs push to main, and the Candlewood job's
+# plain `git push` would be rejected if this one landed a commit mid-run. One group runs them
+# one after the other.
+concurrency:
+  group: daily-events
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install SDK
+        run: npm install @anthropic-ai/sdk
+      - name: Regenerate gowanusevents/data.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          EVENTS_MODEL: ${{ vars.EVENTS_MODEL }}   # same optional override as the Candlewood refresh; empty = script default
+        run: node scripts/refresh-gowanus.mjs
+      - name: Commit and push if changed
+        run: |
+          # data.js is the page's event data; the two JSON files are the geocode and act-research
+          # caches the refresh writes back to. Staged first and checked with --cached so a new
+          # cache file isn't missed.
+          git add gowanusevents/data.js scripts/gowanus-venues.json scripts/gowanus-research.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Daily Gowanus events refresh ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3; do
+              git pull --rebase --quiet && git push && exit 0
+              echo "Push attempt $i failed; retrying."
+              sleep 10
+            done
+            exit 1
+          fi

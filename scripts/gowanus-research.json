@@ -1,0 +1,50 @@
+{
+  "michelle buteau": {
+    "fq": 9,
+    "confidence": "high",
+    "basis": "Netflix stand-up specials; creator and star of Survival of the Thickest.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michelle_Buteau"
+    ]
+  },
+  "demetri martin": {
+    "fq": 9,
+    "confidence": "high",
+    "basis": "Veteran headliner with Comedy Central and Netflix specials.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Demetri_Martin"
+    ]
+  },
+  "william basinski": {
+    "fq": 9.2,
+    "confidence": "high",
+    "basis": "Composer of The Disintegration Loops; a rare three-night run.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/William_Basinski"
+    ]
+  },
+  "suzanne ciani": {
+    "fq": 9.2,
+    "confidence": "high",
+    "basis": "Pioneering Buchla synthesist; five-time Grammy nominee.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Suzanne_Ciani"
+    ]
+  },
+  "benji b": {
+    "fq": 9,
+    "confidence": "high",
+    "basis": "Longtime BBC Radio 1 DJ and founder of the Deviation parties.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Benji_B"
+    ]
+  },
+  "dj sprinkles": {
+    "fq": 9,
+    "confidence": "medium",
+    "basis": "Alias of Terre Thaemlitz; Midtown 120 Blues is a canonical deep-house record.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Terre_Thaemlitz"
+    ]
+  }
+}
