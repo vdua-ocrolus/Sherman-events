@@ -3596,5 +3596,36 @@
     ],
     "exampleTitle": "Watkins Family Hour — Caramoor December Benefit Concert",
     "researchedAt": "2026-10-24"
+  },
+  "4th annual turkey pardon with rudy marconi": {
+    "displayName": "4th Annual Turkey Pardon with Rudy Marconi",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, free, family-oriented community tradition at Lounsbury House where Ridgefield's First Selectman pardons a turkey; it is a charming local quirky event with no regional draw beyond Ridgefield itself, co-sponsored by a local magazine and local businesses.",
+    "confidence": "high",
+    "sources": [
+      "https://lounsburyhouse.org/calendar/",
+      "https://inridgefield.com/events/turkey-pardoning/",
+      "https://www.hamlethub.com/ridgefield-connecticut/ridgefields-first-selectperson-to-pardon-pepper-the-turkey-on-nov-24"
+    ],
+    "exampleTitle": "4th Annual Turkey Pardon with Rudy Marconi",
+    "researchedAt": "2026-10-25"
+  },
+  "ridgefield hometown celebration holiday stroll": {
+    "displayName": "Ridgefield Hometown Celebration / Holiday Stroll",
+    "funQuality": 7.8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "This is Ridgefield's well-established annual town-wide Holiday Stroll/Festival of Lights tradition spanning two days with toy soldiers, carolers, horse-drawn carriage rides, a DJ, an outdoor holiday market, Santa appearances, and performances, drawing regional press coverage (Patch, Macaroni Kid, Hamlet Hub, Yahoo's CT holiday roundup) as a long-running, well-attended downtown shopping and holiday tradition.",
+    "confidence": "medium",
+    "sources": [
+      "https://ridgefieldct.gov/news_detail_T7_R45.php",
+      "https://inridgefield.com/events/holiday-stroll/",
+      "https://www.yahoo.com/lifestyle/articles/where-see-holiday-tree-lightings-165558806.html",
+      "https://danbury.macaronikid.com/guides/5c0a05968a978a288280286d/2025-guide-to-holiday-light-displays"
+    ],
+    "exampleTitle": "Ridgefield Hometown Celebration",
+    "researchedAt": "2026-10-25"
   }
 }
