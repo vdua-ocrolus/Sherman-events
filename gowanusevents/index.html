@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Gowanus Events (test)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f0eb; --surface:#ffffff; --ink:#1b1f1e; --muted:#5b625f; --line:#dbd7ce; --chip:#ebe8e0;
+  --canal:#2c6b5e; --canal-soft:#dcebe6; --brick:#a94b29; --brick-soft:#f5e1d7; --gold:#a87a1e; --gold-soft:#f4ead2;
+  --warn:#8a5a00; --warn-soft:#fbefd2; --bad:#9b2c2c; --bad-soft:#f7dede;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121514; --surface:#1b1f1e; --ink:#e8ebe9; --muted:#9aa29e; --line:#2d3331; --chip:#252a28;
+  --canal:#62b6a3; --canal-soft:#1d3530; --brick:#e2825d; --brick-soft:#3a241b; --gold:#d8af59; --gold-soft:#3a3018;
+  --warn:#e7b85a; --warn-soft:#3a2f17; --bad:#ef8b8b; --bad-soft:#3d1f1f;
+}}
+:root[data-theme="dark"]{
+  --bg:#121514; --surface:#1b1f1e; --ink:#e8ebe9; --muted:#9aa29e; --line:#2d3331; --chip:#252a28;
+  --canal:#62b6a3; --canal-soft:#1d3530; --brick:#e2825d; --brick-soft:#3a241b; --gold:#d8af59; --gold-soft:#3a3018;
+  --warn:#e7b85a; --warn-soft:#3a2f17; --bad:#ef8b8b; --bad-soft:#3d1f1f;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.test{background:var(--warn-soft);color:var(--warn);font-size:13px;padding:8px 0;border-bottom:1px solid var(--line)}
+header.top{padding:36px 0 20px}
+.brand{font:700 clamp(30px,6vw,46px)/1.05 "Space Grotesk",sans-serif;letter-spacing:-.02em;margin:0}
+.brand span{color:var(--canal)}
+.tag{color:var(--muted);margin:8px 0 0;max-width:620px}
+h2{font:600 22px/1.2 "Space Grotesk",sans-serif;margin:40px 0 12px;letter-spacing:-.01em}
+h3{margin:0}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:thin}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 13px Inter,sans-serif;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--canal);border-color:var(--canal);color:#fff}
+.tabs button .n{opacity:.7;margin-left:4px}
+.card{display:grid;grid-template-columns:56px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+.score{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;font:700 19px "Space Grotesk",sans-serif;color:#fff;background:#7d8581}
+.s-must{background:linear-gradient(135deg,#c9952f,#8f6414)}
+.s-great{background:var(--canal)}
+.s-good{background:#6f8f5a}
+.meta{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.card h3{font:600 17px/1.3 "Space Grotesk",sans-serif;margin:2px 0 3px}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{text-decoration:underline}
+.where{font-size:13.5px;color:var(--muted)}
+.blurb{margin:6px 0 0;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.chip{font-size:11.5px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.chip.free{background:var(--canal-soft);color:var(--canal)}
+.chip.rec{background:var(--brick-soft);color:var(--brick)}
+.chip.dup{background:var(--gold-soft);color:var(--gold)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+details.why{margin-top:8px;font-size:13px}
+details.why summary{cursor:pointer;color:var(--canal);font-weight:600;list-style:none}
+details.why summary::-webkit-details-marker{display:none}
+details.why summary::before{content:"▸ "}
+details.why[open] summary::before{content:"▾ "}
+.trace{width:100%;border-collapse:collapse;margin-top:6px}
+.trace td{padding:4px 6px;border-top:1px solid var(--line);vertical-align:top}
+.trace td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.trace tr.final td{font-weight:600}
+.more{margin:6px 0 0;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:8px 14px;font:500 13px Inter,sans-serif;cursor:pointer}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.panel h3{font:600 15px "Space Grotesk",sans-serif;margin:0 0 6px}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.list li:first-child{border-top:0}
+.sub{color:var(--muted);font-size:12.5px}
+.funnel{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.funnel div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.funnel b{display:block;font:700 24px "Space Grotesk",sans-serif}
+.funnel span{font-size:12px;color:var(--muted)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+table.tbl th,table.tbl td{text-align:left;padding:7px 10px;border-top:1px solid var(--line);vertical-align:top}
+table.tbl th{border-top:0;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.st{font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.st.ok{background:var(--canal-soft);color:var(--canal)}
+.st.partial,.st.stale{background:var(--warn-soft);color:var(--warn)}
+.st.js,.st.empty{background:var(--bad-soft);color:var(--bad)}
+.map{width:100%;height:auto;display:block}
+.note{font-size:13.5px;color:var(--muted)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="test"><div class="wrap">Test build. Unlisted and not linked from candlewoodlakeevents.com. Listings fetched Oct 25, 2026; nothing refreshes them.</div></div>
+<div class="wrap">
+  <header class="top">
+    <h1 class="brand">Gowanus <span>Events</span></h1>
+    <p class="tag">What's worth leaving the house for, within a 20-minute walk of the canal. Ranked, deduplicated, and with the weekly regulars moved out of the way.</p>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="Weeks"></nav>
+  <section id="feed"></section>
+
+  <h2>Every week in Gowanus</h2>
+  <p class="note">Recurring nights are listed once here instead of filling the feed every week. Each appears in the feed at most once a month.</p>
+  <div class="grid2" id="weekly"></div>
+
+  <h2>Also nearby</h2>
+  <p class="note">Arena-scale venues sit inside the walk radius but would top the guide every night they book. They're kept out of the ranking.</p>
+  <div class="panel"><ul class="list" id="nearby"></ul></div>
+
+  <h2>Pipeline report</h2>
+  <p class="note">How this page was made from the raw listings. Built for evaluating the scoring, not for the public site.</p>
+  <div class="funnel" id="funnel"></div>
+
+  <h2>Sources</h2>
+  <div class="tbl-wrap"><table class="tbl" id="sources"></table></div>
+
+  <h2>Map</h2>
+  <div class="panel"><svg class="map" id="map" role="img" aria-label="Map of venues relative to the Gowanus Canal"></svg>
+  <p class="note" id="mapnote"></p></div>
+
+  <h2>Dropped before scoring</h2>
+  <div class="tbl-wrap"><table class="tbl" id="dropped"></table></div>
+
+  <h2>Duplicates merged</h2>
+  <div class="tbl-wrap"><table class="tbl" id="merged"></table></div>
+
+  <h2>Evidence gate</h2>
+  <p class="note">A quality of 8.6+ needs a researched record; unresearched claims are capped at 8.4. (Candlewood uses 9.0 and 8.5. Here almost every venue sits at proximity 10, where an 8.5 bakes to a gold 9.0.) The records below were seeded by hand for this test from public sources, standing in for the pipeline's research step.</p>
+  <div class="grid2"><div class="panel"><h3>Capped</h3><ul class="list" id="gated"></ul></div><div class="panel"><h3>Research records</h3><ul class="list" id="research"></ul></div></div>
+
+  <footer>Gowanus Events test build · Scoring: score = proximity × 0.3 + quality × 0.7, computed once. Proximity from walking time to the canal centerline (OpenStreetMap geometry).</footer>
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Snapshot data. Stage 1 (extraction) and Stage 3 (quality judgment) were done by
+// hand for this test from the sources' public pages on 2026-10-25. `fq` is the raw
+// model-style quality judgment (0-10); everything after that is deterministic below.
+// ---------------------------------------------------------------------------
+const SNAPSHOT = '2026-10-25';
+
+// Gowanus Canal centerline, Butler St to Gowanus Bay (OpenStreetMap ways 25198744 + 25198767).
+const CANAL = [[40.68158,-73.98693],[40.68131,-73.98711],[40.67837,-73.98911],[40.67828,-73.98914],[40.67791,-73.98918],[40.67748,-73.9892],[40.67736,-73.98922],[40.6773,-73.98926],[40.67563,-73.99069],[40.67587,-73.99195],[40.67594,-73.99244],[40.67605,-73.99311],[40.67609,-73.99368],[40.67608,-73.99396],[40.67603,-73.99426],[40.67594,-73.99454],[40.67584,-73.99478],[40.67576,-73.99494],[40.67554,-73.99519],[40.67524,-73.99549],[40.67483,-73.9959],[40.67432,-73.99629],[40.67286,-73.99743],[40.67204,-73.99808],[40.67123,-73.99882],[40.6706,-73.99914],[40.66877,-73.99983],[40.66807,-74.00073],[40.66728,-74.00221],[40.66671,-74.00354],[40.66475,-74.00935]];
+
+// Geocoded via OpenStreetMap Nominatim. `tier` is a quality floor for venues that book
+// reliably well (curation lever, like BAND_FLOORS on the Candlewood site).
+const VENUES = {
+  bellhouse:     { name: 'The Bell House', addr: '149 7th St', lat: 40.67373, lon: -73.99168, tier: 7.0 },
+  littlefield:   { name: 'Littlefield', addr: '635 Sackett St', lat: 40.67848, lon: -73.98338, tier: 6.5 },
+  publicrecords: { name: 'Public Records', addr: '233 Butler St', lat: 40.68217, lon: -73.98639, tier: 7.0 },
+  powerhouse:    { name: 'Powerhouse Arts', addr: '322 3rd Ave', lat: 40.67633, lon: -73.98822, tier: 6.5 },
+  royalpalms:    { name: 'Royal Palms Shuffleboard Club', addr: '514 Union St', lat: 40.67874, lon: -73.98685 },
+  freddys:       { name: "Freddy's Bar", addr: '627 5th Ave', lat: 40.66329, lon: -73.99114 },
+  vanalen:       { name: 'Van Alen Institute', addr: '303 Bond St', lat: 40.68005, lon: -73.98923, tier: 6.0 },
+  threes:        { name: 'Threes Brewing', addr: '333 Douglass St', lat: 40.67972, lon: -73.98216 },
+  oldstonehouse: { name: 'Old Stone House', addr: '336 3rd St', lat: 40.67301, lon: -73.98460 },
+  barclays:      { name: 'Barclays Center', addr: '620 Atlantic Ave', lat: 40.68386, lon: -73.97718, mega: true },
+  brooklynsteel: { name: 'Brooklyn Steel', addr: '319 Frost St', lat: 40.71939, lon: -73.93875 },
+  kingstheatre:  { name: 'Kings Theatre', addr: '1027 Flatbush Ave', lat: 40.64597, lon: -73.95797, mega: true },
+  pioneerworks:  { name: 'Pioneer Works', addr: '159 Pioneer St', lat: 40.67938, lon: -74.01189 },
+  billieholiday: { name: 'The Billie Holiday Theatre', addr: '1368 Fulton St', lat: 40.67997, lon: -73.94544 },
+};
+
+const SOURCES = {
+  bh: { name: 'The Bell House', url: 'https://www.thebellhouseny.com/', kind: 'venue', status: 'ok', note: 'First page of listings only (through Nov 13). No prices published.' },
+  lf: { name: 'Littlefield', url: 'https://littlefieldnyc.com/', kind: 'venue', status: 'ok', note: 'Homepage lists through Nov 1 only. No prices.' },
+  pr: { name: 'Public Records', url: 'https://publicrecords.nyc/', kind: 'venue', status: 'ok', note: 'Full calendar into December. No prices. One time is implausible (a live show at 7:00 AM).' },
+  fr: { name: "Freddy's Bar", url: 'https://freddysbar.com/events', kind: 'venue', status: 'ok', note: 'Full calendar with recurrence labels ("1st & 3rd Sun"). No covers listed.' },
+  va: { name: 'Van Alen Institute', url: 'https://www.vanalen.org/events', kind: 'institution', status: 'ok', note: 'Calendar has no address or time; each event page had to be fetched (all at 303 Bond St).' },
+  ph: { name: 'Powerhouse Arts', url: 'https://www.powerhousearts.org/events', kind: 'institution', status: 'partial', note: 'Most dates show no year and the calendar header is stale. One 2026 item confirmed.' },
+  bp: { name: 'Brooklyn Paper: Gowanus', url: 'https://events.brooklynpaper.com/communities/new-york-metro-area/nyc/brooklyn/gowanus/', kind: 'aggregator', status: 'ok', note: 'Pre-filtered to Gowanus, plus borough-wide featured listings. Extends Bell House and Littlefield past their homepages.' },
+  ag: { name: 'Arts Gowanus', url: 'https://www.artsgowanus.org/events', kind: 'institution', status: 'stale', note: 'Events page still shows 2024. No usable listings.' },
+  th: { name: 'Threes Brewing', url: 'https://www.threesbrewing.com/pages/public-events', kind: 'venue', status: 'js', note: 'Calendar loads by JavaScript; a plain fetch sees an empty list.' },
+  rp: { name: 'Royal Palms', url: 'http://www.royalpalmsbrooklyn.com', kind: 'venue', status: 'js', note: 'No dated events in fetchable HTML. Its Halloween party came in through Brooklyn Paper.' },
+  os: { name: 'Old Stone House', url: 'https://theoldstonehouse.org/events/', kind: 'institution', status: 'empty', note: 'Calendar heading with no entries.' },
+  gc: { name: 'Gowanus Canal Conservancy', url: 'https://gowanuscanalconservancy.org/events/', kind: 'institution', status: 'empty', note: 'Event titles with no dates.' },
+};
+const TRUST = { venue: 3, institution: 2, aggregator: 1 };
+
+// Researched-act records: the evidence a 9.0+ quality claim needs.
+const RESEARCH = {
+  'michelle buteau': { fq: 9.0, confidence: 'high', basis: 'Netflix stand-up specials; creator and star of Survival of the Thickest.', sources: ['https://en.wikipedia.org/wiki/Michelle_Buteau'] },
+  'demetri martin':  { fq: 9.0, confidence: 'high', basis: 'Veteran headliner with Comedy Central and Netflix specials.', sources: ['https://en.wikipedia.org/wiki/Demetri_Martin'] },
+  'william basinski':{ fq: 9.2, confidence: 'high', basis: 'Composer of The Disintegration Loops; a rare three-night run.', sources: ['https://en.wikipedia.org/wiki/William_Basinski'] },
+  'suzanne ciani':   { fq: 9.2, confidence: 'high', basis: 'Pioneering Buchla synthesist; five-time Grammy nominee.', sources: ['https://en.wikipedia.org/wiki/Suzanne_Ciani'] },
+  'benji b':         { fq: 9.0, confidence: 'high', basis: 'Longtime BBC Radio 1 DJ and founder of the Deviation parties.', sources: ['https://en.wikipedia.org/wiki/Benji_B'] },
+  'dj sprinkles':    { fq: 9.0, confidence: 'medium', basis: 'Alias of Terre Thaemlitz; Midtown 120 Blues is a canonical deep-house record.', sources: ['https://en.wikipedia.org/wiki/Terre_Thaemlitz'] },
+};
+
+// Ongoing exhibitions and undated standing programs (shown in modules, not the feed).
+const ONGOING = [
+  { v: 'powerhouse', title: 'Powerhouse Arts 2026 Staff Art Show', start: '2026-11-05', end: '2026-12-06', when: 'Thu–Sun', url: 'https://powerhousearts.org/event/powerhouse-arts-2026-staff-art-show' },
+];
+const STANDING = [
+  { v: 'royalpalms', title: 'Family Sundays', when: 'Select Sundays, 12–8 PM', note: 'All ages; shuffleboard for 8+. Courts $60/hr. The site does not say which Sundays.', url: 'http://www.royalpalmsbrooklyn.com/familysundays' },
+];
+
+const E = (v, d, t, title, type, fq, src, url, x = {}) => ({ v, d, t, title, type, fq, src, url, ...x });
+const S = (v, dates, t, title, type, fq, src, url, x = {}) => dates.map(d => E(v, d, t, title, type, fq, src, url, x));
+const TM = 'https://www.ticketmaster.com/';
+const LF = 'https://littlefieldnyc.com/event/?wfea_eb_id=';
+const DICE = 'https://link.dice.fm/';
+const FR = 'https://freddysbar.com/events/';
+const BP = 'https://events.brooklynpaper.com/event/';
+const VA = 'https://www.vanalen.org/events/';
+
+const RAW = [
+  // ---- The Bell House (venue calendar)
+  E('bellhouse','2026-10-25','7:00 PM','Dead Pilots Society','Comedy / Live podcast',7.2,'bh',TM+'dead-pilots-society-brooklyn-new-york-10-25-2026/event/3000651E456BB0C6',{blurb:'Comedians perform live readings of unproduced TV comedy pilots.'}),
+  E('bellhouse','2026-10-26','7:30 PM','The Moth StorySLAM','Storytelling',7.8,'bh',TM+'the-moth-storyslam-brooklyn-new-york-10-26-2026/event/300064BB0C5CDEDB',{blurb:'Open-mic storytelling competition: five-minute true stories on the night\'s theme, scored by audience judges.'}),
+  E('bellhouse','2026-10-26','10:30 PM','The Ripped Bodice Presents: ACOTAR 6 Midnight Release','Book release party',6.4,'bh',TM+'the-ripped-bodice-presents-acotar-6-brooklyn-new-york-10-26-2026/event/300065060DECB30C',{blurb:'Midnight release party for the sixth A Court of Thorns and Roses book, hosted by romance bookstore The Ripped Bodice.'}),
+  E('bellhouse','2026-10-27','7:30 PM','Ruby Setnik','Comedy',6.8,'bh',TM+'ruby-setnik-brooklyn-new-york-10-27-2026/event/3000651A4CA7F22F'),
+  E('bellhouse','2026-10-28','7:30 PM','Michelle Buteau','Comedy',8.6,'bh',TM+'michelle-buteau-brooklyn-new-york-10-28-2026/event/300064BAD3758F79',{blurb:'Stand-up from the comedian behind Netflix\'s Survival of the Thickest.'}),
+  E('bellhouse','2026-10-29','8:00 PM','Wunderkammer: A Taxidermy Showcase and Competition','Showcase / Competition',7.4,'bh',TM+'wunderkammer-a-taxidermy-showcase-and-competition-brooklyn-new-york-10-29-2026/event/3000650B12927DCC'),
+  E('bellhouse','2026-10-30','8:00 PM','hABBAween','Dance party',7.2,'bh',TM+'habbaween-brooklyn-new-york-10-30-2026/event/3000652737D5ABCA',{blurb:'ABBA-themed Halloween party.'}),
+  E('bellhouse','2026-10-31','7:00 PM','A Drinking Game NYC: The Nightmare Before Christmas','Comedy',7.6,'bh',TM+'a-drinking-game-nyc-the-nightmare-brooklyn-new-york-10-31-2026/event/3000652F0A64F481',{blurb:'Comedians perform the film\'s script live, with drinking-game rules for the audience.'}),
+  E('bellhouse','2026-11-01','6:00 PM','Kaiju Big Battel: Satan Sleeps Tonight','Live spectacle',9.0,'bh',TM+'kaiju-big-battel-satan-sleeps-tonight-brooklyn-new-york-11-01-2026/event/3000651E16B195B0',{blurb:'Costumed monster wrestling; a cult live show since the 1990s.'}),
+  E('bellhouse','2026-11-05','7:30 PM','Sam Tallent','Comedy',7.2,'bh',TM+'sam-tallent-brooklyn-new-york-11-05-2026/event/3000648C41FC8C61'),
+  E('bellhouse','2026-11-06','7:30 PM','MC Hammersmith Live!','Comedy',7.0,'bh',TM+'mc-hammersmith-live-brooklyn-new-york-11-06-2026/event/3000653C0AFB4A49'),
+  E('bellhouse','2026-11-06','10:00 PM','Olivia Carter','Comedy',7.0,'bh',TM+'olivia-carter-brooklyn-new-york-11-06-2026/event/3000650C04B8B744'),
+  E('bellhouse','2026-11-07','4:00 PM','Jay Jurden','Comedy',7.2,'bh',TM+'jay-jurden-brooklyn-new-york-11-07-2026/event/30006511E19D98F2'),
+  E('bellhouse','2026-11-07','7:30 PM','Good Noticings Presents: Clash Talk - A Competitive Talk Show','Comedy / Talk show',6.6,'bh',TM+'good-noticings-presents-clash-talk-a-brooklyn-new-york-11-07-2026/event/3000654107ACBFBF'),
+  E('bellhouse','2026-11-07','10:00 PM','Pretty Gay Live!','Live show',6.6,'bh',TM+'pretty-gay-live-brooklyn-new-york-11-07-2026/event/3000650C0DB2C4EE'),
+  E('bellhouse','2026-11-08','4:00 PM','Josh Sharp: An Hour Of Crowd Work In The Round','Comedy',7.2,'bh',TM+'josh-sharp-an-hour-of-crowd-brooklyn-new-york-11-08-2026/event/3000650C1466CE4D'),
+  E('bellhouse','2026-11-08','7:30 PM','Moshe Kasher: Coda/Switch','Comedy',8.2,'bh',TM+'moshe-kasher-codaswitch-brooklyn-new-york-11-08-2026/event/3000650C1852D0E4'),
+  E('bellhouse','2026-11-09','7:30 PM','Dewayne Perkins: How Being Black & Gay Made Me Better Than You','Comedy',7.6,'bh',TM+'dewayne-perkins-how-being-black-gay-brooklyn-new-york-11-09-2026/event/3000650C1E89D44B',{blurb:'Stand-up from the co-writer and star of The Blackening.'}),
+  E('bellhouse','2026-11-10','7:30 PM','CHRIS VS. THE PEOPLE','Live show',6.2,'bh',TM+'chris-vs-the-people-brooklyn-new-york-11-10-2026/event/3000650C21A9D876'),
+  E('bellhouse','2026-11-11','7:30 PM','Josh Gondelman','Comedy',7.4,'bh',TM+'josh-gondelman-brooklyn-new-york-11-11-2026/event/3000650C2D05E9AD'),
+  E('bellhouse','2026-11-11','10:00 PM','Charlie & Richard: Secret Project','Live show',6.2,'bh',TM+'charlie-richard-secret-project-brooklyn-new-york-11-11-2026/event/3000650C1320FC5B'),
+  E('bellhouse','2026-11-12','7:30 PM','Alaire Thomas and Friends','Live show',6.2,'bh',TM+'alaire-thomas-and-friends-brooklyn-new-york-11-12-2026/event/3000650C156FFCA7'),
+  E('bellhouse','2026-11-12','10:00 PM','Sophie Duker: Hot Beef Injection','Comedy',7.4,'bh',TM+'sophie-duker-hot-beef-injection-brooklyn-new-york-11-12-2026/event/3000650C1BBFFD40'),
+  E('bellhouse','2026-11-13','7:00 PM','Irene Tu','Comedy',7.0,'bh',TM+'irene-tu-brooklyn-new-york-11-13-2026/event/3000650D92C92459'),
+
+  // ---- Littlefield (venue calendar)
+  E('littlefield','2026-10-25','8:00 PM','About Last Night: Dating Disaster Stories NYC!','Storytelling / Comedy',6.4,'lf',LF+'1999619362341',{blurb:'Dating-disaster stories with live music.'}),
+  E('littlefield','2026-10-26','8:00 PM','The Witch Wave with Pam Grossman LIVE!','Live podcast',6.4,'lf',LF+'2001992815403'),
+  E('littlefield','2026-10-28','8:00 PM',"NYC's HALLOWEEN PUNDERDOME: Pun & Pun-Costume Compuntitions",'Comedy / Competition',7.4,'lf',LF+'1998749270874',{blurb:'Brooklyn\'s long-running pun competition, Halloween edition with pun costumes.'}),
+  E('littlefield','2026-10-29','8:00 PM','Dinner for One Presents: The Spookiest Things','Sketch comedy',6.4,'lf',LF+'2000323337951'),
+  E('littlefield','2026-10-30','7:30 PM','Rocky Horror Picture Show with The Occasionalists','Screening / Live-band karaoke',7.6,'lf',LF+'2000339654755',{blurb:'The 12th annual screening, with live-band karaoke from The Occasionalists.'}),
+  E('littlefield','2026-10-30','11:00 PM','Out N Bad: CREATURES | Queer Caribbean Halloween Bashment','Dance party',7.0,'lf',LF+'2002653429317',{soldOut:true}),
+  E('littlefield','2026-10-31','7:30 PM','Scary Good Comedy with Brittany Carney','Comedy',6.8,'lf',LF+'2000220257635',{blurb:'Stand-up, performed in costume.'}),
+  E('littlefield','2026-10-31','11:00 PM','SLOW JAMS NYC: Halloween Slow Jams & RnB Party','Dance party',6.4,'lf',LF+'2002952984294'),
+  E('littlefield','2026-11-01','8:00 PM','LPR Presents: Carsie Blanton w/ The Burning Hell','Live music',7.2,'lf',LF+'1992001143042'),
+
+  // ---- Public Records (venue calendar)
+  E('publicrecords','2026-10-25','4:00 PM','Diva Diva: PAURRO & Kiernan Laveaux, Saia & e-Lite, performance by Willow Pill','Club night',7.2,'pr',DICE+'R11a52bcdd57'),
+  E('publicrecords','2026-10-27','7:00 PM','Lewis Recordings 25th Anniversary feat. Edan, The Still Brothers, Charlie Forest + more','Live music',7.6,'pr',DICE+'Q3a30129fb28'),
+  E('publicrecords','2026-10-28','7:00 AM','Dent May','Live music',7.2,'pr',DICE+'t67d6debc71c',{timeSuspect:'Source lists 7:00 AM for a Sound Room show. Not corrected.'}),
+  E('publicrecords','2026-10-28','7:00 PM','Club Management LIVE: The Life And Sounds of Stacey "Hotwaxx" Hale','Listening session / Talk',7.0,'pr',DICE+'hb0e1c914ca2'),
+  E('publicrecords','2026-10-29','7:00 PM','International Anthem presents Jeremiah Chiu: EDGE CONDITIONS Album Release','Live music',7.8,'pr',DICE+'Kb1f10e60ca5'),
+  E('publicrecords','2026-10-30','5:30 PM',"Unsound New York: Jim O'Rourke and Eiko Ishibashi present 'Kotonski Reworked'",'Listening session',8.0,'pr',DICE+'b6924d5d7e3f'),
+  E('publicrecords','2026-10-30','6:45 PM','Unsound New York: Memoir, Grief & Music: Matthew Schnipper with Emily Witt','Talk',6.8,'pr',DICE+'b6924d5d7e3f'),
+  E('publicrecords','2026-10-30','7:00 PM','Shungu: FAITH IN THE UNKNOWN Live Film & Score, Ruqqiyah','Live music / Film',7.4,'pr',DICE+'Nf5461b24901'),
+  E('publicrecords','2026-10-30','11:00 PM','Mark Broom, Julia Govor / Blue Hour, Neel / Yasmeenah','Club night',7.8,'pr',DICE+'Mf0c017f534f'),
+  E('publicrecords','2026-10-31','11:00 PM','Dope Jams Halloween Ball: Turtle Bugg, 4AM NYC / GE-OLOGY','Club night',8.0,'pr',DICE+'Tc4c985491b0'),
+  E('publicrecords','2026-11-01','4:00 PM','Conducta b2b AceMo, Surusinghe / x3butterfly b2b Physical Therapy','Club night',7.8,'pr',DICE+'b375f2f88012'),
+  E('publicrecords','2026-11-04','7:00 PM','Setting, Wednesday Knudsen','Live music',7.0,'pr',DICE+'p36bf4e98f2e'),
+  E('publicrecords','2026-11-05','7:00 PM','Flower Face, Julia Barfield','Live music',7.2,'pr',DICE+'Ob4ae56b81aa'),
+  E('publicrecords','2026-11-05','10:30 PM','Mousse T.','Club night',7.6,'pr',DICE+'t6a032c11e33'),
+  E('publicrecords','2026-11-06','7:00 PM','Transatlantik II with Jardineros, Tree Trini Collective, DJ Sabine Blaizin','Live music',7.2,'pr','https://www.fouroneoneprojects.org/events/transatlantik-ii-jardineros-tree-trini-collective-dj-sabine-blaizin',{series:'Transatlantik II'}),
+  E('publicrecords','2026-11-06','11:00 PM','Clone Records: Serga, Afra / Detroit In Effect, Ak-4ya / Louise Chen','Club night',7.8,'pr',DICE+'hd02ea5845ea'),
+  E('publicrecords','2026-11-07','7:00 PM','Transatlantik II with ReFash NYNY Band, Anaïs Maviel & Friends, DJ Tara','Live music',7.2,'pr','https://www.fouroneoneprojects.org/events/transatlantik-ii-refash-nyny-band-anais-maviel-friends-dj-tara',{series:'Transatlantik II'}),
+  E('publicrecords','2026-11-07','11:00 PM','Benji B, Cosmo / Louise Chen, Hidden Spheres / Francis Harris & Tal','Club night',8.6,'pr',DICE+'c4d40a6049e8'),
+  E('publicrecords','2026-11-08','4:00 PM','Tarka 3-Year Anniversary: ZAINAB, Bianca Maieli, Chaia + more','Club night',7.4,'pr',DICE+'e68566d8a47d'),
+  E('publicrecords','2026-11-09','7:00 PM','DURATIONS Festival 2026','Festival pass',8.0,'pr',DICE+'B0381fb292fc',{umbrella:true}),
+  E('publicrecords','2026-11-09','6:00 PM','DURATIONS: Triple Canopy presents Civic Crash Course with Chloë Bass, Jeremy Toussaint-Baptiste, Hal Foster','Talk',7.0,'pr',DICE+'Ua4a0f349521'),
+  E('publicrecords','2026-11-09','7:00 PM','DURATIONS: William Basinski, Cholla','Live music',8.8,'pr',DICE+'e57306599f8c',{series:'William Basinski'}),
+  E('publicrecords','2026-11-10','7:00 PM','DURATIONS: William Basinski, muein','Live music',8.8,'pr',DICE+'rb97ee1b56f3',{series:'William Basinski'}),
+  E('publicrecords','2026-11-11','6:00 PM','DURATIONS: Remember, We Are Born In The Garden: A Dinner with Breadtree Farms','Dinner',6.4,'pr','https://resy.com/cities/new-york-ny/venues/public-records/events/durations-remember-we-are-born-in-the-garden-a-dinner-with-breadtree-farms-x-pr-2026-11-11-6'),
+  E('publicrecords','2026-11-11','6:00 PM','DURATIONS: Breadtree Farms presents Remember, We Are Born In The Garden with Meredith Graves','Talk',6.2,'pr',DICE+'ta4226949b96'),
+  E('publicrecords','2026-11-11','7:00 PM','DURATIONS: William Basinski, Chantal Michelle','Live music',8.8,'pr',DICE+'V1e99becf1b8',{series:'William Basinski'}),
+  E('publicrecords','2026-11-12','6:00 PM','DURATIONS: Acid Horizon presents Civilization Is Over','Talk',6.2,'pr',DICE+'ee6fb19cbb45'),
+  E('publicrecords','2026-11-12','7:00 PM','DURATIONS: Ballet: buttechno, Matana Roberts & Lesley Mok, Klein, Significant Other','Live music',8.2,'pr',DICE+'Uf3b609e4a5b'),
+  E('publicrecords','2026-11-13','6:00 PM','DURATIONS: In Conversation with Meredith Graves','Talk',6.2,'pr',DICE+'Y64d64669e75'),
+  E('publicrecords','2026-11-13','7:00 PM','DURATIONS: Suzanne Ciani, Courtney Bailey [Live]','Live music',8.8,'pr',DICE+'N27939e25678'),
+  E('publicrecords','2026-11-13','10:00 PM','DURATIONS: Dasha Rush, Decoder, Innersha [Live] / Human Space Machine / Afrikan Sciences','Club night',8.2,'pr',DICE+'Ee9c099f8483'),
+  E('publicrecords','2026-11-14','11:00 AM','DURATIONS: DISAPPEAR: Gong Meditation with Samer Ghadry','Sound bath',6.2,'pr',DICE+'O47e7cd9739f'),
+  E('publicrecords','2026-11-14','12:00 PM','DURATIONS: Brunch with Paradise Of Replica','Brunch / DJ',6.0,'pr','https://resy.com/cities/new-york-ny/venues/public-records/events/brunch-with-paradise-of-replica-2026-11-14-6'),
+  E('publicrecords','2026-11-14','7:00 PM','DURATIONS: JJJJJerome Ellis, Fred Moten & Brandon Lopez','Live music',8.4,'pr',DICE+'q378bf53cceb'),
+  E('publicrecords','2026-11-14','10:00 PM','DURATIONS: DJ Sprinkles, [g] / Naone, Abby Echiverri / Eden Aurelius','Club night',8.8,'pr',DICE+'Ye298e3c1c37'),
+  E('publicrecords','2026-11-15','10:00 AM','DURATIONS: My Brunch in the New Age with Francis Harris & Sruly Lazaros','Brunch / DJ',6.0,'pr','https://resy.com/cities/new-york-ny/venues/public-records/events/my-brunch-in-the-new-age-with-francis-harris-sruly-lazaros-2026-11-15-6'),
+  E('publicrecords','2026-11-15','12:00 PM','DURATIONS: Ditchers Eddy','Live music',6.4,'pr',DICE+'Ya55ca2c9c9d'),
+  E('publicrecords','2026-11-15','2:00 PM','DURATIONS: River Of Fundament: Matthew Barney & Jonathan Bepler in conversation','Talk / Film',7.6,'pr',DICE+'P8e63c7436b6'),
+  E('publicrecords','2026-11-15','4:00 PM','DURATIONS: Yu Su, Ghost Dubs [Live], K Wata [Live], Ayanna Heaven','Club night',8.0,'pr',DICE+'de6a1812266f'),
+  E('publicrecords','2026-11-15','6:00 PM','DURATIONS: Kara-Lis Coverdale, Molina, Pavel Milyakov','Live music',8.2,'pr',DICE+'Refaffbf2140'),
+  E('publicrecords','2026-11-18','7:00 PM','ALFA Night with Yonglin','Listening session',6.0,'pr',DICE+'S406b68b1809'),
+  E('publicrecords','2026-11-19','7:00 PM','Bhangra Liberation Orchestra','Live music',7.4,'pr',DICE+'Rd9e3c90b693'),
+  E('publicrecords','2026-11-19','10:30 PM',"O'Flynn",'Club night',7.0,'pr',DICE+'Hf95df70ed44'),
+  E('publicrecords','2026-11-19','10:30 PM','Discostan with Omid Walizadeh, Mansaf Mama','Club night',7.2,'pr',DICE+'s20ed64583a2'),
+  E('publicrecords','2026-11-20','11:00 PM','ORBE, Laia / Rolando, Jay York / Jesse Dorris','Club night',7.6,'pr',DICE+'w119d63cc3dc'),
+  E('publicrecords','2026-11-21','7:00 PM','Tagua Tagua, Orlas','Live music',7.2,'pr',DICE+'t093c832127d'),
+  E('publicrecords','2026-11-21','11:00 PM','Sinéad, ketia / Bennet, Mx. Blaire / Rachel','Club night',7.2,'pr',DICE+'f9f22183de95'),
+  E('publicrecords','2026-11-22','3:00 PM','Shelter: Timmy Regisford Open To Close','Club night',8.6,'pr',DICE+'d6fed7af6ba3',{blurb:'An open-to-close set from the longtime resident of NYC\'s Shelter parties.'}),
+  E('publicrecords','2026-11-22','4:00 PM','The Atrium: Jump Source [Live], Hank Jackson, Mariposa','Club night',7.0,'pr',DICE+'Je67e1f84c2e'),
+  E('publicrecords','2026-11-27','11:00 PM','Anthony Linell, Jin Synth / Trailcam, 320 / R Gamble & Scallywag','Club night',7.2,'pr',DICE+'p7ffcae9d842'),
+  E('publicrecords','2026-11-28','11:00 PM','Cinthie, Amir Alexander / Snad, Jenifa Mayanja / Edan','Club night',7.2,'pr',DICE+'Xf91ddb5063f'),
+  E('publicrecords','2026-11-29','4:00 PM','The Atrium: Eli Escobar, Jen Cardini','Club night',7.2,'pr',DICE+'w164bd131c8e'),
+  E('publicrecords','2026-12-02','7:00 PM','Storefront Church','Live music',6.8,'pr',DICE+'n686ccc62d79'),
+  E('publicrecords','2026-12-03','7:00 PM',"Shane Butler: HEAVY DEBT Record Release, Silk Fence, Strugglin'",'Live music',6.6,'pr',DICE+'k8d679fe39aa'),
+  E('publicrecords','2026-12-05','7:00 PM','Genevieve Artadi ft. Louis Cole & Chiquita Magic','Live music',8.2,'pr',DICE+'add7f9902d33'),
+  E('publicrecords','2026-12-06','7:00 PM','World Music Institute presents Laura Itandehui','Live music',7.0,'pr',DICE+'Ve8754d59c86'),
+  E('publicrecords','2026-12-09','7:00 PM','Advance Base','Live music',7.2,'pr',DICE+'tf6411700a54'),
+  E('publicrecords','2026-12-10','7:00 PM','International Anthem presents Josh Johnson: ANIMATIVE with Anna Butterss & Ben Lumsdaine','Live music',7.8,'pr',DICE+'a5f37a42c194'),
+  E('publicrecords','2026-12-11','7:00 PM',"iiisa: 'tanto te he querido' Album Release with Efraín Rozas, MIRA MIRA",'Live music',6.6,'pr',DICE+'A4a61c027fba'),
+  E('publicrecords','2026-12-12','7:00 PM','Magic Tuber Stringband, Old Saw','Live music',6.8,'pr',DICE+'L76e6d80d9f9'),
+  E('publicrecords','2026-12-17','7:00 PM','Trace Mountains, Mallory Hawk','Live music',7.0,'pr',DICE+'f1f8667a17f4'),
+  E('publicrecords','2026-12-19','7:00 PM','Dos Santos','Live music',7.2,'pr',DICE+'nf2c2c423652'),
+
+  // ---- Van Alen Institute (calendar + each event page)
+  E('vanalen','2026-10-27','6:00 PM','Book Launch: At the Edge of Where God Built','Book talk',6.0,'va',VA+'book-launch-at-the-edge-of-where-god-built/',{price:'free'}),
+  E('vanalen','2026-10-29','6:00 PM','An Archival Séance with Marina Otero Verzier','Talk',6.2,'va',VA+'an-archival-seance-with-marina-otero-verzier/'),
+  E('vanalen','2026-11-04','6:00 PM','Book Talk: A Right to Housing? with Samuel Stein','Book talk',6.4,'va',VA+'book-talk-a-right-to-housing-with-samuel-stein/',{price:'free'}),
+  E('vanalen','2026-11-05','6:00 PM','Culture of Place','Talk',5.8,'va',VA+'culture-of-place/',{price:'free'}),
+  E('vanalen','2026-11-09','6:00 PM','Book Launch: Junior Architects','Book talk',5.8,'va',VA+'book-launch-junior-architects/',{price:'free'}),
+  E('vanalen','2026-11-12','6:00 PM','Roundtable: Affordable Housing','Talk',6.0,'va',VA+'roundtable-affordable-housing/'),
+  E('vanalen','2026-11-19','6:00 PM','Book Launch: Material Variance by Lola Ben-Alon','Book talk',5.8,'va',VA+'book-launch-material-variance-by-lola-ben-alon/'),
+
+  // ---- Powerhouse Arts
+  E('powerhouse','2026-12-04','Fri–Sun, closes Dec 6','Last weekend: Powerhouse Arts 2026 Staff Art Show','Exhibition',6.0,'ph','https://powerhousearts.org/event/powerhouse-arts-2026-staff-art-show',{blurb:'Closing weekend of the staff exhibition (open Thu–Sun since Nov 5).'}),
+  E('powerhouse','2026-11-07','','Ripple & Rip: Marbling & Collage with Nazli Efe','Workshop',6.0,'ph','https://learning.powerhousearts.org/service-page/ripple-rip-marbling-collage-2',{dateUnconfirmed:true}),
+
+  // ---- Freddy's Bar (venue calendar; cadence as labeled by the source)
+  ...S('freddys',['2026-10-26','2026-10-28','2026-11-02','2026-11-09','2026-11-11','2026-11-16','2026-11-18','2026-11-23','2026-11-25','2026-11-30','2026-12-07','2026-12-14'],'7:00 PM','Comedy Open Mic','Comedy / Open mic',4.5,'fr',FR,{cadence:'weekly',cadenceLabel:'Mon & Wed'}),
+  ...S('freddys',['2026-10-29','2026-11-05','2026-11-12','2026-11-19'],'8:00 PM','Burlesque in the Back','Burlesque',6.0,'fr',FR,{cadence:'weekly',cadenceLabel:'Thursdays'}),
+  ...S('freddys',['2026-10-29','2026-11-05','2026-11-12','2026-11-19','2026-12-03','2026-12-10'],'11:30 PM','LATE NIGHT LAUGHS! A Midnight Comedy Show After Burlesque','Comedy',5.0,'fr',FR,{cadence:'weekly',cadenceLabel:'Thursdays'}),
+  ...S('freddys',['2026-11-01','2026-11-15','2026-12-06','2026-12-20'],'3:00 PM',"Mimsey's Open Mic",'Open mic',4.8,'fr',FR,{cadence:'2x-month',cadenceLabel:'1st & 3rd Sun'}),
+  ...S('freddys',['2026-11-01','2026-11-15','2026-12-06','2026-12-20'],'4:00 PM','Richard on Piano in the Frontroom','Live music',5.2,'fr',FR,{cadence:'2x-month',cadenceLabel:'1st & 3rd Sun'}),
+  ...S('freddys',['2026-11-01','2026-11-15','2026-12-06','2026-12-20'],'6:00 PM','Karaoke, Humans Against Music','Karaoke',5.2,'fr',FR,{cadence:'2x-month',cadenceLabel:'1st & 3rd Sun'}),
+  ...S('freddys',['2026-10-25','2026-11-22'],'2:00 PM','Fourth Sunday Traditional Irish Music Jam','Live music / Session',5.8,'fr',FR,{cadence:'monthly',cadenceLabel:'4th Sun'}),
+  ...S('freddys',['2026-10-25','2026-11-22'],'5:00 PM','Eagle Colt Combo','Live music',5.6,'fr',FR,{cadence:'monthly',cadenceLabel:'4th Sun'}),
+  ...S('freddys',['2026-10-25','2026-11-22'],'9:00 PM','Lowbrow Cinema on Videocassette','Film screening',5.4,'fr',FR,{cadence:'monthly',cadenceLabel:'4th Sun'}),
+  ...S('freddys',['2026-10-27','2026-11-24'],'8:00 PM','Dark Room: Film Screening & Salon','Film screening',5.4,'fr',FR,{cadence:'monthly',cadenceLabel:'4th Tue'}),
+  ...S('freddys',['2026-10-28','2026-11-18'],'9:00 PM','Fool-Moon Karaoke & Variety Show','Karaoke / Variety',5.4,'fr',FR,{cadence:'monthly',cadenceLabel:'Monthly, Wed'}),
+  ...S('freddys',['2026-11-04','2026-12-02'],'9:30 PM','New Material Night: Comedy Show','Comedy',5.6,'fr',FR,{cadence:'monthly',cadenceLabel:'1st Wed'}),
+  ...S('freddys',['2026-11-08','2026-12-12'],'2:00 PM','Paint, Eat & Sip with Jo Anna','Workshop',5.0,'fr',FR,{cadence:'monthly',cadenceLabel:'Monthly'}),
+  E('freddys','2026-11-08','7:00 PM','Martin Monster Show & Screening Series','Film screening',5.6,'fr',FR,{cadence:'monthly',cadenceLabel:'2nd Sun'}),
+  ...S('freddys',['2026-11-10','2026-12-08'],'9:00 PM',"Big Joe's Happiness Exchange",'Variety',5.4,'fr',FR,{cadence:'monthly',cadenceLabel:'2nd Tue'}),
+  E('freddys','2026-11-16','8:30 PM','"So What Happened Was..." Storytelling Series','Storytelling',6.0,'fr',FR,{cadence:'monthly',cadenceLabel:'3rd Mon'}),
+  E('freddys','2026-11-17','8:00 PM','SAFKA & Friends Music Residency','Live music',5.4,'fr',FR,{cadence:'monthly',cadenceLabel:'3rd Tue'}),
+  ...S('freddys',['2026-11-21','2026-12-19'],'5:00 PM','Pole Before Dark','Pole show',5.2,'fr',FR,{cadence:'monthly',cadenceLabel:'3rd Sat'}),
+  ...S('freddys',['2026-11-21','2026-12-19'],'10:00 PM','Henry Mena Residency','Live music',5.4,'fr',FR,{cadence:'monthly',cadenceLabel:'3rd Sat'}),
+  E('freddys','2026-10-30','8:00 PM','Daniels and Baker: Folk and More (duo)','Live music',5.4,'fr',FR+'daniels-and-baker-folk-and-more-duo'),
+  E('freddys','2026-10-30','9:00 PM','Nightbreakers','Live music',5.6,'fr',FR+'nightbreakers-1'),
+  E('freddys','2026-10-30','11:00 PM','EVEN TWICE','Live music',5.4,'fr',FR+'even-twice-1'),
+  E('freddys','2026-10-31','8:00 PM',"Freddy's Halloween Dance Party with DJ Evil Dee & Ben the Beyonder",'Dance party',7.4,'fr',FR+'freddys-halloween-dance-party',{blurb:'Halloween party with DJ Evil Dee of the Beatminerz, 8 PM to 2 AM.'}),
+  E('freddys','2026-11-03','8:00 PM',"Pizza Mermaid's Aquarium of Friendship",'Variety',5.6,'fr',FR+'pizza-mermaids-aquarium-of-friendship-wxs99'),
+  E('freddys','2026-11-06','6:00 PM','Hair Braiding Workshop','Workshop',5.0,'fr',FR+'hair-braiding-workshop'),
+  E('freddys','2026-11-06','8:00 PM','Jessi Robertson & Local Correspondents Reunion','Live music',6.0,'fr',FR+'jessi-robertson-local-correspondents-reunion'),
+  E('freddys','2026-11-06','10:00 PM','Lucas Spillman Acoustic Alt Rock','Live music',5.2,'fr',FR+'lucas-spillman-acoustic-alt-rock'),
+  E('freddys','2026-11-07','2:00 PM','Private Party','Private event',0,'fr',FR,{private:true}),
+  E('freddys','2026-11-07','8:00 PM','A Night of Regret with Eden and the Shame & Friends','Live music',5.6,'fr',FR+'a-night-of-regret-with-eden-and-the-shame'),
+  E('freddys','2026-11-07','10:00 PM','Geoff the DJ: Vinyl & Digital, Indie/Dance Set','DJ',5.4,'fr',FR+'geoff-the-dj-vinyl-digital-indiedance-set'),
+  E('freddys','2026-11-13','5:00 PM','Writers Studio Reading','Reading',5.4,'fr',FR+'writers-studio-reading-3'),
+  E('freddys','2026-11-13','8:00 PM','The Bureau plays Freddys Bar','Live music',5.4,'fr',FR+'the-bureau-plays-freddys-bar'),
+  E('freddys','2026-11-13','9:00 PM','This is a Low','Live music',5.4,'fr',FR+'this-is-a-low'),
+  E('freddys','2026-11-13','10:00 PM','The Biting Thumbs','Live music',5.4,'fr',FR+'the-biting-thumbs-2'),
+  E('freddys','2026-11-14','8:00 PM','The Oxford Drive Band','Live music',5.4,'fr',FR+'the-oxford-drive-band-1'),
+  E('freddys','2026-11-14','9:00 PM','The Shrimps','Live music',5.4,'fr',FR+'the-shrimps-5'),
+  E('freddys','2026-11-14','10:00 PM','BLK KRWN ENTERTAINMENT','Live music',5.2,'fr',FR+'blk-krwn-entertainment'),
+  E('freddys','2026-11-20','6:45 PM','SHIMMY: solo acoustic indie-folk','Live music',5.2,'fr',FR+'shimmy-solo-indie-folk-singer-songwrite'),
+  E('freddys','2026-11-20','8:00 PM','Jordan Guldman Quintet and Docking','Live music / Jazz',5.8,'fr',FR+'jordan-guldman-quintet-and-docking'),
+  E('freddys','2026-11-21','2:00 PM','BARCHIVES Book Signing','Book signing',5.8,'fr',FR+'barchives-book-signing'),
+  E('freddys','2026-11-21','8:00 PM','Lightening Will: Grateful Dead Cover Band','Live music',5.6,'fr',FR+'lightening-will-grateful-dead-cover-band'),
+  E('freddys','2026-11-21','9:00 PM',"Zan Harrold Featuring Zoar's Pain",'Live music',5.2,'fr',FR+'zan-harrold-featuring-zoars-pain'),
+  E('freddys','2026-11-26','8:00 PM','Happy Thanksgiving / Indigenous-Reparations-Day','Holiday hang',4.5,'fr',FR),
+  E('freddys','2026-11-27','8:00 PM','Brett Horton & Cohorts: A Song Buffet','Live music',5.4,'fr',FR+'brett-horton-cohorts-a-song-buffet'),
+  E('freddys','2026-11-28','8:00 PM','LoveTrane presents the works of John Coltrane','Live music / Jazz',6.4,'fr',FR+'lovetrane-presents-the-works-of-john-coltrane'),
+  E('freddys','2026-12-04','8:00 PM',"The Bureau Band Plays Freddy's Bar",'Live music',5.4,'fr',FR+'the-bureau-band-plays-freddys-bar'),
+  E('freddys','2026-12-04','9:00 PM','Albi: Single Release Party (Full Band)','Live music',5.6,'fr',FR+'albi-single-release-party-full-band'),
+  E('freddys','2026-12-05','5:00 PM','The Writers Studio: Reading Series','Reading',5.4,'fr',FR+'the-writers-studio'),
+  E('freddys','2026-12-05','8:00 PM','Channeling Owen, NYC Indie Rock','Live music',5.4,'fr',FR+'channeling-owen-nyc-indie-rock'),
+  E('freddys','2026-12-05','9:00 PM','Long Gone West','Live music',5.4,'fr',FR+'long-gone-west'),
+  E('freddys','2026-12-05','10:00 PM','Denied w/ Concrete, Sickbay, F.A.C.A & Dead & Violated','Live music / Hardcore',5.8,'fr',FR+'denied-w-concrete-sickbay-faca-dead-violated'),
+  E('freddys','2026-12-11','8:00 PM','Photo Exhibition and Wrestling Pop-Up','Pop-up',6.2,'fr',FR+'photo-exhibition-and-wrestling-pop-up'),
+  E('freddys','2026-12-11','10:00 PM','Lightning Will: Grateful Dead Tribute','Live music',5.6,'fr',FR+'lightning-will-grateful-dead-tribute-1'),
+  E('freddys','2026-12-12','8:00 PM','Private Party (All Night)','Private event',0,'fr',FR,{private:true}),
+  E('freddys','2026-12-13','4:00 PM','A Very Martin Monster Christmas','Film / Variety',6.0,'fr',FR+'a-very-martin-monster-christmas'),
+  E('freddys','2026-12-18','9:00 PM','James McKain, Evan Palmer and Kevin Shea: Improvised Music','Live music',6.2,'fr',FR+'james-mckain-evan-palmer-and-kevin-shea-improvised-music'),
+  E('freddys','2026-12-19','8:00 PM',"A Very Freddy's Christmas Show with Matt Brady & Friends (4th Annual)",'Live music / Holiday',6.6,'fr',FR+'a-very-freddys-christmas-show-with-matt-brady-friends-4th-annual'),
+
+  // ---- Brooklyn Paper (aggregator). Overlaps with venue calendars are deliberate:
+  // that is what the dedupe stage has to handle.
+  E('littlefield','2026-10-25','8:00 PM','About Last Night: Dating Disaster Stories NYC!','Comedy, Music',6.4,'bp',BP+'about-last-night-dating-disaster-stories-nyc-2/'),
+  E('bellhouse','2026-10-27','7:30 PM','Ruby Setnik – Brooklyn','Comedy',6.8,'bp',BP+'ruby-setnik-brooklyn/'),
+  E('bellhouse','2026-10-31','7:00 PM','A Drinking Game NYC presents: The Nightmare Before Christmas','Comedy',7.6,'bp',BP+'a-drinking-game-nyc-presents-the-nightmare-before-christmas/'),
+  E('royalpalms','2026-10-31','8:00 PM','CANAL THING: A Royal Palms Halloween Party','Halloween party',7.4,'bp','https://events.gaycitynews.com/event/canal-thing-a-royal-palms-halloween-party/',{blurb:'Halloween dance party on the shuffleboard courts, 8–11:30 PM.'}),
+  E('littlefield','2026-11-01','7:00 PM','Carsie Blanton – Brooklyn','Music',7.2,'bp',BP+'carsie-blanton-brooklyn/'),
+  E('littlefield','2026-11-03','8:00 PM','Spin Out With Me – An Educational Experience','Comedy / Theater',6.0,'bp',BP+'spin-out-with-me-an-educational-experience/'),
+  E('bellhouse','2026-11-06','10:00 PM','New York Comedy Festival: Olivia Carter – Brooklyn','Comedy',7.0,'bp',BP+'new-york-comedy-festival-olivia-carter-brooklyn/'),
+  E('littlefield','2026-11-08','3:00 PM','New York Comedy Festival Presents: 11th Annual Hot Guy Draft','Comedy',6.8,'bp',BP+'new-york-comedy-festival-presents-11th-annual-hot-guy-draft/'),
+  E('littlefield','2026-11-10','8:00 PM','New York Comedy Festival: Tone and The Homies','Comedy',6.6,'bp',BP+'new-york-comedy-festival-tone-and-the-homies-brooklyn/'),
+  E('littlefield','2026-11-12','8:00 PM','New York Comedy Festival: Two Thirds of a Threesome','Comedy / Live podcast',6.6,'bp',BP+'new-york-comedy-festival-two-thirds-of-a-threesome-brooklyn/'),
+  E('littlefield','2026-11-15','8:00 PM','New York Comedy Festival: Spell Checc – A Spelling Bee Gameshow','Comedy / Game show',6.8,'bp',BP+'new-york-comedy-festival-spell-checc-a-spelling-bee-gameshow-brooklyn/'),
+  E('bellhouse','2026-11-17','7:30 PM','Jaboukie Young-White','Comedy',8.2,'bp',BP+'jaboukie-young-white-brooklyn/',{blurb:'Comedian and former Daily Show correspondent.'}),
+  E('bellhouse','2026-11-22','7:00 PM',"Don't Worry with Phoebe Judge",'Live show',7.6,'bp',BP+'dont-worry-with-phoebe-judge/',{blurb:'Live show from Phoebe Judge, host of the Criminal podcast.'}),
+  E('bellhouse','2026-11-29','7:30 PM','Gianmarco Soresi: The Silver Lining','Comedy',7.4,'bp',BP+'gianmarco-soresi-the-silver-lining/'),
+  E('bellhouse','2026-12-04','7:00 PM','Demetri Martin: Standup Comedy for Christmas','Comedy',8.4,'bp',BP+'demetri-martin-standup-comedy-for-christmas/'),
+  E('bellhouse','2026-12-05','7:00 PM','Demetri Martin: Standup Comedy for Christmas','Comedy',8.4,'bp',BP+'demetri-martin-standup-comedy-for-christmas/'),
+  E('bellhouse','2026-12-08','7:30 PM','Gianmarco Soresi: The Silver Lining','Comedy',7.4,'bp',BP+'gianmarco-soresi-the-silver-lining/'),
+  E('littlefield','2026-12-20','7:00 PM','The Slackers','Live music',7.8,'bp',BP+'the-slackers-brooklyn/',{blurb:'Veteran New York ska band.'}),
+  // Borough-wide featured listings: these should all be filtered out.
+  E('pioneerworks','2026-10-26','12:00 PM','AudaTours Brooklyn Audio Tour: From Cannons to Craft Brews','Tour',6.0,'bp',BP+'audatours-brooklyn-audio-tour-from-cannons-to-craft-brews/'),
+  E('pioneerworks','2026-10-26','8:00 PM','False Harmonics #28: Currawong Project','Live music',7.0,'bp',BP+'false-harmonics-28-currawong-project/'),
+  E('billieholiday','2026-10-26','7:00 PM','The Billie Presents Literary Salon: In Conversation with Donna Walker-Kuhne','Talk',6.0,'bp',BP+'the-billie-presents-literary-salon-champions-for-the-arts-in-conversation-with-donna-walker-kuhne/'),
+  E(null,'2026-10-26','8:00 PM','Mo Monday Comedy Show','Comedy',5.0,'bp',BP+'mo-monday-comedy-show/',{venueName:"Mo's Bar and Lounge"}),
+  E(null,'2026-10-26','7:30 PM','User Agreement','Theater',5.5,'bp',BP+'user-agreement-2/',{venueName:"The Makers' Space"}),
+  E(null,'2026-10-26','7:30 PM','"User Agreement"','Theater',5.5,'bp',BP+'user-agreement/',{venueName:"The Makers' Space"}),
+  E('barclays','2026-10-27','','Rod Wave: Don\'t Look Down Tour','Concert',8.0,'bp',BP+'rod-wave-dont-look-down-tour/'),
+  E('brooklynsteel','2026-10-27','','Vince Staples: Cry Baby Tour','Concert',8.4,'bp',BP+'vince-staples-cry-baby-tour/'),
+  E('kingstheatre','2026-10-27','','Ina Garten: Simply Ina Book Tour','Book tour',7.6,'bp',BP+'ina-garten-simply-ina-book-tour/'),
+];
+
+// ---------------------------------------------------------------------------
+// Pipeline. Same invariant as the Candlewood site: every stage adjusts `fq` (0-10)
+// only, and bake() derives `score` exactly once at the end.
+// ---------------------------------------------------------------------------
+const WALK_M_PER_MIN = 80;      // ~3 mph
+const DETOUR = 1.3;             // street grid vs straight line
+const MAX_WALK_MIN = 20;        // geofence
+const PROX_BANDS = [[5, 10], [10, 9], [15, 8], [20, 6.5]]; // [max minutes, proximity]
+const DECAY = { 'one-off': 0, limited: -0.2, monthly: -0.5, '2x-month': -1.0, weekly: -1.5 };
+// Lower than Candlewood's 9.0 / 8.5. Nearly every venue here is proximity 10, so score =
+// 3 + 0.7 x quality, and an unresearched 8.5 bakes to 8.95, which rounds to a gold 9.0.
+// Gating at 8.6 and capping at 8.4 (bakes to 8.9) keeps the 9+ tier evidenced.
+const EVIDENCE_MIN = 8.6, EVIDENCE_CAP = 8.4;
+const TOP_PER_WEEK = 10, MAX_PER_VENUE_PER_WEEK = 3;
+
+const round1 = (x) => Math.round(x * 10) / 10;
+const clampFq = (x) => Math.max(0, Math.min(10, x));
+const norm = (s) => (s || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function todayET() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+}
+function addDays(iso, n) {
+  const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10);
+}
+function fmtDate(iso, opts = { weekday: 'short', month: 'short', day: 'numeric' }) {
+  return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { ...opts, timeZone: 'UTC' });
+}
+
+// Distance from a point to the canal centerline, in meters (local equirectangular projection).
+function canalMeters(lat, lon) {
+  const kx = 111320 * Math.cos(40.675 * Math.PI / 180), ky = 110540;
+  const P = [lon * kx, lat * ky];
+  let best = Infinity;
+  for (let i = 0; i < CANAL.length - 1; i++) {
+    const A = [CANAL[i][1] * kx, CANAL[i][0] * ky], B = [CANAL[i + 1][1] * kx, CANAL[i + 1][0] * ky];
+    const dx = B[0] - A[0], dy = B[1] - A[1];
+    const t = Math.max(0, Math.min(1, ((P[0] - A[0]) * dx + (P[1] - A[1]) * dy) / (dx * dx + dy * dy)));
+    best = Math.min(best, Math.hypot(P[0] - A[0] - t * dx, P[1] - A[1] - t * dy));
+  }
+  return best;
+}
+const walkMinutes = (v) => canalMeters(v.lat, v.lon) * DETOUR / WALK_M_PER_MIN;
+function proximity(min) {
+  for (const [max, p] of PROX_BANDS) if (min <= max) return p;
+  return null;
+}
+
+// Urban type floors (guards against the model's volatile lows). Applied before recurrence
+// decay so the decay still bites: an open mic floored to 5.0 still drops 1.5 for being weekly.
+function typeFloor(type) {
+  const t = (type || '').toLowerCase();
+  if (/festival|open studios|fair|block party|parade/.test(t)) return 7.0;
+  if (/market/.test(t)) return 6.0;
+  if (/music|concert|club|dj|jazz|band|dance|listening/.test(t)) return 5.5;
+  if (/comedy|storytell|podcast|talk|book|reading|film|screening|burlesque|exhibition/.test(t)) return 5.0;
+  return 4.5;
+}
+// NYC price bands, in quality points. Unknown price is neutral.
+function valueAdj(e) {
+  if (e.price === 'free') return 0.6;
+  const m = /\$(\d+)/.exec(e.price || '');
+  if (!m) return 0;
+  const d = +m[1];
+  if (d <= 20) return 0.3;
+  if (d <= 40) return 0;
+  if (d <= 75) return -0.3;
+  return -0.7;
+}
+function researchFor(e) {
+  const t = norm(e.title);
+  for (const [k, rec] of Object.entries(RESEARCH)) if (t.includes(k)) return { key: k, ...rec };
+  return null;
+}
+const hasEvidence = (rec) => !!rec && Array.isArray(rec.sources) && rec.sources.length > 0 && rec.confidence !== 'low';
+
+// Dedupe: same date + venue, and the smaller title's significant words are (nearly) all
+// in the larger one. Aggregators decorate titles ("– Brooklyn", "New York Comedy Festival:").
+const STOP = new Set('the a an and w with presents present brooklyn nyc new york comedy festival live of at in ft feat lpr'.split(' '));
+const sigWords = (t) => new Set(norm(t).split(' ').filter((w) => w.length > 1 && !STOP.has(w)));
+function sameEvent(a, b) {
+  if (a.d !== b.d || a.v !== b.v) return false;
+  const A = sigWords(a.title), B = sigWords(b.title);
+  const [s, l] = A.size <= B.size ? [A, B] : [B, A];
+  if (!s.size) return false;
+  let hit = 0; for (const w of s) if (l.has(w)) hit++;
+  return hit / s.size >= 0.85;
+}
+
+function seriesKey(e) {
+  return e.v + '|' + norm(e.series || e.title.replace(/\b\d+(st|nd|rd|th)?\b/gi, ''));
+}
+
+function runPipeline(today) {
+  const R = { today, raw: RAW.length, dropped: [], nearby: [], merges: [], gated: [], past: 0, violations: [] };
+  const trace = (e, stage, to, note) => { e.trace.push({ stage, from: e.fq, to, note }); e.fq = to; };
+
+  // Stage 2a: hard filters.
+  const kept = [];
+  for (const r of RAW) {
+    const e = { ...r, venue: r.v ? VENUES[r.v] : null, trace: [], alsoOn: [] };
+    if (e.d < today) { R.past++; continue; }
+    if (e.private) { R.dropped.push({ e, reason: 'Private event' }); continue; }
+    if (e.umbrella) { R.dropped.push({ e, reason: 'Festival pass listing, not a discrete event' }); continue; }
+    if (e.dateUnconfirmed) { R.dropped.push({ e, reason: 'Source shows no year. Dropped rather than guessed' }); continue; }
+    if (!e.venue) { R.dropped.push({ e, reason: `Venue address unknown (${e.venueName || 'unnamed'}), so distance can't be computed` }); continue; }
+    e.walk = walkMinutes(e.venue);
+    if (e.walk > MAX_WALK_MIN) { R.dropped.push({ e, reason: `Outside the ${MAX_WALK_MIN}-minute walk (${Math.ceil(e.walk)} min)` }); continue; }
+    if (e.venue.mega) { R.nearby.push(e); continue; }
+    if (e.soldOut) { R.dropped.push({ e, reason: 'Sold out' }); continue; }
+    kept.push(e);
+  }
+  R.afterFilter = kept.length;
+
+  // Stage 2b: dedupe. The higher-trust source is canonical; time conflicts are recorded.
+  const evs = [];
+  for (const e of kept) {
+    const twin = evs.find((x) => sameEvent(x, e));
+    if (!twin) { evs.push(e); continue; }
+    const [keep, drop] = TRUST[SOURCES[e.src].kind] > TRUST[SOURCES[twin.src].kind] ? [e, twin] : [twin, e];
+    if (keep !== twin) evs[evs.indexOf(twin)] = keep;
+    keep.alsoOn.push(drop.src, ...drop.alsoOn);
+    if (!keep.blurb && drop.blurb) keep.blurb = drop.blurb;
+    R.merges.push({ keep, drop, conflict: keep.t !== drop.t ? `Time differs: ${SOURCES[keep.src].name} says ${keep.t}, ${SOURCES[drop.src].name} says ${drop.t}. Venue wins.` : '' });
+  }
+  R.afterDedupe = evs.length;
+
+  // Recurrence classification: the source's stated cadence wins; otherwise count the series.
+  const groups = new Map();
+  for (const e of evs) { const k = seriesKey(e); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(e); }
+  for (const g of groups.values()) {
+    g.sort((a, b) => a.d.localeCompare(b.d));
+    for (const e of g) {
+      if (e.cadence) e.pattern = e.cadence;
+      else if (g.length === 1) e.pattern = 'one-off';
+      else if (g.length <= 3) e.pattern = 'limited';
+      else {
+        const gap = (new Date(g[g.length - 1].d) - new Date(g[0].d)) / 864e5 / (g.length - 1);
+        e.pattern = gap <= 8 ? 'weekly' : gap <= 20 ? '2x-month' : 'monthly';
+      }
+      e.seriesCount = g.length;
+    }
+  }
+
+  // Scoring.
+  for (const e of evs) {
+    e.fq0 = e.fq = clampFq(e.fq);
+    const rec = researchFor(e);
+    if (rec) { e.research = rec; trace(e, 'Researched act', rec.fq, rec.basis); }
+    if (e.venue.tier && e.fq < e.venue.tier) trace(e, 'Venue floor', e.venue.tier, `${e.venue.name} books reliably`);
+    const tf = typeFloor(e.type);
+    if (e.fq < tf) trace(e, 'Type floor', tf, `Minimum for "${e.type}"`);
+    const dec = DECAY[e.pattern] || 0;
+    if (dec) trace(e, 'Recurrence', clampFq(e.fq + dec), patternLabel(e));
+    const va = valueAdj(e);
+    if (va) trace(e, 'Value', clampFq(e.fq + va), e.price === 'free' ? 'Free' : e.price);
+    if (e.fq >= EVIDENCE_MIN && !hasEvidence(e.research)) {
+      R.gated.push({ e, claimed: e.fq });
+      trace(e, 'Evidence gate', EVIDENCE_CAP, `A ${EVIDENCE_MIN}+ claim with no research record`);
+    }
+    e.fq = round1(e.fq);
+    e.prox = proximity(e.walk);
+    e.score = round1(e.prox * 0.3 + e.fq * 0.7);
+    const ceiling = e.prox * 0.3 + 7;
+    if (e.score > ceiling + 0.051) R.violations.push(e);
+  }
+
+  // Display rule: a weekly series shows in the feed once per calendar month (first date);
+  // the rest live in the "Every week" module.
+  const seenMonth = new Set();
+  for (const e of [...evs].sort((a, b) => a.d.localeCompare(b.d))) {
+    if (e.pattern !== 'weekly') continue;
+    const k = seriesKey(e) + '|' + e.d.slice(0, 7);
+    if (seenMonth.has(k)) e.collapsed = true; else seenMonth.add(k);
+  }
+
+  R.events = evs;
+  R.feed = evs.filter((e) => !e.collapsed);
+  R.series = [...groups.values()].filter((g) => g[0].pattern === 'weekly');
+  return R;
+}
+
+function patternLabel(e) {
+  if (e.pattern === 'limited') return `${e.seriesCount}-date run`;
+  if (e.cadenceLabel) return `Recurring (${e.cadenceLabel})`;
+  return { weekly: 'Weekly', '2x-month': 'Twice a month', monthly: 'Monthly' }[e.pattern] || '';
+}
+
+// ---------------------------------------------------------------------------
+// Rendering
+// ---------------------------------------------------------------------------
+const scoreClass = (s) => s >= 9 ? 's-must' : s >= 7 ? 's-great' : s >= 5 ? 's-good' : '';
+const walkLabel = (m) => m < 1.5 ? 'on the canal' : `${Math.ceil(m)} min walk from the canal`;
+
+function card(e) {
+  const chips = [`<span class="chip">${esc(e.type)}</span>`];
+  if (e.price === 'free') chips.push('<span class="chip free">Free</span>');
+  if (e.pattern && e.pattern !== 'one-off') chips.push(`<span class="chip rec">${esc(patternLabel(e))}</span>`);
+  for (const s of new Set(e.alsoOn)) chips.push(`<span class="chip dup">Also on ${esc(SOURCES[s].name)}</span>`);
+  if (e.timeSuspect) chips.push('<span class="chip warn">Time unclear</span>');
+  const rows = [`<tr><td>Model judgment</td><td></td><td class="num">${e.fq0.toFixed(1)}</td></tr>`]
+    .concat(e.trace.map((t) => `<tr><td>${esc(t.stage)}</td><td>${esc(t.note)}</td><td class="num">${(t.to - t.from >= 0 ? '+' : '') + (t.to - t.from).toFixed(1)} → ${t.to.toFixed(1)}</td></tr>`))
+    .concat([`<tr><td>Proximity</td><td>${e.walk.toFixed(1)} min walk</td><td class="num">${e.prox}</td></tr>`,
+      `<tr class="final"><td>Score</td><td>${e.prox} × 0.3 + ${e.fq.toFixed(1)} × 0.7</td><td class="num">${e.score.toFixed(1)}</td></tr>`]);
+  const time = e.timeSuspect ? `Time unclear (listed ${e.t})` : e.t;
+  return `<article class="card" id="ev-${esc(norm(e.v + ' ' + e.d + ' ' + e.title).replace(/ /g, '-').slice(0, 80))}">
+    <div class="score ${scoreClass(e.score)}">${e.score.toFixed(1)}</div>
+    <div>
+      <div class="meta">${esc(fmtDate(e.d))}${time ? ' · ' + esc(time) : ''}</div>
+      <h3><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a></h3>
+      <div class="where">${esc(e.venue.name)} · ${esc(walkLabel(e.walk))}</div>
+      ${e.blurb ? `<p class="blurb">${esc(e.blurb)}</p>` : ''}
+      <div class="chips">${chips.join('')}</div>
+      <details class="why"><summary>Why ${e.score.toFixed(1)}</summary><table class="trace">${rows.join('')}</table></details>
+    </div></article>`;
+}
+
+function weeks(R) {
+  const out = [];
+  for (let i = 0; i < 8; i++) {
+    const from = addDays(R.today, i * 7), to = addDays(from, 6);
+    const evs = R.feed.filter((e) => e.d >= from && e.d <= to).sort((a, b) => b.score - a.score || a.d.localeCompare(b.d));
+    const top = [], perVenue = {};
+    for (const e of evs) {
+      if (top.length >= TOP_PER_WEEK) break;
+      if ((perVenue[e.v] = (perVenue[e.v] || 0) + 1) > MAX_PER_VENUE_PER_WEEK) continue;
+      top.push(e);
+    }
+    out.push({ label: i === 0 ? 'Next 7 days' : `${fmtDate(from, { month: 'short', day: 'numeric' })} – ${fmtDate(to, { month: 'short', day: 'numeric' })}`, evs, top });
+  }
+  return out;
+}
+
+function renderFeed(W, i, showAll) {
+  const w = W[i];
+  const list = showAll ? w.evs : w.top;
+  const rest = w.evs.length - w.top.length;
+  document.getElementById('feed').innerHTML = (list.length ? list.map(card).join('') : '<p class="note">No listings for this week yet. Most venue calendars only run a few weeks out.</p>')
+    + (!showAll && rest > 0 ? `<button class="more" id="more">Show all ${w.evs.length} (${rest} more, ranked lower or over the ${MAX_PER_VENUE_PER_WEEK}-per-venue cap)</button>` : '');
+  const m = document.getElementById('more');
+  if (m) m.onclick = () => renderFeed(W, i, true);
+  document.querySelectorAll('#tabs button').forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
+}
+
+function renderModules(R) {
+  const weekly = R.series.map((g) => {
+    const next = g.find((e) => !e.collapsed) || g[0];
+    return `<div class="panel"><h3>${esc(next.series || next.title)}</h3><div class="sub">${esc(next.venue.name)} · ${esc(next.cadenceLabel || 'Weekly')} · ${esc(next.t)}</div>
+      <div class="sub">Next: ${esc(fmtDate(g[0].d))} · ${g.length} dates through ${esc(fmtDate(g[g.length - 1].d))}</div></div>`;
+  });
+  const standing = STANDING.map((s) => `<div class="panel"><h3><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></h3><div class="sub">${esc(VENUES[s.v].name)} · ${esc(s.when)}</div><div class="sub">${esc(s.note)}</div></div>`);
+  const ongoing = ONGOING.map((x) => `<div class="panel"><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a></h3><div class="sub">${esc(VENUES[x.v].name)} · ${esc(x.when)}, ${esc(fmtDate(x.start, { month: 'short', day: 'numeric' }))} – ${esc(fmtDate(x.end, { month: 'short', day: 'numeric' }))}</div><div class="sub">Exhibition. Its closing weekend appears in the feed.</div></div>`);
+  document.getElementById('weekly').innerHTML = weekly.concat(standing, ongoing).join('');
+  document.getElementById('nearby').innerHTML = R.nearby.length
+    ? R.nearby.map((e) => `<li><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><div class="sub">${esc(e.venue.name)} · ${esc(fmtDate(e.d))} · ${Math.ceil(e.walk)} min walk from the canal</div></li>`).join('')
+    : '<li class="sub">Nothing upcoming.</li>';
+}
+
+function renderReport(R, W) {
+  const shownTop = W.reduce((a, w) => a + w.top.length, 0);
+  const collapsed = R.events.filter((e) => e.collapsed).length;
+  const box = (n, l) => `<div><b>${n}</b><span>${l}</span></div>`;
+  document.getElementById('funnel').innerHTML = [
+    box(R.raw, 'raw listings fetched'), box(R.past, 'already past'), box(R.afterFilter, 'after filters'),
+    box(R.afterDedupe, 'after dedupe'), box(collapsed, 'weekly repeats folded'), box(R.feed.length, 'in the feed'), box(shownTop, 'shown as top picks'),
+  ].join('');
+
+  const count = {};
+  for (const r of RAW) count[r.src] = (count[r.src] || 0) + 1;
+  document.getElementById('sources').innerHTML = '<tr><th>Source</th><th>Kind</th><th>Status</th><th>Listings</th><th>Notes</th></tr>'
+    + Object.entries(SOURCES).map(([k, s]) => `<tr><td><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a></td><td>${esc(s.kind)}</td><td><span class="st ${s.status}">${{ ok: 'OK', partial: 'Partial', stale: 'Stale', js: 'JS-only', empty: 'Empty' }[s.status]}</span></td><td>${count[k] || 0}</td><td>${esc(s.note)}</td></tr>`).join('');
+
+  document.getElementById('dropped').innerHTML = '<tr><th>Listing</th><th>Where</th><th>Date</th><th>Reason</th></tr>'
+    + R.dropped.map(({ e, reason }) => `<tr><td>${esc(e.title)}</td><td>${esc(e.venue ? e.venue.name : e.venueName || '')}</td><td>${esc(fmtDate(e.d))}</td><td>${esc(reason)}</td></tr>`).join('');
+
+  document.getElementById('merged').innerHTML = '<tr><th>Kept</th><th>Dropped duplicate</th><th>Note</th></tr>'
+    + R.merges.map((m) => `<tr><td>${esc(m.keep.title)}<div class="sub">${esc(SOURCES[m.keep.src].name)} · ${esc(fmtDate(m.keep.d))}</div></td><td>${esc(m.drop.title)}<div class="sub">${esc(SOURCES[m.drop.src].name)}</div></td><td>${esc(m.conflict)}</td></tr>`).join('');
+
+  document.getElementById('gated').innerHTML = R.gated.length
+    ? R.gated.map(({ e, claimed }) => `<li>${esc(e.title)}<div class="sub">Claimed ${claimed.toFixed(1)}, capped at ${EVIDENCE_CAP}. Score ${e.score.toFixed(1)}.</div></li>`).join('')
+    : '<li class="sub">Nothing capped.</li>';
+  document.getElementById('research').innerHTML = Object.entries(RESEARCH).map(([k, r]) => `<li><b>${esc(k)}</b> · ${r.fq.toFixed(1)} · ${esc(r.confidence)}<div class="sub">${esc(r.basis)} <a href="${esc(r.sources[0])}" target="_blank" rel="noopener">Source</a></div></li>`).join('');
+
+  if (R.violations.length) {
+    document.getElementById('feed').insertAdjacentHTML('afterbegin', `<p class="chip warn">Scoring invariant broken for ${R.violations.length} event(s).</p>`);
+  }
+}
+
+// Place venue labels top to bottom, pushing each down until it clears the ones already placed
+// (the venues near the canal head sit within a block of each other). A leader line marks a moved label.
+function mapLabels(pts, X, Y, W) {
+  const placed = [], out = [], LH = 15, CW = 6.6;
+  for (const v of [...pts].sort((a, b) => Y(a.lat) - Y(b.lat))) {
+    const x = X(v.lon), y = Y(v.lat), left = x > W * 0.62;
+    const text = `${v.name} · ${Math.ceil(walkMinutes(v))} min`, w = text.length * CW;
+    const x0 = left ? x - 12 - w : x + 12;
+    let ly = y + 4;
+    while (placed.some((b) => x0 < b.x1 && x0 + w > b.x0 && Math.abs(ly - b.y) < LH)) ly += LH;
+    placed.push({ x0, x1: x0 + w, y: ly });
+    if (Math.abs(ly - (y + 4)) > 1) out.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${(left ? x - 10 : x + 10).toFixed(1)}" y2="${(ly - 4).toFixed(1)}" stroke="var(--muted)" stroke-width="1"/>`);
+    out.push(`<text x="${(left ? x - 12 : x + 12).toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" fill="var(--ink)" text-anchor="${left ? 'end' : 'start'}" font-family="Inter,sans-serif">${esc(text)}</text>`);
+  }
+  return out.join('');
+}
+
+function renderMap() {
+  const W = 640, H = 420, pad = 24;
+  const pts = Object.values(VENUES).filter((v) => walkMinutes(v) < 30);
+  const lats = CANAL.map((p) => p[0]).concat(pts.map((v) => v.lat)), lons = CANAL.map((p) => p[1]).concat(pts.map((v) => v.lon));
+  const kx = Math.cos(40.675 * Math.PI / 180);
+  const minX = Math.min(...lons) * kx, maxX = Math.max(...lons) * kx, minY = Math.min(...lats), maxY = Math.max(...lats);
+  const s = Math.min((W - 2 * pad) / (maxX - minX), (H - 2 * pad) / (maxY - minY));
+  const X = (lon) => pad + (lon * kx - minX) * s, Y = (lat) => H - pad - (lat - minY) * s;
+  const color = (v) => { const m = walkMinutes(v), p = proximity(m); return v.mega || p === null ? 'none' : p >= 10 ? 'var(--canal)' : p >= 9 ? '#7fa95a' : p >= 8 ? 'var(--gold)' : 'var(--brick)'; };
+  const svg = document.getElementById('map');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = `<polyline points="${CANAL.map((p) => X(p[1]).toFixed(1) + ',' + Y(p[0]).toFixed(1)).join(' ')}" fill="none" stroke="var(--canal)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>`
+    + pts.map((v) => `<circle cx="${X(v.lon).toFixed(1)}" cy="${Y(v.lat).toFixed(1)}" r="6" fill="${color(v)}" stroke="${color(v) === 'none' ? 'var(--muted)' : 'var(--surface)'}" stroke-width="2"/>`).join('')
+    + mapLabels(pts, X, Y, W);
+  document.getElementById('mapnote').textContent = 'Filled dots are scored, colored by proximity band (teal 10, green 9, gold 8, brick 6.5). Hollow dots are excluded: past 20 minutes, or arena-scale. Minutes are estimated walks to the nearest point on the canal.';
+}
+
+const R = runPipeline(todayET() > SNAPSHOT ? todayET() : SNAPSHOT);
+const W = weeks(R);
+document.getElementById('tabs').innerHTML = W.map((w, i) => `<button role="tab" data-i="${i}">${esc(w.label)}<span class="n">${w.evs.length}</span></button>`).join('');
+document.querySelectorAll('#tabs button').forEach((b) => b.onclick = () => renderFeed(W, +b.dataset.i, false));
+renderFeed(W, 0, false);
+renderModules(R);
+renderReport(R, W);
+renderMap();
+</script>
+</body>
+</html>
