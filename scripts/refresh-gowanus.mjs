@@ -28,6 +28,11 @@ const MIN_GROUPS_OK = 2;           // of 4; below this the run is not trustworth
 const MAX_GEOCODES = 60;           // new lookups per run (Nominatim asks for <= 1 request/s)
 const MISS_RETRY_DAYS = 7;         // retry an address that failed to geocode after this long
 const MAX_RESEARCH_PER_RUN = 10;
+// Cap on each fetched page (web_fetch max_content_tokens; longer pages are truncated). The first
+// uncapped run cost ~$6.18, nearly all input tokens from fetched pages that get re-read on every
+// step of the tool loop. Calendars list in date order, so a cut mostly drops dates past the
+// 8-week window; 25K tokens (~100K chars) still holds Freddy's full calendar to the horizon.
+const FETCH_MAX_TOKENS = 25000;
 const UA = 'gowanus-events-refresh/1.0 (+https://candlewoodlakeevents.com/gowanusevents/)';
 const NYC_BBOX = { s: 40.55, n: 40.76, w: -74.1, e: -73.85 };
 // For the cost line in the log only (USD): Sonnet 5 list prices, web search billed per search.
@@ -110,6 +115,7 @@ async function anthropic() {
 async function research(prompt, { maxTokens = 64000, searchUses = 12, fetchUses = 12 } = {}) {
   let messages = [{ role: 'user', content: prompt }];
   const usage = { input: 0, output: 0, searches: 0, fetches: 0 };
+  const pages = []; // { url, chars } per fetched page, for the log
   let msg;
   for (let i = 0; i < 8; i++) {
     const req = {
@@ -118,7 +124,7 @@ async function research(prompt, { maxTokens = 64000, searchUses = 12, fetchUses 
       // Basic tool variants, as in refresh-events.mjs, so a paused turn resumes with a plain resend.
       tools: [
         { type: 'web_search_20250305', name: 'web_search', max_uses: searchUses },
-        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: fetchUses },
+        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: fetchUses, max_content_tokens: FETCH_MAX_TOKENS },
       ].filter((t) => t.max_uses > 0), // the API rejects max_uses: 0
       messages,
     };
@@ -131,13 +137,17 @@ async function research(prompt, { maxTokens = 64000, searchUses = 12, fetchUses 
     usage.output += msg.usage?.output_tokens || 0;
     usage.searches += msg.usage?.server_tool_use?.web_search_requests || 0;
     usage.fetches += msg.usage?.server_tool_use?.web_fetch_requests || 0;
+    for (const b of msg.content || []) {
+      const r = b.type === 'web_fetch_tool_result' && b.content?.type === 'web_fetch_result' ? b.content : null;
+      if (r) pages.push({ url: r.url, chars: String(r.content?.source?.data || '').length });
+    }
     if (msg.stop_reason === 'pause_turn') {
       messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
       continue;
     }
     break;
   }
-  return { msg, usage };
+  return { msg, usage, pages };
 }
 
 function parseJSON(msg, open = '{', close = '}') {
@@ -391,9 +401,12 @@ async function main() {
   const results = await Promise.all(grpNames.map(async (grp) => {
     const t0 = Date.now();
     try {
-      const { msg, usage } = await research(groupPrompt(grp, SOURCES, today, horizon), GROUPS[grp]);
+      const { msg, usage, pages } = await research(groupPrompt(grp, SOURCES, today, horizon), GROUPS[grp]);
       const out = parseJSON(msg);
       console.log(`[${grp}] ${out.events?.length ?? 0} events in ${Math.round((Date.now() - t0) / 1000)}s · ${usage.input} in / ${usage.output} out tokens · ${usage.searches} searches, ${usage.fetches} fetches · ~$${costOf(usage).toFixed(2)}`);
+      for (const pg of pages.sort((a, b) => b.chars - a.chars)) {
+        console.log(`[${grp}]   fetched ${String(pg.chars).padStart(7)} chars${pg.chars >= FETCH_MAX_TOKENS * 3.5 ? ' (at cap, truncated)' : ''}  ${pg.url}`);
+      }
       return { grp, ok: true, out, usage };
     } catch (e) {
       console.error(`[${grp}] FAILED after ${Math.round((Date.now() - t0) / 1000)}s: ${e.message}`);
@@ -459,6 +472,8 @@ async function main() {
   const data = {
     generatedAt: new Date().toISOString(), snapshot: today, model: MODEL,
     groups: Object.fromEntries(results.map((r) => [r.grp, r.ok ? 'ok' : 'carried'])),
+    groupUsage: Object.fromEntries(results.map((r) => [r.grp, { events: r.ok ? (r.out.events || []).length : 0, ...r.usage, costUSD: Math.round(costOf(r.usage) * 100) / 100 }])),
+    fetchCap: FETCH_MAX_TOKENS,
     venues, sources: sourceStatus, research: ratings, ongoing, raw: events, usage: null,
   };
 
