@@ -26,6 +26,11 @@ const TEST_TO = (process.env.DIGEST_TEST_TO || '').trim();
 const FIRST_SEND = /^(1|true|yes)$/i.test((process.env.DIGEST_FIRST_SEND || '').trim());
 const SITE_URL = process.env.SITE_URL || 'https://candlewoodlakeevents.com';
 const SLACK = process.env.SLACK_WEBHOOK_URL;
+// Dates the subject line so each issue is distinct. A fixed subject week after week
+// gets collapsed into one Gmail conversation and the issues become indistinguishable.
+const ISSUE_DATE = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'America/New_York', month: 'short', day: 'numeric',
+}).format(new Date());
 
 const NAVY = '#0c1d38', GOLD = '#c4973b', CREAM = '#faf6ee', INK = '#1c2a44', MUTE = '#6b7688';
 
@@ -162,7 +167,7 @@ async function sendOne(recipient, events) {
     body: JSON.stringify({
       from: FROM,
       to: [recipient.email],
-      subject: 'This week around Candlewood Lake',
+      subject: `This week around Candlewood Lake \u00b7 ${ISSUE_DATE}`,
       html,
       headers: { 'List-Unsubscribe': `<${unsubUrl}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
     }),
