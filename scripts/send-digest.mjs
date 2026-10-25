@@ -9,6 +9,7 @@
 //   API_BASE         (optional) proxy origin; defaults to the deployed Vercel proxy.
 //   DIGEST_FROM      (optional) From header; default "Candlewood Lake Events <digest@candlewoodlakeevents.com>".
 //   DIGEST_TEST_TO   (optional) if set, sends ONLY to this address (test mode) — subscribers untouched.
+//   DIGEST_FIRST_SEND (optional) '1' adds the one-time "this is the first one" note; unset it after the first real send.
 //   SITE_URL         (optional) default https://candlewoodlakeevents.com
 //   SLACK_WEBHOOK_URL(optional) posts a run summary.
 //
@@ -22,6 +23,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const API_BASE = (process.env.API_BASE || 'https://candlewood-data-proxy.vercel.app/api').replace(/\/$/, '');
 const FROM = process.env.DIGEST_FROM || 'Candlewood Lake Events <digest@candlewoodlakeevents.com>';
 const TEST_TO = (process.env.DIGEST_TEST_TO || '').trim();
+const FIRST_SEND = /^(1|true|yes)$/i.test((process.env.DIGEST_FIRST_SEND || '').trim());
 const SITE_URL = process.env.SITE_URL || 'https://candlewoodlakeevents.com';
 const SLACK = process.env.SLACK_WEBHOOK_URL;
 
@@ -30,6 +32,15 @@ const NAVY = '#0c1d38', GOLD = '#c4973b', CREAM = '#faf6ee', INK = '#1c2a44', MU
 function fail(msg) { console.error('DIGEST ABORT:', msg); process.exit(1); }
 const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const emailOk = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e || '');
+// Trim to a word boundary so blurbs never end mid-word. Clip the RAW text, then escape —
+// clipping escaped HTML can slice an entity (&amp;) in half.
+const clip = (s, n) => {
+  const t = String(s == null ? '' : s).trim();
+  if (t.length <= n) return t;
+  const cut = t.slice(0, n);
+  const sp = cut.lastIndexOf(' ');
+  return (sp > n * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s,;:.–—-]+$/, '') + '…';
+};
 const unsubToken = (email) => crypto.createHmac('sha256', ADMIN_PASSWORD).update(String(email).toLowerCase()).digest('hex').slice(0, 20);
 
 // Tag links that point back to our own site with UTM params so Google Analytics attributes
@@ -58,7 +69,7 @@ function loadEvents() {
     const weeks = Array.isArray(obj.weeks) ? obj.weeks : [];
     const pool = [...(weeks[0]?.events || []), ...(weeks[1]?.events || [])];
     return pool
-      .filter((ev) => typeof ev.score === 'number')
+      .filter((ev) => typeof ev.score === 'number' && !ev.isPast)
       .sort((a, b) => b.score - a.score)
       .slice(0, 8);
   });
@@ -87,12 +98,12 @@ function eventRow(ev) {
   const price = ev.priceLabel || (ev.priceType === 'free' ? 'Free' : '');
   const link = withUtm(ev.url || ev.sourceUrl || SITE_URL);
   const meta = [ev.dateLabel, ev.town, price].filter(Boolean).map(esc).join(' &nbsp;·&nbsp; ');
-  const desc = ev.desc ? `<div style="color:${MUTE};font-size:13px;line-height:1.5;margin-top:4px">${esc(ev.desc).slice(0, 180)}</div>` : '';
+  const desc = ev.desc ? `<div style="color:${MUTE};font-size:13px;line-height:1.5;margin-top:4px">${esc(clip(ev.desc, 180))}</div>` : '';
   return `
   <tr><td style="padding:14px 0;border-bottom:1px solid #ece6d8">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="vertical-align:top;padding-right:12px;width:44px">
-        <div style="background:${GOLD};color:#fff;font-weight:700;font-size:14px;text-align:center;border-radius:22px;width:40px;height:40px;line-height:40px">${ev.score.toFixed(1)}</div>
+      <td style="vertical-align:top;padding:7px 12px 0 0;width:22px">
+        <div style="background:${GOLD};width:10px;height:10px;border-radius:5px;font-size:0;line-height:10px">&nbsp;</div>
       </td>
       <td style="vertical-align:top">
         <a href="${esc(link)}" style="color:${NAVY};font-size:16px;font-weight:700;text-decoration:none">${esc(ev.title)}</a>
@@ -108,6 +119,16 @@ function buildHtml(events, recipient) {
   const unsubUrl = `${API_BASE}/unsubscribe?email=${encodeURIComponent(recipient.email)}&t=${token}`;
   const hi = recipient.name ? `Hi ${esc(recipient.name)}, here's` : `Here's`;
   const rows = events.map(eventRow).join('');
+  // One-time opener: the list sat unsent for months, so the first digest says so rather
+  // than arriving as if it had always been weekly. Drop DIGEST_FIRST_SEND after it goes out.
+  const firstNote = FIRST_SEND ? `
+      <tr><td style="padding:20px 28px 0">
+        <div style="background:${CREAM};border-left:3px solid ${GOLD};border-radius:4px;padding:13px 16px;color:${INK};font-size:14px;line-height:1.6;font-family:Helvetica,Arial,sans-serif">
+          <strong>This is the first one.</strong> You signed up a while back, when the guide launched &mdash; it took
+          longer than planned to get the weekly email running. From here it arrives Thursday mornings, ahead of
+          the weekend. Changed your mind in the meantime? The unsubscribe link below works in one click.
+        </div>
+      </td></tr>` : '';
   return { unsubUrl, html: `<!doctype html><html><body style="margin:0;background:${CREAM};font-family:Georgia,'Times New Roman',serif">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${CREAM}"><tr><td align="center" style="padding:24px 12px">
     <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ece6d8">
@@ -115,6 +136,7 @@ function buildHtml(events, recipient) {
         <div style="color:${GOLD};font-size:12px;letter-spacing:2px;text-transform:uppercase">Candlewood Lake Events</div>
         <div style="color:#fff;font-size:24px;font-weight:700;margin-top:6px">This Week Around the Lake</div>
       </td></tr>
+      ${firstNote}
       <tr><td style="padding:22px 28px 6px">
         <p style="color:${INK};font-size:15px;line-height:1.6;margin:0 0 8px;font-family:Helvetica,Arial,sans-serif">${hi} the best of what's worth your weekend, live music, festivals, and local happenings within about 25 miles.</p>
       </td></tr>

@@ -25,5 +25,6 @@ jobs:
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           DIGEST_FROM: ${{ vars.DIGEST_FROM }}         # optional override; script has a default
           DIGEST_TEST_TO: ${{ github.event.inputs.test_to }}
+          DIGEST_FIRST_SEND: ${{ vars.DIGEST_FIRST_SEND }}  # set repo var to 1 for the first real send, then delete it
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: node scripts/send-digest.mjs
