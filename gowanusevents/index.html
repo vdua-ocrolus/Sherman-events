@@ -7,133 +7,284 @@
 <title>Gowanus Events (test)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f2f0eb; --surface:#ffffff; --ink:#1b1f1e; --muted:#5b625f; --line:#dbd7ce; --chip:#ebe8e0;
-  --canal:#2c6b5e; --canal-soft:#dcebe6; --brick:#a94b29; --brick-soft:#f5e1d7; --gold:#a87a1e; --gold-soft:#f4ead2;
-  --warn:#8a5a00; --warn-soft:#fbefd2; --bad:#9b2c2c; --bad-soft:#f7dede;
+:root {
+  color-scheme: dark;
+  /* Palette: Brooklyn after dark. Black, white and the grays between, Nets-style. */
+  --bg: #070707;
+  --bg-2: #0c0c0c;
+  --surface: #121212;
+  --surface2: #1b1b1b;
+  --border: #272727;
+  --line-strong: #3b3b3b;
+  --text: #f5f5f5;
+  --ink-soft: #cdcdcd;
+  --muted: #8d9196;
+  --silver: #c4c7ca;
+  --white: #ffffff;
+  --ink-dark: #070707;
+  --score-must: #ffffff;
+  --score-great: #c4c7ca;
+  --score-good: #7d8186;
+  --score-ok: #45484c;
+  --display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#121514; --surface:#1b1f1e; --ink:#e8ebe9; --muted:#9aa29e; --line:#2d3331; --chip:#252a28;
-  --canal:#62b6a3; --canal-soft:#1d3530; --brick:#e2825d; --brick-soft:#3a241b; --gold:#d8af59; --gold-soft:#3a3018;
-  --warn:#e7b85a; --warn-soft:#3a2f17; --bad:#ef8b8b; --bad-soft:#3d1f1f;
-}}
-:root[data-theme="dark"]{
-  --bg:#121514; --surface:#1b1f1e; --ink:#e8ebe9; --muted:#9aa29e; --line:#2d3331; --chip:#252a28;
-  --canal:#62b6a3; --canal-soft:#1d3530; --brick:#e2825d; --brick-soft:#3a241b; --gold:#d8af59; --gold-soft:#3a3018;
-  --warn:#e7b85a; --warn-soft:#3a2f17; --bad:#ef8b8b; --bad-soft:#3d1f1f;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background:
+    radial-gradient(900px 420px at 50% -10%, rgba(255,255,255,.07), transparent 62%),
+    var(--bg);
+  background-repeat: no-repeat; color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.62; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+a { color: inherit; }
+
+/* ---- TEST BAR ---- */
+.test-bar { background: var(--surface2); border-bottom: 1px solid var(--border); }
+.test-inner { max-width: 1040px; margin: 0 auto; padding: 10px 24px; display: flex; gap: 14px; align-items: baseline; font-size: 12.5px; color: var(--ink-soft); }
+.test-label { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); font-weight: 700; flex-shrink: 0; }
+
+/* ---- HEADER ---- */
+.site-header { background: var(--surface); border-bottom: 1px solid var(--border); }
+.site-header-inner { max-width: 1040px; margin: 0 auto; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand-mark { font-family: var(--display); font-size: 34px; font-weight: 700; color: var(--white); line-height: .95; text-transform: uppercase; letter-spacing: 2px; }
+.brand-sub { font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 7px; }
+.roundel { width: 46px; height: 46px; border-radius: 50%; background: var(--ink-dark); box-shadow: inset 0 0 0 2px var(--white), inset 0 0 0 5px var(--ink-dark), inset 0 0 0 6px var(--white); display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 17px; color: var(--white); letter-spacing: .5px; flex-shrink: 0; }
+
+/* ---- HERO ---- */
+.hero { border-bottom: 1px solid var(--border); }
+.hero-inner { max-width: 1040px; margin: 0 auto; padding: 44px 24px 36px; text-align: center; }
+.hero-kicker { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--silver); font-weight: 600; margin-bottom: 16px; }
+.hero-title { font-family: var(--display); font-weight: 700; color: var(--white); font-size: clamp(36px, 6.5vw, 60px); line-height: .98; text-transform: uppercase; letter-spacing: 1px; max-width: 21ch; margin: 0 auto; }
+.hero-sub { font-size: 13.5px; color: var(--muted); margin-top: 18px; letter-spacing: .3px; }
+.hero-rule { width: 72px; height: 6px; border-top: 2px solid var(--white); border-bottom: 2px solid var(--white); margin: 22px auto 0; }
+
+/* ---- TONIGHT BANNER ---- */
+.tonight-banner { max-width: 992px; margin: 22px auto 0; padding: 16px 22px; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-left: 3px solid var(--white); border-radius: 3px; display: flex; align-items: baseline; gap: 16px; }
+.tonight-banner .fire { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); font-weight: 700; flex-shrink: 0; }
+.tonight-banner strong { font-size: 14px; color: var(--white); font-weight: 600; }
+.tonight-shows { font-size: 13px; color: var(--ink-soft); margin-top: 5px; line-height: 1.6; }
+@media (max-width: 1040px) { .tonight-banner { margin-left: 24px; margin-right: 24px; } }
+
+/* ---- CONTAINER ---- */
+.container { max-width: 1040px; margin: 0 auto; padding: 8px 24px 56px; }
+
+/* ---- SECTION LABELS ---- */
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin: 26px 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.section-intro { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -4px 0 14px; max-width: 72ch; }
+
+/* ---- ACCORDION ---- */
+.week-accordion { border: 1px solid var(--border); border-radius: 3px; margin-bottom: 12px; overflow: hidden; background: var(--surface); }
+.week-header { padding: 14px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; transition: background .15s; }
+.week-header:hover { background: var(--surface2); }
+.week-header-left { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.week-title { font-family: var(--display); font-weight: 700; font-size: 21px; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+.week-count { font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.week-top { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--white); font-weight: 600; }
+.week-chevron { color: var(--muted); font-size: 11px; transition: transform .2s; }
+.week-accordion.open .week-chevron { transform: rotate(180deg); }
+.week-body { display: none; padding: 4px 22px 14px; background: var(--surface); border-top: 1px solid var(--border); }
+.week-accordion.open .week-body { display: block; }
+.week-empty { font-size: 13px; color: var(--muted); padding: 12px 2px; }
+.week-showall { display: block; margin: 12px auto 2px; background: transparent; border: 1px solid var(--line-strong); color: var(--text); border-radius: 2px; padding: 9px 18px; font: 700 11px var(--sans); letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; }
+.week-showall:hover { border-color: var(--white); }
+
+/* ---- EVENT CARD ---- */
+.event-card { padding: 13px 2px; display: flex; gap: 14px; align-items: flex-start; border-bottom: 1px solid var(--border); }
+.event-card:last-child { border-bottom: 0; }
+.score-circle { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 17px; font-weight: 700; flex-shrink: 0; margin-top: 2px; border: 1.5px solid transparent; }
+.score-must { background: var(--white); color: var(--ink-dark); border-color: var(--white); box-shadow: inset 0 0 0 2px var(--white), inset 0 0 0 3.5px var(--ink-dark); }
+.score-great { color: var(--white); border-color: var(--white); }
+.score-good { color: var(--silver); border-color: var(--score-good); }
+.score-ok { color: var(--muted); border-color: var(--score-ok); }
+.score-none { color: var(--silver); border-color: var(--line-strong); font-size: 15px; }
+.card-content { flex: 1; min-width: 0; }
+.venue-badge { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin-bottom: 6px; border: 1px solid var(--line-strong); color: var(--silver); }
+.card-title { font-family: var(--display); font-size: 21px; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.12; letter-spacing: .2px; }
+.card-title a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s; }
+.card-title a:hover { border-bottom-color: var(--white); }
+.card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; align-items: center; }
+.tag { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; font-weight: 600; border: 1px solid var(--border); background: rgba(255,255,255,.03); color: var(--muted); }
+.tag-type { color: var(--text); border-color: var(--line-strong); }
+.tag-dist { color: var(--muted); }
+.tag-free { background: var(--white); color: var(--ink-dark); border-color: var(--white); font-weight: 700; }
+.tag-rec { color: var(--silver); border-style: dashed; border-color: var(--line-strong); }
+.tag-dup { color: var(--muted); }
+.tag-warn { color: var(--white); border-color: var(--white); border-style: dotted; }
+.card-when { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.card-desc { font-size: 13px; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.45; }
+.card-foot { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; margin-top: 4px; }
+.card-source a, .why > summary { font-size: 10.5px; letter-spacing: .8px; text-transform: uppercase; color: var(--silver); text-decoration: none; font-weight: 600; }
+.card-source a:hover { color: var(--white); text-decoration: underline; }
+.why { flex: 0 1 auto; min-width: 0; max-width: 100%; overflow-x: auto; }
+.why[open] { flex-basis: 100%; }
+.why > summary { cursor: pointer; list-style: none; display: inline-block; border-bottom: 1px solid var(--line-strong); }
+.why > summary::-webkit-details-marker { display: none; }
+.why > summary:hover { color: var(--white); border-bottom-color: var(--white); }
+.trace { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12.5px; }
+.trace td { padding: 5px 6px; border-top: 1px solid var(--border); vertical-align: top; color: var(--ink-soft); overflow-wrap: anywhere; }
+.trace td:first-child { color: var(--muted); white-space: nowrap; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; font-weight: 600; }
+.trace td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--text); }
+.trace tr.final td { color: var(--white); font-weight: 700; }
+
+/* ---- PANELS / FOLDS ---- */
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 16px 18px; margin-top: 12px; }
+details.fold { padding: 0; overflow: hidden; }
+details.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; user-select: none; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary:hover { background: var(--surface2); }
+.fold-title { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+.fold-chevron { color: var(--muted); font-size: 11px; transition: transform .2s; flex-shrink: 0; }
+details.fold[open] .fold-chevron { transform: rotate(180deg); }
+.fold-body { padding: 4px 16px 16px; font-size: 13px; color: var(--ink-soft); }
+.fold-body p { margin-bottom: 10px; line-height: 1.55; }
+.scoring-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 4px; }
+.score-key { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-soft); }
+.score-key .score-circle { width: 22px; height: 22px; font-size: 0; margin: 0; }
+.quick a { display: inline-block; color: var(--text); font-size: 12px; margin: 0 16px 6px 0; text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 1px; }
+.quick a:hover { border-bottom-color: var(--white); }
+.nearby-row { padding: 9px 0; border-top: 1px solid var(--border); }
+.nearby-row:first-child { border-top: 0; }
+
+/* ---- TABS ---- */
+.tabs { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); }
+.tabs-inner { max-width: 1040px; margin: 0 auto; display: flex; justify-content: center; gap: 6px; padding: 10px 24px; overflow-x: auto; }
+.tab { background: none; border: none; font-family: var(--sans); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--muted); padding: 10px 18px; cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; white-space: nowrap; }
+.tab:hover { color: var(--white); }
+.tab.active { color: var(--white); border-bottom-color: var(--white); }
+.view { display: none; }
+.view.active { display: block; }
+
+/* ---- UNDER THE HOOD ---- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 10px; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 16px 12px; text-align: center; }
+.stat-number { font-family: var(--display); font-size: 36px; font-weight: 700; color: var(--white); line-height: 1; }
+.stat-label { font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 1.5px; text-transform: uppercase; }
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 3px; background: var(--surface); }
+.tbl { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+.tbl th { padding: 9px 12px; text-align: left; color: var(--muted); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--line-strong); }
+.tbl td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--ink-soft); vertical-align: top; }
+.tbl tr:last-child td { border-bottom: none; }
+.tbl a { color: var(--text); }
+.sub { font-size: 12px; color: var(--muted); }
+.st { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; white-space: nowrap; border: 1px solid; }
+.st.ok { background: var(--white); color: var(--ink-dark); border-color: var(--white); }
+.st.partial, .st.stale { color: var(--silver); border-color: var(--silver); }
+.st.js, .st.empty { color: var(--muted); border-color: var(--line-strong); border-style: dashed; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid2 .panel { margin-top: 0; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+.list { list-style: none; }
+.list li { padding: 9px 0; border-top: 1px solid var(--border); font-size: 13.5px; }
+.list li:first-child { border-top: 0; }
+.panel-title { font-family: var(--display); font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; }
+.map { width: 100%; height: auto; display: block; }
+
+/* ---- FOOTER ---- */
+footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 28px; }
+
+@media (max-width: 600px) {
+  .site-header-inner, .hero-inner, .container, .tabs-inner, .test-inner { padding-left: 16px; padding-right: 16px; }
+  .tonight-banner { margin-left: 16px; margin-right: 16px; flex-direction: column; gap: 6px; }
+  .week-body { padding: 4px 14px 12px; }
+  .week-header { padding: 13px 14px; }
+  .tabs-inner { justify-content: flex-start; }
+  .tab { padding: 10px 12px; }
 }
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
-a{color:inherit}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}
-.test{background:var(--warn-soft);color:var(--warn);font-size:13px;padding:8px 0;border-bottom:1px solid var(--line)}
-header.top{padding:36px 0 20px}
-.brand{font:700 clamp(30px,6vw,46px)/1.05 "Space Grotesk",sans-serif;letter-spacing:-.02em;margin:0}
-.brand span{color:var(--canal)}
-.tag{color:var(--muted);margin:8px 0 0;max-width:620px}
-h2{font:600 22px/1.2 "Space Grotesk",sans-serif;margin:40px 0 12px;letter-spacing:-.01em}
-h3{margin:0}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:thin}
-.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 13px Inter,sans-serif;cursor:pointer}
-.tabs button[aria-selected="true"]{background:var(--canal);border-color:var(--canal);color:#fff}
-.tabs button .n{opacity:.7;margin-left:4px}
-.card{display:grid;grid-template-columns:56px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
-.score{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;font:700 19px "Space Grotesk",sans-serif;color:#fff;background:#7d8581}
-.s-must{background:linear-gradient(135deg,#c9952f,#8f6414)}
-.s-great{background:var(--canal)}
-.s-good{background:#6f8f5a}
-.meta{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-.card h3{font:600 17px/1.3 "Space Grotesk",sans-serif;margin:2px 0 3px}
-.card h3 a{text-decoration:none}
-.card h3 a:hover{text-decoration:underline}
-.where{font-size:13.5px;color:var(--muted)}
-.blurb{margin:6px 0 0;font-size:14px}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
-.chip{font-size:11.5px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--muted)}
-.chip.free{background:var(--canal-soft);color:var(--canal)}
-.chip.rec{background:var(--brick-soft);color:var(--brick)}
-.chip.dup{background:var(--gold-soft);color:var(--gold)}
-.chip.warn{background:var(--warn-soft);color:var(--warn)}
-details.why{margin-top:8px;font-size:13px}
-details.why summary{cursor:pointer;color:var(--canal);font-weight:600;list-style:none}
-details.why summary::-webkit-details-marker{display:none}
-details.why summary::before{content:"▸ "}
-details.why[open] summary::before{content:"▾ "}
-.trace{width:100%;border-collapse:collapse;margin-top:6px}
-.trace td{padding:4px 6px;border-top:1px solid var(--line);vertical-align:top}
-.trace td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-.trace tr.final td{font-weight:600}
-.more{margin:6px 0 0;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:8px 14px;font:500 13px Inter,sans-serif;cursor:pointer}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (max-width:720px){.grid2{grid-template-columns:1fr}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.panel h3{font:600 15px "Space Grotesk",sans-serif;margin:0 0 6px}
-.list{list-style:none;margin:0;padding:0}
-.list li{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
-.list li:first-child{border-top:0}
-.sub{color:var(--muted);font-size:12.5px}
-.funnel{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
-.funnel div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.funnel b{display:block;font:700 24px "Space Grotesk",sans-serif}
-.funnel span{font-size:12px;color:var(--muted)}
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
-table.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
-table.tbl th,table.tbl td{text-align:left;padding:7px 10px;border-top:1px solid var(--line);vertical-align:top}
-table.tbl th{border-top:0;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-.st{font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;white-space:nowrap}
-.st.ok{background:var(--canal-soft);color:var(--canal)}
-.st.partial,.st.stale{background:var(--warn-soft);color:var(--warn)}
-.st.js,.st.empty{background:var(--bad-soft);color:var(--bad)}
-.map{width:100%;height:auto;display:block}
-.note{font-size:13.5px;color:var(--muted)}
-footer{padding:40px 0 60px;color:var(--muted);font-size:12.5px}
 </style>
 </head>
 <body>
-<div class="test"><div class="wrap">Test build. Unlisted and not linked from candlewoodlakeevents.com. Listings fetched Oct 25, 2026; nothing refreshes them.</div></div>
-<div class="wrap">
-  <header class="top">
-    <h1 class="brand">Gowanus <span>Events</span></h1>
-    <p class="tag">What's worth leaving the house for, within a 20-minute walk of the canal. Ranked, deduplicated, and with the weekly regulars moved out of the way.</p>
-  </header>
+<div class="test-bar"><div class="test-inner"><span class="test-label">Test build</span><span>Unlisted. Listings from Oct 25, 2026, not refreshed.</span></div></div>
 
-  <nav class="tabs" id="tabs" aria-label="Weeks"></nav>
-  <section id="feed"></section>
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="brand">
+      <div class="brand-mark">Gowanus Events</div>
+      <div class="brand-sub">Comedy, Music &amp; Nights Out · Brooklyn</div>
+    </div>
+    <div class="roundel" aria-hidden="true">GE</div>
+  </div>
+</header>
 
-  <h2>Every week in Gowanus</h2>
-  <p class="note">Recurring nights are listed once here instead of filling the feed every week. Each appears in the feed at most once a month.</p>
-  <div class="grid2" id="weekly"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">Gowanus · Park Slope · Carroll Gardens · Brooklyn</p>
+    <h1 class="hero-title">The best nights out, a short walk from the canal.</h1>
+    <p class="hero-sub" id="heroMeta"></p>
+    <div class="hero-rule"></div>
+  </div>
+</section>
 
-  <h2>Also nearby</h2>
-  <p class="note">Arena-scale venues sit inside the walk radius but would top the guide every night they book. They're kept out of the ranking.</p>
-  <div class="panel"><ul class="list" id="nearby"></ul></div>
+<nav class="tabs">
+  <div class="tabs-inner">
+    <button class="tab active" data-view="events">Events</button>
+    <button class="tab" data-view="weekly">Every Week</button>
+    <button class="tab" data-view="hood">Under the Hood</button>
+  </div>
+</nav>
 
-  <h2>Pipeline report</h2>
-  <p class="note">How this page was made from the raw listings. Built for evaluating the scoring, not for the public site.</p>
-  <div class="funnel" id="funnel"></div>
+<div class="view active" id="view-events">
+  <div id="tonightBanner"></div>
+  <div class="container">
+    <div class="section-label">Upcoming, ranked by score</div>
+    <div id="weeks"></div>
 
-  <h2>Sources</h2>
-  <div class="tbl-wrap"><table class="tbl" id="sources"></table></div>
-
-  <h2>Map</h2>
-  <div class="panel"><svg class="map" id="map" role="img" aria-label="Map of venues relative to the Gowanus Canal"></svg>
-  <p class="note" id="mapnote"></p></div>
-
-  <h2>Dropped before scoring</h2>
-  <div class="tbl-wrap"><table class="tbl" id="dropped"></table></div>
-
-  <h2>Duplicates merged</h2>
-  <div class="tbl-wrap"><table class="tbl" id="merged"></table></div>
-
-  <h2>Evidence gate</h2>
-  <p class="note">A quality of 8.6+ needs a researched record; unresearched claims are capped at 8.4. (Candlewood uses 9.0 and 8.5. Here almost every venue sits at proximity 10, where an 8.5 bakes to a gold 9.0.) The records below were seeded by hand for this test from public sources, standing in for the pipeline's research step.</p>
-  <div class="grid2"><div class="panel"><h3>Capped</h3><ul class="list" id="gated"></ul></div><div class="panel"><h3>Research records</h3><ul class="list" id="research"></ul></div></div>
-
-  <footer>Gowanus Events test build · Scoring: score = proximity × 0.3 + quality × 0.7, computed once. Proximity from walking time to the canal centerline (OpenStreetMap geometry).</footer>
+    <details class="panel fold">
+      <summary><span class="fold-title">Also nearby: the arenas</span><span class="fold-chevron">▼</span></summary>
+      <div class="fold-body"><p>Arena-scale venues sit inside the walk radius but would top the guide every night they book, so they're kept out of the ranking.</p><div id="nearby"></div></div>
+    </details>
+    <details class="panel fold">
+      <summary><span class="fold-title">How events are scored</span><span class="fold-chevron">▼</span></summary>
+      <div class="fold-body">
+        <p>Score = (Proximity × 0.3) + (Quality × 0.7). Proximity comes from the walk to the nearest point on the canal: up to 5 minutes is 10, 10 minutes is 9, 15 minutes is 8, 20 minutes is 6.5. Anything farther is left out.</p>
+        <p>Quality starts as a judgment of the event on its own merits, then gets adjusted: a floor for venues that book reliably, a penalty for recurring nights (weekly −1.5, twice a month −1.0, monthly −0.5), and +0.6 for free events. A quality of 8.6 or more needs researched evidence, otherwise it's capped at 8.4. Open any card's "Why" to see its math.</p>
+        <div class="scoring-grid">
+          <div class="score-key"><div class="score-circle score-must"></div><span>9.0+ Must Go</span></div>
+          <div class="score-key"><div class="score-circle score-great"></div><span>7.0–8.9 Great</span></div>
+          <div class="score-key"><div class="score-circle score-good"></div><span>5.0–6.9 Good</span></div>
+          <div class="score-key"><div class="score-circle score-ok"></div><span>&lt;5.0 OK</span></div>
+        </div>
+      </div>
+    </details>
+    <details class="panel fold">
+      <summary><span class="fold-title">Source calendars</span><span class="fold-chevron">▼</span></summary>
+      <div class="fold-body quick" id="quicklinks"></div>
+    </details>
+  </div>
 </div>
+
+<div class="view" id="view-weekly">
+  <div class="container">
+    <div class="section-label">Every week in Gowanus</div>
+    <p class="section-intro">Recurring nights are listed once here instead of filling the feed every week. Each shows up in the event list at most once a month.</p>
+    <div class="week-accordion open"><div class="week-body" id="weekly"></div></div>
+  </div>
+</div>
+
+<div class="view" id="view-hood">
+  <div class="container">
+    <div class="section-label">Pipeline</div>
+    <p class="section-intro">How the event list was built from the raw listings. This tab exists for evaluating the test build and wouldn't ship on the public site.</p>
+    <div class="stats" id="funnel"></div>
+
+    <div class="section-label">Sources</div>
+    <div class="tbl-wrap"><table class="tbl" id="sources"></table></div>
+
+    <div class="section-label">Map</div>
+    <div class="panel" style="margin-top:0"><svg class="map" id="map" role="img" aria-label="Map of venues relative to the Gowanus Canal"></svg><p class="sub" id="mapnote" style="margin-top:8px"></p></div>
+
+    <div class="section-label">Dropped before scoring</div>
+    <div class="tbl-wrap"><table class="tbl" id="dropped"></table></div>
+
+    <div class="section-label">Duplicates merged</div>
+    <div class="tbl-wrap"><table class="tbl" id="merged"></table></div>
+
+    <div class="section-label">Evidence gate</div>
+    <p class="section-intro">A quality of 8.6+ needs a researched record; unresearched claims are capped at 8.4. (Candlewood uses 9.0 and 8.5. Here almost every venue sits at proximity 10, where an 8.5 bakes to a 9.0.) The research records were seeded by hand for this test from public sources, standing in for the pipeline's research step.</p>
+    <div class="grid2"><div class="panel"><div class="panel-title">Capped</div><ul class="list" id="gated"></ul></div><div class="panel"><div class="panel-title">Research records</div><ul class="list" id="research"></ul></div></div>
+  </div>
+</div>
+
+<footer>Gowanus Events · Test build · Not linked from candlewoodlakeevents.com</footer>
 
 <script>
 // ---------------------------------------------------------------------------
@@ -602,34 +753,51 @@ function patternLabel(e) {
   if (e.cadenceLabel) return `Recurring (${e.cadenceLabel})`;
   return { weekly: 'Weekly', '2x-month': 'Twice a month', monthly: 'Monthly' }[e.pattern] || '';
 }
-
 // ---------------------------------------------------------------------------
-// Rendering
+// Rendering. Structure mirrors the Candlewood site: week accordions, score circles,
+// uppercase tags, folds at the bottom.
 // ---------------------------------------------------------------------------
-const scoreClass = (s) => s >= 9 ? 's-must' : s >= 7 ? 's-great' : s >= 5 ? 's-good' : '';
-const walkLabel = (m) => m < 1.5 ? 'on the canal' : `${Math.ceil(m)} min walk from the canal`;
+const scoreClass = (s) => s >= 9 ? 'score-must' : s >= 7 ? 'score-great' : s >= 5 ? 'score-good' : 'score-ok';
+// Walk minutes round UP for display, so a 15.5-minute venue never reads "15" while scoring in the 15-20 band.
+const walkShort = (m) => m < 1.5 ? 'On the canal' : `${Math.ceil(m)} min walk`;
+const cardId = (e) => 'ev-' + norm(e.v + ' ' + e.d + ' ' + e.title).replace(/ /g, '-').slice(0, 80);
 
-function card(e) {
-  const chips = [`<span class="chip">${esc(e.type)}</span>`];
-  if (e.price === 'free') chips.push('<span class="chip free">Free</span>');
-  if (e.pattern && e.pattern !== 'one-off') chips.push(`<span class="chip rec">${esc(patternLabel(e))}</span>`);
-  for (const s of new Set(e.alsoOn)) chips.push(`<span class="chip dup">Also on ${esc(SOURCES[s].name)}</span>`);
-  if (e.timeSuspect) chips.push('<span class="chip warn">Time unclear</span>');
-  const rows = [`<tr><td>Model judgment</td><td></td><td class="num">${e.fq0.toFixed(1)}</td></tr>`]
-    .concat(e.trace.map((t) => `<tr><td>${esc(t.stage)}</td><td>${esc(t.note)}</td><td class="num">${(t.to - t.from >= 0 ? '+' : '') + (t.to - t.from).toFixed(1)} → ${t.to.toFixed(1)}</td></tr>`))
-    .concat([`<tr><td>Proximity</td><td>${e.walk.toFixed(1)} min walk</td><td class="num">${e.prox}</td></tr>`,
-      `<tr class="final"><td>Score</td><td>${e.prox} × 0.3 + ${e.fq.toFixed(1)} × 0.7</td><td class="num">${e.score.toFixed(1)}</td></tr>`]);
-  const time = e.timeSuspect ? `Time unclear (listed ${e.t})` : e.t;
-  return `<article class="card" id="ev-${esc(norm(e.v + ' ' + e.d + ' ' + e.title).replace(/ /g, '-').slice(0, 80))}">
-    <div class="score ${scoreClass(e.score)}">${e.score.toFixed(1)}</div>
-    <div>
-      <div class="meta">${esc(fmtDate(e.d))}${time ? ' · ' + esc(time) : ''}</div>
-      <h3><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a></h3>
-      <div class="where">${esc(e.venue.name)} · ${esc(walkLabel(e.walk))}</div>
-      ${e.blurb ? `<p class="blurb">${esc(e.blurb)}</p>` : ''}
-      <div class="chips">${chips.join('')}</div>
-      <details class="why"><summary>Why ${e.score.toFixed(1)}</summary><table class="trace">${rows.join('')}</table></details>
-    </div></article>`;
+function tags(e) {
+  const t = [`<span class="tag tag-type">${esc(e.type)}</span>`];
+  if (e.price === 'free') t.push('<span class="tag tag-free">Free</span>');
+  t.push(`<span class="tag tag-dist">${esc(walkShort(e.walk))}</span>`);
+  if (e.pattern && e.pattern !== 'one-off') t.push(`<span class="tag tag-rec">${esc(patternLabel(e))}</span>`);
+  if (e.timeSuspect) t.push('<span class="tag tag-warn">Time unclear</span>');
+  return t.join('');
+}
+
+function traceTable(e) {
+  const fmt = (d) => (d >= 0 ? '+' : '') + d.toFixed(1);
+  return '<table class="trace">'
+    + `<tr><td>Judgment</td><td>Quality on its own merits</td><td class="num">${e.fq0.toFixed(1)}</td></tr>`
+    + e.trace.map((t) => `<tr><td>${esc(t.stage)}</td><td>${esc(t.note)}</td><td class="num">${fmt(t.to - t.from)} → ${t.to.toFixed(1)}</td></tr>`).join('')
+    + `<tr><td>Proximity</td><td>${e.walk.toFixed(1)} min walk to the canal</td><td class="num">${e.prox}</td></tr>`
+    + `<tr class="final"><td>Score</td><td>${e.prox} × 0.3 + ${e.fq.toFixed(1)} × 0.7</td><td class="num">${e.score.toFixed(1)}</td></tr>`
+    + '</table>';
+}
+
+function eventCard(e) {
+  const when = e.timeSuspect ? `${fmtDate(e.d)} · Time unclear (listed ${e.t})` : `${fmtDate(e.d)}${e.t ? ' · ' + e.t : ''}`;
+  const also = [...new Set(e.alsoOn)].map((s) => SOURCES[s].name);
+  return `<div class="event-card" id="${esc(cardId(e))}">
+    <div class="score-circle ${scoreClass(e.score)}">${e.score.toFixed(1)}</div>
+    <div class="card-content">
+      <div class="venue-badge">${esc(e.venue.name)}</div>
+      <div class="card-title"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a></div>
+      <div class="card-meta">${tags(e)}</div>
+      <div class="card-when">${esc(when)}</div>
+      ${e.blurb ? `<div class="card-desc">${esc(e.blurb)}</div>` : ''}
+      <div class="card-foot">
+        <div class="card-source"><a href="${esc(SOURCES[e.src].url)}" target="_blank" rel="noopener">${esc(SOURCES[e.src].name === e.venue.name ? 'Venue calendar' : SOURCES[e.src].name)}</a>${also.length ? `<span class="sub"> · also on ${esc(also.join(', '))}</span>` : ''}</div>
+        <details class="why"><summary>Why ${e.score.toFixed(1)}</summary>${traceTable(e)}</details>
+      </div>
+    </div>
+  </div>`;
 }
 
 function weeks(R) {
@@ -643,43 +811,73 @@ function weeks(R) {
       if ((perVenue[e.v] = (perVenue[e.v] || 0) + 1) > MAX_PER_VENUE_PER_WEEK) continue;
       top.push(e);
     }
-    out.push({ label: i === 0 ? 'Next 7 days' : `${fmtDate(from, { month: 'short', day: 'numeric' })} – ${fmtDate(to, { month: 'short', day: 'numeric' })}`, evs, top });
+    const short = (d) => fmtDate(d, { month: 'short', day: 'numeric' });
+    out.push({ id: 'wk' + i, label: i === 0 ? 'Next 7 Days' : `${short(from)} – ${short(to)}`, evs, top, rest: evs.filter((e) => !top.includes(e)) });
   }
   return out;
 }
 
-function renderFeed(W, i, showAll) {
-  const w = W[i];
-  const list = showAll ? w.evs : w.top;
-  const rest = w.evs.length - w.top.length;
-  document.getElementById('feed').innerHTML = (list.length ? list.map(card).join('') : '<p class="note">No listings for this week yet. Most venue calendars only run a few weeks out.</p>')
-    + (!showAll && rest > 0 ? `<button class="more" id="more">Show all ${w.evs.length} (${rest} more, ranked lower or over the ${MAX_PER_VENUE_PER_WEEK}-per-venue cap)</button>` : '');
-  const m = document.getElementById('more');
-  if (m) m.onclick = () => renderFeed(W, i, true);
-  document.querySelectorAll('#tabs button').forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
+function renderWeeks(W) {
+  document.getElementById('weeks').innerHTML = W.map((w, i) => {
+    const max = w.evs.length ? Math.max(...w.evs.map((e) => e.score)) : null;
+    const body = w.evs.length
+      ? w.top.map(eventCard).join('')
+        + (w.rest.length ? `<div class="week-extra" hidden>${w.rest.map(eventCard).join('')}</div><button class="week-showall" type="button">Show all ${w.evs.length} events</button>` : '')
+      : '<div class="week-empty">No listings yet. Most venue calendars only run a few weeks out.</div>';
+    return `<div class="week-accordion${i === 0 ? ' open' : ''}" id="${w.id}">
+      <div class="week-header"><div class="week-header-left"><span class="week-title">${esc(w.label)}</span><span class="week-count">${w.evs.length} event${w.evs.length === 1 ? '' : 's'}</span>${max !== null ? `<span class="week-top">Top ${max.toFixed(1)}</span>` : ''}</div><span class="week-chevron">▼</span></div>
+      <div class="week-body">${body}</div></div>`;
+  }).join('');
+  document.querySelectorAll('#weeks .week-header').forEach((h) => h.onclick = () => h.parentElement.classList.toggle('open'));
+  document.querySelectorAll('#weeks .week-showall').forEach((b) => b.onclick = () => {
+    const extra = b.previousElementSibling, show = extra.hidden;
+    extra.hidden = !show;
+    b.textContent = show ? 'Show top picks only' : `Show all ${b.closest('.week-body').querySelectorAll('.event-card').length} events`;
+  });
 }
 
-function renderModules(R) {
-  const weekly = R.series.map((g) => {
-    const next = g.find((e) => !e.collapsed) || g[0];
-    return `<div class="panel"><h3>${esc(next.series || next.title)}</h3><div class="sub">${esc(next.venue.name)} · ${esc(next.cadenceLabel || 'Weekly')} · ${esc(next.t)}</div>
-      <div class="sub">Next: ${esc(fmtDate(g[0].d))} · ${g.length} dates through ${esc(fmtDate(g[g.length - 1].d))}</div></div>`;
+function renderTonight(R) {
+  const tonight = R.feed.filter((e) => e.d === R.today).sort((a, b) => b.score - a.score).slice(0, 3);
+  if (!tonight.length) return;
+  const shows = tonight.map((e) => `${esc(e.title)} <span class="sub">· ${esc(e.venue.name)}, ${esc(e.t)}</span>`).join('<br>');
+  document.getElementById('tonightBanner').innerHTML = `<div class="tonight-banner"><div class="fire">Tonight</div><div><strong>Worth going to</strong><div class="tonight-shows">${shows}</div></div></div>`;
+}
+
+function renderWeekly(R) {
+  const row = (circle, title, url, venue, tagList, when, desc) => `<div class="event-card">
+    <div class="score-circle score-none">${circle}</div>
+    <div class="card-content">
+      <div class="venue-badge">${esc(venue)}</div>
+      <div class="card-title">${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(title)}</a>` : esc(title)}</div>
+      <div class="card-meta">${tagList.map((t) => `<span class="tag ${t[1] || ''}">${esc(t[0])}</span>`).join('')}</div>
+      <div class="card-when">${esc(when)}</div>
+      ${desc ? `<div class="card-desc">${esc(desc)}</div>` : ''}
+    </div></div>`;
+  const series = R.series.map((g) => {
+    const e = g[0];
+    return row('↻', e.series || e.title, e.url, e.venue.name, [[e.type, 'tag-type'], [e.cadenceLabel || 'Weekly', 'tag-rec'], [walkShort(e.walk), 'tag-dist']],
+      `${e.t} · next ${fmtDate(e.d)} · ${g.length} dates through ${fmtDate(g[g.length - 1].d)}`);
   });
-  const standing = STANDING.map((s) => `<div class="panel"><h3><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></h3><div class="sub">${esc(VENUES[s.v].name)} · ${esc(s.when)}</div><div class="sub">${esc(s.note)}</div></div>`);
-  const ongoing = ONGOING.map((x) => `<div class="panel"><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a></h3><div class="sub">${esc(VENUES[x.v].name)} · ${esc(x.when)}, ${esc(fmtDate(x.start, { month: 'short', day: 'numeric' }))} – ${esc(fmtDate(x.end, { month: 'short', day: 'numeric' }))}</div><div class="sub">Exhibition. Its closing weekend appears in the feed.</div></div>`);
-  document.getElementById('weekly').innerHTML = weekly.concat(standing, ongoing).join('');
+  const standing = STANDING.map((s) => row('↻', s.title, s.url, VENUES[s.v].name, [['Family', 'tag-type'], ['Select Sundays', 'tag-rec'], [walkShort(walkMinutes(VENUES[s.v])), 'tag-dist']], s.when, s.note));
+  const ongoing = ONGOING.map((x) => row('◐', x.title, x.url, VENUES[x.v].name, [['Exhibition', 'tag-type'], [x.when, 'tag-rec'], [walkShort(walkMinutes(VENUES[x.v])), 'tag-dist']],
+    `${fmtDate(x.start, { month: 'short', day: 'numeric' })} – ${fmtDate(x.end, { month: 'short', day: 'numeric' })}`, 'Its closing weekend appears in the event list.'));
+  document.getElementById('weekly').innerHTML = series.concat(standing, ongoing).join('');
+}
+
+function renderBottom(R) {
   document.getElementById('nearby').innerHTML = R.nearby.length
-    ? R.nearby.map((e) => `<li><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><div class="sub">${esc(e.venue.name)} · ${esc(fmtDate(e.d))} · ${Math.ceil(e.walk)} min walk from the canal</div></li>`).join('')
-    : '<li class="sub">Nothing upcoming.</li>';
+    ? R.nearby.map((e) => `<div class="nearby-row"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a><div class="sub">${esc(e.venue.name)} · ${esc(fmtDate(e.d))} · ${Math.ceil(e.walk)} min walk from the canal</div></div>`).join('')
+    : '<div class="sub">Nothing upcoming.</div>';
+  document.getElementById('quicklinks').innerHTML = Object.values(SOURCES).map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join('');
 }
 
 function renderReport(R, W) {
   const shownTop = W.reduce((a, w) => a + w.top.length, 0);
   const collapsed = R.events.filter((e) => e.collapsed).length;
-  const box = (n, l) => `<div><b>${n}</b><span>${l}</span></div>`;
+  const stat = (n, l) => `<div class="stat"><div class="stat-number">${n}</div><div class="stat-label">${l}</div></div>`;
   document.getElementById('funnel').innerHTML = [
-    box(R.raw, 'raw listings fetched'), box(R.past, 'already past'), box(R.afterFilter, 'after filters'),
-    box(R.afterDedupe, 'after dedupe'), box(collapsed, 'weekly repeats folded'), box(R.feed.length, 'in the feed'), box(shownTop, 'shown as top picks'),
+    stat(R.raw, 'Raw listings'), stat(R.past, 'Already past'), stat(R.afterFilter, 'After filters'),
+    stat(R.afterDedupe, 'After dedupe'), stat(collapsed, 'Weekly repeats folded'), stat(R.feed.length, 'In the feed'), stat(shownTop, 'Top picks'),
   ].join('');
 
   const count = {};
@@ -699,7 +897,7 @@ function renderReport(R, W) {
   document.getElementById('research').innerHTML = Object.entries(RESEARCH).map(([k, r]) => `<li><b>${esc(k)}</b> · ${r.fq.toFixed(1)} · ${esc(r.confidence)}<div class="sub">${esc(r.basis)} <a href="${esc(r.sources[0])}" target="_blank" rel="noopener">Source</a></div></li>`).join('');
 
   if (R.violations.length) {
-    document.getElementById('feed').insertAdjacentHTML('afterbegin', `<p class="chip warn">Scoring invariant broken for ${R.violations.length} event(s).</p>`);
+    document.getElementById('weeks').insertAdjacentHTML('beforebegin', `<p class="tag tag-warn">Scoring invariant broken for ${R.violations.length} event(s).</p>`);
   }
 }
 
@@ -714,8 +912,8 @@ function mapLabels(pts, X, Y, W) {
     let ly = y + 4;
     while (placed.some((b) => x0 < b.x1 && x0 + w > b.x0 && Math.abs(ly - b.y) < LH)) ly += LH;
     placed.push({ x0, x1: x0 + w, y: ly });
-    if (Math.abs(ly - (y + 4)) > 1) out.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${(left ? x - 10 : x + 10).toFixed(1)}" y2="${(ly - 4).toFixed(1)}" stroke="var(--muted)" stroke-width="1"/>`);
-    out.push(`<text x="${(left ? x - 12 : x + 12).toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" fill="var(--ink)" text-anchor="${left ? 'end' : 'start'}" font-family="Inter,sans-serif">${esc(text)}</text>`);
+    if (Math.abs(ly - (y + 4)) > 1) out.push(`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${(left ? x - 10 : x + 10).toFixed(1)}" y2="${(ly - 4).toFixed(1)}" stroke="var(--line-strong)" stroke-width="1"/>`);
+    out.push(`<text x="${(left ? x - 12 : x + 12).toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" fill="var(--ink-soft)" text-anchor="${left ? 'end' : 'start'}" font-family="Inter,sans-serif">${esc(text)}</text>`);
   }
   return out.join('');
 }
@@ -728,21 +926,30 @@ function renderMap() {
   const minX = Math.min(...lons) * kx, maxX = Math.max(...lons) * kx, minY = Math.min(...lats), maxY = Math.max(...lats);
   const s = Math.min((W - 2 * pad) / (maxX - minX), (H - 2 * pad) / (maxY - minY));
   const X = (lon) => pad + (lon * kx - minX) * s, Y = (lat) => H - pad - (lat - minY) * s;
-  const color = (v) => { const m = walkMinutes(v), p = proximity(m); return v.mega || p === null ? 'none' : p >= 10 ? 'var(--canal)' : p >= 9 ? '#7fa95a' : p >= 8 ? 'var(--gold)' : 'var(--brick)'; };
+  // Grayscale by proximity band: white 10, silver 9, gray 8, dark gray 6.5. Hollow = excluded.
+  const color = (v) => { const p = proximity(walkMinutes(v)); return v.mega || p === null ? 'none' : p >= 10 ? '#ffffff' : p >= 9 ? '#c4c7ca' : p >= 8 ? '#8d9196' : '#5a5e62'; };
   const svg = document.getElementById('map');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  svg.innerHTML = `<polyline points="${CANAL.map((p) => X(p[1]).toFixed(1) + ',' + Y(p[0]).toFixed(1)).join(' ')}" fill="none" stroke="var(--canal)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>`
-    + pts.map((v) => `<circle cx="${X(v.lon).toFixed(1)}" cy="${Y(v.lat).toFixed(1)}" r="6" fill="${color(v)}" stroke="${color(v) === 'none' ? 'var(--muted)' : 'var(--surface)'}" stroke-width="2"/>`).join('')
+  svg.innerHTML = `<polyline points="${CANAL.map((p) => X(p[1]).toFixed(1) + ',' + Y(p[0]).toFixed(1)).join(' ')}" fill="none" stroke="#3b3b3b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`
+    + `<polyline points="${CANAL.map((p) => X(p[1]).toFixed(1) + ',' + Y(p[0]).toFixed(1)).join(' ')}" fill="none" stroke="#070707" stroke-width="2" stroke-dasharray="4 5" stroke-linecap="round"/>`
+    + pts.map((v) => `<circle cx="${X(v.lon).toFixed(1)}" cy="${Y(v.lat).toFixed(1)}" r="6" fill="${color(v)}" stroke="${color(v) === 'none' ? '#8d9196' : '#070707'}" stroke-width="2"/>`).join('')
     + mapLabels(pts, X, Y, W);
-  document.getElementById('mapnote').textContent = 'Filled dots are scored, colored by proximity band (teal 10, green 9, gold 8, brick 6.5). Hollow dots are excluded: past 20 minutes, or arena-scale. Minutes are estimated walks to the nearest point on the canal.';
+  document.getElementById('mapnote').textContent = 'Filled dots are scored, shaded by proximity band (white 10, silver 9, gray 8, dark gray 6.5). Hollow dots are excluded: past 20 minutes, or arena-scale. Minutes are estimated walks to the nearest point on the canal.';
+}
+
+function showView(name) {
+  document.querySelectorAll('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-' + name));
+  document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('active', t.dataset.view === name));
 }
 
 const R = runPipeline(todayET() > SNAPSHOT ? todayET() : SNAPSHOT);
 const W = weeks(R);
-document.getElementById('tabs').innerHTML = W.map((w, i) => `<button role="tab" data-i="${i}">${esc(w.label)}<span class="n">${w.evs.length}</span></button>`).join('');
-document.querySelectorAll('#tabs button').forEach((b) => b.onclick = () => renderFeed(W, +b.dataset.i, false));
-renderFeed(W, 0, false);
-renderModules(R);
+document.getElementById('heroMeta').textContent = `Snapshot of ${fmtDate(SNAPSHOT, { month: 'short', day: 'numeric', year: 'numeric' })} · ${R.feed.length} events within a ${MAX_WALK_MIN}-minute walk`;
+document.querySelectorAll('.tab').forEach((t) => t.onclick = () => showView(t.dataset.view));
+renderTonight(R);
+renderWeeks(W);
+renderWeekly(R);
+renderBottom(R);
 renderReport(R, W);
 renderMap();
 </script>
