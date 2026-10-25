@@ -28,23 +28,11 @@ const DATA = {
    "lat": 40.68743,
    "lon": -73.99357
   },
-  "7th-avenue-and-14th-street": {
-   "name": "7th Avenue and 14th Street",
-   "addr": "7th Ave & 14th St, Brooklyn, NY 11215",
-   "lat": 40.66389,
-   "lon": -73.98409
-  },
-  "nycha-wyckoff-gardens-community-center": {
-   "name": "NYCHA Wyckoff Gardens Community Center",
-   "addr": "Brooklyn, NY",
-   "lat": 40.6526,
-   "lon": -73.94972
-  },
   "big-reuse": {
    "name": "Big Reuse",
    "addr": "Brooklyn, NY",
-   "lat": 40.6526,
-   "lon": -73.94972
+   "lat": 40.67195,
+   "lon": -73.99692
   },
   "336-douglass-st": {
    "name": "336 Douglass St",
@@ -67,8 +55,8 @@ const DATA = {
   "4th-st-and-5th-ave": {
    "name": "4th St and 5th Ave",
    "addr": "4th St & 5th Ave, Brooklyn, NY 11215",
-   "lat": 40.6526,
-   "lon": -73.94972
+   "lat": 40.67219,
+   "lon": -73.98379
   },
   "prospect-park": {
    "name": "Prospect Park",
@@ -76,17 +64,11 @@ const DATA = {
    "lat": 40.66161,
    "lon": -73.96225
   },
-  "other-half-brewing-company": {
-   "name": "Other Half Brewing Company",
-   "addr": "Brooklyn, NY",
-   "lat": 40.6526,
-   "lon": -73.94972
-  },
   "3rd-street": {
    "name": "3rd Street",
    "addr": "3rd Street, Gowanus, Brooklyn, NY",
-   "lat": 40.67615,
-   "lon": -73.99022
+   "lat": 40.67524,
+   "lon": -73.98834
   },
   "thomas-greene-park": {
    "name": "Thomas Greene Park",
@@ -103,8 +85,8 @@ const DATA = {
   "sponge-park-bond-street-gardens": {
    "name": "Sponge Park / Bond Street gardens",
    "addr": "Gowanus, Brooklyn, NY",
-   "lat": 40.67917,
-   "lon": -73.9885
+   "lat": 40.6779,
+   "lon": -73.9891
   },
   "judgy-baby": {
    "name": "Judgy Baby",
@@ -121,8 +103,8 @@ const DATA = {
   "library-for-arts-culture": {
    "name": "Library for Arts & Culture",
    "addr": "Brooklyn, NY",
-   "lat": 40.6526,
-   "lon": -73.94972
+   "lat": 40.68646,
+   "lon": -73.97839
   },
   "p-s-39-henry-bristow": {
    "name": "P.S. 39 Henry Bristow",
@@ -133,8 +115,8 @@ const DATA = {
   "court-street": {
    "name": "Court Street",
    "addr": "Court Street, Atlantic Avenue to Joralemon Street, Brooklyn, NY",
-   "lat": 40.6941,
-   "lon": -73.99178
+   "lat": 40.68969,
+   "lon": -73.99237
   },
   "carroll-gardens-library": {
    "name": "Carroll Gardens Library",
@@ -145,26 +127,26 @@ const DATA = {
   "arts-gowanus-studio": {
    "name": "Arts Gowanus studio",
    "addr": "Gowanus, Brooklyn, NY",
-   "lat": 40.67917,
-   "lon": -73.9885
+   "lat": 40.6779,
+   "lon": -73.9891
   },
   "park-slope-food-coop": {
    "name": "Park Slope Food Coop",
    "addr": "Park Slope, Brooklyn, NY",
-   "lat": 40.6701,
-   "lon": -73.98597
+   "lat": 40.67473,
+   "lon": -73.97682
   },
   "gowanus": {
    "name": "Gowanus",
    "addr": "Gowanus, Brooklyn, NY",
-   "lat": 40.67917,
-   "lon": -73.9885
+   "lat": 40.6779,
+   "lon": -73.9891
   },
   "brooklyn-community-board-6": {
    "name": "Brooklyn Community Board 6",
    "addr": "Park Slope, Brooklyn, NY",
-   "lat": 40.6701,
-   "lon": -73.98597
+   "lat": 40.70575,
+   "lon": -73.99628
   },
   "78th-precinct": {
    "name": "78th Precinct",
@@ -3889,7 +3871,7 @@ const DATA = {
    "grp": "community",
    "blurb": "Perhaps the largest children's Halloween march in NYC, running since 1986, heading up Seventh Avenue and ending at the Old Stone House.",
    "d": "2026-10-31",
-   "v": "7th-avenue-and-14th-street"
+   "venueName": "7th Avenue and 14th Street"
   },
   {
    "t": "7:15 PM",
@@ -3930,7 +3912,7 @@ const DATA = {
    "grp": "community",
    "blurb": "A public meeting held by the Gowanus Business Improvement District at Wyckoff Gardens Community Center.",
    "d": "2026-11-04",
-   "v": "nycha-wyckoff-gardens-community-center"
+   "venueName": "NYCHA Wyckoff Gardens Community Center"
   },
   {
    "t": "6:00 PM",
@@ -4126,7 +4108,7 @@ const DATA = {
    "grp": "community",
    "blurb": "A seasonal stout beer release event at Other Half Brewing in Carroll Gardens/Gowanus area.",
    "d": "2026-12-05",
-   "v": "other-half-brewing-company"
+   "venueName": "Other Half Brewing Company"
   },
   {
    "t": "12:00 PM",

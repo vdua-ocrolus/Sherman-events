@@ -119,7 +119,7 @@ async function research(prompt, { maxTokens = 64000, searchUses = 12, fetchUses 
       tools: [
         { type: 'web_search_20250305', name: 'web_search', max_uses: searchUses },
         { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: fetchUses },
-      ],
+      ].filter((t) => t.max_uses > 0), // the API rejects max_uses: 0
       messages,
     };
     // Thinking off for deterministic output, as in refresh-events.mjs. Sonnet 5 / Opus 5 /
@@ -202,24 +202,31 @@ function curatedKey(name, curated) {
 }
 const inNYC = (p) => p && p.lat > NYC_BBOX.s && p.lat < NYC_BBOX.n && p.lon > NYC_BBOX.w && p.lon < NYC_BBOX.e;
 
+// Area-level matches are worse than no match: "Brooklyn, NY" resolves to the borough's
+// center (a 70-minute walk), and a bare street name to the middle of a road miles long.
+const AREA_TYPES = new Set(['country', 'state', 'county', 'city', 'borough', 'town', 'village', 'city_district', 'suburb', 'neighbourhood', 'quarter', 'postcode', 'road']);
 async function nominatim(q) {
-  const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`;
+  // Bounded to a box around the neighborhood: a same-named place in Queens is a wrong answer.
+  const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&viewbox=-74.035,40.71,-73.94,40.625&bounded=1&q=${encodeURIComponent(q)}`;
   const res = await fetch(url, { headers: { 'User-Agent': UA } });
   await sleep(1100);
   if (!res.ok) throw new Error(`Nominatim HTTP ${res.status}`);
   const [hit] = await res.json();
-  return hit ? { lat: +hit.lat, lon: +hit.lon } : null;
+  if (!hit || AREA_TYPES.has(hit.addresstype)) return null;
+  return { lat: +hit.lat, lon: +hit.lon };
 }
 
 // "7th Ave & 14th St" style addresses: find the node two named streets share.
+const ORDINALS = { first: '1st', second: '2nd', third: '3rd', fourth: '4th', fifth: '5th', sixth: '6th', seventh: '7th', eighth: '8th', ninth: '9th', tenth: '10th', eleventh: '11th', twelfth: '12th' };
 function streetName(s) {
-  return s.trim()
+  return s.trim().replace(/^(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth)\b/i, (w) => ORDINALS[w.toLowerCase()])
     .replace(/\bSt\b\.?$/i, 'Street').replace(/\bAve?\b\.?$/i, 'Avenue').replace(/\bPl\b\.?$/i, 'Place')
     .replace(/\bBlvd\b\.?$/i, 'Boulevard').replace(/\bPkwy\b\.?$/i, 'Parkway').replace(/\bRd\b\.?$/i, 'Road')
     .replace(/\s+/g, ' ');
 }
 async function intersection(address) {
-  const m = /^([^,&]+?)\s+(?:&|and|at)\s+([^,]+?)(?:,|$)/i.exec(address || '');
+  const m = /^([^,&]+?)\s+(?:&|and|at)\s+([^,]+?)(?:,|$)/i.exec(address || '')
+    || /^([^,]+?),\s*(?:between\s+|from\s+)?([^,]+?)\s+(?:to|and)\s+[^,]+/i.exec(address || ''); // "5th Ave, Union St to 4th St"
   if (!m) return null;
   const a = streetName(m[1]).replace(/"/g, ''), b = streetName(m[2]).replace(/"/g, '');
   const bbox = '40.64,-74.03,40.70,-73.95';
@@ -232,20 +239,29 @@ async function intersection(address) {
   return node ? { lat: node.lat, lon: node.lon } : null;
 }
 
+// "In Gowanus" with no address is a place on the canal; the neighborhood is the canal corridor.
+const GOWANUS_FALLBACK = { lat: 40.6779, lon: -73.9891 };
+
+// Returns { p, transient }: transient is true when a lookup errored (HTTP 5xx, network), so the
+// caller doesn't cache the miss for a week over a temporary outage.
 async function geocode(name, address) {
   const tries = [];
-  if (address) tries.push(() => nominatim(/brooklyn|\bny\b|new york/i.test(address) ? address : `${address}, Brooklyn, NY`));
+  let transient = false;
+  const hasStreet = /\d|\b(st|street|ave|avenue|pl|place|blvd|rd|road|park|pier)\b/i.test(address || '');
+  if (address && hasStreet) tries.push(() => nominatim(/brooklyn|\bny\b|new york/i.test(address) ? address : `${address}, Brooklyn, NY`));
   if (address) tries.push(() => intersection(address));
   if (name) tries.push(() => nominatim(`${name}, Brooklyn, NY`));
   for (const t of tries) {
     try {
       const p = await t();
-      if (inNYC(p)) return p;
+      if (inNYC(p)) return { p, transient: false };
     } catch (e) {
+      transient = true;
       console.log(`Geocode: ${e.message} for "${name}" / "${address}"`);
     }
   }
-  return null;
+  if (/gowanus/i.test(`${name} ${address}`)) return { p: GOWANUS_FALLBACK, transient: false };
+  return { p: null, transient };
 }
 
 const slug = (s) => norm(s).replace(/ /g, '-').slice(0, 40) || 'venue';
@@ -265,8 +281,8 @@ async function resolveVenues(items, cache, curated, today) {
     if (hit?.miss && hit.miss > addDays(today, -MISS_RETRY_DAYS)) { keys.set(id, null); stats.missed++; continue; }
     if (lookups >= MAX_GEOCODES) { keys.set(id, null); stats.skipped++; continue; }
     lookups++;
-    const p = await geocode(venue, address);
-    if (!p) { cache[id] = { miss: today }; keys.set(id, null); stats.missed++; continue; }
+    const { p, transient } = await geocode(venue, address);
+    if (!p) { if (!transient) cache[id] = { miss: today }; keys.set(id, null); stats.missed++; continue; }
     // Two names for one building (a venue and its room) share a key.
     const same = Object.values(cache).find((c) => c.key && Math.abs(c.lat - p.lat) < 0.0002 && Math.abs(c.lon - p.lon) < 0.0002 && norm(c.name) === norm(venue));
     let key = same?.key;
