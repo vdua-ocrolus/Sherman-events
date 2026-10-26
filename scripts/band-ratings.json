@@ -3627,5 +3627,20 @@
     ],
     "exampleTitle": "Ridgefield Hometown Celebration",
     "researchedAt": "2026-10-25"
+  },
+  "new milford carol sing and parade of lights": {
+    "displayName": "New Milford Carol Sing and Parade of Lights",
+    "funQuality": 7.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A nearly 50-year-old New Milford tradition (started 1977 by Skitch Henderson) combining a community carol sing with a parade that organizers say draws 'hundreds, if not thousands of people,' with 150-200 decorated vehicles participating and visitors coming from NY and MA.",
+    "confidence": "high",
+    "sources": [
+      "https://www.newmilfordnow.org/stories/carol-sing-parade-of-lights-to-take-center-stage-saturday",
+      "https://www.newmilfordedc.com/news-center/p/item/65618/holiday-traditions-bring-new-milford-together-this-winter",
+      "https://i95rock.com/new-milfords-dazzling-parade-of-lights-illuminates-the-holiday-season/"
+    ],
+    "exampleTitle": "New Milford Carol Sing and Parade of Lights",
+    "researchedAt": "2026-10-26"
   }
 }
