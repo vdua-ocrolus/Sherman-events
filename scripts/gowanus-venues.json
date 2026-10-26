@@ -175,5 +175,265 @@
     "addr": "65 6th Avenue, Brooklyn, NY",
     "lat": 40.68094,
     "lon": -73.9742
+  },
+  "brooklyn college tow center don buchwald theater|2900 bedford ave brooklyn ny 11210": {
+    "key": "brooklyn-college-tow-center-don-buchwald",
+    "name": "Brooklyn College Tow Center, Don Buchwald Theater",
+    "addr": "2900 Bedford Ave, Brooklyn, NY 11210",
+    "lat": 40.63104,
+    "lon": -73.95201
+  },
+  "st ann the holy trinity church|157 montague st brooklyn ny 11201": {
+    "key": "st-ann-the-holy-trinity-church",
+    "name": "St. Ann & the Holy Trinity Church",
+    "addr": "157 Montague St, Brooklyn, NY 11201",
+    "lat": 40.69459,
+    "lon": -73.99273
+  },
+  "brooklyn college tow center topfer rehearsal studio|2900 bedford ave brooklyn ny 11210": {
+    "key": "brooklyn-college-tow-center-topfer-rehea",
+    "name": "Brooklyn College Tow Center, Topfer Rehearsal Studio",
+    "addr": "2900 Bedford Ave, Brooklyn, NY 11210",
+    "lat": 40.63104,
+    "lon": -73.95201
+  },
+  "shapeshifter lab|18 whitwell pl brooklyn ny 11215": {
+    "key": "shapeshifter-lab",
+    "name": "ShapeShifter Lab",
+    "addr": "18 Whitwell Pl, Brooklyn, NY 11215",
+    "lat": 40.67645,
+    "lon": -73.98608
+  },
+  "brooklyn museum|200 eastern pkwy brooklyn ny 11238": {
+    "key": "brooklyn-museum",
+    "name": "Brooklyn Museum",
+    "addr": "200 Eastern Pkwy, Brooklyn, NY 11238",
+    "lat": 40.67095,
+    "lon": -73.96329
+  },
+  "forever brewing|gowanus brooklyn ny": {
+    "key": "forever-brewing",
+    "name": "Forever Brewing",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.6769,
+    "lon": -73.98409
+  },
+  "big reuse|gowanus brooklyn ny": {
+    "key": "big-reuse",
+    "name": "Big Reuse",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.67195,
+    "lon": -73.99692
+  },
+  "336 douglass st|336 douglass st brooklyn ny": {
+    "key": "336-douglass-st",
+    "name": "336 Douglass St",
+    "addr": "336 Douglass St, Brooklyn, NY",
+    "lat": 40.67937,
+    "lon": -73.98216
+  },
+  "nycha wyckoff gardens community center|wyckoff gardens brooklyn ny": {
+    "miss": "2026-10-26"
+  },
+  "4th street and 5th avenue jj byrne park|5th avenue 4th street brooklyn ny 11215": {
+    "key": "4th-street-and-5th-avenue-jj-byrne-park",
+    "name": "4th Street and 5th Avenue (JJ Byrne Park)",
+    "addr": "5th Avenue & 4th Street, Brooklyn, NY 11215",
+    "lat": 40.66991,
+    "lon": -73.97907
+  },
+  "carroll park|carroll street and court street brooklyn ny 11231": {
+    "key": "carroll-park",
+    "name": "Carroll Park",
+    "addr": "Carroll Street and Court Street, Brooklyn, NY 11231",
+    "lat": 40.68106,
+    "lon": -73.99652
+  },
+  "st paul hall|190 court street brooklyn ny 11201": {
+    "key": "st-paul-hall",
+    "name": "St. Paul Hall",
+    "addr": "190 Court Street, Brooklyn, NY 11201",
+    "lat": 40.68743,
+    "lon": -73.99357
+  },
+  "the senesh school|342 smith st carroll gardens brooklyn ny 11231": {
+    "key": "the-senesh-school",
+    "name": "The Senesh School",
+    "addr": "342 Smith St, Carroll Gardens, Brooklyn, NY 11231",
+    "lat": 40.67963,
+    "lon": -73.99559
+  },
+  "the old american can factory|232 3rd st brooklyn ny 11215": {
+    "key": "the-old-american-can-factory",
+    "name": "The Old American Can Factory",
+    "addr": "232 3rd St, Brooklyn, NY 11215",
+    "lat": 40.67471,
+    "lon": -73.98761
+  },
+  "207 4th ave|207 4th ave brooklyn ny": {
+    "key": "207-4th-ave",
+    "name": "207 4th Ave",
+    "addr": "207 4th Ave, Brooklyn, NY",
+    "lat": 40.67754,
+    "lon": -73.98283
+  },
+  "young ethel s|park slope brooklyn ny": {
+    "key": "young-ethel-s",
+    "name": "Young Ethel's",
+    "addr": "Park Slope, Brooklyn, NY",
+    "lat": 40.66716,
+    "lon": -73.98817
+  },
+  "halyards|gowanus brooklyn ny": {
+    "key": "halyards",
+    "name": "Halyards",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.67326,
+    "lon": -73.98974
+  },
+  "st john s church|park slope brooklyn ny": {
+    "key": "st-john-s-church",
+    "name": "St. John's Church",
+    "addr": "Park Slope, Brooklyn, NY",
+    "lat": 40.67253,
+    "lon": -73.95272
+  },
+  "june|231 smith st carroll gardens brooklyn ny": {
+    "key": "june",
+    "name": "June",
+    "addr": "231 Smith St, Carroll Gardens, Brooklyn, NY",
+    "lat": 40.67732,
+    "lon": -73.99653
+  },
+  "bar carroll gardens|carroll gardens brooklyn ny": {
+    "key": "bar-carroll-gardens",
+    "name": "Bar (Carroll Gardens)",
+    "addr": "Carroll Gardens, Brooklyn, NY",
+    "lat": 40.67613,
+    "lon": -73.99907
+  },
+  "bar great harry|280 smith st brooklyn ny 11231": {
+    "key": "bar-great-harry",
+    "name": "Bar Great Harry",
+    "addr": "280 Smith St, Brooklyn, NY 11231",
+    "lat": 40.68241,
+    "lon": -73.99353
+  },
+  "other half brewing company|195 centre st brooklyn ny 11231": {
+    "key": "other-half-brewing-company",
+    "name": "Other Half Brewing Company",
+    "addr": "195 Centre St, Brooklyn, NY 11231",
+    "lat": 40.67378,
+    "lon": -73.99919
+  },
+  "queue beer|carroll gardens brooklyn ny": {
+    "key": "queue-beer",
+    "name": "Queue Beer",
+    "addr": "Carroll Gardens, Brooklyn, NY",
+    "lat": 40.67406,
+    "lon": -73.99825
+  },
+  "movement gowanus|gowanus brooklyn ny": {
+    "key": "movement-gowanus",
+    "name": "Movement Gowanus",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.68143,
+    "lon": -73.98544
+  },
+  "bartel pritchard square|bartel pritchard square park slope brooklyn ny": {
+    "key": "bartel-pritchard-square",
+    "name": "Bartel-Pritchard Square",
+    "addr": "Bartel-Pritchard Square, Park Slope, Brooklyn, NY",
+    "lat": 40.661,
+    "lon": -73.97987
+  },
+  "gowanus ride starts|gowanus brooklyn ny": {
+    "key": "gowanus-ride-starts",
+    "name": "Gowanus (ride starts)",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.6779,
+    "lon": -73.9891
+  },
+  "6th street green corridor sponge park|gowanus brooklyn ny": {
+    "key": "6th-street-green-corridor-sponge-park",
+    "name": "6th Street Green Corridor / Sponge Park",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.6779,
+    "lon": -73.9891
+  },
+  "park slope library|431 6th ave brooklyn ny 11215": {
+    "key": "park-slope-library",
+    "name": "Park Slope Library",
+    "addr": "431 6th Ave, Brooklyn, NY 11215",
+    "lat": 40.66822,
+    "lon": -73.98342
+  },
+  "park slope 7th avenue corridor|7th avenue park slope brooklyn ny": {
+    "key": "park-slope-7th-avenue-corridor",
+    "name": "Park Slope (7th Avenue corridor)",
+    "addr": "7th Avenue, Park Slope, Brooklyn, NY",
+    "lat": 40.66627,
+    "lon": -73.98031
+  },
+  "audubon center at the boathouse|prospect park brooklyn ny": {
+    "key": "audubon-center-at-the-boathouse",
+    "name": "Audubon Center at the Boathouse",
+    "addr": "Prospect Park, Brooklyn, NY",
+    "lat": 40.66177,
+    "lon": -73.97109
+  },
+  "central library dweck center|10 grand army plaza brooklyn ny 11238": {
+    "key": "central-library-dweck-center",
+    "name": "Central Library, Dweck Center",
+    "addr": "10 Grand Army Plaza, Brooklyn, NY 11238",
+    "lat": 40.67457,
+    "lon": -73.97043
+  },
+  "center for brooklyn history|brooklyn ny": {
+    "key": "center-for-brooklyn-history",
+    "name": "Center for Brooklyn History",
+    "addr": "Brooklyn, NY",
+    "lat": 40.69476,
+    "lon": -73.99243
+  },
+  "park slope venue tbd|park slope brooklyn ny": {
+    "miss": "2026-10-26"
+  },
+  "clara s garden|brooklyn ny": {
+    "miss": "2026-10-26"
+  },
+  "krystal community garden|brooklyn ny": {
+    "miss": "2026-10-26"
+  },
+  "p s 321|180 7th ave brooklyn ny 11215": {
+    "key": "p-s-321",
+    "name": "P.S. 321",
+    "addr": "180 7th Ave, Brooklyn, NY 11215",
+    "lat": 40.67182,
+    "lon": -73.97863
+  },
+  "virtual online workshop|online": {
+    "miss": "2026-10-26"
+  },
+  "principles times up bike co op|gowanus brooklyn ny": {
+    "key": "principles-times-up-bike-co-op",
+    "name": "Principles (Times Up Bike Co-op)",
+    "addr": "Gowanus, Brooklyn, NY",
+    "lat": 40.6779,
+    "lon": -73.9891
+  },
+  "judgy baby|170 2nd avenue gowanus brooklyn ny": {
+    "key": "judgy-baby",
+    "name": "Judgy Baby",
+    "addr": "170 2nd Avenue, Gowanus, Brooklyn, NY",
+    "lat": 40.67479,
+    "lon": -73.99156
+  },
+  "prospect park|prospect park brooklyn ny": {
+    "key": "prospect-park-2",
+    "name": "Prospect Park",
+    "addr": "Prospect Park, Brooklyn, NY",
+    "lat": 40.66177,
+    "lon": -73.97109
   }
 }
