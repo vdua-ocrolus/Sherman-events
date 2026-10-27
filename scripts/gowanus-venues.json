@@ -435,5 +435,189 @@
     "addr": "Prospect Park, Brooklyn, NY",
     "lat": 40.66177,
     "lon": -73.97109
+  },
+  "christ church cobble hill|326 clinton st brooklyn ny 11231": {
+    "key": "christ-church-cobble-hill",
+    "name": "Christ Church Cobble Hill",
+    "addr": "326 Clinton St, Brooklyn, NY 11231",
+    "lat": 40.68579,
+    "lon": -73.99675
+  },
+  "brooklyn museum|200 eastern pkwy brooklyn ny": {
+    "key": "brooklyn-museum",
+    "name": "Brooklyn Museum",
+    "addr": "200 Eastern Pkwy, Brooklyn, NY",
+    "lat": 40.67095,
+    "lon": -73.96329
+  },
+  "st paul s church|190 court st brooklyn ny 11201": {
+    "key": "st-paul-s-church",
+    "name": "St. Paul's Church",
+    "addr": "190 Court St, Brooklyn, NY 11201",
+    "lat": 40.68743,
+    "lon": -73.99357
+  },
+  "7th avenue and 14th street|7th avenue and 14th street brooklyn ny 11215": {
+    "key": "7th-avenue-and-14th-street",
+    "name": "7th Avenue and 14th Street",
+    "addr": "7th Avenue and 14th Street, Brooklyn, NY 11215",
+    "lat": 40.66389,
+    "lon": -73.98409
+  },
+  "baltic street green median gowanus houses area|423 baltic street brooklyn ny 11217": {
+    "key": "baltic-street-green-median-gowanus-house",
+    "name": "Baltic Street Green Median / Gowanus Houses area",
+    "addr": "423 Baltic Street, Brooklyn, NY 11217",
+    "lat": 40.68414,
+    "lon": -73.98773
+  },
+  "big reuse|1 12th st brooklyn ny 11215": {
+    "key": "big-reuse-2",
+    "name": "Big Reuse",
+    "addr": "1 12th St, Brooklyn, NY 11215",
+    "lat": 40.67215,
+    "lon": -73.99734
+  },
+  "carroll park|carroll street smith street brooklyn ny 11231": {
+    "key": "carroll-park-2",
+    "name": "Carroll Park",
+    "addr": "Carroll Street & Smith Street, Brooklyn, NY 11231",
+    "lat": 40.6803,
+    "lon": -73.99505
+  },
+  "51 bergen street|51 bergen st brooklyn ny 11201": {
+    "key": "51-bergen-street",
+    "name": "51 Bergen Street",
+    "addr": "51 Bergen St, Brooklyn, NY 11201",
+    "lat": 40.68718,
+    "lon": -73.99125
+  },
+  "judgy baby|170 2nd ave brooklyn ny 11215": {
+    "key": "judgy-baby-2",
+    "name": "Judgy Baby",
+    "addr": "170 2nd Ave, Brooklyn, NY 11215",
+    "lat": 40.67041,
+    "lon": -73.99546
+  },
+  "grand army plaza|prospect park west flatbush ave brooklyn ny 11217": {
+    "key": "grand-army-plaza",
+    "name": "Grand Army Plaza",
+    "addr": "Prospect Park West & Flatbush Ave, Brooklyn, NY 11217",
+    "lat": 40.67492,
+    "lon": -73.97082
+  },
+  "289 4th st|289 4th st brooklyn ny 11215": {
+    "key": "289-4th-st",
+    "name": "289 4th St",
+    "addr": "289 4th St, Brooklyn, NY 11215",
+    "lat": 40.67243,
+    "lon": -73.98409
+  },
+  "young ethel s|brooklyn ny park slope": {
+    "key": "young-ethel-s-2",
+    "name": "Young Ethel's",
+    "addr": "Brooklyn, NY (Park Slope)",
+    "lat": 40.66784,
+    "lon": -73.97914
+  },
+  "june|231 court st brooklyn ny 11201": {
+    "key": "june-2",
+    "name": "June",
+    "addr": "231 Court St, Brooklyn, NY 11201",
+    "lat": 40.68606,
+    "lon": -73.99387
+  },
+  "light switch|360 court st brooklyn ny 11231": {
+    "key": "light-switch",
+    "name": "Light Switch",
+    "addr": "360 Court St, Brooklyn, NY 11231",
+    "lat": 40.682,
+    "lon": -73.99645
+  },
+  "queue beer|brooklyn ny carroll gardens": {
+    "key": "queue-beer",
+    "name": "Queue Beer",
+    "addr": "Brooklyn, NY (Carroll Gardens)",
+    "lat": 40.67406,
+    "lon": -73.99825
+  },
+  "bar in carroll gardens|carroll gardens brooklyn ny": {
+    "key": "bar-in-carroll-gardens",
+    "name": "Bar in Carroll Gardens",
+    "addr": "Carroll Gardens, Brooklyn, NY",
+    "lat": 40.68048,
+    "lon": -73.99454
+  },
+  "other half brewing company|brooklyn ny carroll gardens": {
+    "miss": "2026-10-27"
+  },
+  "other half brewing|brooklyn ny carroll gardens": {
+    "miss": "2026-10-27"
+  },
+  "gotham park|columbia st brooklyn ny columbia street waterfront": {
+    "key": "gotham-park",
+    "name": "Gotham Park",
+    "addr": "Columbia St, Brooklyn, NY (Columbia Street Waterfront)",
+    "lat": 40.68279,
+    "lon": -74.00386
+  },
+  "bar great harry|brooklyn ny carroll gardens": {
+    "key": "bar-great-harry",
+    "name": "Bar Great Harry",
+    "addr": "Brooklyn, NY (Carroll Gardens)",
+    "lat": 40.68241,
+    "lon": -73.99353
+  },
+  "movement gowanus|brooklyn ny gowanus": {
+    "key": "movement-gowanus",
+    "name": "Movement Gowanus",
+    "addr": "Brooklyn, NY (Gowanus)",
+    "lat": 40.68143,
+    "lon": -73.98544
+  },
+  "halyards|brooklyn ny gowanus": {
+    "key": "halyards",
+    "name": "Halyards",
+    "addr": "Brooklyn, NY (Gowanus)",
+    "lat": 40.67326,
+    "lon": -73.98974
+  },
+  "grand army plaza area|1 plaza street at plaza st w st john s place brooklyn ny": {
+    "miss": "2026-10-27"
+  },
+  "seventh avenue|seventh avenue park slope brooklyn ny": {
+    "key": "seventh-avenue",
+    "name": "Seventh Avenue",
+    "addr": "Seventh Avenue, Park Slope, Brooklyn, NY",
+    "lat": 40.66752,
+    "lon": -73.98087
+  },
+  "central library dweck center|10 grand army plaza brooklyn ny": {
+    "key": "central-library-dweck-center-2",
+    "name": "Central Library, Dweck Center",
+    "addr": "10 Grand Army Plaza, Brooklyn, NY",
+    "lat": 40.67213,
+    "lon": -73.96819
+  },
+  "center for brooklyn history|128 pierrepont street brooklyn ny": {
+    "key": "center-for-brooklyn-history",
+    "name": "Center for Brooklyn History",
+    "addr": "128 Pierrepont Street, Brooklyn, NY",
+    "lat": 40.69476,
+    "lon": -73.99243
+  },
+  "st ann s church|157 montague street brooklyn ny": {
+    "key": "st-ann-s-church",
+    "name": "St. Ann's Church",
+    "addr": "157 Montague Street, Brooklyn, NY",
+    "lat": 40.69459,
+    "lon": -73.99273
+  },
+  "library for arts culture|grand army plaza area brooklyn ny": {
+    "key": "library-for-arts-culture",
+    "name": "Library for Arts & Culture",
+    "addr": "Grand Army Plaza area, Brooklyn, NY",
+    "lat": 40.68646,
+    "lon": -73.97839
   }
 }

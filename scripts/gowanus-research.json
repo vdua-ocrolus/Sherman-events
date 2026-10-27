@@ -46,5 +46,28 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Terre_Thaemlitz"
     ]
+  },
+  "henry threadgill": {
+    "fq": 9.5,
+    "confidence": "high",
+    "basis": "Pulitzer Prize winner (one of only three jazz artists ever), NEA Jazz Master, Guggenheim and Doris Duke fellow who has premiered works at BAM, Carnegie Hall and the Venice Biennale and been called by the New York Times \"perhaps the most important jazz composer of his generation\"",
+    "sources": [
+      "https://www.arts.gov/honors/jazz/henry-threadgill",
+      "https://en.wikipedia.org/wiki/Henry_Threadgill",
+      "https://www.henrythreadgill.com/bio",
+      "https://www.billboard.com/music/music-news/henry-threadgill-wins-pulitzer-prize-for-music-in-for-a-penny-jazz-saxophone-7340635/"
+    ],
+    "researchedAt": "2026-10-27"
+  },
+  "matthew shipp": {
+    "fq": 8,
+    "confidence": "high",
+    "basis": "Widely reviewed avant-garde jazz pianist with a 35+ year career and 85+ releases praised by the New York Times and Wall Street Journal, a historic 2018 Carnegie Hall concert, and admirers ranging from David Bowie to Henry Rollins",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Matthew_Shipp",
+      "https://www.akamu.net/shipp.htm",
+      "https://www.jazztimes.com/features/profiles/matthew-shipp-song-of-himself/?v=0b3b97fa6688"
+    ],
+    "researchedAt": "2026-10-27"
   }
 }
