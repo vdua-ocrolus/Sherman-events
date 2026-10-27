@@ -3642,5 +3642,48 @@
     ],
     "exampleTitle": "New Milford Carol Sing and Parade of Lights",
     "researchedAt": "2026-10-26"
+  },
+  "scarrybrooke park haunted trail final night": {
+    "displayName": "Scarrybrooke Park Haunted Trail (Final Night)",
+    "funQuality": 7.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "Longstanding (13th year) volunteer-run haunted trail billed as Connecticut's longest, with documented regional press coverage (WTNH/Patch), award wins (2025 and 2022 'Haunt of the Year'), hundreds of volunteers, and has raised roughly half a million dollars for local nonprofits over its run, indicating a well-established community-wide draw beyond a typical small event.",
+    "confidence": "high",
+    "sources": [
+      "https://www.cthauntedhouses.com/halloween/harrybrooke-park-haunted-trail-ct.html",
+      "https://www.wtnh.com/on-air/cruising-connecticut/cruisin-connecticut-experience-the-states-longest-haunted-trail-at-new-milfords-scarrybrooke-park/",
+      "https://patch.com/connecticut/essex-chester-deepriver/new-milford-weekend-guide-scarrybrookes-haunted-trail-special"
+    ],
+    "exampleTitle": "Scarrybrooke Park Haunted Trail (Final Night)",
+    "researchedAt": "2026-10-27"
+  },
+  "leaf latte collective market": {
+    "displayName": "Leaf & Latte Collective Market",
+    "funQuality": 6.3,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A brand-new vendor/market event (first run originally slated for Sept 2026, pushed to Nov 15, 2026) at Danbury Fair Mall with minimal social media traction so far (TikTok posts garnering only single-digit to ~18 likes), indicating an unproven, small-scale local market rather than an established draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.danburyfairmall.com/Events",
+      "https://www.tiktok.com/discover/danbury-fair-mall-carvival-2026"
+    ],
+    "exampleTitle": "Leaf & Latte Collective Market",
+    "researchedAt": "2026-10-27"
+  },
+  "new fairfield library friends holiday boutique": {
+    "displayName": "New Fairfield Library Friends' Holiday Boutique",
+    "funQuality": 6.2,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, volunteer-run annual (third-year) craft boutique organized by the Friends of the New Fairfield Free Public Library, a modest community fundraiser with no evidence of broad regional draw beyond the local library patron base.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.friendsnflibrary.org/",
+      "http://www.thetowntribune.com/features/colonial-and-contemporary-crafts-are-a-hit-at-the-nf-library/"
+    ],
+    "exampleTitle": "New Fairfield Library Friends' Holiday Boutique",
+    "researchedAt": "2026-10-27"
   }
 }
