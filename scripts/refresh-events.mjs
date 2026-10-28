@@ -1,5 +1,7 @@
-// Daily events refresh for candlewoodlakeevents.com  (v2 — web-tool research).
-// Run by .github/workflows/daily-events.yml. Claude researches CURRENT events with
+// Events refresh for candlewoodlakeevents.com  (v2 — web-tool research).
+// Run by .github/workflows/daily-events.yml in two modes: the weekly research run (default,
+// Thursdays — the only part that costs money) and a free daily `--maintain` pass that rolls the
+// guide forward to today without an API call (see rollForward). Claude researches CURRENT events with
 // the web_search + web_fetch server tools (so it can reach JS-rendered town/library/
 // venue calendars that a plain fetch can't), then rewrites the EVENTS_DATA block in
 // index.html between the EVENTS_DATA:START / EVENTS_DATA:END markers.
@@ -16,6 +18,45 @@ const INDEX = 'index.html';
 const START = '/* EVENTS_DATA:START';
 const END = '/* EVENTS_DATA:END */';
 const MODEL = process.env.EVENTS_MODEL || 'claude-sonnet-5';
+
+// ---------------------------------------------------------------------------
+// Spend. Every API call goes through research(), which adds its usage here, so the run summary
+// (console + Slack) says what the run actually cost. List prices per million tokens from the
+// pricing page (checked 2026-10-27); web search is billed per search, web fetch only through the
+// tokens it adds. A model missing from PRICES logs its tokens without a dollar figure.
+// ---------------------------------------------------------------------------
+const PRICES = {
+  'claude-sonnet-5': { input: 2, cacheWrite: 2.5, cacheRead: 0.2, output: 10 },
+  'claude-sonnet-5-5': { input: 2, cacheWrite: 2.5, cacheRead: 0.1, output: 10 },
+  // Haiku 5.5 is priced by prompt size; these are its over-100K rates, where this job's research
+  // context sits for most of a run.
+  'claude-haiku-5-5': { input: 0.5, cacheWrite: 0.625, cacheRead: 0.05, output: 2.5 },
+};
+const PER_SEARCH = 0.01;
+const spend = { calls: 0, input: 0, cacheWrite: 0, cacheRead: 0, output: 0, searches: 0, fetches: 0 };
+function addUsage(u) {
+  if (!u) return;
+  spend.calls++;
+  spend.input += u.input_tokens || 0;
+  spend.cacheWrite += u.cache_creation_input_tokens || 0;
+  spend.cacheRead += u.cache_read_input_tokens || 0;
+  spend.output += u.output_tokens || 0;
+  spend.searches += u.server_tool_use?.web_search_requests || 0;
+  spend.fetches += u.server_tool_use?.web_fetch_requests || 0;
+}
+function spendLine() {
+  if (!spend.calls) return '';
+  const p = PRICES[MODEL];
+  const cost = p && (spend.input * p.input + spend.cacheWrite * p.cacheWrite + spend.cacheRead * p.cacheRead + spend.output * p.output) / 1e6 + spend.searches * PER_SEARCH;
+  const k = (n) => `${Math.round(n / 1000)}K`;
+  return `${p ? '~$' + cost.toFixed(2) : 'cost unknown'} (${MODEL}: ${k(spend.input)} in, ${k(spend.cacheWrite)} cache write, `
+    + `${k(spend.cacheRead)} cache read, ${k(spend.output)} out; ${spend.searches} searches, ${spend.fetches} fetches)`;
+}
+
+// Cap on each fetched page (web_fetch max_content_tokens; longer pages are truncated). Fetched
+// calendars are the bulk of what the research loop re-reads; they list in date order, so a cut
+// mostly drops dates past the 8-week window. Same cap as refresh-gowanus.mjs.
+const FETCH_MAX_TOKENS = 25000;
 
 // Priority calendars to fetch/search. (web_fetch can only fetch URLs present in the
 // conversation, so listing them here lets the model pull them directly.)
@@ -374,8 +415,9 @@ async function notifySlack(text) {
 }
 
 async function fail(msg) {
-  console.error('refresh-events: ' + msg);
-  await notifySlack(`Daily events refresh FAILED (${todayLabel}): ${msg}`);
+  const cost = spendLine();
+  console.error('refresh-events: ' + msg + (cost ? ` | spent ${cost}` : ''));
+  await notifySlack(`Events refresh FAILED (${todayLabel}): ${msg}${cost ? ` (spent ${cost})` : ''}`);
   process.exit(1);
 }
 
@@ -432,6 +474,60 @@ function carryYesterday(obj, existingBlock) {
   return carried.length;
 }
 
+// ---------------------------------------------------------------------------
+// Roll the guide forward to today. Research runs weekly because it is the expensive part; this
+// runs every day for free, so the page never lists a finished event as upcoming or tells Google
+// about one. Every event is re-bucketed by its own date (Week 1 is today through Sunday, then
+// Monday–Sunday weeks), yesterday's events stay one more day tagged Past, older ones are
+// dropped, and isTonight / tonight[] are rebuilt. Same data on the same day gives the same output.
+// An event whose date can't be parsed keeps its current week slot and flags.
+// ---------------------------------------------------------------------------
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const DAY_MS = 86400000;
+function rangeLabel(a, b) {
+  const ma = MONTH_NAMES[a.getUTCMonth()], mb = MONTH_NAMES[b.getUTCMonth()];
+  if (a.getTime() === b.getTime()) return `${ma} ${a.getUTCDate()}`;
+  return ma === mb ? `${ma} ${a.getUTCDate()}–${b.getUTCDate()}` : `${ma} ${a.getUTCDate()} – ${mb} ${b.getUTCDate()}`;
+}
+function rollForward(obj) {
+  const ym = dataYearMonth(obj.lastUpdated);
+  const today = new Date(Date.UTC(_nowET.getFullYear(), _nowET.getMonth(), _nowET.getDate()));
+  const yesterday = new Date(today.getTime() - DAY_MS);
+  const week1End = new Date(today.getTime() + ((7 - today.getUTCDay()) % 7) * DAY_MS); // the coming Sunday
+  const slotOf = (d) => (d <= week1End ? 0 : 1 + Math.floor((d - week1End - DAY_MS) / (7 * DAY_MS)));
+
+  const buckets = [];
+  let dropped = 0;
+  (obj.weeks || []).forEach((w, wi) => {
+    for (const e of w.events || []) {
+      const sch = eventSchedule(e, ym);
+      let slot = wi;
+      if (sch) {
+        if (sch.end < yesterday) { dropped++; continue; }
+        e.isPast = sch.end < today;
+        e.isTonight = !e.isPast && sch.start <= today;
+        slot = slotOf(sch.start > today ? sch.start : today);
+      }
+      (buckets[slot] = buckets[slot] || []).push(e);
+    }
+  });
+  obj.weeks = Array.from({ length: Math.max(8, buckets.length) }, (_, i) => {
+    const start = i === 0 ? today : new Date(week1End.getTime() + (1 + 7 * (i - 1)) * DAY_MS);
+    const end = i === 0 ? week1End : new Date(start.getTime() + 6 * DAY_MS);
+    return { id: `week${i + 1}`, title: `Week ${i + 1} · ${rangeLabel(start, end)}`, open: i === 0, events: buckets[i] || [] };
+  });
+  // The banner needs a real name, venue and time for each show ("See website" placeholders don't count).
+  const real = (v) => !!v && !/see website/i.test(v);
+  obj.tonight = obj.weeks[0].events
+    .filter((e) => e.isTonight && real(e.title) && real(e.venue) && real(e.time))
+    .sort((a, b) => (b.score || 0) - (a.score || 0))
+    .slice(0, 5)
+    .map((e) => ({ name: e.title, venue: e.venue, time: e.time, price: e.priceType === 'free' ? 'Free' : real(e.priceLabel) ? e.priceLabel : '' }));
+  const past = obj.weeks[0].events.filter((e) => e.isPast).length;
+  const upcoming = obj.weeks.reduce((n, w) => n + w.events.filter((e) => !e.isPast).length, 0);
+  return { dropped, past, upcoming };
+}
+
 async function research(prompt, opts = {}) {
   const { maxTokens = 48000, searchUses = 40, fetchUses = 20 } = opts;
   let messages = [{ role: 'user', content: prompt }];
@@ -444,8 +540,13 @@ async function research(prompt, opts = {}) {
       // resume with a plain resend — no container_id juggling.
       tools: [
         { type: 'web_search_20250305', name: 'web_search', max_uses: searchUses },
-        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: fetchUses },
+        { type: 'web_fetch_20250910', name: 'web_fetch', max_uses: fetchUses, max_content_tokens: FETCH_MAX_TOKENS },
       ],
+      // Prompt caching is the main cost lever here. Each step of the server-side search loop
+      // re-reads everything gathered so far; with caching on, the server writes a cache entry
+      // after every tool result, so those re-reads bill at the cache-read rate (a tenth of base
+      // input) instead of in full. The pause_turn resend below reuses the same prefix and hits it too.
+      cache_control: { type: 'ephemeral' },
       messages,
     };
     // Keep thinking OFF for deterministic output. Models 4.6+ (Sonnet 5, Opus) need the
@@ -454,6 +555,7 @@ async function research(prompt, opts = {}) {
     if (!/haiku/i.test(MODEL)) req.thinking = { type: 'disabled' };
     const stream = (await anthropic()).messages.stream(req);
     msg = await stream.finalMessage();
+    addUsage(msg.usage);
     if (msg.stop_reason === 'pause_turn') {
       messages = [{ role: 'user', content: prompt }, { role: 'assistant', content: msg.content }];
       continue;
@@ -989,6 +1091,26 @@ async function writeSitePages(site) {
 }
 const gaIdFrom = (fileText) => (/GA_MEASUREMENT_ID:\s*'([^']*)'/.exec(fileText) || [])[1] || '';
 
+// `--maintain`: the free daily pass on days research doesn't run. No API call and no rescoring:
+// roll the current EVENTS_DATA forward to today, then rebuild the generated site from it.
+async function maintain() {
+  const file = await readFile(INDEX, 'utf8');
+  const s = file.indexOf(START), e = file.indexOf(END);
+  if (s === -1 || e === -1) return fail('EVENTS_DATA markers not found in index.html');
+  const blockStart = file.indexOf('\n', s) + 1;
+  const block = file.slice(blockStart, e);
+  const obj = JSON.parse(block.slice(block.indexOf('{'), block.lastIndexOf('}') + 1));
+  const { dropped, past, upcoming } = rollForward(obj);
+  let site;
+  try { site = buildSite(obj, gaIdFrom(file)); } catch (err) { return fail(`site generation failed: ${err.message}`); }
+  const newBlock = `const EVENTS_DATA = ${JSON.stringify(obj, null, 2)};`;
+  await writeSitePages(site);
+  await writeFile(INDEX, spliceSite(file.slice(0, blockStart) + newBlock + '\n' + file.slice(e), site));
+  console.log(`Maintenance (${todayLabel}): ${upcoming} upcoming, ${past} from yesterday kept as Past, ${dropped} finished dropped, ${obj.tonight.length} tonight.`);
+  // A guide that is running dry means the weekly research has been failing; say so.
+  if (upcoming < 15) await notifySlack(`Events maintenance (${todayLabel}): only ${upcoming} upcoming events left (research last ran ${obj.lastUpdated}).`);
+}
+
 // `--site-only`: rebuild the generated site from the CURRENT EVENTS_DATA, no API call, no
 // rescoring. For template changes and for seeding the pages the first time.
 async function siteOnly() {
@@ -1140,6 +1262,7 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   injectPinned(obj); // add hand-confirmed events (correct dates) after scoring
   const carried = carryYesterday(obj, existingBlock); // keep yesterday's events one more day
   if (carried) console.log(`Carried ${carried} event(s) from yesterday (visible one more day, tagged Past).`);
+  rollForward(obj); // same week buckets, Past tags and tonight[] as the daily --maintain pass
   const count = obj.weeks.reduce((a, w) => a + (Array.isArray(w.events) ? w.events.length : 0), 0);
   if (count === 0) return fail('generated JSON has zero events — refusing to publish an empty guide');
 
@@ -1159,8 +1282,8 @@ When you have finished researching, your FINAL message must be ONLY the updated 
 
   const newBlock = `const EVENTS_DATA = ${JSON.stringify(obj, null, 2)};`;
   if (newBlock.trim() === existingBlock) {
-    console.log('No changes.');
-    await notifySlack(`Daily events refresh (${todayLabel}): no changes.${researchNote}`);
+    console.log(`No changes. Spent ${spendLine()}`);
+    await notifySlack(`Weekly events research (${todayLabel}): no changes.${researchNote} Spent ${spendLine()}.`);
     return;
   }
 
@@ -1168,8 +1291,9 @@ When you have finished researching, your FINAL message must be ONLY the updated 
   await writeSitePages(site);
   await writeFile(INDEX, updated);
 
-  console.log(`Updated: ${count} events across ${obj.weeks.length} weeks.`);
-  await notifySlack(`Daily events refresh (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published${researchNote}${gated}.`);
+  console.log(`Updated: ${count} events across ${obj.weeks.length} weeks. Spent ${spendLine()}`);
+  await notifySlack(`Weekly events research (${todayLabel}): ${count} events across ${obj.weeks.length} weeks published${researchNote}${gated}. Spent ${spendLine()}.`);
 }
 
-(process.argv.includes('--site-only') ? siteOnly() : main()).catch((e) => fail(e.message));
+const mode = process.argv.includes('--site-only') ? siteOnly : process.argv.includes('--maintain') ? maintain : main;
+mode().catch((e) => fail(e.message));

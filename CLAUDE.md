@@ -22,13 +22,13 @@ A curated local events guide for the Candlewood Lake area in Connecticut.
 - No build step. Pure static HTML — edit index.html and push; GitHub Pages serves it.
 - Client-side JS sends visitor/subscriber/feedback data to a serverless proxy (see /data-proxy) via CONFIG.API_BASE; the proxy holds the GitHub token server-side. No token in the page.
 - Analytics: Google Analytics 4, gated on CONFIG.GA_MEASUREMENT_ID (a public ID; safe in client source).
-- Events live in the EVENTS_DATA object, regenerated daily by a GitHub Action (see "Daily events refresh"). Anything between the EVENTS_DATA markers is overwritten by that job — hand-edit with care.
+- Events live in the EVENTS_DATA object, researched weekly and rolled forward daily by a GitHub Action (see "Events refresh"). Anything between the EVENTS_DATA markers is overwritten by that job — hand-edit with care.
 
 ## Secrets
 - This is a PUBLIC repo. Anything in index.html (including CONFIG) is world-readable. Do NOT put private tokens or passwords here.
 - The old hardcoded GitHub token and admin password have been removed. Data writes/reads go through the serverless proxy (/data-proxy), which holds the token as a server-side env var.
 - CONFIG.GA_MEASUREMENT_ID is a Google Analytics ID and is meant to be public — fine to commit.
-- CI secrets live in GitHub → Settings → Secrets and variables → Actions (see "Daily events refresh"), never in the repo.
+- CI secrets live in GitHub → Settings → Secrets and variables → Actions (see "Events refresh"), never in the repo.
 
 ## Generated site (search + social)
 Built by `scripts/refresh-events.mjs` from the final EVENTS_DATA on every run (`buildSite()`):
@@ -106,11 +106,30 @@ Research failure is non-fatal: events still publish and the gate caps the unevid
 - Admin panel: gear icon, bottom right of the live site.
 - Admin auth is server-side (ADMIN_PASSWORD env on the proxy) once the proxy is live. Interim CONFIG.ADMIN_PASSWORD is a placeholder used only when API_BASE is empty.
 
-## Daily events refresh (CI)
-- .github/workflows/daily-events.yml runs daily (~10:00 UTC / ~6am ET) and on manual "Run workflow".
-- It runs scripts/refresh-events.mjs: fetches the source calendars, asks Claude (Anthropic API) to extract/score/format events grounded ONLY on fetched content, validates the JSON, rewrites the EVENTS_DATA block between the markers, and regenerates the generated site (JSON-LD, town pages, sitemap). Commits + pushes only if changed. Aborts without writing on any failure, so a bad run never publishes.
+## Events refresh (CI)
+- .github/workflows/daily-events.yml runs every day (~10:00 UTC / ~6am ET) in one of two modes:
+  - **Research — Thursdays only** (the only part that costs money; ~$4–12/run before the Oct 2026 cost
+    work, target $1–2). `node scripts/refresh-events.mjs`: fetches the source calendars, asks Claude
+    (Anthropic API) to extract/score/format events grounded ONLY on fetched content, validates the JSON,
+    rewrites the EVENTS_DATA block, and regenerates the generated site. Runs three hours before the
+    Thursday 13:00 UTC weekly digest, so the email goes out on fresh data.
+  - **Maintain — every other day, free** (no API call, no rescoring). `--maintain` runs `rollForward()`:
+    re-buckets events into weeks by their own dates (Week 1 = today through Sunday, then Mon–Sun),
+    keeps yesterday's events one more day tagged Past, drops older ones, rebuilds isTonight/tonight[],
+    then rebuilds the generated site so JSON-LD never lists a finished event. The research run ends with
+    the same rollForward, so both modes produce the same week structure.
+  - Manual "Run workflow" asks for the mode. If Thursday's research fails (Slack says so), rerun it by
+    hand with mode=research — nothing retries it automatically, so the guide would otherwise coast on
+    last week's research, still rolled forward daily.
+- Commits + pushes only if changed. Research aborts without writing on any failure, so a bad run never publishes.
+- **Cost.** Every API call's usage is summed and the dollar cost (list prices in `PRICES`) is printed and
+  posted in the Slack summary — including on failure, since a failed run still bills. `lastUpdated` is
+  the research date, so the site honestly shows when the list was last researched. The levers already
+  pulled: weekly cadence, prompt caching on the research loop (server tools write a cache entry after each
+  tool result, so the loop's re-reads bill at the cache-read rate), and a 25K-token cap per fetched page.
+  The scheduled Gowanus refresh (`daily-gowanus.yml`) is a separate daily paid job on the same key.
 - The commit step stages `index.html scripts/band-ratings.json sitemap.xml towns` and checks `git diff --cached --quiet` — a plain `git diff` ignores new untracked files and would never commit new pages.
-- Required repo secret: ANTHROPIC_API_KEY. Optional: SLACK_WEBHOOK_URL (posts a run summary). Model via EVENTS_MODEL (default claude-sonnet-5).
+- Required repo secret: ANTHROPIC_API_KEY (research only). Optional: SLACK_WEBHOOK_URL (posts a run summary). Model via EVENTS_MODEL (default claude-sonnet-5).
 - To change sources or scoring, edit scripts/refresh-events.mjs.
 
 ## Deploy Workflow

@@ -1,10 +1,16 @@
-name: Daily events refresh
+name: Events refresh
 
 on:
   schedule:
     # 10:00 UTC ≈ 6:00 AM ET (EDT) / 5:00 AM ET (EST). GitHub cron is UTC-only.
     - cron: '0 10 * * *'
-  workflow_dispatch: {}   # manual "Run workflow" button for testing
+  workflow_dispatch:      # manual "Run workflow" button
+    inputs:
+      mode:
+        description: 'research = the paid weekly Claude run; maintain = the free daily roll-forward'
+        type: choice
+        options: [research, maintain]
+        default: research
 
 permissions:
   contents: write
@@ -21,14 +27,29 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Pick mode
+        id: mode
+        run: |
+          # Research is the only part that costs money, so it runs once a week: Thursdays, three
+          # hours ahead of the 13:00 UTC weekly digest so the email goes out on fresh data. Every
+          # other day is the free --maintain pass (drops finished events, rolls the weeks forward,
+          # rebuilds tonight and the generated pages). A manual run uses the mode it was given.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then m="${{ inputs.mode }}"
+          elif [ "$(date -u +%u)" = "4" ]; then m=research
+          else m=maintain; fi
+          echo "mode=$m" >> "$GITHUB_OUTPUT"
+          echo "Mode: $m"
       - name: Install SDK
+        if: steps.mode.outputs.mode == 'research'
         run: npm install @anthropic-ai/sdk
-      - name: Regenerate EVENTS_DATA
+      - name: Refresh EVENTS_DATA
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           EVENTS_MODEL: ${{ vars.EVENTS_MODEL }}   # optional repo variable to override the model; empty = script default
-        run: node scripts/refresh-events.mjs
+        run: |
+          if [ "${{ steps.mode.outputs.mode }}" = "research" ]; then node scripts/refresh-events.mjs
+          else node scripts/refresh-events.mjs --maintain; fi
       - name: Commit and push if changed
         run: |
           # band-ratings.json is the researched-act cache the refresh writes back to; it
@@ -39,8 +60,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
+            if [ "${{ steps.mode.outputs.mode }}" = "research" ]; then msg="Weekly events research"; else msg="Daily events maintenance"; fi
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Daily events refresh ($(date -u +%Y-%m-%d))"
+            git commit -m "$msg ($(date -u +%Y-%m-%d))"
             git push
           fi
