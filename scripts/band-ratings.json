@@ -3685,5 +3685,81 @@
     ],
     "exampleTitle": "New Fairfield Library Friends' Holiday Boutique",
     "researchedAt": "2026-10-27"
+  },
+  "holiday craft fair at prince of peace lutheran church": {
+    "displayName": "Holiday Craft Fair at Prince of Peace Lutheran Church",
+    "funQuality": 6,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, single-day church craft fair in Brookfield, CT featuring crafts, books, a bake sale and lunch; it is a recurring annual neighborhood event with no evidence of broader regional draw or press coverage beyond local community calendars.",
+    "confidence": "high",
+    "sources": [
+      "https://patch.com/connecticut/bethel/calendar/event/20261107/c5958bba-a2ec-43ca-9616-4bdccf27e720/holiday-craft-fair",
+      "https://www.facebook.com/popbrookfield/"
+    ],
+    "exampleTitle": "Holiday Fair at Prince of Peace Lutheran Church",
+    "researchedAt": "2026-10-29"
+  },
+  "ridgefield chorale thanksgiving interfaith service": {
+    "displayName": "Ridgefield Chorale Thanksgiving Interfaith Service",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "An annual community interfaith Thanksgiving service organized by the Ridgefield Clergy Association at Jesse Lee Church, featuring brief musical contributions from the well-established 65-member Ridgefield Chorale (50th anniversary in 2026) alongside clergy, poetry readings, and a town proclamation; the event itself is a modest, community-scale gathering rather than a ticketed concert draw, though the Chorale itself has sold out some of its own standalone concerts.",
+    "confidence": "medium",
+    "sources": [
+      "https://ridgefieldherald.com/event/thanksgiving-interfaith-service/",
+      "https://ridgefieldchorale.org/upcoming-events/",
+      "https://www.hamlethub.com/ridgefield-connecticut/77196-ridgefield-community-invited-to-offer-gratitude-during-interfaith-thanksgiving-service-on-november-19"
+    ],
+    "exampleTitle": "Ridgefield Chorale Thanksgiving Interfaith Service",
+    "researchedAt": "2026-10-29"
+  },
+  "sip stroll new milford vna hospice benefit": {
+    "displayName": "Sip & Stroll — New Milford VNA & Hospice Benefit",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A well-established, recurring downtown New Milford shopping/wine-tasting fundraiser benefiting VNA & Hospice's bereavement camp, described by local press as the town's \"wildly popular\" and \"most popular event of the year,\" drawing shoppers and diners throughout downtown, though it remains a local town-scale benefit rather than a regional draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.crameranderson.com/cramer-anderson-sponsors-new-milford-sip-stroll/",
+      "https://patch.com/connecticut/newmilford/new-milfords-sip-stroll-spring-edition-fast-approaching",
+      "https://www.newmilfordnow.org/events/sip-and-stroll-ba110"
+    ],
+    "exampleTitle": "Sip & Stroll — New Milford VNA & Hospice Benefit",
+    "researchedAt": "2026-10-29"
+  },
+  "bahama mama the painkillers": {
+    "displayName": "Bahama Mama & The Painkillers",
+    "funQuality": 6.8,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A self-described local Connecticut-based original 'beach trop rock' band that plays breweries, vineyards, and small venues around CT and Florida with no major label, chart history, or large touring profile; they have released independent singles and an album and built a modest regional fan base through brewery and vineyard circuit shows.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.bahamamamaandthepainkillers.com/bio",
+      "https://thetroprockshop.com/bahama-mama-and-the-painkillers/",
+      "https://www.housatonicriverbrewing.com/events-1/pirate-party-with-bahama-mama-the-painkillers",
+      "https://southburymusic.com/teacher-spotlight-alex-faulkner/"
+    ],
+    "exampleTitle": "Christmas in the Caribbean Party with Bahama Mama & The Painkillers",
+    "researchedAt": "2026-10-29"
+  },
+  "kid charlemagne the steely dan experience": {
+    "displayName": "Kid Charlemagne - The Steely Dan Experience",
+    "funQuality": 7.8,
+    "tier": "popular-local-or-tribute",
+    "isMusicAct": true,
+    "draw": "A Metropolitan New York area seven-to-eleven piece Steely Dan tribute band made up of veteran professional musicians (some with Broadway credits) that has played established listening rooms and theaters including the Towne Crier Cafe, The Vogel at the Count Basie Center for the Arts, Tim McLoone's Supper Club, Daryl's House Club, and Musikfest, indicating a genuine regional following beyond typical bar-band status.",
+    "confidence": "high",
+    "sources": [
+      "https://townecrier.com/events/kid-charlemagne-the-steely-dan-experience/",
+      "https://thebasie.org/events/kid-charlemagne/",
+      "https://mcloones.ticketbud.com/kid-charlemagne-the-music-of-steely-dan-ad062402-111c37a33d29",
+      "https://www.ticketweb.com/event/kid-charlemagne-steely-daryls-house-tickets/14987073"
+    ],
+    "exampleTitle": "Kid Charlemagne - The Steely Dan Experience",
+    "researchedAt": "2026-10-29"
   }
 }
