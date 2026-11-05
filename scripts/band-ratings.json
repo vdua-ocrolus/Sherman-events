@@ -3761,5 +3761,63 @@
     ],
     "exampleTitle": "Kid Charlemagne - The Steely Dan Experience",
     "researchedAt": "2026-10-29"
+  },
+  "steve middlestedt": {
+    "displayName": "Steve Middlestedt",
+    "funQuality": 6.5,
+    "tier": "local-modest",
+    "isMusicAct": true,
+    "draw": "A local solo act (described as 'the other half of the Crafty Bastards') playing a southern rock singalong set at a single small-town brewery; no evidence of touring history, press coverage, charting, or notable venues beyond this brewery circuit.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.housatonicriverbrewing.com/events-1/steve-middlestedt-2",
+      "https://www.housatonicriverbrewing.com/livemusic-events"
+    ],
+    "exampleTitle": "Steve Middlestedt — Live Music / Southern Rock Singalong at Housatonic River Brewing, New Milford, CT",
+    "researchedAt": "2026-11-05"
+  },
+  "crafting with friends holiday nutcrackers": {
+    "displayName": "Crafting with Friends — Holiday Nutcrackers",
+    "funQuality": 6,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small recurring craft workshop run by the volunteer Friends of the New Fairfield Free Public Library group, part of a routine series of low-key community craft programs with no indication of significant draw beyond regular library patrons.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.friendsnflibrary.org/",
+      "http://www.thetowntribune.com/features/colonial-and-contemporary-crafts-are-a-hit-at-the-nf-library/"
+    ],
+    "exampleTitle": "Crafting with Friends — Holiday Nutcrackers at New Fairfield Free Public Library, New Fairfield, CT",
+    "researchedAt": "2026-11-05"
+  },
+  "new milford tree lighting ceremony": {
+    "displayName": "New Milford Tree Lighting Ceremony",
+    "funQuality": 8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established, decades-long (58th+ annual) community tradition drawing large crowds to the Village Green with regional press coverage (News-Times, CT Post) each year, featuring Santa, volunteer fire department parades, and thousands of lights across 17 trees.",
+    "confidence": "high",
+    "sources": [
+      "https://www.newmilfordnow.org/stories/annual-tree-lighting-saturday-to-kick-off-holiday-season",
+      "https://kentgtd.org/trees-to-be-lighted-on-new-milford-green/",
+      "https://www.newstimes.com/local/article/New-Milford-tree-lighting-ceremony-returns-for-16641028.php"
+    ],
+    "exampleTitle": "New Milford Tree Lighting Ceremony at New Milford Village Green, New Milford, CT",
+    "researchedAt": "2026-11-05"
+  },
+  "cookie walk": {
+    "displayName": "Cookie Walk",
+    "funQuality": 6,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small annual library fundraiser where attendees buy a box and fill it with homemade cookies; modest, long-running local tradition with no evidence of broader regional draw beyond the library's own community.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.friendsnflibrary.org/event-details/cookie-walk-2",
+      "https://www.friendsnflibrary.org/what-we-do",
+      "https://news.hamlethub.com/newfairfield/events/45266-new-fairfield-library-annual-cookie-walk"
+    ],
+    "exampleTitle": "Cookie Walk at New Fairfield Free Public Library, New Fairfield, CT",
+    "researchedAt": "2026-11-05"
   }
 }
