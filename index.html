@@ -1050,11 +1050,24 @@ function initClickTracking() {
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
   "lastUpdated": "Nov 5, 2026",
-  "tonight": [],
+  "tonight": [
+    {
+      "name": "New Fairfield Veterans Day Ceremony",
+      "venue": "New Fairfield Veterans Park",
+      "time": "11:00AM",
+      "price": "Free"
+    },
+    {
+      "name": "Danbury Veterans Day Ceremony",
+      "venue": "Danbury War Memorial",
+      "time": "11:00AM",
+      "price": "Free"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · November 10–15",
+      "title": "Week 1 · November 11–15",
       "open": true,
       "events": [
         {
@@ -1073,7 +1086,7 @@ const EVENTS_DATA = {
           "desc": "Danbury's Veterans Day ceremony at the War Memorial includes the singing of the National Anthem by the Immaculate High School Choir, remarks by the mayor, a wreath placement, a rifle salute, and Taps.",
           "source": "danbury-ct.gov",
           "sourceUrl": "https://www.danbury-ct.gov/209/Danbury-Council-of-Veterans",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
@@ -1095,7 +1108,7 @@ const EVENTS_DATA = {
           "desc": "The New Fairfield Lions Club hosts the town's annual Veterans Day Ceremony honoring local veterans at Veterans Park.",
           "source": "nflions.com",
           "sourceUrl": "https://www.nflions.com/events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": true,
           "funQualityNote": null,
