@@ -3819,5 +3819,36 @@
     ],
     "exampleTitle": "Cookie Walk at New Fairfield Free Public Library, New Fairfield, CT",
     "researchedAt": "2026-11-05"
+  },
+  "a very gifty christmas 6th annual holiday craft festival": {
+    "displayName": "A Very Gifty Christmas — 6th Annual Holiday Craft Festival",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A small, free-parking $5-admission local craft fair with about 50 vendors held at the Danbury PAL building, running for six years as a community charity fundraiser benefiting the American Cancer Society; no evidence of significant regional press, large attendance figures, or notable draw beyond the immediate local community.",
+    "confidence": "medium",
+    "sources": [
+      "https://patch.com/connecticut/danbury/calendar/event/20261114/37b66bd9-0566-4a3c-a8e7-aaa37080f7b6/6th-annual-a-very-gifty-christmas",
+      "https://www.fairfieldafterdark.com/holiday-light-shows-in-and-around-fairfield-county",
+      "https://www.thecraftmap.com/fairs/connecticut"
+    ],
+    "exampleTitle": "A Very Gifty Christmas — 6th Annual",
+    "researchedAt": "2026-11-12"
+  },
+  "goose": {
+    "displayName": "Goose",
+    "funQuality": 9.5,
+    "tier": "national-headliner",
+    "isMusicAct": true,
+    "draw": "Goose is a national touring jam band currently playing arena shows in the same week as this Ridgefield date, including two nights at Mohegan Sun Arena in Uncasville, CT and Cross Insurance Arena in Portland, ME, with coverage from Relix, JamBase, and Grateful Web; the intimate Ridgefield Playhouse 'homecoming' show sold out immediately as a members-only benefit.",
+    "confidence": "high",
+    "sources": [
+      "https://relix.com/news/detail/goose-announce-intimate-ridgefield-playhouse-gig-revisit-ghostbusters-rap-in-kansas-city",
+      "https://www.jambase.com/band/goose",
+      "https://www.gratefulweb.com/articles/goose-saves-the-deepest-jams-for-last-on-night-three-in-milwaukee/",
+      "https://ridgefieldplayhouse.org/events/"
+    ],
+    "exampleTitle": "An Evening With Goose — Members Only Show",
+    "researchedAt": "2026-11-12"
   }
 }
