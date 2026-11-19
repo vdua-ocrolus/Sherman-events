@@ -3850,5 +3850,77 @@
     ],
     "exampleTitle": "An Evening With Goose — Members Only Show",
     "researchedAt": "2026-11-12"
+  },
+  "new fairfield santa s workshop holiday light parade tree lighting": {
+    "displayName": "New Fairfield Santa's Workshop, Holiday Light Parade & Tree Lighting",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (8th+ annual), free, town-run community tradition with a parade, Santa's workshop, and tree lighting covered by local news (News-Times) and town parks & rec; modest hometown scale with no regional draw beyond New Fairfield residents.",
+    "confidence": "high",
+    "sources": [
+      "https://www.newstimes.com/local/article/New-Fairfield-holiday-parade-tree-lighting-on-14870816.php",
+      "https://www.newstimes.com/news/article/danbury-area-christmas-tree-lightings-2024-19934723.php",
+      "https://www.newfairfield.org/our-town/events-calendar"
+    ],
+    "exampleTitle": "New Fairfield Santa's Workshop, Holiday Light Parade & Tree Lighting",
+    "researchedAt": "2026-11-19"
+  },
+  "ridgefield holiday stroll": {
+    "displayName": "Ridgefield Holiday Stroll",
+    "funQuality": 8,
+    "tier": "regional-established",
+    "isMusicAct": false,
+    "draw": "A well-established, 23+ year running two-day downtown festival in Ridgefield, CT organized by the Chamber of Commerce/Downtown Ridgefield, featuring horse-drawn carriages, DJs, youth choirs, a holiday market, and draws crowds across the whole downtown over two days each year.",
+    "confidence": "high",
+    "sources": [
+      "https://inridgefield.com/events/holiday-stroll/",
+      "https://www.hamlethub.com/ridgefield-connecticut/77206-downtown-ridgefield-announces-holiday-stroll-details-event-planned-for-friday-december-1-and-saturday-december-2"
+    ],
+    "exampleTitle": "Ridgefield Holiday Stroll",
+    "researchedAt": "2026-11-19"
+  },
+  "ridgefield hometown celebration circle of trees tree lighting": {
+    "displayName": "Ridgefield Hometown Celebration — Circle of Trees & Tree Lighting",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "This exact name/venue combination ('Hometown Celebration' + 'Circle of Trees' + 'Overlook Park') matches a Ridgefield, Washington community event, not Ridgefield, Connecticut; Ridgefield CT's actual comparable event is its town-run Festival of Lights/Tree Lighting on Main Street, a modest but cherished annual tradition with local school choir and fire-truck Santa arrival.",
+    "confidence": "low",
+    "sources": [
+      "https://danbury.macaronikid.com/events/690b4f47094c749fca8d2d23/ridgefields-annual-festival-of-lights-and-annual-tree-lighting--downtown-ridgefield",
+      "https://patch.com/connecticut/ridgefield/music-stories-lights-santa-usher-ridgefield-holidays"
+    ],
+    "exampleTitle": "Ridgefield Hometown Celebration — Circle of Trees & Tree Lighting",
+    "researchedAt": "2026-11-19"
+  },
+  "15th annual holiday craft and gift fair torrington lions club": {
+    "displayName": "15th Annual Holiday Craft and Gift Fair (Torrington Lions Club)",
+    "funQuality": 6.5,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running (15th annual) local Lions Club craft fair at the historic Torrington Armory with over 60 vendors; a genuine, modest community event with no regional press coverage or major draw beyond local shoppers.",
+    "confidence": "high",
+    "sources": [
+      "https://ctvendors.weebly.com/marketplaces.html",
+      "https://cttagger.com/cttagsales/index.php"
+    ],
+    "exampleTitle": "15th Annual Holiday Craft and Gift Fair",
+    "researchedAt": "2026-11-19"
+  },
+  "artscene ctny holiday art market": {
+    "displayName": "ARTSCENE.CTNY Holiday Art Market",
+    "funQuality": 7,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A juried indoor artisan market at Danbury Fair Mall with roughly 70-73 selected artists; organizers tout exposure to tens of thousands of mall holiday shoppers and the market has run multiple years, making it a solidly-established local market without music/performance draw.",
+    "confidence": "medium",
+    "sources": [
+      "https://www.eventbrite.com/e/art-market-at-danbury-fair-mall-tickets-1983197904318",
+      "https://app.entrythingy.com/calls/external/art-market-at-the-danbury-fair-mall-2025/",
+      "https://www.danburyfairmall.com/Events"
+    ],
+    "exampleTitle": "ARTSCENE.CTNY Holiday Art Market",
+    "researchedAt": "2026-11-19"
   }
 }
