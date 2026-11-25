@@ -1050,11 +1050,18 @@ function initClickTracking() {
 /* EVENTS_DATA:START — do not edit between the markers; this block is overwritten by the daily refresh */
 const EVENTS_DATA = {
   "lastUpdated": "Nov 19, 2026",
-  "tonight": [],
+  "tonight": [
+    {
+      "name": "Thanksgiving Eve Party — Gobbler's Gathering",
+      "venue": "Housatonic River Brewing",
+      "time": "7:00PM–10:00PM",
+      "price": "Free"
+    }
+  ],
   "weeks": [
     {
       "id": "week1",
-      "title": "Week 1 · November 24–29",
+      "title": "Week 1 · November 25–29",
       "open": true,
       "events": [
         {
@@ -1271,7 +1278,7 @@ const EVENTS_DATA = {
           "desc": "HRB's Annual Gobbler's Gathering features sing-along live music with \"Piano Woman\" Stephanie Biello of Bahama Mama fame, themed drink specials, and a flannel photo op.",
           "source": "housatonicriverbrewing.com",
           "sourceUrl": "https://www.housatonicriverbrewing.com/livemusic-events",
-          "isTonight": false,
+          "isTonight": true,
           "isPast": false,
           "isNF": false,
           "funQualityNote": null,
