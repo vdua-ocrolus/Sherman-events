@@ -3922,5 +3922,19 @@
     ],
     "exampleTitle": "ARTSCENE.CTNY Holiday Art Market",
     "researchedAt": "2026-11-19"
+  },
+  "sherman artists open studios 6th annual": {
+    "displayName": "Sherman Artists Open Studios — 6th Annual",
+    "funQuality": 6.8,
+    "tier": "non-music",
+    "isMusicAct": false,
+    "draw": "A long-running but small-scale community arts event organized by the Sherman Artists Association, featuring local amateur/semi-professional painters, photographers, potters and mixed-media artists in home studios and pop-ups (JCC, Charter Hall); no evidence of regional press, paid attendance, or notable artists beyond the local hobbyist/semi-pro level.",
+    "confidence": "high",
+    "sources": [
+      "https://www.shermanartists.org/event/artfest-3/",
+      "https://www.shermanct.gov/muni-events/sherman-artists-open-studios-2026---save-the-date-f4e05"
+    ],
+    "exampleTitle": "Sherman Artists Open Studios — 6th Annual",
+    "researchedAt": "2026-11-26"
   }
 }
